@@ -1,0 +1,8 @@
+
+omniauth:
+  facebook_key: "553752584663567"
+  facebook_secret: "06f0e8213795d3896e809b8d8eda9332"
+  linkedin_key: "31azcdigi8tt"
+  linkedin_secret: "OKd1hmuJoNOg9J2g"
+  google_oauth2_key: "928801233183"
+  google_oauth2_secret: "-nMQ0dEfcaBITxzwYHZPQ3v-"

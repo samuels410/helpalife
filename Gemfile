@@ -81,3 +81,13 @@ group :test do
   gem 'email_spec'
 end
 
+gem "paperclip"
+gem 'rolify'
+
+gem 'omniauth'
+gem 'omniauth-facebook'
+gem 'omniauth-linkedin'
+gem 'omniauth-google-oauth2'
+gem 'oauth2'
+gem 'rails_config'
+

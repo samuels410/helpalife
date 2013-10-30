@@ -1,0 +1,22 @@
+@import "bootstrap";
+
+
+#footer {
+  position:absolute;
+  bottom:0;
+  width:100%;
+  height:auto;   /* Height of the footer */
+  text-align: center;
+  border-top:1px solid;
+  border-color: #d4d4d4;
+
+}
+
+#logo{
+  color: white;
+}
+
+.color-9 a {
+  color: white;
+  text-decoration: none
+}
