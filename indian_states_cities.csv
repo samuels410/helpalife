@@ -1,0 +1,603 @@
+state_id,name
+"1",North and Middle Andaman
+"1",South Andaman
+"1",Nicobar
+"2",Adilabad
+"2",Anantapur
+"2",Chittoor
+"2",East Godavari
+"2",Guntur
+"2",Hyderabad
+"2",Kadapa
+"2",Karimnagar
+"2",Khammam
+"2",Krishna
+"2",Kurnool
+"2",Mahbubnagar
+"2",Medak
+"2",Nalgonda
+"2",Nellore
+"2",Nizamabad
+"2",Prakasam
+"2",Rangareddi
+"2",Srikakulam
+"2",Vishakhapatnam
+"2",Vizianagaram
+"2",Warangal
+"2",West Godavari	
+"3",Anjaw
+"3",Changlang
+"3",East Kameng
+"3",Lohit
+"3",Lower Subansiri
+"3",Papum Pare
+"3",Tirap
+"3",Dibang Valley
+"3",Upper Subansiri
+"3",West Kameng
+"4",Barpeta
+"4",Bongaigaon
+"4",Cachar
+"4",Darrang
+"4",Dhemaji
+"4",Dhubri
+"4",Dibrugarh
+"4",Goalpara
+"4",Golaghat
+"4",Hailakandi
+"4",Jorhat
+"4",Karbi Anglong
+"4",Karimganj
+"4",Kokrajhar
+"4",Lakhimpur
+"4",Marigaon
+"4",Nagaon
+"4",Nalbari
+"4",North Cachar Hills
+"4",Sibsagar
+"4",Sonitpur
+"4",Tinsukia
+"5",Araria
+"5",Aurangabad
+"5",Banka
+"5",Begusarai
+"5",Bhagalpur
+"5",Bhojpur
+"5",Buxar
+"5",Darbhanga
+"5",Purba Champaran
+"5",Gaya
+"5",Gopalganj
+"5",Jamui
+"5",Jehanabad
+"5",Khagaria
+"5",Kishanganj
+"5",Kaimur
+"5",Katihar
+"5",Lakhisarai
+"5",Madhubani
+"5",Munger
+"5",Madhepura
+"5",Muzaffarpur
+"5",Nalanda
+"5",Nawada
+"5",Patna
+"5",Purnia
+"5",Rohtas
+"5",Saharsa
+"5",Samastipur
+"5",Sheohar
+"5",Sheikhpura
+"5",Saran
+"5",Sitamarhi
+"5",Supaul
+"5",Siwan
+"5",Vaishali
+"5",Pashchim Champaran
+"6",Bastar
+"6",Bilaspur
+"6",Dantewada
+"6",Dhamtari
+"6",Durg
+"6",Jashpur
+"6",Janjgir-Champa
+"6",Korba
+"6",Koriya
+"6",Kanker
+"6",Kawardha
+"6",Mahasamund
+"6",Raigarh
+"6",Rajnandgaon
+"6",Raipur
+"6",Surguja	
+"9",Diu
+"9",Daman
+"10",Central Delhi
+"10",East Delhi
+"10",New Delhi
+"10",North Delhi
+"10",North East Delhi
+"10",North West Delhi
+"10",South Delhi
+"10",South West Delhi
+"10",West Delhi
+"11",North Goa
+"11",South Goa
+"12",Ahmedabad
+"12",Amreli District
+"12",Anand
+"12",Banaskantha
+"12",Bharuch
+"12",Bhavnagar
+"12",Dahod
+"12",The Dangs
+"12",Gandhinagar
+"12",Jamnagar
+"12",Junagadh
+"12",Kutch
+"12",Kheda
+"12",Mehsana
+"12",Narmada
+"12",Navsari
+"12",Patan
+"12",Panchmahal
+"12",Porbandar
+"12",Rajkot
+"12",Sabarkantha
+"12",Surendranagar
+"12",Surat
+"12",Vadodara
+"12",Valsad
+"13",Ambala
+"13",Bhiwani
+"13",Faridabad
+"13",Fatehabad
+"13",Gurgaon
+"13",Hissar
+"13",Jhajjar
+"13",Jind
+"13",Karnal
+"13",Kaithal
+"13",Kurukshetra
+"13",Mahendragarh
+"13",Mewat
+"13",Panchkula
+"13",Panipat
+"13",Rewari
+"13",Rohtak
+"13",Sirsa
+"13",Sonepat
+"13",Yamuna Nagar
+"13",Palwal
+"14",Bilaspur
+"14",Chamba
+"14",Hamirpur
+"14",Kangra
+"14",Kinnaur
+"14",Kulu
+"14",Lahaul and Spiti
+"14",Mandi
+"14",Shimla
+"14",Sirmaur
+"14",Solan
+"14",Una
+"15",Anantnag
+"15",Badgam
+"15",Bandipore
+"15",Baramula
+"15",Doda
+"15",Jammu
+"15",Kargil
+"15",Kathua
+"15",Kupwara
+"15",Leh
+"15",Poonch
+"15",Pulwama
+"15",Rajauri
+"15",Srinagar
+"15",Samba
+"15",Udhampur
+"16",Bokaro
+"16",Chatra
+"16",Deoghar
+"16",Dhanbad
+"16",Dumka
+"16",Purba Singhbhum
+"16",Garhwa
+"16",Giridih
+"16",Godda
+"16",Gumla
+"16",Hazaribagh
+"16",Koderma
+"16",Lohardaga
+"16",Pakur
+"16",Palamu
+"16",Ranchi
+"16",Sahibganj
+"16",Seraikela and Kharsawan
+"16",Pashchim Singhbhum
+"16",Ramgarh
+"17",Bidar
+"17",Belgaum
+"17",Bijapur
+"17",Bagalkot
+"17",Bellary
+"17",Bangalore Rural District
+"17",Bangalore Urban District
+"17",Chamarajnagar
+"17",Chikmagalur
+"17",Chitradurga
+"17",Davanagere
+"17",Dharwad
+"17",Dakshina Kannada
+"17",Gadag
+"17",Gulbarga
+"17",Hassan
+"17",Haveri District
+"17",Kodagu
+"17",Kolar
+"17",Koppal
+"17",Mandya
+"17",Mysore
+"17",Raichur
+"17",Shimoga
+"17",Tumkur
+"17",Udupi
+"17",Uttara Kannada
+"17",Ramanagara
+"17",Chikballapur
+"17",Yadagiri
+"18",Alappuzha
+"18",Ernakulam
+"18",Idukki
+"18",Kollam
+"18",Kannur
+"18",Kasaragod
+"18",Kottayam
+"18",Kozhikode
+"18",Malappuram
+"18",Palakkad
+"18",Pathanamthitta
+"18",Thrissur
+"18",Thiruvananthapuram
+"18",Wayanad
+"20",Alirajpur
+"20",Anuppur
+"20",Ashok Nagar
+"20",Balaghat
+"20",Barwani
+"20",Betul
+"20",Bhind
+"20",Bhopal
+"20",Burhanpur
+"20",Chhatarpur
+"20",Chhindwara
+"20",Damoh
+"20",Datia
+"20",Dewas
+"20",Dhar
+"20",Dindori
+"20",Guna
+"20",Gwalior
+"20",Harda
+"20",Hoshangabad
+"20",Indore
+"20",Jabalpur
+"20",Jhabua
+"20",Katni
+"20",Khandwa
+"20",Khargone
+"20",Mandla
+"20",Mandsaur
+"20",Morena
+"20",Narsinghpur
+"20",Neemuch
+"20",Panna
+"20",Rewa
+"20",Rajgarh
+"20",Ratlam
+"20",Raisen
+"20",Sagar
+"20",Satna
+"20",Sehore
+"20",Seoni
+"20",Shahdol
+"20",Shajapur
+"20",Sheopur
+"20",Shivpuri
+"20",Sidhi
+"20",Singrauli
+"20",Tikamgarh
+"20",Ujjain
+"20",Umaria
+"20",Vidisha
+"21",Ahmednagar
+"21",Akola
+"21",Amrawati
+"21",Aurangabad
+"21",Bhandara
+"21",Beed
+"21",Buldhana
+"21",Chandrapur
+"21",Dhule
+"21",Gadchiroli
+"21",Gondiya
+"21",Hingoli
+"21",Jalgaon
+"21",Jalna
+"21",Kolhapur
+"21",Latur
+"21",Mumbai City
+"21",Mumbai suburban
+"21",Nandurbar
+"21",Nanded
+"21",Nagpur
+"21",Nashik
+"21",Osmanabad
+"21",Parbhani
+"21",Pune
+"21",Raigad
+"21",Ratnagiri
+"21",Sindhudurg
+"21",Sangli
+"21",Solapur
+"21",Satara
+"21",Thane
+"21",Wardha
+"21",Washim
+"21",Yavatmal
+"22",Bishnupur
+"22",Churachandpur
+"22",Chandel
+"22",Imphal East
+"22",Senapati
+"22",Tamenglong
+"22",Thoubal
+"22",Ukhrul
+"22",Imphal West
+"23",East Garo Hills
+"23",East Khasi Hills
+"23",Jaintia Hills
+"23",Ri-Bhoi
+"23",South Garo Hills
+"23",West Garo Hills
+"23",West Khasi Hills
+"24",Aizawl
+"24",Champhai
+"24",Kolasib
+"24",Lawngtlai
+"24",Lunglei
+"24",Mamit
+"24",Saiha
+"24",Serchhip
+"25",Dimapur
+"25",Kohima
+"25",Mokokchung
+"25",Mon
+"25",Phek
+"25",Tuensang
+"25",Wokha
+"25",Zunheboto
+"26",Angul
+"26",Boudh
+"26",Bhadrak
+"26",Bolangir
+"26",Bargarh
+"26",Baleswar
+"26",Cuttack
+"26",Debagarh
+"26",Dhenkanal
+"26",Ganjam
+"26",Jharsuguda
+"26",Jajapur
+"26",Jagatsinghpur
+"26",Khordha
+"26",Kendujhar
+"26",Kalahandi
+"26",Kandhamal
+"26",Koraput
+"26",Kendrapara
+"26",Malkangiri
+"26",Mayurbhanj
+"26",Nabarangpur
+"26",Nuapada
+"26",Nayagarh
+"26",Puri
+"26",Rayagada
+"26",Sambalpur
+"26",Subarnapur
+"26",Sundargarh
+"27",Karaikal
+"27",Mahe
+"27",Puducherry
+"27",Yanam
+"28",Amritsar
+"28",Bathinda
+"28",Firozpur
+"28",Faridkot
+"28",Fatehgarh Sahib
+"28",Gurdaspur
+"28",Hoshiarpur
+"28",Jalandhar
+"28",Kapurthala
+"28",Ludhiana
+"28",Mansa
+"28",Moga
+"28",Mukatsar
+"28",Nawan Shehar
+"28",Patiala
+"28",Rupnagar
+"28",Sangrur
+"29",Ajmer
+"29",Alwar
+"29",Bikaner
+"29",Barmer
+"29",Banswara
+"29",Bharatpur
+"29",Baran
+"29",Bundi
+"29",Bhilwara
+"29",Churu
+"29",Chittorgarh
+"29",Dausa
+"29",Dholpur
+"29",Dungapur
+"29",Ganganagar
+"29",Hanumangarh
+"29",Juhnjhunun
+"29",Jalore
+"29",Jodhpur
+"29",Jaipur
+"29",Jaisalmer
+"29",Jhalawar
+"29",Karauli
+"29",Kota
+"29",Nagaur
+"29",Pali
+"29",Pratapgarh
+"29",Rajsamand
+"29",Sikar
+"29",Sawai Madhopur
+"29",Sirohi
+"29",Tonk
+"29",Udaipur
+"30",East Sikkim
+"30",North Sikkim
+"30",South Sikkim
+"30",West Sikkim
+"31",Ariyalur
+"31",Chennai
+"31",Coimbatore
+"31",Cuddalore
+"31",Dharmapuri
+"31",Dindigul
+"31",Erode
+"31",Kanchipuram
+"31",Kanyakumari
+"31",Karur
+"31",Madurai
+"31",Nagapattinam
+"31",The Nilgiris
+"31",Namakkal
+"31",Perambalur
+"31",Pudukkottai
+"31",Ramanathapuram
+"31",Salem
+"31",Sivagangai
+"31",Tiruppur
+"31",Tiruchirappalli
+"31",Theni
+"31",Tirunelveli
+"31",Thanjavur
+"31",Thoothukudi
+"31",Thiruvallur
+"31",Thiruvarur
+"31",Tiruvannamalai
+"31",Vellore
+"31",Villupuram
+"32",Dhalai
+"32",North Tripura
+"32",South Tripura
+"32",West Tripura
+"33",Almora
+"33",Bageshwar
+"33",Chamoli
+"33",Champawat
+"33",Dehradun
+"33",Haridwar
+"33",Nainital
+"33",Pauri Garhwal
+"33",Pithoragharh
+"33",Rudraprayag
+"33",Tehri Garhwal
+"33",Udham Singh Nagar
+"33",Uttarkashi
+"34",Agra
+"34",Allahabad
+"34",Aligarh
+"34",Ambedkar Nagar
+"34",Auraiya
+"34",Azamgarh
+"34",Barabanki
+"34",Badaun
+"34",Bagpat
+"34",Bahraich
+"34",Bijnor
+"34",Ballia
+"34",Banda
+"34",Balrampur
+"34",Bareilly
+"34",Basti
+"34",Bulandshahr
+"34",Chandauli
+"34",Chitrakoot
+"34",Deoria
+"34",Etah
+"34",Kanshiram Nagar
+"34",Etawah
+"34",Firozabad
+"34",Farrukhabad
+"34",Fatehpur
+"34",Faizabad
+"34",Gautam Buddha Nagar
+"34",Gonda
+"34",Ghazipur
+"34",Gorkakhpur
+"34",Ghaziabad
+"34",Hamirpur
+"34",Hardoi
+"34",Mahamaya Nagar
+"34",Jhansi
+"34",Jalaun
+"34",Jyotiba Phule Nagar
+"34",Jaunpur District
+"34",Kanpur Dehat
+"34",Kannauj
+"34",Kanpur Nagar
+"34",Kaushambi
+"34",Kushinagar
+"34",Lalitpur
+"34",Lakhimpur Kheri
+"34",Lucknow
+"34",Mau
+"34",Meerut
+"34",Maharajganj
+"34",Mahoba
+"34",Mirzapur
+"34",Moradabad
+"34",Mainpuri
+"34",Mathura
+"34",Muzaffarnagar
+"34",Pilibhit
+"34",Pratapgarh
+"34",Rampur
+"34",Rae Bareli
+"34",Saharanpur
+"34",Sitapur
+"34",Shahjahanpur
+"34",Sant Kabir Nagar
+"34",Siddharthnagar
+"34",Sonbhadra
+"34",Sant Ravidas Nagar
+"34",Sultanpur
+"34",Shravasti
+"34",Unnao
+"34",Varanasi
+"35",Birbhum
+"35",Bankura
+"35",Bardhaman
+"35",Darjeeling
+"35",Dakshin Dinajpur
+"35",Hooghly
+"35",Howrah
+"35",Jalpaiguri
+"35",Cooch Behar
+"35",Kolkata
+"35",Malda
+"35",Midnapore
+"35",Murshidabad
+"35",Nadia
+"35",North 24 Parganas
+"35",South 24 Parganas
+"35",Purulia
+"35",Uttar Dinajpur

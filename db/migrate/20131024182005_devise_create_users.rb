@@ -4,13 +4,13 @@ class DeviseCreateUsers < ActiveRecord::Migration
       ## Database authenticatable
       t.text :name
       t.text :blood_group
-      t.text :country
-      t.text :state
-      t.text :district
+      t.text :country_id
+      t.text :state_id
+      t.text :district_id
       t.text :email,              :null => false, :default => ""
       t.text :encrypted_password, :null => false, :default => ""
       t.text :avatar_url
-      t.integer :phone_no
+      t.text :phone_no
       ## Recoverable
       t.text   :reset_password_token
       t.datetime :reset_password_sent_at

@@ -9,7 +9,7 @@ class AuthenticationController < ApplicationController
       sign_in_and_redirect(:user, authentication.user)
     else
       email=auth['info']['email']
-      check_user=User.find_by_email(email)
+      check_user = User.find_by_email(email)
       if check_user
         flash[:error] = "Email id #{email} Already Registered using #{provider},Please use same provider"
         redirect_to root_url
@@ -18,7 +18,7 @@ class AuthenticationController < ApplicationController
         user.apply_omniauth(auth)
         if user.save(:validate => false)
           flash.now[:notice] = "Account created and signed in successfully."
-          sign_in_and_redirect(:user, authentication.user)
+          sign_in_and_redirect(:user, user)
         else
           flash.now[:error] = "Error while creating a user account. Please try again."
           redirect_to root_url

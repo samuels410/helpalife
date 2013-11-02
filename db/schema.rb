@@ -11,13 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131030175201) do
+ActiveRecord::Schema.define(version: 20131102024444) do
 
   create_table "authentications", force: true do |t|
     t.integer  "user_id"
     t.text     "provider"
     t.text     "uid"
     t.text     "token"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "districts", force: true do |t|
+    t.integer  "state_id"
+    t.text     "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -33,16 +40,22 @@ ActiveRecord::Schema.define(version: 20131030175201) do
   add_index "roles", ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id", using: :btree
   add_index "roles", ["name"], name: "index_roles_on_name", using: :btree
 
+  create_table "states", force: true do |t|
+    t.text     "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "users", force: true do |t|
     t.text     "name"
     t.text     "blood_group"
-    t.text     "country"
-    t.text     "state"
-    t.text     "district"
+    t.text     "country_id"
+    t.text     "state_id"
+    t.text     "district_id"
     t.text     "email",                  default: "", null: false
     t.text     "encrypted_password",     default: "", null: false
     t.text     "avatar_url"
-    t.integer  "phone_no"
+    t.text     "phone_no"
     t.text     "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
