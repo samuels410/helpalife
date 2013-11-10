@@ -52,14 +52,15 @@ ActiveRecord::Schema.define(version: 20131102024444) do
     t.text     "country_id"
     t.text     "state_id"
     t.text     "district_id"
-    t.text     "email",                  default: "", null: false
-    t.text     "encrypted_password",     default: "", null: false
+    t.text     "email",                  default: "",   null: false
+    t.text     "encrypted_password",     default: "",   null: false
     t.text     "avatar_url"
     t.text     "phone_no"
+    t.boolean  "phone_no_visibility",    default: true
     t.text     "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
+    t.integer  "sign_in_count",          default: 0,    null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.text     "current_sign_in_ip"

@@ -127,7 +127,12 @@
 }
 
 .color-9 {
-	background: #9e487f;
+	background: #50687e;
+    color: #fff;
+    text-align: center;
+    position: static;
+    /*box-sizing: border-box;*/
+    /*box-shadow: inset 0 1px 15px 0 rgba(0, 0, 0, 0.5);*/
 }
 
 .color-10 {

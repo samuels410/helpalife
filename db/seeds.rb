@@ -14,7 +14,11 @@ puts 'SETTING UP DEFAULT USER LOGIN'
 user = User.create! :name => 'Administrator',
                     :email => 'admin@indiandoners.org',
                     :password => 'Admin123$',
-                    :password_confirmation => 'Admin123$'
+                    :password_confirmation => 'Admin123$',
+                    :state_id => 7,
+                    :blood_group => "A1+",
+                    :district_id =>2,
+                    :phone_no => 9629171382
 
 puts 'User created: ' << user.name
 

@@ -1,11 +1,14 @@
-<div class="row">
-  <div class="span6 offset6">
-     <h2 style="text-align: center" >Your public profile</h2>
+  <div class="container">
+    <div class="form-data" style="background-color: beige;box-shadow: 0px 4px 20px #000;margin-bottom: 55px;
+            margin-top: 55px;" > <br>
+     <h2 style="text-align: center" >My profile</h2>
+      <div class="row">
+        <div class="span6 offset4">
     <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name),
-                          :html => { :method => :put } ) do |f| %>
-        <%= render 'shared/error_messages', object: f.object %>
+                          :html => { :method => :put ,:class=>"container" } ) do |f| %>
         <table>
-          <tr> <td><%= f.label "Name" %></td> <td style="width: 34px;"></td>
+          <tr><td colspan="3"><%= render 'shared/error_messages', object: f.object %></td></tr>
+          <tr> <td><%= f.label "Name" %></td> <td style="width: 38px;"></td>
                <td><%= f.text_field :name, :required => true, :value => current_user.name  %></td>
           </tr>
            <tr><td><%= f.label "Email" %></td> <td></td>
@@ -15,8 +18,14 @@
                 <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
             <% end %></td></tr>
           <tr><td><%= f.label "Phone Number" %></td>    <td></td>
-            <td><%= f.text_field :phone_no, :required => true, :value => current_user.phone_no , :autofocus => true %>
+            <td><%= f.text_field :phone_no, :required => true, :value => current_user.phone_no || (params[:user][:phone_no] unless params[:user].nil?), :autofocus => true %>
             </td>
+          </tr>
+            <tr> <td><%= f.label "Phone no visibility"%></td> <td></td>
+            <td><div id="client_approved_buttons" class="btn-group" data-toggle="buttons-radio">
+            <a class="btn btn-info" data-value="1">Public</a>
+            <a class="btn " data-value="0">Private</a>
+          </div><%= f.input :phone_no_visibility, as: :hidden %></td>
           </tr>
           <tr><td><%= f.label "Blood Group" %></td>              <td></td>
             <td><%= f.select :blood_group, options_for_select([["A1+", "A1+"],["A1-", "A1-"], ["A2+", "A2+"],["A2-", "A2-"],
@@ -30,15 +39,19 @@
             <td><%= f.collection_select :state_id, State.order(:name), :id, :name, include_blank: true %> <br></td>
           </tr>
           <tr><td><%= f.label :district_id, "Districts" ,:id=>'district_label'%></td>  <td></td>
-            <td><%= f.grouped_collection_select :district_id, State.order(:name), :districts, :name, :id, :name, include_blank: true %><br></td>
+            <td><%= f.grouped_collection_select :district_id, State.order(:name), :districts, :name, :id, :name, include_blank: true %><br> <br></td>
           </tr>
-        </table>             <br>
-            <div class="span6" >
-            <%= f.button :submit, "Update" ,class:'btn btn-primary' %>
-             <%= link_to "Cancel",:back ,class:'btn'%>
-            </div>
-<% end %>
 
+          <tr>
+            <td></td> <td></td>
+            <td><%= f.check_box :terms_of_service %> <%= link_to "I accept terms and service","#" %> </td>
+          </tr>
+          <tr> <td></td> <td></td> <td> <%= f.button :submit, "Update" ,class:'btn btn-primary',:style=>"margin-left: -8px;" %>
+            <%= link_to "Cancel",:back ,class:'btn'%></td></tr>
+        </table>             <br>
+              </div>
+<% end %>
+    </div>
 </div>
 </div>                                                  <br>
 
@@ -62,4 +75,15 @@
             }
         });
     });
+
+    $('.btn-group a').on('click', function(event){
+        event.preventDefault();
+        var input = $(this).siblings('.control-group').find('input[type=hidden]');
+        if(input.length>0){
+            if(input.val().toString() !== $(this).data('value').toString()){
+                input.val($(this).data('value')).trigger('change');
+            }
+        }
+    });
+
 </script>

@@ -1,15 +1,28 @@
-<h2>Sign in</h2>
-
-<%= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-  <div class="form-inputs">
-    <%= f.input :email, :required => false, :autofocus => true %>
-    <%= f.input :password, :required => false %>
-    <%= f.input :remember_me, :as => :boolean if devise_mapping.rememberable? %>
+<div id="login" class="modal hide fade"  role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel">Register / Login </h3>
   </div>
+  <div class="modal-body" style="text-align: center;" >
 
-  <div class="form-actions">
-    <%= f.button :submit, "Sign in" %>
+    <a href="/auth/facebook/"> <button class='zocial facebook'>with Facebook</button></a>
+    <a href="/auth/google_oauth2/"> <button class='zocial google'>with Google</button></a>
+    <a href="/auth/linkedin/"> <button class='zocial linkedin'>with LinkedIn</button></a>
+
   </div>
-<% end %>
+  <div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true" >Cancel</button>
+  </div>
+</div>
 
-<%= render "devise/shared/links" %>
+
+<script>
+    $("#login").modal('show');
+    $(".close").click(function() {
+        history.back();
+    });
+    $(".btn").click(function() {
+        history.back();
+    });
+
+</script>

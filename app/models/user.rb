@@ -11,6 +11,10 @@ class User < ActiveRecord::Base
                     :default_url => "/images/:style/missing.png"
   has_many :authentication, :dependent => :delete_all
 
+  validates :name,:blood_group,:state_id,:district_id,:email,:phone_no, presence: true
+  validates :terms_of_service, acceptance: { accept: '1' }
+  validates :phone_no, length: { is: 10 }, numericality: true
+
   def apply_omniauth(auth)
     # In previous omniauth, 'user_info' was used in place of 'raw_info'
     self.email    = auth['info']['email']
