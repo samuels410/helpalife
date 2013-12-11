@@ -25,7 +25,7 @@
 
 
           <%= f.collection_select :state_id, State.order(:name), :id, :name,
-                                                              :prompt => "- Select state -"%>
+                                                :prompt => "- Select state -"%>
           <%= f.grouped_collection_select :district_id, State.order(:name), :districts, :name, :id, :name,
                                           :prompt => "- Select district -"%>
           <%= f.button :submit, "Search donors" ,class:'btn btn-primary' %>
