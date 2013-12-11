@@ -28,7 +28,9 @@
                                       :selected => params[:user][:district_id]%>
       <%= f.button :submit, "Search donors" ,class:'btn btn-primary' %>
   <% end %>
+  <div>Found &nbsp;<%=pluralize(@users.count, 'Donor')%> &nbsp; <%= link_to "Notify doners about your need",root_path  %></div>
 </div>
+
 <br>
 
 <div class="container" >
