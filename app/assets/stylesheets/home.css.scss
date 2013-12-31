@@ -11,7 +11,7 @@
 
 .doner-search{
   background: url(bg-semi-dark.png);
-  height: 100px;
+  height: auto;
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
   border-radius: 2px;
@@ -21,4 +21,9 @@
 
 body{
   background-color: #fcf3db;
+}
+
+#need_blood_group,#need_state_id,#need_district_id {
+  margin-top: -10px;
+  width: 206px;
 }

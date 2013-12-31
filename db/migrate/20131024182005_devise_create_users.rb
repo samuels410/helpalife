@@ -4,9 +4,9 @@ class DeviseCreateUsers < ActiveRecord::Migration
       ## Database authenticatable
       t.text :name
       t.text :blood_group
-      t.text :country_id
-      t.text :state_id
-      t.text :district_id
+      t.integer  :country_id
+      t.integer :state_id
+      t.integer :district_id
       t.text :email,              :null => false, :default => ""
       t.text :encrypted_password, :null => false, :default => ""
       t.text :avatar_url

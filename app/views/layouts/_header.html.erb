@@ -2,15 +2,15 @@
         <nav class="cl-effect-9" id="cl-effect-9">
           <% if current_user %>
               <a href="/users/edit"><span>My Profile</span><span>Personal profile</span></a>
-              <a href="#cl-effect-9"><span>Post a Need</span><span>Reach out People</span></a>
+              <a href="<%= needs_path %>"><span>Needs Posted</span><span>Find here posted needs  </span></a>
               <%= link_to image_tag(current_user.avatar_url,:class =>"img img-circle",:style => "width: 75px;"),root_path %>
-              <a href="/doners"><span>Find Doners</span><span>Search doners</span></a>
+              <a href="<%= donors_path %>"><span>Find Doners</span><span>Search doners</span></a>
               <a href="<%= destroy_user_session_path %>" data-method="delete" rel="nofollow"><span>Logout</span><span>Signout now</span></a>
           <%else %>
               <a href="#login" data-toggle="modal"><span>Register / Login</span><span>Join with us and save Life</span></a>
-              <a href="#cl-effect-9"><span>Post a Need</span><span>Reach out People</span></a>
+              <a href="<%= needs_path %>"><span>Needs Posted</span><span>Find here posted needs  </span></a>
               <%= link_to image_tag('logo.png',:class =>"img img-circle",:style => "width: 75px;"),root_path %>
-              <a href="/doners"><span>Find Doners</span><span>Search doners</span></a>
+              <a href="<%= donors_path %>"><span>Find Doners</span><span>Search doners</span></a>
               <a href="#cl-effect-9"><span>Refer a friend</span><span>Let refer a friend</span></a>
 
           <%end  %>

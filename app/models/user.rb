@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
   has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>" },
                     :default_url => "/images/:style/missing.png"
   has_many :authentication, :dependent => :delete_all
+  has_many :needs
 
   validates :name,:blood_group,:state_id,:district_id,:email,:phone_no, presence: true
   validates :terms_of_service, acceptance: { accept: '1' }

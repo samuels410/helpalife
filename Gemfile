@@ -92,4 +92,3 @@ gem 'oauth2'
 gem 'rails_config'
 gem 'bootstrap-datepicker-rails'
 gem 'will_paginate'
-

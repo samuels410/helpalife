@@ -16,16 +16,16 @@
                                                      ["B+", "B+"],["B-", "B-"],["A1B+", "A1B+"],["A1B-", "A1B-"],
                                                      ["A2B+", "A2B+"],["A2B-", "A2B-"],["AB+", "AB+"],
                                                      ["AB-", "AB-"],["O+", "O+"],["O-", "O-"],["A+", "A+"],
-                                                     ["A-", "A-"]],:selected => params[:user][:blood_group]) , :prompt => "- Choose blood group -",
+                                                     ["A-", "A-"]],:selected => (params[:user][:blood_group] unless params[:user].nil?)) , :prompt => "- Choose blood group -",
                    :required => true %>
 
 
       <%= f.collection_select :state_id, State.order(:name), :id, :name,
                               :prompt => "- Select state -",
-                              :selected => params[:user][:state_id]%>
+                              :selected => (params[:user][:state_id] unless params[:user].nil?)%>
       <%= f.grouped_collection_select :district_id, State.order(:name), :districts, :name, :id, :name,
                                       :prompt => "- Select district -",
-                                      :selected => params[:user][:district_id]%>
+                                      :selected => (params[:user][:district_id] unless params[:user].nil?)%>
       <%= f.button :submit, "Search donors" ,class:'btn btn-primary' %>
   <% end %>
   <div>Found &nbsp;<%=pluralize(@users.count, 'Donor')%> &nbsp; <%= link_to "Notify doners about your need",root_path  %></div>

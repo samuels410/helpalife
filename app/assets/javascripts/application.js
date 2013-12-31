@@ -22,4 +22,7 @@ $("#login").modal({
     show: false,
     backdrop: 'static'
 });
+
+$('[data_behaviour~=datepicker]').datepicker();
+
 });

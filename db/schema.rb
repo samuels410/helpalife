@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131102024444) do
+ActiveRecord::Schema.define(version: 20131213170830) do
 
   create_table "authentications", force: true do |t|
     t.integer  "user_id"
@@ -25,6 +25,22 @@ ActiveRecord::Schema.define(version: 20131102024444) do
   create_table "districts", force: true do |t|
     t.integer  "state_id"
     t.text     "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "needs", force: true do |t|
+    t.integer  "user_id"
+    t.string   "blood_group"
+    t.date     "required_date"
+    t.integer  "required_units"
+    t.text     "contact_number"
+    t.integer  "state_id"
+    t.integer  "district_id"
+    t.text     "hospital_name"
+    t.text     "reason"
+    t.text     "patient_name"
+    t.boolean  "is_notified"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -49,9 +65,9 @@ ActiveRecord::Schema.define(version: 20131102024444) do
   create_table "users", force: true do |t|
     t.text     "name"
     t.text     "blood_group"
-    t.text     "country_id"
-    t.text     "state_id"
-    t.text     "district_id"
+    t.integer  "country_id"
+    t.integer  "state_id"
+    t.integer  "district_id"
     t.text     "email",                  default: "",   null: false
     t.text     "encrypted_password",     default: "",   null: false
     t.text     "avatar_url"
