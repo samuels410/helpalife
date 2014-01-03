@@ -1,5 +1,5 @@
 
-<h3>Needs posted</h3>
+<h3>Requirements posted</h3>
 <div class="container" >
   <div class="row">
     <% @needs.each do |need| %>
@@ -34,6 +34,7 @@
               <div class="row-fluid">
                 <small><%=  distance_of_time_in_words(need.created_at,Time.now)%>&nbsp;ago</small>
               </div>
+              <%= render 'home/share_need',:need => need %>
             </div>
 
           </div>
