@@ -1,4 +1,12 @@
-
+<% provide(:title, "#{@need.patient_name}, Needs #{@need.blood_group} blood." ) %>
+<%set_meta_tags :og => {
+:title    => "#{@need.patient_name}, Needs #{@need.blood_group} blood.",
+:type     => 'Blood donors',
+:url      => need_url(@need),
+:image    => image_url('logo.png'),
+:description => "#{@need.patient_name}, Needs #{@need.blood_group} blood,Contact Number: #{need.contact_number}"
+} %>
+<% "Contact Number: #{@need.contact_number}" %>
 <br>
 <script src="http://thecodeplayer.com/uploads/js/prefixfree-1.0.7.js" type="text/javascript" type="text/javascript"></script>
 <div class="doner-search container"  style=" text-align: center; height: auto;">
