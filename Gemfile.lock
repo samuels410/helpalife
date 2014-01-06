@@ -62,6 +62,11 @@ GEM
     coffee-script-source (1.6.3)
     database_cleaner (1.0.1)
     debug_inspector (0.0.2)
+    delayed_job (4.0.0)
+      activesupport (>= 3.0, < 4.1)
+    delayed_job_active_record (4.0.0)
+      activerecord (>= 3.0, < 4.1)
+      delayed_job (>= 3.0, < 4.1)
     devise (3.1.1)
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.1)
@@ -264,6 +269,7 @@ DEPENDENCIES
   capybara
   coffee-rails (~> 4.0.0)
   database_cleaner (= 1.0.1)
+  delayed_job_active_record
   devise
   devise_invitable
   email_spec

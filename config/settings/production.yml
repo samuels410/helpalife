@@ -6,3 +6,10 @@ omniauth:
   linkedin_secret: "OKd1hmuJoNOg9J2g"
   google_oauth2_key: "928801233183"
   google_oauth2_secret: "-nMQ0dEfcaBITxzwYHZPQ3v-"
+
+email:
+  user_name: "samuels410"
+  password: "samuels_253325"
+  domain: "life-donors.org"
+  address: "smtp.sendgrid.net"
+  port: 587

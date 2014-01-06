@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+</head>
+<body>
+<div>
+  <h1>Hi, <%= @user.name %></h1>
+  <a href="<%= need_path(@need) %>">
+
+    <div class="span12 " style= "background-color: #3b494c;
+            border-radius: 5px;
+            color: white;margin-bottom: 5px;">
+
+      <div class="row">
+
+        <div class="span9" >
+          <div class="row-fluid">
+            <div class="span1"> <b> <%= @need.patient_name  %>, </b></div>
+          </div>
+          <div class="row-fluid">
+            <div class="span12">needs &nbsp;&nbsp; <b style="font-size: 25px;" > <%= @need.blood_group  %> </b>&nbsp;&nbsp; blood on &nbsp;&nbsp; <b style="font-size: 20px;"> <%= @need.required_date   %> </b> &nbsp; for &nbsp;<%= @need.reason %></div>
+          </div>
+          <br>
+          <div class="row-fluid" style="text-align: left;
+                  margin-left: 10px;" >
+            State:&nbsp; <b><%= @need.state.name %></b>,&nbsp;District:&nbsp;<b><%= @need.district.name %></b>,&nbsp;Hospital:&nbsp;<b><%= @need.hospital_name %></b>,
+            Contact number:&nbsp;<b><%= @need.contact_number %></b>
+          </div>
+          <br>
+        </div>
+
+        <div class="span3"  style="text-align: right;
+                margin-left: 10px;" >
+          <div class="row-fluid">
+            <small><em>Posted by,<%= @need.user.name %></em></small>
+          </div>
+          <div class="row-fluid">
+            <small><%=  distance_of_time_in_words(@need.created_at,Time.now)%>&nbsp;ago</small>
+          </div>
+          <div class="row-fluid" >
+
+            <table >
+              <tr> <td colspan="4" >Share this requirement </td> </tr>
+              <tr><td>
+
+                <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fblooddoners.herokuapp.com%2Fneeds%2F<%= @need.id%>" onclick="javascript:window.open(this.href,
+                        '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=550,width=500');return false;" style="margin-left: 5px;" >
+                  <button class='zocial icon  facebook'></button></a>
+              </td><td>
+                <a href="http://www.linkedin.com/shareArticle?mini=true&url=<%= need_url(@need) %> &title= <%= "#{@need.patient_name}, Needs #{@need.blood_group} blood." %> &summary= <%= "Contact Number: #{@need.contact_number}" %> "onclick="javascript:window.open(this.href,
+                        '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=550,width=500');return false;"  style="margin-left: 5px;"><button class='zocial icon linkedin'></button></a>
+              </td>
+                <td>
+                  <a href="http://plus.google.com/share?url=<%= need_url(@need) %>" onclick="javascript:window.open(this.href,
+                          '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=550,width=500');return false;" style="margin-left: 5px;"><button class='zocial icon googleplus'></button></a>
+                </td><td>
+                <a href="http://twitter.com/intent/tweet?&url=<%= need_url(@need) %> &text= <%= "#{@need.patient_name}, Needs #{@need.blood_group} blood." %> <%= "Contact Number: #{@need.contact_number}" %> " onclick="javascript:window.open(this.href,
+                        '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=550,width=500');return false;"  style="margin-left: 5px;"><button class='zocial icon twitter'></button></a>
+              </td></tr></table>
+
+          </div>
+        </div>
+
+      </div>
+      <a href="<%= needs_url %>"  class ='btn  btn-large'>Load more Needs</a>
+
+    </div>
+  </a>
+
+</div>
+</body>
+</html>

@@ -15,6 +15,7 @@ class NeedsController < ApplicationController
     @need.required_date  = need_date
     @need.user_id = current_user.id
     if @need.save!
+      flash[:success] = "Your need is posted and email notifications sent to the below donors!"
        redirect_to need_path(@need)
     end
   end
@@ -33,7 +34,6 @@ class NeedsController < ApplicationController
 
   def get_users
     @users = User.where(blood_group: @need.blood_group,
-                        district_id: @need.district.id,
                         district_id: @need.district.id,
                         state_id: @need.state.id).paginate(page: params[:page], :per_page => 50)
 
