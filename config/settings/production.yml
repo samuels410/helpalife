@@ -8,8 +8,8 @@ omniauth:
   google_oauth2_secret: "-nMQ0dEfcaBITxzwYHZPQ3v-"
 
 email:
-  user_name: "samuels410"
+  user_name: "lifedonor.org"
   password: "samuels_253325"
   domain: "life-donors.org"
-  address: "smtp.sendgrid.net"
+  address: "smtp.gmail.com"
   port: 587

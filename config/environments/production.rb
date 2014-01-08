@@ -73,7 +73,9 @@ Community::Application.configure do
   # Send deprecation notices to registered listeners.
   config.active_support.deprecation = :notify
 
+  config.action_mailer.default_url_options = {:host => "#{Settings.email.domain}"}
   config.action_mailer.smtp_settings = {
+      host: "#{Settings.email.domain}",
       address: "#{Settings.email.address}",
       port: "#{Settings.email.port}",
       domain: "#{Settings.email.domain}",

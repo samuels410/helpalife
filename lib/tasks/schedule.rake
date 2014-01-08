@@ -10,7 +10,7 @@ task :scheduler => :environment do
       #by need get all donors
       @users = User.where(blood_group: need.blood_group,
                           district_id: need.district.id,
-                          state_id: @need.state.id)
+                          state_id: need.state.id)
       @users.each do |user|
         NotificationMailer.delay.notify_need(user,need)
       end

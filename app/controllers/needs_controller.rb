@@ -5,7 +5,7 @@ class NeedsController < ApplicationController
   end
 
   def index
-    @needs = Need.paginate(page: params[:page], :per_page => 25)
+    @needs = Need.order('created_at DESC').paginate(page: params[:page], :per_page => 25)
 
   end
 
@@ -15,6 +15,12 @@ class NeedsController < ApplicationController
     @need.required_date  = need_date
     @need.user_id = current_user.id
     if @need.save!
+      @users = User.where(blood_group: @need.blood_group,
+                          district_id: @need.district.id,
+                          state_id: @need.state.id)
+      @users.each do |user|
+        NotificationMailer.delay.notify_need(user,@need)
+      end
       flash[:success] = "Your need is posted and email notifications sent to the below donors!"
        redirect_to need_path(@need)
     end

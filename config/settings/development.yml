@@ -11,5 +11,5 @@ email:
   user_name: "samuels410"
   password: "samuels_253325"
   domain: "life-donors.org"
-  address: "smtp.sendgrid.net"
+  address: "smtp.gmail.com"
   port: 587

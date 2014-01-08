@@ -26,8 +26,10 @@ Community::Application.configure do
   # This option may cause significant delays in view rendering with a large
   # number of complex assets.
   config.assets.debug = true
+  config.action_mailer.default_url_options = {:host => "#{Settings.email.domain}"}
 
   config.action_mailer.smtp_settings = {
+    host: "#{Settings.email.domain}",
     address: "#{Settings.email.address}",
     port: "#{Settings.email.port}",
     domain: "#{Settings.email.domain}",
