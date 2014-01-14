@@ -4,9 +4,9 @@
 <div class="doner-search container"  style="height: 150px; text-align: center">
   <div class="breadcrumb">
     <a href="#" >Select blood group,state,district</a>
-    <a href="#" class="active">Click search donors</a>
+    <a href="#" >Click search donors</a>
     <a href="#" class="active">Find donors</a>
-    <a href="#">Get donor's details</a>
+    <a href="#" class="active">Get donor's details</a>
     <a href="#">Notify donors via SMS and Email</a>
   </div>
   <%= simple_form_for(User.new, :as => :user, :url => donors_path(:user),
@@ -34,6 +34,7 @@
 <br>
 
 <div class="container" >
+  <% if @users.any? %>
   <div class="row">
     <% @users.each do |user|  %>
     <div class="span6" style= "background-color: #3b494c;
@@ -66,6 +67,15 @@
     </div>
     <% end  %>
   </div>
+
+  <% else  %>
+         <div>Sorry, currently there is no donors match according to your selection criteria. </div>
+      <br>
+      <b>But you can post your requirement in the home page and you can share that in social medias.</b>
+      <%= render 'referrals/site_referrals' %>
+
+  <% end %>
+
 </div>
 <%=will_paginate @users%>
 

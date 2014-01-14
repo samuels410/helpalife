@@ -89,6 +89,10 @@ a.zocial {
 
 /* Gradients */
 
+.zocial.big{
+    height: 69px;
+}
+
 .zocial {
 	background-image: -moz-linear-gradient(rgba(255,255,255,.1), rgba(255,255,255,.05) 49%, rgba(0,0,0,.05) 51%, rgba(0,0,0,.1));
 	background-image: -ms-linear-gradient(rgba(255,255,255,.1), rgba(255,255,255,.05) 49%, rgba(0,0,0,.05) 51%, rgba(0,0,0,.1));

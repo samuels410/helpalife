@@ -15,9 +15,9 @@ class NeedsController < ApplicationController
     @need.required_date  = need_date
     @need.user_id = current_user.id
     if @need.save!
-      @users = User.where(blood_group: @need.blood_group,
-                          district_id: @need.district.id,
-                          state_id: @need.state.id)
+      @users = User.email_notification_enabled.where(blood_group: @need.blood_group,
+                                                     district_id: @need.district.id,
+                                                     state_id: @need.state.id)
       @users.each do |user|
         NotificationMailer.delay.notify_need(user,@need)
       end

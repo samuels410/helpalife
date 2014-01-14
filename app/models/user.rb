@@ -11,6 +11,8 @@ class User < ActiveRecord::Base
                     :default_url => "/images/:style/missing.png"
   has_many :authentication, :dependent => :delete_all
   has_many :needs
+  scope :email_notification_enabled, where('can_send_email = ?', true)
+  scope :sms_notification_enabled, where('can_send_sms = ?', true)
 
   validates :name,:blood_group,:state_id,:district_id,:email,:phone_no, presence: true
   validates :terms_of_service, acceptance: { accept: '1' }
@@ -22,6 +24,7 @@ class User < ActiveRecord::Base
     self.name     = auth['info']['name']
     self.avatar_url= auth['info']['image']
     self.phone_no    = auth['info']['phone']
+    self.phone_no_visibility = true
     require 'bcrypt'
     pepper = nil
     cost = 10

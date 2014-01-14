@@ -12,10 +12,10 @@
 <div class="doner-search container"  style=" text-align: center; height: auto;">
   <div class="breadcrumb">
     <a href="#" >Select blood group,state,district</a>
-    <a href="#" class="active">Click search donors</a>
-    <a href="#" class="active">Find donors</a>
-    <a href="#">Get donor's details</a>
-    <a href="#">Notify donors via SMS and Email</a>
+    <a href="#" >Click search donors</a>
+    <a href="#" >Find donors</a>
+    <a href="#" class="active">Get donor's details</a>
+    <a href="#" class="active">Notify donors via SMS and Email</a>
   </div>
 
     <br>
@@ -55,9 +55,6 @@
         <br>
       <% if user_signed_in? and current_user.needs.include?(@need)  %>
           <%= f.button :submit, "Update Need" ,id: "notify_need",class:'btn  btn-large' %>
-          <% unless @need.is_notified? %>
-            <%= f.button :submit, "Notify Donors" ,id: "notify_need",class:'btn  btn-large' %>
-          <% end  %>
       <% end %>
     <% end %>
 
@@ -68,6 +65,7 @@
 <br>
 
 <div class="container" >
+  <% if @users.any? %>
   <div class="row">
     <% @users.each do |user|  %>
         <div class="span6" style= "background-color: #3b494c;
@@ -100,6 +98,14 @@
         </div>
     <% end  %>
   </div>
+  <% else  %>
+      <div>Sorry, currently there is no donors match according to your selection criteria. </div>
+      <br>
+      <b>But you can post your requirement in the home page and you can share that in social medias.</b>
+      <%= render 'referrals/site_referrals' %>
+
+  <% end %>
+
 </div>
 <%=will_paginate @users%>
 

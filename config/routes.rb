@@ -1,4 +1,6 @@
 Community::Application.routes.draw do
+  resources :referrals
+
   resources :needs
 
   root to: 'home#index'

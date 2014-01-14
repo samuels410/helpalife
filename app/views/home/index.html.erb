@@ -57,7 +57,7 @@
         <br>
 
         <div>
-        <%= f.text_field :contact_number, :required => true ,:placeholder=> "Mobile Number"%>&nbsp;&nbsp;&nbsp;
+        <%= f.text_field :contact_number, :required => true ,:phone_field => true,:placeholder=> "Mobile Number"%>&nbsp;&nbsp;&nbsp;
 
         <%= f.collection_select :state_id, State.order(:name), :id, :name,
                                 :prompt => "- Select state -"%>&nbsp;&nbsp;&nbsp;
@@ -85,8 +85,9 @@
   </div>
   <br>
 
-
-<%= render 'home/recent_needs' %>
+ <% if @needs.any? %>
+    <%= render 'home/recent_needs' %>
+ <% end  %>
 <%= render 'home/recent_users' %>
 
 </div>
@@ -149,7 +150,7 @@ $('.btn-group a').on('click', function(event){
 
 //Need validation
     $("#post_need").click(function() {
-        if ($("#need_blood_group").find("option:selected" ).text() == '- Choose blood group -'){
+        if ($("#need_blood_group").find("option:selected" ).text() == '- Choose blood group -') {
             alert("Please select a blood group");}
 
         if ($("#need_state_id").find("option:selected" ).text() == '- Select state -'){
