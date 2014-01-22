@@ -3,7 +3,11 @@
           <% if current_user %>
               <a href="/users/edit"><span>My Profile</span><span>Personal profile</span></a>
               <a href="<%= needs_path %>"><span>Requirements</span><span>Blood Requirements</span></a>
-              <%= link_to image_tag(current_user.avatar_url,:class =>"img img-circle",:style => "width: 75px;"),root_path %>
+              <% if current_user.avatar_url.nil? %>
+                  <%= link_to image_tag(current_user.avatar.url(:thumb),:class =>"img img-circle",:style => "width: 75px;") ,root_path %>
+              <% else  %>
+                  <%= link_to image_tag(current_user.avatar_url,:class =>"img img-circle",:style => "width: 75px;"),root_path %>
+              <% end  %>
               <a href="<%= donors_path %>"><span>Find Donors</span><span>Search Donors</span></a>
               <a href="<%= destroy_user_session_path %>" data-method="delete" rel="nofollow"><span>Logout</span><span>Signout now</span></a>
           <%else %>

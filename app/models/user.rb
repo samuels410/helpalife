@@ -7,12 +7,16 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>" },
-                    :default_url => "/images/:style/missing.png"
+  has_attached_file :avatar, :styles => {:thumb => "75x75#" },
+                    :default_url => "user_missing.png"
   has_many :authentication, :dependent => :delete_all
   has_many :needs
   scope :email_notification_enabled, where('can_send_email = ?', true)
   scope :sms_notification_enabled, where('can_send_sms = ?', true)
+
+  validates_attachment :avatar,
+                       :content_type => { :content_type => ["image/jpeg","image/jpg", "image/gif", "image/png"] },
+                       :size => { :in => 0..200.kilobytes }
 
   validates :name,:blood_group,:state_id,:district_id,:email,:phone_no, presence: true
   validates :terms_of_service, acceptance: { accept: '1' }

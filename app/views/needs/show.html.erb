@@ -73,7 +73,7 @@
                 color: white;margin-bottom: 5px;">
           <div style="float: left;padding: 6px;">
             <% if user.avatar_url.nil? %>
-                <%=  image_tag("user_missing.png",:class =>"img img-circle",:style => "width: 75px;")%>
+                <%= image_tag(user.avatar.url(:thumb),:class =>"img img-circle",:style => "width: 75px;")%>
             <% else  %>
                 <%= image_tag(user.avatar_url,:class =>"img img-circle",:style => "width: 75px;")%>
             <% end  %>

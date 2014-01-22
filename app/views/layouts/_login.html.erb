@@ -3,15 +3,51 @@
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
     <h3 id="myModalLabel">Register / Login </h3>
   </div>
-  <div class="modal-body" style="text-align: center;" >
-    <a href="/auth/facebook/"> <button class='zocial facebook'>with Facebook</button></a>
-    <a href="/auth/google_oauth2/"> <button class='zocial google'>with Google</button></a>
-    <a href="/auth/linkedin/"> <button class='zocial linkedin'>with LinkedIn</button></a>
+  <div class="modal-body">
+    <%= simple_form_for(User.new, :as => :user, :url => session_path(:user), :html => {:class => 'form-vertical' }) do |f| %>
+        <table>
+          <tr>
+            <td>
+              <div style="text-align: left;">
+                <%= f.input :email, input_html: { class: 'devics' }, :autofocus => true %>
+                <%= f.input :password ,:required => true%>
+                <%= f.button :submit, "Sign in", :class => 'btn btn-primary' %>
+               <% end %>
+                <br/>
+                <div>
+                  <u> <%= link_to "Forgot Password?", new_password_path(:user) %></u>
+                </div>
+                <br/>
+                    <u> <%= link_to "Sign up and become a donor!", new_user_registration_path %></u>
+              </div>
 
+
+
+            <td style="float:left;width:auto;background-repeat:no-repeat;background-image:url('/assets/verticle_line.jpg');background-position: center;background-size: 2px 100%;">
+              <div style="margin: 111px 35px;"> <%= image_tag("or.png", :size => "50x50", :alt => "OR",:style =>  "width: 80px;") %> </div>
+            </td>
+
+
+            <td>
+
+              <div style="margin-left:10px;margin-top:5px;">
+                <a href="/auth/facebook/"> <button class='zocial facebook' style="width: 190px;height: 48px;">with Facebook</button></a>
+                <br>
+
+                <br><br>
+                <a href="/auth/google_oauth2/"> <button class='zocial google' style="width: 190px;height: 48px;">with Google</button></a>
+                <br>
+
+                <br><br>
+                <a href="/auth/linkedin/"> <button class='zocial linkedin' style="width: 190px;height: 48px;">with LinkedIn</button></a>
+                <br>
+
+              </div>
+            </td>
+          </tr>
+
+        </table>
   </div>
-  <div ><small>We dont share your personal information no where,we will access your public information only.</small> </div>
-  <div class="modal-footer">
-    <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
-  </div>
+  <div ><small>While social login, We dont share personal information no where,we will access public information only.</small> </div>
+  <br>
 </div>
-

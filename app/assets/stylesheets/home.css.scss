@@ -39,3 +39,29 @@ body{
   margin-top: -10px;
   width: 206px;
 }
+
+
+.sign_up_top{
+  width:636px;
+  border-radius:5px;
+  border:1px solid #ddd;
+  box-shadow: 1px 1px 2px 1px;
+  padding: 10px 70px 10px 70px;
+  background-color: #ffffff;
+  margin-bottom: 20px;
+}
+
+.above_from_for{
+  position:relative;
+  padding:15px
+}
+
+.seperator{
+  float:left;
+  background-repeat:no-repeat;
+  background-image:url('../assets/verticle_line.jpg');
+  background-position: center;
+  background-size: 2px 100%;
+  margin-top: 105px;
+  width: 91px;
+}
