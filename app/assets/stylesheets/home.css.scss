@@ -59,7 +59,7 @@ body{
 .seperator{
   float:left;
   background-repeat:no-repeat;
-  background-image:url('../assets/verticle_line.jpg');
+  background-image:asset-data-url('verticle_line.jpg');
   background-position: center;
   background-size: 2px 100%;
   margin-top: 105px;
