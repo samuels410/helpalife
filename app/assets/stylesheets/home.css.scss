@@ -65,3 +65,11 @@ body{
   margin-top: 105px;
   width: 91px;
 }
+.login_separator{
+float:left;
+  width:auto;
+  background-repeat:no-repeat;
+  background-image: asset-data-url('verticle_line.jpg');
+  background-position: center;
+  background-size: 2px 100%;
+}
