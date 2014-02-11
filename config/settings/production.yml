@@ -13,3 +13,10 @@ email:
   domain: "life-donors.org"
   address: "smtp.gmail.com"
   port: 587
+
+domain_name: "donorsdiary.org"
+twitter_url: ""
+youtube_url: ""
+facebook_url: ""
+google_plus_url: ""
+linked_in_url: ""

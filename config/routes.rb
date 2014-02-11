@@ -1,7 +1,7 @@
 Community::Application.routes.draw do
   resources :referrals
 
-  resources :needs
+  resources :needs ,:path =>  :requirements
 
   root to: 'home#index'
   devise_for :users, :controllers => { :registrations => "registrations" }

@@ -14,6 +14,7 @@ class NeedsController < ApplicationController
     need_date = DateTime.strptime(need_params[:required_date], '%m/%d/%y')
     @need.required_date  = need_date
     @need.user_id = current_user.id
+    @need.perma_link = "#{@need.patient_name}-from-state-#{@need.state.name}-district-#{@need.district.name}-needs-#{@need.blood_group}-blood-on-#{@need.required_date}-for-#{@need.reason}"
     if @need.save!
       @users = User.email_notification_enabled.where(blood_group: @need.blood_group,
                                                      district_id: @need.district.id,
@@ -29,11 +30,18 @@ class NeedsController < ApplicationController
   def show
     @need = Need.find(params[:id])
     get_users
+    if request.path != need_path(@need)
+      redirect_to @need, status: :moved_permanently
+    end
+
   end
 
   def update
     @need = Need.find(params[:id])
     @need.update_attributes(need_params)
+    @need.slug = nil
+    @need.perma_link = "#{@need.patient_name}-from-state-#{@need.state.name}-district-#{@need.district.name}-needs-#{@need.blood_group.gsub(/[+-]/, "+" => "-positive", "-" => "-negative")}-blood-on-#{@need.required_date}-for-#{@need.reason}"
+    @need.save!
     get_users
     redirect_to need_path(@need)
   end
@@ -49,7 +57,7 @@ class NeedsController < ApplicationController
   # Never trust parameters from the scary internet, only allow the white list through.
   def need_params
     params.require(:need).permit(:required_date,:required_units,:hospital_name,:blood_group,:state_id,
-                                 :district_id,:contact_number,:reason,:patient_name)
+                                 :district_id,:contact_number,:reason,:patient_name,:perma_link)
   end
 
 end
