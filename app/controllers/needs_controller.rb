@@ -14,7 +14,7 @@ class NeedsController < ApplicationController
     need_date = DateTime.strptime(need_params[:required_date], '%m/%d/%y')
     @need.required_date  = need_date
     @need.user_id = current_user.id
-    @need.perma_link = "#{@need.patient_name}-from-state-#{@need.state.name}-district-#{@need.district.name}-needs-#{@need.blood_group}-blood-on-#{@need.required_date}-for-#{@need.reason}"
+    @need.perma_link = "#{@need.patient_name}-from-state-#{@need.state.name}-district-#{@need.district.name}-needs-#{@need.blood_group.gsub(/[+-]/, "+" => "-positive", "-" => "-negative")}-blood-on-#{@need.required_date}-for-#{@need.reason}"
     if @need.save!
       @users = User.email_notification_enabled.where(blood_group: @need.blood_group,
                                                      district_id: @need.district.id,
