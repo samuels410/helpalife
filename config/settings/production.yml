@@ -4,8 +4,8 @@ omniauth:
   facebook_secret: "9e4d73100337be29a836d0b44c446c0b"
   linkedin_key: "31azcdigi8tt"
   linkedin_secret: "OKd1hmuJoNOg9J2g"
-  google_oauth2_key: "928801233183"
-  google_oauth2_secret: "-nMQ0dEfcaBITxzwYHZPQ3v-"
+  google_oauth2_key: "481665924549-kt4r8jrf2ckvbg8rpc4johcq0dc99o0n.apps.googleusercontent.com"
+  google_oauth2_secret: "pBlO5yxprHjkxO0vMs7YBohx"
 
 email:
   user_name: "lifedonor.org"
