@@ -1,4 +1,6 @@
 <h3>Recent users joined</h3>
+<a href="#login" data-toggle="modal" class ='btn  btn-large' style="margin-bottom: 10px">Register as a donor</a>
+
 <div class="container" >
   <div class="row">
     <% @users.each do |user|  %>
@@ -33,4 +35,4 @@
     <% end  %>
   </div>
 </div>
-<a href="<%= donors_path %>"  class ='btn  btn-large'>Load more users</a>
+<a href="<%= donors_path %>"  class ='btn  btn-large' style="margin-bottom: 10px" >Load more users</a>
