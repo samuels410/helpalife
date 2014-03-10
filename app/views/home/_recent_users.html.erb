@@ -20,8 +20,8 @@
             <h4><%=truncate(user.name,length: 25, omission: '..') %> &nbsp;&nbsp; <%=user.blood_group %></h4>
           </div>
           <div style="float: left;">
-            <%=user.state.name %>,
-            <%=user.district.name %>
+            <%=user.state.name  if user.state %>,
+            <%=user.district.name  if user.district%>
           </div>
           <br>
           <div style="float: right;padding: 0px 19px 0px 0px;">
