@@ -4,6 +4,7 @@
 <div class="container" >
   <div class="row">
     <% @users.each do |user|  %>
+    <% unless user.nil? %>
         <div class="span6" style= "background-color: #3b494c;
                 border-radius: 5px;
                 color: white;margin-bottom: 5px;">
@@ -32,6 +33,7 @@
             <% end %>
           </div>
         </div>
+         <% end  %>
     <% end  %>
   </div>
 </div>
