@@ -1,18 +1,16 @@
-<h3>Recent needs posted</h3>
+<h3>Recent blood requirements posted</h3>
+<a style="margin-bottom: 10px"  href="<%= needs_path %>"  class ='btn  btn-large'>Load more Needs</a>
 <div class="container" >
   <div class="row">
     <% @needs.each do |need| %>
         <a href="<%= need_path(need) %>">
-
         <div class="span12 " style= "background-color: #3b494c;
                 border-radius: 5px;
                 color: white;margin-bottom: 5px;">
-
           <div class="row">
-
             <div class="span9" >
              <div class="row-fluid">
-               <div class="span1"> <b style="margin-left: 10px;"> <%= need.patient_name  %>, </b></div>
+               <div class="span5" style="text-align: left;"> <b style="margin-left: 10px;"> <%= need.patient_name  %>, </b></div>
              </div>
               <div class="row-fluid">
                 <div class="span12">needs &nbsp;&nbsp; <b style="font-size: 25px;" > <%= need.blood_group  %> </b>&nbsp;&nbsp; blood on &nbsp;&nbsp; <b style="font-size: 20px;"> <%= need.required_date   %> </b> &nbsp; for &nbsp;<%= need.reason %></div>
@@ -44,5 +42,4 @@
     <% end  %>
   </div>
 </div>
-<a href="<%= needs_path %>"  class ='btn  btn-large'>Load more Needs</a>
 

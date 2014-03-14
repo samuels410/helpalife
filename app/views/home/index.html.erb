@@ -85,8 +85,19 @@
   </div>
   <br>
 
+
  <% if @needs.any? %>
     <%= render 'home/recent_needs' %>
+      <% else  %>
+      <div class="container"  style="border: 1px solid darkred;
+              border-radius: 4px;">
+        <h5>
+          This is a sample blood requirement .When you post blood requirement it will displayed like below here.
+          And we will send SMS and EMAIL notifications about your blood requirement to the corresponding
+          donors.You can also share the requirements in the below social networks.
+        </h5>
+        <%= image_tag "sample_need.png" ,style: "margin-bottom: 10px;"%>
+      </div>
  <% end  %>
 <%= render 'home/recent_users' %>
 

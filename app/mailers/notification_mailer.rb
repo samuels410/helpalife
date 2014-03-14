@@ -8,5 +8,10 @@ class NotificationMailer < ActionMailer::Base
     mail(to: @user.email, subject: "#{need.patient_name}, Needs #{need.blood_group} blood.")
   end
 
+  def welcome(user)
+    @user = user
+    mail(to: @user.email, subject: "Welcome to http://helpalife.in")
+  end
+
 
 end

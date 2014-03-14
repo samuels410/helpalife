@@ -11,8 +11,7 @@ class NeedsController < ApplicationController
 
   def create
     @need = Need.create(need_params)
-    need_date = DateTime.strptime(need_params[:required_date], '%m/%d/%y')
-    @need.required_date  = need_date
+    @need.required_date  = need_params[:required_date]
     @need.user_id = current_user.id
     @need.perma_link = "#{@need.patient_name}-from-state-#{@need.state.name}-district-#{@need.district.name}-needs-#{@need.blood_group.gsub(/[+-]/, "+" => "-positive", "-" => "-negative")}-blood-on-#{@need.required_date}-for-#{@need.reason}"
     if @need.save!

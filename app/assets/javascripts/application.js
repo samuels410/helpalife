@@ -23,6 +23,8 @@ $("#login").modal({
     backdrop: 'static'
 });
 
-$('[data_behaviour~=datepicker]').datepicker();
+$('[data_behaviour~=datepicker]').datepicker({
+    format: "yyyy-mm-dd"
+});
 
 });
