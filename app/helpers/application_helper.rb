@@ -1,7 +1,7 @@
 module ApplicationHelper
 
   def full_title(page_title)
-    base_title = "Donate Blood and Help A Life"
+    base_title = "Donate blood & Blood donors"
     @page_title = page_title
     if page_title.empty?
       base_title
