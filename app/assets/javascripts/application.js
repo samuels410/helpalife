@@ -15,7 +15,7 @@
 //= require turbolinks
 //= require bootstrap
 //= require bootstrap-datepicker
-//= require_tree .
+//= require modernizr.custom
 
 $(document).ready(function() {
 $("#login").modal({

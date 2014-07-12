@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+  <title><%= h(yield(:title) || "Untitled") %></title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
+  <%= stylesheet_link_tag 'mobile' %>
+  <%= javascript_include_tag "jquery.1.3.2.min.js", 'jqtouch.min.js', "mobile",'state_select' %>
+
+  <%= yield(:head) %>
+</head>
+<body>
+
+<div class="current">
+  <%- if show_title? -%>
+      <div class="toolbar">
+        <%= render 'layouts/header' %>
+        <%= yield(:toolbar) %>
+      </div>
+  <%- end -%>
+
+  <% unless flash.empty? %>
+      <div class="info">
+        <%- flash.each do |name, msg| -%>
+            <%= content_tag :div, msg, :id => "flash_#{name}" %>
+        <%- end -%>
+      </div>
+  <% end %>
+
+  <%= yield %>
+</div>
+</body>
+</html>

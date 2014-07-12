@@ -1,0 +1,45 @@
+
+    <%= simple_form_for(User.new, :as => :user, :url => session_path(:user)) do |f| %>
+        <ul class="rounded">
+          <li style="text-align: center"> Login </li>
+          <%= render 'shared/error_messages', object: f.object %>
+  <li style="text-align: center">
+    <%= f.text_field :email, :autofocus => true ,:placeholder=> "Email"%>
+  </li>
+  <li style="text-align: center">
+    <%= f.password_field :password ,:required => true ,:placeholder=> "Password"%>
+  </li>
+          <li>
+            <center><%= f.submit "Submit" , :class => "whiteButton submit" %></center>
+          </li>
+
+<% end %>
+    </ul>
+    <ul>
+    <li style="text-align: center">
+      Social login
+      </li>
+    <li style="text-align: center">
+      <a href="/auth/facebook/"> <button class='zocial facebook' style="width: 150px;height: 48px;font-size: 14px;"   target="_webapp">with Facebook</button></a>
+    </li>
+    <li style="text-align: center">
+      <a href="/auth/google_oauth2/"> <button class='zocial google' style="width: 150px;height: 48px;font-size: 14px;">with Google</button></a>
+    </li>
+    <li style="text-align: center">
+      <a href="/auth/linkedin/"> <button class='zocial linkedin' style="width: 150px;height: 48px;font-size: 14px;">with LinkedIn</button></a>
+    </li>
+
+    </ul>
+
+    <script type="text/javascript">
+        $(".facebook").click(function() {
+                window.location.href = "/auth/facebook/"
+        });
+
+        $(".google").click(function() {
+                window.location.href = "/auth/google_oauth2/"
+        });
+        $(".linkedin").click(function() {
+                window.location.href = "/auth/linkedin/"
+        });
+    </script>

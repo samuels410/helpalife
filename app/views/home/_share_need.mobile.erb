@@ -1,0 +1,22 @@
+<div class="row-fluid" >
+
+  <table >
+    <tr> <td colspan="4" >Share this requirement </td> </tr>
+    <tr><td>
+
+      <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fhelpalife.in%2Frequirements%2F<%= need.friendly_id%>" onclick="javascript:window.open(this.href,
+              '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=550,width=500');return false;" style="margin-left: 5px;" >
+        <button class='zocial icon  facebook'></button></a>
+    </td><td>
+      <a href="http://www.linkedin.com/shareArticle?mini=true&url=<%= need_url(need) %> &title= <%= "#{need.patient_name}, Needs #{need.blood_group} blood." %> &summary= <%= "Contact Number: #{need.contact_number}" %> "onclick="javascript:window.open(this.href,
+              '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=550,width=500');return false;"  style="margin-left: 5px;"><button class='zocial icon linkedin'></button></a>
+    </td>
+      <td>
+        <a href="http://plus.google.com/share?url=<%= need_url(need) %>" onclick="javascript:window.open(this.href,
+                '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=550,width=500');return false;" style="margin-left: 5px;"><button class='zocial icon googleplus'></button></a>
+      </td><td>
+      <a href="http://twitter.com/intent/tweet?&url=<%= need_url(need) %> &text= <%= "#{need.patient_name}, Needs #{need.blood_group} blood." %> <%= "Contact Number: #{need.contact_number}" %> " onclick="javascript:window.open(this.href,
+              '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=550,width=500');return false;"  style="margin-left: 5px;"><button class='zocial icon twitter'></button></a>
+    </td></tr></table>
+
+</div>
