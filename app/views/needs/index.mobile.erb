@@ -13,9 +13,8 @@
       <ul class="small" style="font-size: 14px;
               font-weight: normal;">
         <% @needs.each do |need| %>
-            <a  href="<%= need_path(need) %>" style="
-            text-decoration: none">
-              <li>
+              <li class="need" data-url="<%= need_path(need) %>" style="cursor: pointer;">
+
                 <%= need.patient_name  %>
                 ,Needs
                 <%= need.blood_group  %>
@@ -30,11 +29,18 @@
                 <%= need.hospital_name %>
                 Contact number:
                 <%= need.contact_number %>
+
               </li>
-            </a>
         <% end %>
       </ul>
 
 <%= will_paginate @needs%>
 
 <% end %>
+
+<script type="text/javascript">
+
+  $(".need").click(function(event) {
+      window.location.href = $(event.target).attr('data-url');
+  });
+</script>

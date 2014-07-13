@@ -15,6 +15,7 @@
 <%= simple_form_for @need do |f| %>
     <ul class="rounded">
     <li>
+      <%= f.label :blood_group %>
       <%= f.select :blood_group, options_for_select([["A1+", "A1+"],["A1-", "A1-"], ["A2+", "A2+"],["A2-", "A2-"],
                                                      ["B+", "B+"],["B-", "B-"],["A1B+", "A1B+"],["A1B-", "A1B-"],
                                                      ["A2B+", "A2B+"],["A2B-", "A2B-"],["AB+", "AB+"],
@@ -23,77 +24,91 @@
                    :required => true ,:style=>"margin: 1;"%>
     </li>
     <li>
+      <%= f.label :required_date %>
       <%= f.text_field :required_date ,:data_behaviour => 'datepicker', :required => true ,:placeholder=> "Required Date"%>
     </li>
     <li>
+      <%= f.label :required_units %>
       <%= f.text_field :required_units, :required => true ,:placeholder=> "Require Units"%>
     </li>
     <li>
+      <%= f.label :contact_number %>
       <%= f.text_field :contact_number, :required => true ,:phone_field => true,:placeholder=> "Mobile Number"%>
     </li>
     <li>
+      <%= f.label :state_id %>
       <%= f.collection_select :state_id, State.order(:name), :id, :name,
                               :prompt => "- Select state -"%>
     </li>
     <li>
+      <%= f.label :district_id %>
       <%= f.grouped_collection_select :district_id, State.order(:name), :districts, :name, :id, :name,
                                       :prompt => "- Select district -"%>
     </li>
-    <li><%= f.text_field :hospital_name , :required => true ,:placeholder=> "Hospital Name"%></li>
-    <li> <%= f.text_field :patient_name,:placeholder=> "Patient Name", :required => true%></li>
-    <li><%= f.text_field :reason,:placeholder=> "Reason", :required => true%></li>
+    <li>
+      <%= f.label :hospital_name %>
+      <%= f.text_field :hospital_name , :required => true ,:placeholder=> "Hospital Name"%>
+    </li>
+    <li>
+      <%= f.label :patient_name %>
+      <%= f.text_field :patient_name,:placeholder=> "Patient Name", :required => true%>
+    </li>
+    <li>
+      <%= f.label :reason %>
+      <%= f.text_field :reason,:placeholder=> "Reason", :required => true%>
+    </li>
+
     </ul>
-    <center>
+
       <% if user_signed_in? and current_user.needs.include?(@need)  %>
-          <%= f.button :submit, "Update Need" ,id: "notify_need",class:'btn  btn-large' %>
+        <center><%= f.submit "Update Requirement" , :class => "whiteButton submit" %></center>
       <% end %>
-    </center>
+
+
 
 <% end %>
-
+<center>
   <div>Found &nbsp;<%=pluralize(@users.count, 'Donor')%></div>
+</center>
 <br>
 
 <div class="container" >
   <% if @users.any? %>
-  <div class="row">
+      <ul class="small" style="font-size: 14px;
+              font-weight: normal;">
     <% @users.each do |user|  %>
-        <div class="span6" style= "background-color: #3b494c;
-                border-radius: 5px;
-                color: white;margin-bottom: 5px;">
-          <div style="float: left;padding: 6px;">
-            <% if user.avatar_url.nil? %>
-                <%= image_tag(user.avatar.url(:thumb),:class =>"img img-circle",:style => "width: 75px;")%>
-            <% else  %>
-                <%= image_tag(user.avatar_url,:class =>"img img-circle",:style => "width: 75px;")%>
-            <% end  %>
-          </div>
 
-          <div>
-            <h4><%=truncate(user.name,length: 25, omission: '..') %> &nbsp;&nbsp; <%=user.blood_group %></h4>
-          </div>
-          <div style="float: left;">
-            <%=user.state.name %>,
-            <%=user.district.name %>
-          </div>
-          <br>
-          <div style="float: right;padding: 0px 19px 0px 0px;">
-            Phone No:<% if user.phone_no_visibility %>
-                <%= user.phone_no  %>
-            <% else  %>
-                private
-                <!--say thanks...-->
-            <% end %>
-          </div>
-        </div>
-    <% end  %>
-  </div>
+        <li>
+          <% if user.avatar_url.nil? %>
+              <%= image_tag(user.avatar.url(:thumb),:class =>"img img-circle",:style => "width: 35px;")%>
+          <% else  %>
+              <%= image_tag(user.avatar_url,:class =>"img img-circle",:style => "width: 35px;")%>
+          <% end  %>
+          <%=user.name%>
+          <b class="counter">
+            <%=user.blood_group %>
+          </b>
+
+          <%=user.state.name  if user.state %>,
+          <%=user.district.name  if user.district%>
+          Phone No:<% if user.phone_no_visibility %>
+              <%= user.phone_no  %>
+          <% else  %>
+              private
+              <!--say thanks...-->
+          <% end %>
+        </li>
+
+
+
+  <% end  %>
+ </ul>
   <% else  %>
+      <center>
       <div>Sorry, currently no donors for this selection criteria. </div>
-      <br>
       <b>But you can post your requirement in the home page and you can share that in social medias.</b>
       <%= render 'referrals/site_referrals' %>
-
+        </center>
   <% end %>
 
 </div>
@@ -118,16 +133,6 @@
                 return $('#district_label').hide();
             }
         });
-    });
-
-    $('.btn-group a').on('click', function(event){
-        event.preventDefault();
-        var input = $(this).siblings('.control-group').find('input[type=hidden]');
-        if(input.length>0){
-            if(input.val().toString() !== $(this).data('value').toString()){
-                input.val($(this).data('value')).trigger('change');
-            }
-        }
     });
 
 </script>

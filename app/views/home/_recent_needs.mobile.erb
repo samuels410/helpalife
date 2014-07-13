@@ -6,9 +6,10 @@ Recent blood requirements posted
 <ul class="small" style="font-size: 14px;
         font-weight: normal;">
   <% @needs.each do |need| %>
-      <a  href="<%= need_path(need) %>" style="
-      text-decoration: none">
+
       <li>
+        <a  href="<%= need_path(need) %>" style="
+        text-decoration: none">
        <%= need.patient_name  %>
        ,Needs
        <%= need.blood_group  %>
@@ -23,8 +24,8 @@ Recent blood requirements posted
        <%= need.hospital_name %>
        Contact number:
        <%= need.contact_number %>
+        </a>
       </li>
-      </a>
   <% end %>
 </ul>
 
