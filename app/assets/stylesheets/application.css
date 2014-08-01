@@ -11,5 +11,5 @@
  *= require_self
  *= require bootstrap-datepicker
  *= require_directory ./social_icons
- *= require_directory ./main
+ *= require_directory ./new_design
  */

@@ -5,6 +5,11 @@ class HomeController < ApplicationController
     @users = User.order('created_at DESC').limit(10)
   end
 
+  def new_home
+    @needs = Need.order('created_at DESC').limit(10)
+    @users = User.order('created_at DESC').limit(10)
+  end
+
   def donors
     unless params[:user].nil?
       if (params[:user][:blood_group] != "") and (params[:user][:district_id] == "") and (params[:user][:state_id] == "")

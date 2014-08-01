@@ -3,7 +3,7 @@ Community::Application.routes.draw do
 
   resources :needs ,:path =>  :requirements
 
-  root to: 'home#index'
+  root to: 'home#new_home'
   devise_for :users, :controllers => { :registrations => "registrations" }
   resources :home
   resources :omniauth_links

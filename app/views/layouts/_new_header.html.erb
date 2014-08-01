@@ -1,0 +1,55 @@
+<div id="sb-search" class="sb-search">
+  <form>
+    <input class="sb-search-input" placeholder="Enter blood group..." type="text" value="" name="search" id="search">
+    <input class="sb-search-submit" type="submit" value="">
+    <span class="sb-icon-search"></span>
+  </form>
+</div>
+<div class="header">
+  <div class="wrap">
+    <div class="logo">
+      <%= link_to image_tag('logo.png',:class =>"img img-circle",:style => "width: 75px;",:alt => "blood donors"),root_path %>
+    </div>
+    <div class="h_right">
+      <h4>Emergency contact 24/7: <span>+91 9629171382</span></h4>
+      <!-- start nav-->
+      <ul class="flexy-menu thick orange">
+        <li class="active">
+          <a  href="<%= root_path %>">
+            <span class="color">Home</span>
+            <i class="icon3"></i>
+          </a>
+        </li>
+        <li>
+          <a href="<%= needs_path %>">
+            <span>Requirements</span>
+          </a>
+        </li>
+        <li>
+          <a href="<%= donors_path %>">
+            <span>Find Donors</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <span>Blog</span>
+            <i class="icon3"></i>
+          </a>
+
+        </li>
+        <li >
+          <a href="contact.html">
+            <span>Contact</span>
+            <i class="icon3"></i>
+          </a>
+        </li>
+        <li class="last">
+          <a href="#login" data-toggle="modal">
+            <span>Register / Login</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="clear"></div>
+  </div>
+</div>

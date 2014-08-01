@@ -10,19 +10,12 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require jquery
-//= require jquery_ujs
+//= require ./new_design/jquery.min
 //= require turbolinks
-//= require bootstrap
 //= require bootstrap-datepicker
-//= require modernizr.custom
+//= require_directory ./new_design
 
 $(document).ready(function() {
-$("#login").modal({
-    show: false,
-    backdrop: 'static'
-});
-
 $('[data_behaviour~=datepicker]').datepicker({
     format: "yyyy-mm-dd"
 });
