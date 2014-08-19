@@ -2,11 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.search-box{
-  //cream background-color: #fcf3db;
-    background-image: asset-data-url("bg-triangle.png");
-  //box-shadow: inset 0 3px 10px 0 rgba(0, 0, 0, 0.25);
-}
+
 
 .blackbg{
   background-image: asset-data-url("bg-semi-dark.png");
@@ -24,9 +20,9 @@
 .doner-search{
   background-image: asset-data-url("center-bg-hieght.gif");
   height: auto;
-  -webkit-border-radius: 2px;
-  -moz-border-radius: 2px;
-  border-radius: 2px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
   text-align: center;
   color: #ffffff;
 }
@@ -35,10 +31,6 @@ body{
   background-color: #fcf3db;
 }
 
-#need_blood_group,#need_state_id,#need_district_id {
-  margin-top: -10px;
-  width: 206px;
-}
 
 
 .sign_up_top{
@@ -66,7 +58,8 @@ body{
   width: 91px;
 }
 .login_separator{
-float:left;
+  vertical-align: super;
+  float:left;
   width:auto;
   background-repeat:no-repeat;
   background-image: asset-data-url('verticle_line.jpg');

@@ -9,53 +9,17 @@
 } %>
 <div class="container" >
   <% if @needs.any? %>
-      <h3>Requirements posted</h3>
-  <div class="row">
-    <% @needs.each do |need| %>
-        <a href="<%= need_path(need) %>">
-        <div class="span12 " style= "background-color: #3b494c;
-                border-radius: 5px;
-                color: white;margin-bottom: 5px;">
-
-          <div class="row">
-
-            <div class="span9" >
-              <div class="row-fluid">
-                <div class="span1"> <b style="margin-left: 10px;"> <%= need.patient_name  %>, </b></div>
-              </div>
-              <div class="row-fluid">
-                <div class="span12">needs &nbsp;&nbsp; <b style="font-size: 25px;" > <%= need.blood_group  %> </b>&nbsp;&nbsp; blood on &nbsp;&nbsp; <b style="font-size: 20px;"> <%= need.required_date   %> </b> &nbsp; for &nbsp;<%= need.reason %></div>
-              </div>
-              <br>
-              <div class="row-fluid" style="text-align: left;
-                      margin-left: 10px;" >
-                State:&nbsp; <b><%= need.state.name %></b>,&nbsp;District:&nbsp;<b><%= need.district.name %></b>,&nbsp;Hospital:&nbsp;<b><%= need.hospital_name %></b>,
-                Contact number:&nbsp;<b><%= need.contact_number %></b>
-              </div>
-              <br>
-            </div>
-
-            <div class="span3"  style="text-align: right;
-                    margin-left: 10px;" >
-              <div class="row-fluid">
-                <small><em>Posted by,<%= need.user.name %></em></small>
-              </div>
-              <div class="row-fluid">
-                <small><%=  distance_of_time_in_words(need.created_at,Time.now)%>&nbsp;ago</small>
-              </div>
-              <%= render 'home/share_need',:need => need %>
-            </div>
-
-          </div>
-
+      <div class='row'>
+        <div style="text-align: center">
+          <h3 class='headings'>Recent blood requirements</h3>
         </div>
-        </a>
-    <% end  %>
-  </div>
-  <% else  %>
-      <div>There is no requirements posted yet</div>
-      <%= render 'referrals/site_referrals' %>
+      </div>
 
+      <%= render 'home/recent_needs' %>
+
+  <% else  %>
+    <div>There is no requirements posted yet</div>
+    <%= render 'referrals/site_referrals' %>
   <% end %>
 
 </div>

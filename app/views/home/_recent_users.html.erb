@@ -1,40 +1,32 @@
-<h3>Recent users joined</h3>
-<a href="#login" data-toggle="modal" class ='btn  btn-large' style="margin-bottom: 10px">Register as a donor</a>
-
-<div class="container" >
-  <div class="row">
-    <% @users.each do |user|  %>
+<% @users.each_with_index do |user, idx|  %>
     <% unless user.nil? %>
-        <div class="span6" style= "background-color: #3b494c;
-                border-radius: 5px;
-                color: white;margin-bottom: 5px;">
-          <div style="float: left;padding: 6px;">
-            <% if user.avatar_url.nil? %>
-                <%= image_tag(user.avatar.url(:thumb),:class =>"img img-circle",:style => "width: 75px;")%>
-            <% else  %>
-                <%= image_tag(user.avatar_url,:class =>"img img-circle",:style => "width: 75px;")%>
-            <% end  %>
-          </div>
+        <div class="col-md-4"  >
+          <div class="media" style= "background-color: #3b494c;color: white;margin-bottom: 5px;padding: 11px;">
+            <a class="pull-left" href="#">
+              <% if user.avatar_url.nil? %>
+                  <%= image_tag(user.avatar.url(:thumb),:class =>"img img-circle  img-responsive media-object",:size => "60")%>
+              <% else  %>
+                  <%= image_tag(user.avatar_url,:class =>"img img-circle  img-responsive media-object",:size => "60")%>
+              <% end  %>
+            </a>
+            <div class="media-body">
+              <h4 class="media-heading"><%=truncate(user.name,length: 25, omission: '..') %> &nbsp;&nbsp; <%=user.blood_group %></h4>
+              <%=user.state.name  if user.state %>,
+              <br>
+              <%=user.district.name  if user.district%>
 
-          <div>
-            <h4><%=truncate(user.name,length: 25, omission: '..') %> &nbsp;&nbsp; <%=user.blood_group %></h4>
-          </div>
-          <div style="float: left;">
-            <%=user.state.name  if user.state %>,
-            <%=user.district.name  if user.district%>
-          </div>
-          <br>
-          <div style="float: right;padding: 0px 19px 0px 0px;">
-            Phone No:<% if user.phone_no_visibility %>
-                <%= user.phone_no  %>
-            <% else  %>
-                private
-                <!--say thanks...-->
-            <% end %>
+                <br>
+              Phone No:<% if user.phone_no_visibility %>
+                  <%= user.phone_no  %>
+              <% else  %>
+                  private
+                  <!--say thanks...-->
+              <% end %>
+
+            </div>
           </div>
         </div>
-         <% end  %>
+
     <% end  %>
-  </div>
-</div>
-<a href="<%= donors_path %>"  class ='btn  btn-large' style="margin-bottom: 10px" >Load more users</a>
+<% end  %>
+

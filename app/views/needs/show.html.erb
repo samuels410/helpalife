@@ -24,90 +24,86 @@
   </div>
 
     <br>
+  <div class="row show_need">
+    <div class="col-md-7 col-md-offset-3">
+      <table style="width: 112%%;text-align: left;font-size:18px;">
+        <tr>
+          <td>Blood group:  <%= @need.blood_group %></td>
+          <td>Date:  <%= @need.required_date%></td>
+        </tr>
+        <tr>
+          <td>No of units:  <%= @need.required_units%></td>
+          <td>Contact number:  <%= @need.contact_number%></td>
+        </tr>
+        <tr>
+          <td>State:  <%= @need.state.name%></td>
+          <td>District:  <%= @need.district.name%></td>
+        </tr>
+        <tr>
+          <td>Hospital name:  <%= @need.hospital_name%></td>
+          <td>Patient name:  <%= @need.patient_name%></td>
+        </tr>
+        <tr>
+          <td>Reason:  <%= @need.reason%></td>
 
-    <%@need ||= Need.new%>
-    <%= simple_form_for @need , :url => {:action=>"update"} do |f| %>
-        <div>
-          <%= f.select :blood_group, options_for_select([["A1+", "A1+"],["A1-", "A1-"], ["A2+", "A2+"],["A2-", "A2-"],
-                                                         ["B+", "B+"],["B-", "B-"],["A1B+", "A1B+"],["A1B-", "A1B-"],
-                                                         ["A2B+", "A2B+"],["A2B-", "A2B-"],["AB+", "AB+"],
-                                                         ["AB-", "AB-"],["O+", "O+"],["O-", "O-"],["A+", "A+"],
-                                                         ["A-", "A-"]], :selected => @need.blood_group ) ,
-                       :required => true ,:style=>"margin: 1;"  %>  &nbsp;
+        </tr>
+      </table>
 
-          <%= f.text_field :required_date ,:data_behaviour => 'datepicker', :required => true ,:placeholder=> "Required Date"%>&nbsp;&nbsp;&nbsp;
-          <%= f.text_field :required_units, :required => true ,:placeholder=> "Require Units"%>&nbsp;&nbsp;&nbsp;
+    </div>
+  </div>
 
-        </div>
-      <br>
+  <% if user_signed_in? and current_user.needs.include?(@need)  %>
+      <%= simple_form_for @need, :url => {:action=>"update"} ,:wrapper => :horizontal_form , html: { class: 'form-vertical',
+                                                                                style: "width: 50%;margin-left: 30%;display:none"} do |f| %>
+          <%= f.input :blood_group,collection: ([["A1+", "A1+"],["A1-", "A1-"], ["A2+", "A2+"],["A2-", "A2-"],
+                                                 ["B+", "B+"],["B-", "B-"],["A1B+", "A1B+"],["A1B-", "A1B-"],
+                                                 ["A2B+", "A2B+"],["A2B-", "A2B-"],["AB+", "AB+"],
+                                                 ["AB-", "AB-"],["O+", "O+"],["O-", "O-"],["A+", "A+"],
+                                                 ["A-", "A-"]]) , :prompt => "- Choose blood group -",
+                      :required => true  %>
 
-      <div>
-        <%= f.text_field :contact_number, :required => true ,:placeholder=> "Mobile Number"%>&nbsp;&nbsp;&nbsp;
+          <%= f.input :required_date ,:data_behaviour => 'datepicker', :required => true ,
+                      :placeholder=> "Required Date" , :as => :string%>
+          <%= f.input :required_units, :required => true ,:placeholder=> "Require Units"%>
 
-        <%= f.collection_select :state_id, State.order(:name), :id, :name,
-                                :prompt => "- Select state -"%>&nbsp;&nbsp;&nbsp;
-        <%= f.grouped_collection_select :district_id, State.order(:name), :districts, :name, :id, :name,
-                                        :prompt => "- Select district -"%>&nbsp;&nbsp;&nbsp;
+          <%= f.input :contact_number, :required => true ,:phone_field => true,:placeholder=> "Mobile Number" , :as => :string%>
 
-      </div>
-
-      <br>
-      <div>
-        <%= f.text_field :hospital_name , :required => true ,:placeholder=> "Hospital Name"%>&nbsp;&nbsp;&nbsp;
-        <%= f.text_field :patient_name,:placeholder=> "Patient Name", :required => true%>&nbsp;&nbsp;&nbsp;
-        <%= f.text_field :reason,:placeholder=> "Reason" , :required => true%>&nbsp;&nbsp;&nbsp;
-        </div>
-        <br>
-      <% if user_signed_in? and current_user.needs.include?(@need)  %>
-          <%= f.button :submit, "Update Need" ,id: "notify_need",class:'btn  btn-large' %>
+          <%= f.input :state_id,collection: State.order(:name),:prompt => "- Select state -"%>
+          <%= f.input :district_id,collection: State.order(:name), as: :grouped_select, group_method: :districts ,:prompt => "- Select district -"%>
+          <%= f.input :hospital_name , :required => true ,:placeholder=> "Hospital Name", :as => :string%>
+          <%= f.input :patient_name,:placeholder=> "Patient Name", :required => true , :as => :string%>
+          <%= f.input :reason,:placeholder=> "Reason", :required => true , :as => :string%>
+          <br>
+          <%= f.button :submit, "Update requirement" ,id: "notify_need",class:'btn  btn-primary' %>
+          <a id="cancel_need_edit" class="btn  btn-default" href="#" style="margin-right: 25%;">Cancel</a>
       <% end %>
-    <% end %>
 
+      <% end %>
 
-  <div>Found &nbsp;<%=pluralize(@users.count, 'Donor')%></div>
+  <% if user_signed_in? and current_user.needs.include?(@need)  %>
+  <div>
+    <a id="edit_requirement" class="btn  btn-primary" href="#">Edit requirement</a>
+  </div>
+  <% end %>
+  <br>
+  <div>Found &nbsp;<%=pluralize(@users.count, 'Donor')%>  </div>
+  <div class="row">
+    <div class="col-md-7 col-md-offset-10">
+    <%= render 'home/share_need',:need => @need %>
+    </div>
+  </div>
 </div>
 
 <br>
 
 <div class="container" >
   <% if @users.any? %>
-  <div class="row">
-    <% @users.each do |user|  %>
-        <div class="span6" style= "background-color: #3b494c;
-                border-radius: 5px;
-                color: white;margin-bottom: 5px;">
-          <div style="float: left;padding: 6px;">
-            <% if user.avatar_url.nil? %>
-                <%= image_tag(user.avatar.url(:thumb),:class =>"img img-circle",:style => "width: 75px;")%>
-            <% else  %>
-                <%= image_tag(user.avatar_url,:class =>"img img-circle",:style => "width: 75px;")%>
-            <% end  %>
-          </div>
-
-          <div>
-            <h4><%=truncate(user.name,length: 25, omission: '..') %> &nbsp;&nbsp; <%=user.blood_group %></h4>
-          </div>
-          <div style="float: left;">
-            <%=user.state.name %>,
-            <%=user.district.name %>
-          </div>
-          <br>
-          <div style="float: right;padding: 0px 19px 0px 0px;">
-            Phone No:<% if user.phone_no_visibility %>
-                <%= user.phone_no  %>
-            <% else  %>
-                private
-                <!--say thanks...-->
-            <% end %>
-          </div>
-        </div>
-    <% end  %>
-  </div>
+  <%= render 'home/recent_users' %>
   <% else  %>
-      <div>Sorry, currently no donors for this selection criteria. </div>
-      <br>
-      <b>But you can post your requirement in the home page and you can share that in social medias.</b>
-      <%= render 'referrals/site_referrals' %>
+      <!--<div>Sorry, currently no donors for this selection criteria. </div>-->
+      <!--<br>-->
+      <!--<b>But you can post your requirement in the home page and you can share that in social medias.</b>-->
+      <!--<%#= render 'referrals/site_referrals' %>-->
 
   <% end %>
 
@@ -143,6 +139,21 @@
                 input.val($(this).data('value')).trigger('change');
             }
         }
+    });
+
+    $("#edit_requirement").on('click', function(event){
+       $(".simple_form").show();
+       $(".show_need").hide();
+        $("#edit_requirement").hide();
+        $("#cancel_need_edit").show();
+    });
+
+    $("#cancel_need_edit").on('click', function(event){
+        $("#edit_requirement").show();
+        $("#cancel_need_edit").show();
+        $(".simple_form").hide();
+        $(".show_need").show();
+
     });
 
 </script>

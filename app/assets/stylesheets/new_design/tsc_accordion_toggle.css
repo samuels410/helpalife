@@ -41,9 +41,9 @@
 	transition: opacity .15s ease-in-out;
 }
 .style1.tsc_hide .tsc_toggle_link,
-.style1 .tsc_hide .tsc_acc_link {background-image:url(../images/toggle1_d.png);}
+.style1 .tsc_hide .tsc_acc_link {}
 .style1.tsc_show .tsc_toggle_link,
-.style1 .tsc_show .tsc_acc_link {background-image:url(../images/toggle1_u.png);}
+.style1 .tsc_show .tsc_acc_link {}
 .style1 .tsc_toggle_box {
 	background: #ffffff;
 	padding: 30px;
@@ -64,16 +64,16 @@
 .style2 .tsc_show .tsc_acc_link {background-image:url(../images/toggle2_u.png);}
 .style2 .tsc_toggle_box { padding:8px 16px;}
 .style2.tsc_toggle,
-.style2 .tsc_acc_box { 
-  background: #fff; 
+.style2 .tsc_acc_box {
+  background: #fff;
   background: -moz-linear-gradient(top, #fff, #f6f6f6); /* Firefox 3.6+ */
   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#fff), color-stop(100%,#f6f6f6)); /* Chrome 1-9, Safari 4-5 */
   background: -webkit-linear-gradient(top, #fff, #f6f6f6); /* Chrome 10+, Safari 5.1+ */
   background: -o-linear-gradient(top, #fff, #f6f6f6); /* Opera 11.10+ */
   background: -ms-linear-gradient(top, #fff, #f6f6f6); /* IE10 */
   background: linear-gradient(top, #fff, #f6f6f6); /* CSS3 */ }
-  
-  
+
+
 .toggleCollapse { font-color: #333; text-decoration:none;}
 .toggleCollapse { font-color: red; text-decoration:underline;}
 
@@ -110,7 +110,7 @@ div.tsc_accordion li
 	list-style: none;
 	line-height: normal;
 	}
-	
+
 div.tsc_accordion li.block_header
 	{
 	color: #ffffff;
@@ -129,12 +129,12 @@ div.tsc_accordion a
 	text-decoration: none;
 	outline: none;
 	}
-	
+
 div.tsc_accordion a:hover
 	{
 	text-decoration: underline;
-	}	
-	
+	}
+
 div.tsc_accordion li.block a.header
 	{
 	color: #666666;
@@ -164,13 +164,13 @@ div.tsc_accordion li.block div.arrow
 	border-left: 4px solid transparent;
 	border-bottom: 0;
 	}
-	
+
 div.tsc_accordion li.block a.header:hover
 	{
 	text-decoration: none !important;
 	padding-left: 20px;
 	}
-	
+
 div.tsc_accordion li.block div
 	{
 	height: 0px;
@@ -182,7 +182,7 @@ div.tsc_accordion li.block div
 	-ms-transition: height 0.3s ease-in-out;
 	transition: height 0.3s ease-in-out;
 	}
-	
+
 div.tsc_accordion li.block div p
 	{
 	padding: 10px 10px 10px 10px;
@@ -190,7 +190,7 @@ div.tsc_accordion li.block div p
 	position: relative;
 	top: 50px;
 	}
-	
+
 div.tsc_accordion li.block:target,
 div.tsc_accordion li.block.target
 	{
@@ -200,9 +200,9 @@ div.tsc_accordion li.block.target
 div.tsc_accordion li.block:target a.header,
 div.tsc_accordion li.block.target a.header
 	{
-	font-weight: bold;	
+	font-weight: bold;
 	}
-	
+
 div.tsc_accordion li:target div,
 div.tsc_accordion li.target div
 	{
@@ -213,7 +213,7 @@ div.tsc_accordion li.target div
 	visibility: visible;
 	overflow: auto;
 	}
-	
+
 div.tsc_accordion li.block:target div p,
 div.tsc_accordion li.block.target div p
 	{
@@ -225,7 +225,7 @@ div.tsc_accordion li.block.target div p
 	-ms-transition: all 0.5s ease-in-out;
 	transition: all 0.5s ease-in-out;
 	}
-	
+
 div.tsc_accordion li.block:target div.arrow,
 div.tsc_accordion li.block.target div.arrow
 	{
@@ -246,12 +246,12 @@ div.tsc_accordion li.block
 	background: -webkit-linear-gradient(top, #ebebeb, #e3e3e3);
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0, #ebebeb), color-stop(1, #e3e3e3));
 	}
-	
+
 div.tsc_accordion li.block:nth-last-child(1)
 	{
 	border-bottom: 0;
 	}
-	
+
 div.tsc_accordion li.block a.header:hover
 	{
 	color: #222222;
@@ -282,7 +282,7 @@ div.tsc_accordion li.block.target a.header
 	background: -o-linear-gradient(top, #f5f5f5, #ececec);
 	background: -webkit-linear-gradient(top, #f5f5f5, #ececec);
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0, #f5f5f5), color-stop(1, #ececec));
-	}	
+	}
 
 
 
@@ -315,9 +315,9 @@ div.tsc_accordion li.block.target a.header
 	background: -ms-linear-gradient(top, #ffffff 1%,#eaeaea 100%);
 	background: linear-gradient(top, #ffffff 1%,#eaeaea 100%);
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#eaeaea',GradientType=0 );
-	box-shadow: 
-		0px 0px 0px 1px rgba(155,155,155,0.3), 
-		1px 0px 0px 0px rgba(255,255,255,0.9) inset, 
+	box-shadow:
+		0px 0px 0px 1px rgba(155,155,155,0.3),
+		1px 0px 0px 0px rgba(255,255,255,0.9) inset,
 		0px 2px 2px rgba(0,0,0,0.1);
 }
 .tsc_ac-container label:hover{
@@ -328,8 +328,8 @@ div.tsc_accordion li.block.target a.header
 	background: #c6e1ec;
 	color: #3d7489;
 	text-shadow: 0px 1px 1px rgba(255,255,255, 0.6);
-	box-shadow: 
-		0px 0px 0px 1px rgba(155,155,155,0.3), 
+	box-shadow:
+		0px 0px 0px 1px rgba(155,155,155,0.3),
 		0px 2px 2px rgba(0,0,0,0.1);
 }
 .tsc_ac-container label:hover:after,
@@ -340,7 +340,7 @@ div.tsc_accordion li.block.target a.header
 	height: 24px;
 	right: 13px;
 	top: 7px;
-	background: transparent url(../images/arrow_down.png) no-repeat center center;	
+	background: transparent url(../images/arrow_down.png) no-repeat center center;
 }
 .tsc_ac-container input:checked + label:hover:after{
 	background-image: url(../images/arrow_up.png);

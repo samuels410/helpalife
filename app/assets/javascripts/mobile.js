@@ -21,4 +21,10 @@ $("#mobile_menu").tap("click", function() {
     $(".rmm").toggle();
 });
 
+$(document).ready(function() {
+    //    Initialize search box
+    new UISearch( document.getElementById( 'sb-search' ) );
+    //    Initialize Menu
+    $(".flexy-menu").flexymenu({speed: 400,type: "horizontal",align: "right"});
+});
 

@@ -50,7 +50,7 @@
 	display:none;
 	position:absolute;
 	z-index:99999;
-	width:132px;
+	width:150px;
 	background:#333;
 	box-shadow:0 1px 1px rgba(0,0,0,0.3);
 }
@@ -138,13 +138,13 @@
 .flexy-menu ul li{border-left:0;border-right:0}.flexy-menu ul li a,.flexy-menu.vertical ul li a{padding-top:10px;padding-bottom:10px}.flexy-menu ul>li>a{padding-left:40px!important}
 .flexy-menu>li .arrow{top:15px;right:25px;font-size:17px}.flexy-menu ul>li .arrow{display:none}}
 .icon1{
-	background: url('../images/down_arrow.png') no-repeat 0px 0px;
+	background: asset-data-url('down_arrow.png') no-repeat 0px 0px;
 	width: 16px;
 	height: 16px;
 	margin: 0 auto;
 }
 .icon2{
-	background: url('../images/down_arrow.png') no-repeat 0px 0px;
+	background: asset-data-url('down_arrow.png') no-repeat 0px 0px;
 	width: 16px;
 	height: 16px;
 	margin: 0 auto;
@@ -156,10 +156,10 @@
 	margin: 0 auto;
 }
 .orange li:hover>a>.icon2{
-	background: url('../images/down_arrow_h.png') no-repeat 0px 0px;
+	background: asset-data-url('down_arrow_h.png') no-repeat 0px 0px;
 }
 .orange li a>.icon2_h{
-	background: url('../images/down_arrow_h.png') no-repeat 0px 0px;
+	background: asset-data-url('down_arrow_h.png') no-repeat 0px 0px;
 	width: 16px;
 	height: 16px;
 	margin: 0 auto;

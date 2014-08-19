@@ -1,17 +1,17 @@
-<div id="sb-search" class="sb-search">
-  <form>
-    <input class="sb-search-input" placeholder="Enter blood group..." type="text" value="" name="search" id="search">
-    <input class="sb-search-submit" type="submit" value="">
-    <span class="sb-icon-search"></span>
-  </form>
-</div>
+<!--<div id="sb-search" class="sb-search">-->
+  <!--<form>-->
+    <!--<input class="sb-search-input" placeholder="Enter blood group..." type="text" value="" name="search" id="search">-->
+    <!--<input class="sb-search-submit" type="submit" value="">-->
+    <!--<span class="sb-icon-search"></span>-->
+  <!--</form>-->
+<!--</div>-->
 <div class="header">
   <div class="wrap">
     <div class="logo">
       <%= link_to image_tag('logo.png',:class =>"img img-circle",:style => "width: 75px;",:alt => "blood donors"),root_path %>
     </div>
     <div class="h_right">
-      <h4>Emergency contact 24/7: <span>+91 9629171382</span></h4>
+      <h4> <span><small>Love All. Do Good. Live Well. Help A Life</small></span> - helpalife.in </h4>
       <!-- start nav-->
       <ul class="flexy-menu thick orange">
         <li class="active">
@@ -37,14 +37,20 @@
           </a>
 
         </li>
-        <li >
-          <a href="contact.html">
-            <span>Contact</span>
-            <i class="icon3"></i>
+        <li>
+          <a href="#">
+            <span>About</span>
+            <i class="icon2"></i>
           </a>
+          <ul>
+            <li><a href="#">Testimonials</a></li>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Vision & Mission</a></li>
+            <li><a href="#">Contact Us</a></li>
+          </ul>
         </li>
         <li class="last">
-          <a href="#login" data-toggle="modal">
+          <a href="#" data-toggle="modal" data-target="#login">
             <span>Register / Login</span>
           </a>
         </li>
@@ -53,3 +59,11 @@
     <div class="clear"></div>
   </div>
 </div>
+<%= render 'layouts/login' %>
+
+<script type="text/javascript">
+//    new UISearch( document.getElementById( 'sb-search' ) );
+    //    Initialize Menu
+    $(".flexy-menu").flexymenu({speed: 400,type: "horizontal",align: "right"});
+
+</script>

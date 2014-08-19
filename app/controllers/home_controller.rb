@@ -1,13 +1,14 @@
 class HomeController < ApplicationController
 
   def index
-    @needs = Need.order('created_at DESC').limit(10)
-    @users = User.order('created_at DESC').limit(10)
+    @needs = Need.order('created_at DESC').limit(5)
+    @users = User.order('created_at DESC').limit(12)
   end
 
   def new_home
-    @needs = Need.order('created_at DESC').limit(10)
-    @users = User.order('created_at DESC').limit(10)
+    @recent_needs = Need.order('created_at DESC').limit(5)
+    @needs = Need.order('created_at DESC').limit(5)
+    @users = User.order('created_at DESC').limit(12)
   end
 
   def donors

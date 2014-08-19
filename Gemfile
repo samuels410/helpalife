@@ -42,12 +42,12 @@ gem 'jbuilder', '~> 1.2'
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
-gem 'bootstrap-sass', '~> 2.3.2.2'
+gem 'bootstrap-sass'
 gem 'cancan'
 gem 'devise'
 gem 'devise_invitable'
 gem 'pg'
-gem 'simple_form', '>= 3.0.0.rc'
+gem 'simple_form'
 
 group :assets do
   gem 'therubyracer', :platform=>:ruby
