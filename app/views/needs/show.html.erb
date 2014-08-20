@@ -1,3 +1,8 @@
+<style type="text/css">
+.row-fluid{
+    float: right;
+}
+</style>
 <% provide(:title, "#{@need.patient_name}, Needs #{@need.blood_group} blood,Contact Number: #{@need.contact_number}" ) %>
 <% set_meta_tags :og => {
 :title    => "#{@need.patient_name}, Needs #{@need.blood_group} blood.",
@@ -86,10 +91,18 @@
   </div>
   <% end %>
   <br>
-  <div>Found &nbsp;<%=pluralize(@users.count, 'Donor')%>  </div>
+  <% if @users.size > 0  %>
+    <div>Found &nbsp;<%=pluralize(@users.size, 'Donor')%>  </div>
+  <% end  %>
   <div class="row">
-    <div class="col-md-7 col-md-offset-10">
-    <%= render 'home/share_need',:need => @need %>
+    <div class="col-md-4" style="text-align: left">
+     Posted by,
+      <br>
+      <%= @need.user.name %> ,about
+        <%=  distance_of_time_in_words(@need.created_at,Time.now)%>&nbsp;ago
+    </div>
+    <div class="col-md-4 col-md-offset-4" style="text-align: right">
+      <%= render 'home/share_need',:need => @need %>
     </div>
   </div>
 </div>
