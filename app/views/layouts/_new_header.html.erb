@@ -30,30 +30,51 @@
             <span>Find Donors</span>
           </a>
         </li>
-        <li>
-          <a href="#">
-            <span>Blog</span>
-            <i class="icon3"></i>
-          </a>
+        <!--<li>-->
+          <!--<a href="#">-->
+            <!--<span>Blog</span>-->
+            <!--<i class="icon3"></i>-->
+          <!--</a>-->
 
-        </li>
+        <!--</li>-->
         <li>
-          <a href="#">
+          <a href="<%= about_path %>">
             <span>About</span>
             <i class="icon2"></i>
           </a>
-          <ul>
-            <li><a href="#">Testimonials</a></li>
-            <li><a href="#">About Us</a></li>
-            <li><a href="#">Vision & Mission</a></li>
-            <li><a href="#">Contact Us</a></li>
+          <ul style="width: 184%;">
+            <!--<li><a href="#">Testimonials</a></li>-->
+            <li><a href="<%= about_path %>">About Us</a></li>
+            <li><a href="<%= terms_path %>">Terms & conditions</a></li>
+            <li><a href="<%= vision_path %>">Vision & Mission</a></li>
+            <li><a href="<%= contacts_path %>">Contact Us</a></li>
           </ul>
         </li>
+       <% if signed_in?  %>
+            <li>
+              <a href="#">
+                <span>
+                  <% if current_user.avatar_url.nil? %>
+                  <%= image_tag(current_user.avatar.url(:thumb),:class =>"img img-round",:style => "width: 30px;")%>
+              <% else  %>
+                  <%= image_tag(current_user.avatar_url,:class =>"img img-round",:style => "width: 30px;")%>
+              <% end  %>
+                  <%= current_user.name %></span>
+                <i class="icon2"></i>
+              </a>
+              <ul>
+                <li><a href="<%= edit_user_registration_path %>">Profile</a></li>
+                <li><a href="<%= destroy_user_session_path %>"  rel="nofollow">Sign out</a></li>
+              </ul>
+            </li>
+        <% else  %>
         <li class="last">
           <a href="#" data-toggle="modal" data-target="#login">
             <span>Register / Login</span>
           </a>
         </li>
+       <% end%>
+
       </ul>
     </div>
     <div class="clear"></div>

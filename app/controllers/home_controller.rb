@@ -38,4 +38,16 @@ class HomeController < ApplicationController
     end
   end
 
+  def about
+
+  end
+
+  def terms
+
+  end
+
+  def vision
+
+  end
+
 end
