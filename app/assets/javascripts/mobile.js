@@ -10,7 +10,7 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require jquery.1.3.2.min
+//= require jquery-1.3.2.min
 //= require jqtouch.min
 //= require mobile
 //= require state_select
