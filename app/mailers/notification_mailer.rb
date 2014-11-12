@@ -1,5 +1,5 @@
 class NotificationMailer < ActionMailer::Base
-  default from: "notifier@life-donors.com"
+  default from: "contact@helpalife.in"
 
   def notify_need(user,need)
     @user = user
