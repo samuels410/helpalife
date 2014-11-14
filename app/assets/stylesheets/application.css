@@ -9,6 +9,10 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
+ *= require_directory ./social_icons
+ *= require ./new_design/flexy-menu
+ *= require ./new_design/style
+ *= require ./new_design/tsc_accordion_toggle
+ *= require_directory ./main
  *= require bootstrap-datepicker
- *= require_tree .
  */

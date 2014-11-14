@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
   has_attached_file :avatar, :styles => {:thumb => "75x75#" },
                     :default_url => "user_missing.png"
   has_many :authentication, :dependent => :delete_all
-  has_many :needs
+  has_many :needs, :dependent => :delete_all
   scope :email_notification_enabled, where('can_send_email = ?', true)
   scope :sms_notification_enabled, where('can_send_sms = ?', true)
 

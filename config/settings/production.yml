@@ -1,4 +1,3 @@
-
 omniauth:
   facebook_key: "718010624878712"
   facebook_secret: "9e4d73100337be29a836d0b44c446c0b"
@@ -8,7 +7,7 @@ omniauth:
   google_oauth2_secret: "pBlO5yxprHjkxO0vMs7YBohx"
 
 email:
-  user_name: "lifedonor.org"
+  user_name: "helpalife.in"
   password: "samuels_253325"
   domain: "helpalife.in"
   address: "smtp.gmail.com"
@@ -18,5 +17,5 @@ domain_name: "helpalife.in"
 twitter_url: ""
 youtube_url: ""
 facebook_url: "https://www.facebook.com/helpalife.in"
-google_plus_url: ""
+google_plus_url: https://plus.google.com/+HelpalifeIn-blood-donors
 linked_in_url: ""

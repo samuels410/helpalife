@@ -1,0 +1,68 @@
+// Place all the styles related to the home controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+
+.blackbg{
+  background-image: asset-data-url("bg-semi-dark.png");
+  height: auto;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+  text-align: center;
+  color: #ffffff;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  height: 300px; text-align: center;
+}
+
+.doner-search{
+  background-image: asset-data-url("center-bg-hieght.gif");
+  height: auto;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  text-align: center;
+  color: #ffffff;
+}
+
+body{
+  background-color: #fcf3db;
+}
+
+
+
+.sign_up_top{
+  width:636px;
+  border-radius:5px;
+  border:1px solid #ddd;
+  box-shadow: 1px 1px 2px 1px;
+  padding: 10px 70px 10px 70px;
+  background-color: #ffffff;
+  margin-bottom: 20px;
+}
+
+.above_from_for{
+  position:relative;
+  padding:15px
+}
+
+.seperator{
+  float:left;
+  background-repeat:no-repeat;
+  background-image:asset-data-url('verticle_line.jpg');
+  background-position: center;
+  background-size: 2px 100%;
+  margin-top: 105px;
+  width: 91px;
+}
+.login_separator{
+  vertical-align: super;
+  float:left;
+  width:auto;
+  background-repeat:no-repeat;
+  background-image: asset-data-url('verticle_line.jpg');
+  background-position: center;
+  background-size: 2px 100%;
+}

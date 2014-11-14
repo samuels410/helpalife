@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html
+xmlns:og="http://ogp.me/ns#"
+xmlns:fb="http://www.facebook.com/2008/fbml">
+<head>
+  <title><%= h(yield(:title) || "Untitled") %></title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
+  <%= stylesheet_link_tag    "mobile", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "mobile", "data-turbolinks-track" => true %>
+
+  <%= yield(:head) %>
+</head>
+<body>
+
+<div class="current">
+  <%- if show_title? -%>
+      <div class="toolbar">
+        <%= render 'layouts/header' %>
+        <%= yield(:toolbar) %>
+      </div>
+  <%- end -%>
+
+  <% unless flash.empty? %>
+      <div class="info">
+        <%- flash.each do |name, msg| -%>
+            <%= content_tag :div, msg, :id => "flash_#{name}" %>
+        <%- end -%>
+      </div>
+  <% end %>
+
+  <%= yield %>
+</div>
+</body>
+</html>

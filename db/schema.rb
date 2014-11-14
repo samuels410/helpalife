@@ -11,13 +11,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140207181415) do
+ActiveRecord::Schema.define(version: 20140302094014) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "authentications", force: true do |t|
     t.integer  "user_id"
     t.text     "provider"
     t.text     "uid"
     t.text     "token"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "contacts", force: true do |t|
+    t.text     "name"
+    t.text     "email"
+    t.text     "subject"
+    t.text     "message"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -46,7 +58,7 @@ ActiveRecord::Schema.define(version: 20140207181415) do
   end
 
   create_table "friendly_id_slugs", force: true do |t|
-    t.string   "slug",                      null: false
+    t.text     "slug",                      null: false
     t.integer  "sluggable_id",              null: false
     t.string   "sluggable_type", limit: 50
     t.string   "scope"
@@ -73,7 +85,7 @@ ActiveRecord::Schema.define(version: 20140207181415) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "email_sent",     default: false
-    t.string   "slug"
+    t.text     "slug"
     t.text     "perma_link"
   end
 

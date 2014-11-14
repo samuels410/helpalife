@@ -6,10 +6,13 @@ xmlns:fb="http://www.facebook.com/2008/fbml">
   <title><%= full_title(yield(:title)) %></title>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Alegreya+SC:400,700' rel='stylesheet' type='text/css'>
   <%= render 'layouts/shim' %>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <%= csrf_meta_tags %>
-  <meta content="help a life,blood, blood donor, blood bank, blood donors, get donors, voluntary donors, search donors, donors list, donate blood" name="keywords" />
+  <meta content="blood donors,blood donor,help a life,blood bank,Voluntary Blood Donors,donors community,donors list, donate blood online" name="keywords" />
+  <meta content="Voluntary Blood Donors online Community.Post requirements or get donors info.Notify donors via instant SMS and EMAIL for your blood requirement." name="description" />
   <%= display_meta_tags %>
   <script>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -24,7 +27,7 @@ xmlns:fb="http://www.facebook.com/2008/fbml">
 </head>
 <body>
 
-<%= render 'layouts/header' %>
+<%= render 'layouts/new_header' %>
 <% flash.each do |key, value| %>
     <div class="alert alert-<%= key %>" style="width: 695px;margin-left: 332px;margin-top: 10px;
             text-align: center;">
@@ -33,6 +36,6 @@ xmlns:fb="http://www.facebook.com/2008/fbml">
 <% end %>
 <%= yield %>
 
-<%= render 'layouts/footer' %>
+<%= render 'layouts/new_footer' %>
 </body>
 </html>

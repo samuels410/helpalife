@@ -1,0 +1,138 @@
+
+<% set_meta_tags :og => {
+:title    => "#{@need.patient_name}, Needs #{@need.blood_group} blood.",
+:type     => "website",
+:url      => need_url(@need),
+:image    => image_url('logo.png'),
+:description => "#{@need.patient_name}, Needs #{@need.blood_group} blood,Contact Number: #{@need.contact_number}"
+}
+ set_meta_tags :title => "#{@need.patient_name}, Needs #{@need.blood_group} blood."
+ set_meta_tags :description => "#{@need.patient_name}, Needs #{@need.blood_group} blood,Contact Number: #{@need.contact_number}"
+
+%>
+
+<%@need ||= Need.new%>
+<%= simple_form_for @need do |f| %>
+    <ul class="rounded">
+    <li>
+      <%= f.label :blood_group %>
+      <%= f.select :blood_group, options_for_select([["A1+", "A1+"],["A1-", "A1-"], ["A2+", "A2+"],["A2-", "A2-"],
+                                                     ["B+", "B+"],["B-", "B-"],["A1B+", "A1B+"],["A1B-", "A1B-"],
+                                                     ["A2B+", "A2B+"],["A2B-", "A2B-"],["AB+", "AB+"],
+                                                     ["AB-", "AB-"],["O+", "O+"],["O-", "O-"],["A+", "A+"],
+                                                     ["A-", "A-"]]) , :prompt => "- Select blood group -",
+                   :required => true ,:style=>"margin: 1;"%>
+    </li>
+    <li>
+      <%= f.label :required_date %>
+      <%= f.text_field :required_date ,:data_behaviour => 'datepicker', :required => true ,:placeholder=> "Required Date"%>
+    </li>
+    <li>
+      <%= f.label :required_units %>
+      <%= f.text_field :required_units, :required => true ,:placeholder=> "Require Units"%>
+    </li>
+    <li>
+      <%= f.label :contact_number %>
+      <%= f.text_field :contact_number, :required => true ,:phone_field => true,:placeholder=> "Mobile Number"%>
+    </li>
+    <li>
+      <%= f.label :state_id %>
+      <%= f.collection_select :state_id, State.order(:name), :id, :name,
+                              :prompt => "- Select state -"%>
+    </li>
+    <li>
+      <%= f.label :district_id %>
+      <%= f.grouped_collection_select :district_id, State.order(:name), :districts, :name, :id, :name,
+                                      :prompt => "- Select district -"%>
+    </li>
+    <li>
+      <%= f.label :hospital_name %>
+      <%= f.text_field :hospital_name , :required => true ,:placeholder=> "Hospital Name"%>
+    </li>
+    <li>
+      <%= f.label :patient_name %>
+      <%= f.text_field :patient_name,:placeholder=> "Patient Name", :required => true%>
+    </li>
+    <li>
+      <%= f.label :reason %>
+      <%= f.text_field :reason,:placeholder=> "Reason", :required => true%>
+    </li>
+
+    </ul>
+
+      <% if user_signed_in? and current_user.needs.include?(@need)  %>
+        <center><%= f.submit "Update Requirement" , :class => "whiteButton submit" %></center>
+      <% end %>
+
+
+
+<% end %>
+<center>
+  <div>Found &nbsp;<%=pluralize(@users.count, 'Donor')%></div>
+</center>
+<br>
+
+<div class="container" >
+  <% if @users.any? %>
+      <ul class="small" style="font-size: 14px;
+              font-weight: normal;">
+    <% @users.each do |user|  %>
+
+        <li>
+          <% if user.avatar_url.nil? %>
+              <%= image_tag(user.avatar.url(:thumb),:class =>"img img-circle",:style => "width: 35px;")%>
+          <% else  %>
+              <%= image_tag(user.avatar_url,:class =>"img img-circle",:style => "width: 35px;")%>
+          <% end  %>
+          <%=user.name%>
+          <b class="counter">
+            <%=user.blood_group %>
+          </b>
+
+          <%=user.state.name  if user.state %>,
+          <%=user.district.name  if user.district%>
+          Phone No:<% if user.phone_no_visibility %>
+              <%= user.phone_no  %>
+          <% else  %>
+              private
+              <!--say thanks...-->
+          <% end %>
+        </li>
+
+
+
+  <% end  %>
+ </ul>
+  <% else  %>
+      <center>
+      <div>Sorry, currently no donors for this selection criteria. </div>
+      <b>But you can post your requirement in the home page and you can share that in social medias.</b>
+      <%= render 'referrals/site_referrals' %>
+        </center>
+  <% end %>
+
+</div>
+<%=will_paginate @users%>
+
+<script type="text/javascript">
+    jQuery(function() {
+        var districts;
+        districts = $('#user_district_id').html();
+        return $('#user_state_id').change(function() {
+            var escaped_state, options, state;
+            state = $('#user_state_id :selected').text();
+            escaped_state = state.replace(/([ #;&,.+*~\':"!^$[\]()=>|\/@])/g, '\\$1');
+            options = $(districts).filter("optgroup[label='" + escaped_state + "']").html();
+            if (options) {
+                $('#user_district_id').html(options);
+                $('#user_district_id').show();
+                return $('#district_label').show();
+            } else {
+                $('#user_district_id').empty();
+                $('#user_district_id').hide();
+                return $('#district_label').hide();
+            }
+        });
+    });
+
+</script>

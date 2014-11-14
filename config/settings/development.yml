@@ -9,7 +9,7 @@ omniauth:
 
 email:
   user_name: "samuels410"
-  password: "samuels_253325"
+  password: "Samuels_253325"
   domain: "helpalife.in"
   address: "smtp.gmail.com"
   port: 587
@@ -19,5 +19,5 @@ domain_name: "helpalife.in"
 twitter_url: ""
 youtube_url: ""
 facebook_url: "https://www.facebook.com/helpalife.in"
-google_plus_url: ""
+google_plus_url: https://plus.google.com/+HelpalifeIn-blood-donors
 linked_in_url: ""

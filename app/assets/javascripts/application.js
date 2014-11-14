@@ -15,15 +15,14 @@
 //= require turbolinks
 //= require bootstrap
 //= require bootstrap-datepicker
-//= require_tree .
+//= require_directory ./new_design
 
 $(document).ready(function() {
-$("#login").modal({
-    show: false,
-    backdrop: 'static'
+$('[data_behaviour~=datepicker]').datepicker({
+    format: "yyyy-mm-dd"
 });
 
-$('[data_behaviour~=datepicker]').datepicker({
+$("#need_required_date").datepicker({
     format: "yyyy-mm-dd"
 });
 

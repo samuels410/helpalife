@@ -1,0 +1,46 @@
+<%set_meta_tags :og => {
+        :title    => "Blood donors | social integrated",
+        :type     => 'Non profit Blood donors organization',
+        :url      => needs_url,
+        :image    => image_url('logo.png'),
+        :description => "Post your blood requirements or register and become a donor here, we will provide ways to contact people
+        and social sharing ,email notifications and instant SMS Notifications"
+} %>
+  <% if @needs.any? %>
+    <div style="text-align: center;margin-top: 5px">
+      Requirements posted
+    </div>
+      <ul class="small" style="font-size: 14px;
+              font-weight: normal;">
+        <% @needs.each do |need| %>
+              <li class="need" data-url="<%= need_path(need) %>" style="cursor: pointer;">
+
+                <%= need.patient_name  %>
+                ,Needs
+                <%= need.blood_group  %>
+                blood on
+                <%= need.required_date   %>
+                for <%= need.reason %>
+                State:
+                <%= need.state.name %>
+                District:
+                <%= need.district.name %>
+                Hospital:
+                <%= need.hospital_name %>
+                Contact number:
+                <%= need.contact_number %>
+
+              </li>
+        <% end %>
+      </ul>
+
+<%= will_paginate @needs%>
+
+<% end %>
+
+<script type="text/javascript">
+
+  $(".need").click(function(event) {
+      window.location.href = $(event.target).attr('data-url');
+  });
+</script>

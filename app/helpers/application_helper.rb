@@ -1,13 +1,17 @@
 module ApplicationHelper
 
   def full_title(page_title)
-    base_title = "Donate blood & Blood donors"
+    base_title = "Voluntary blood donors community"
     @page_title = page_title
     if page_title.empty?
       base_title
     else
       "#{base_title} | #{page_title}"
     end
+  end
+
+  def show_title?
+    @show_title =true
   end
 
   def display_base_errors resource
