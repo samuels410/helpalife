@@ -9,7 +9,8 @@
 :type     => "website",
 :url      => need_url(@need),
 :image    => image_url('logo.png'),
-:description => "#{@need.patient_name}, Needs #{@need.blood_group} blood,Contact Number: #{@need.contact_number}"
+:description => "#{@need.patient_name.capitalize} needs, #{pluralize(@need.required_units ,'unit') }  of #{@need.blood_group} blood ,Contact Number:
+                #{@need.contact_number}, Hospital : #{@need.hospital_name} ,State : #{@need.state.name},District : #{@need.district.name}"
 }
  set_meta_tags :title => "#{@need.patient_name}, Needs #{@need.blood_group} blood."
  set_meta_tags :description => "#{@need.patient_name}, Needs #{@need.blood_group} blood,Contact Number: #{@need.contact_number}"
