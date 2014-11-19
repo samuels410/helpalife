@@ -7,6 +7,7 @@ class RegistrationsController < Devise::RegistrationsController
 
     if resource.save
       NotificationMailer.delay.welcome(resource,request.protocol,request.host_with_port)
+      Notification.delay.welcome_sms(resource)
       if resource.active_for_authentication?
         set_flash_message :notice, :signed_up if is_navigational_format?
         sign_up(resource_name, resource)
@@ -33,7 +34,6 @@ class RegistrationsController < Devise::RegistrationsController
 
   def update
     @user = User.find(current_user.id)
-
     successfully_updated = if needs_password?(@user, params)
                              @user.update_with_password(devise_parameter_sanitizer.sanitize(:account_update))
                            else
@@ -44,6 +44,7 @@ class RegistrationsController < Devise::RegistrationsController
                            end
 
     if successfully_updated
+      Notification.delay.welcome_sms(resource)
       set_flash_message :notice, :updated
       # Sign in the user bypassing validation in case his password changed
       sign_in @user, :bypass => true

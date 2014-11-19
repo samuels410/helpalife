@@ -1,4 +1,6 @@
 Community::Application.routes.draw do
+  resources :notifications
+
   resources :referrals
 
   resources :needs ,:path =>  :requirements
