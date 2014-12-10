@@ -6,7 +6,7 @@ require 'csv'
 puts 'CREATING ROLES'
 Role.create!([
                 { :name => 'admin' },
-                { :name => 'doner' },
+                { :name => 'donor' },
                 { :name => 'volunteer' },
                 {:name => 'journalist'}
              ])

@@ -11,6 +11,7 @@ class User < ActiveRecord::Base
                     :default_url => "user_missing.png"
   has_many :authentication, :dependent => :delete_all
   has_many :needs, :dependent => :delete_all
+  has_many :notifications
   scope :email_notification_enabled, where('can_send_email = ?', true)
   scope :sms_notification_enabled, where('can_send_sms = ?', true)
 
