@@ -44,7 +44,7 @@ class RegistrationsController < Devise::RegistrationsController
                            end
 
     if successfully_updated
-      Notification.delay.welcome_sms(resource)
+      Notification.welcome_sms(resource)
       set_flash_message :notice, :updated
       # Sign in the user bypassing validation in case his password changed
       sign_in @user, :bypass => true

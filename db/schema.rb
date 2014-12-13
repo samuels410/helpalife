@@ -13,9 +13,6 @@
 
 ActiveRecord::Schema.define(version: 20141119074225) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
   create_table "authentications", force: true do |t|
     t.integer  "user_id"
     t.text     "provider"
@@ -58,7 +55,7 @@ ActiveRecord::Schema.define(version: 20141119074225) do
   end
 
   create_table "friendly_id_slugs", force: true do |t|
-    t.text     "slug",                      null: false
+    t.string   "slug",                      null: false
     t.integer  "sluggable_id",              null: false
     t.string   "sluggable_type", limit: 50
     t.string   "scope"
@@ -85,7 +82,7 @@ ActiveRecord::Schema.define(version: 20141119074225) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "email_sent",     default: false
-    t.text     "slug"
+    t.string   "slug"
     t.text     "perma_link"
   end
 

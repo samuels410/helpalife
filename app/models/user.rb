@@ -11,9 +11,10 @@ class User < ActiveRecord::Base
                     :default_url => "user_missing.png"
   has_many :authentication, :dependent => :delete_all
   has_many :needs, :dependent => :delete_all
-  has_many :notifications
+  has_many :notifications, :dependent => :delete_all
   scope :email_notification_enabled, where('can_send_email = ?', true)
   scope :sms_notification_enabled, where('can_send_sms = ?', true)
+  scope :phone_not_empty, where.not('phone_no' => nil)
 
   validates_attachment :avatar,
                        :content_type => { :content_type => ["image/jpeg","image/jpg", "image/gif", "image/png"] },

@@ -25,3 +25,5 @@ sms_gateway: "http://login.smsgatewayhub.com/smsapi/pushsms.aspx"
 sms_user_name: 'samuels410'
 sms_password: "samuels_253325"
 sender_id: "HLPLYF"
+sms_gateway: "http://localhost:3000/api/notifications"
+sms_gateway_api: "6845cf0dc67e9027a786f91c06133123"

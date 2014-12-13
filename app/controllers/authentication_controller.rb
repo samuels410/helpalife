@@ -5,7 +5,7 @@ class AuthenticationController < ApplicationController
     provider = set_provider(auth)
     authentication = Authentication.find_by_provider_and_uid(provider, auth['uid'])
     if authentication
-      flash[:info] = "Welcome. #{authentication.user.name}"
+      flash[:info] = "Welcome. #{authentication.user.try(:name)}"
       sign_in_and_redirect(:user, authentication.user)
     else
       email=auth['info']['email']

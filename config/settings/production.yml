@@ -19,7 +19,5 @@ youtube_url: ""
 facebook_url: "https://www.facebook.com/helpalife.in"
 google_plus_url: https://plus.google.com/+HelpalifeIn-blood-donors
 linked_in_url: ""
-sms_gateway: "http://login.smsgatewayhub.com/smsapi/pushsms.aspx"
-sms_user_name: 'samuels410'
-sms_password: "samuels_253325"
-sender_id: "HLPLYF"
+sms_gateway: "http://localhost:3000/api/notifications"
+sms_gateway_api: "6845cf0dc67e9027a786f91c06133123"
