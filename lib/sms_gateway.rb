@@ -6,6 +6,7 @@ class Notifier < ActiveRecord::Base
     # begin
       uri = URI.parse(Settings.sms_gateway)
       http = Net::HTTP.new(uri.host, uri.port)
+      http.use_ssl = true
       path = uri.path
       data = "to=#{phone_nos}&msg=#{msg}"
       headers = {
