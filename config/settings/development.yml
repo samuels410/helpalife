@@ -8,8 +8,8 @@ omniauth:
   google_oauth2_secret: "-nMQ0dEfcaBITxzwYHZPQ3v-"
 
 email:
-  user_name: "samuels410"
-  password: "Samuels_253325"
+  user_name: "helpalife.in"
+  password: "Samuels__253325"
   domain: "helpalife.in"
   address: "smtp.gmail.com"
   port: 587
