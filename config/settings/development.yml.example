@@ -9,7 +9,7 @@ omniauth:
 
 email:
   user_name: "helpalife.in"
-  password: "Samuels__253325"
+  password: "xxxxxxxxxxxxx"
   domain: "helpalife.in"
   address: "smtp.gmail.com"
   port: 587
@@ -23,7 +23,7 @@ google_plus_url: https://plus.google.com/+HelpalifeIn-blood-donors
 linked_in_url: ""
 sms_gateway: "http://login.smsgatewayhub.com/smsapi/pushsms.aspx"
 sms_user_name: 'samuels410'
-sms_password: "samuels_253325"
+sms_password: "xxxxxxxxxxxx"
 sender_id: "HLPLYF"
 sms_gateway: "http://localhost:3000/api/notifications"
-sms_gateway_api: "6845cf0dc67e9027a786f91c06133123"
+sms_gateway_api: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"

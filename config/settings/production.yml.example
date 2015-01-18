@@ -8,7 +8,7 @@ omniauth:
 
 email:
   user_name: "helpalife.in"
-  password: "Samuels__253325"
+  password: "xxxxxxxxxxxx"
   domain: "helpalife.in"
   address: "smtp.gmail.com"
   port: 587
@@ -20,4 +20,4 @@ facebook_url: "https://www.facebook.com/helpalife.in"
 google_plus_url: https://plus.google.com/+HelpalifeIn-blood-donors
 linked_in_url: ""
 sms_gateway: "https://notifysimply.herokuapp.com/api/notifications"
-sms_gateway_api: "7eba8a0135593a86561a58d03bea6624"
+sms_gateway_api: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
