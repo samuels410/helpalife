@@ -4,7 +4,7 @@ ruby 1.9.3
 
 postgres db
 
-git clone  https://bitbucket.org/ssanthosh/helpalife.in.git
+git clone  https://github.com/samuels410/helpalife.git
 
 rename the following files,
 
