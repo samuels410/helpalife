@@ -15,7 +15,9 @@
 //= require turbolinks
 //= require bootstrap
 //= require bootstrap-datepicker
+//= require organization
 //= require_directory ./new_design
+
 
 $(document).ready(function() {
 $('[data_behaviour~=datepicker]').datepicker({

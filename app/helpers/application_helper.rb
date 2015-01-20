@@ -26,4 +26,15 @@ module ApplicationHelper
     html.html_safe
   end
 
+=begin
+  Description: Method will extract and return the error messages on the key fields.
+  Argument: error_object, key
+  Return: message of that error object.
+=end
+  def form_error(object, key)
+    messages = object.errors.messages
+    messages[key.to_sym][0] if messages[key.to_sym].present?
+  end
+
+
 end

@@ -14,5 +14,7 @@
  *= require ./new_design/style
  *= require ./new_design/tsc_accordion_toggle
  *= require_directory ./main
+ *= require_directory ./organization
  *= require bootstrap-datepicker
  */
+
