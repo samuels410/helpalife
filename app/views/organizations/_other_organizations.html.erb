@@ -1,0 +1,12 @@
+
+<% @other_organizations.each do |org| %> 
+
+<div class="col-md-12 org-tile" 
+      style="background-image: url('<%= org.banner.url(:background)%>')">
+
+      <h4> <%= org.name %>  </h4> 
+      <h5> <%= org.address %>  </h5>
+        <%= hidden_field_tag :org_id, org.id %> 
+</div>
+
+<% end %> 

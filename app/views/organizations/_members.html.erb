@@ -1,0 +1,21 @@
+<% @users.each_with_index do |user, idx|  %>
+
+  <div class="col-md-3 col-sm-5 member-dash">
+    <a class="pull-left">
+      <%= show_profile_pic(user)  %>
+    </a>
+
+    <div class="media-body">
+      <h4 class="media-heading">
+        <%= show_username(user) %> &nbsp;&nbsp; <%= user.blood_group %>
+      </h4>
+
+      <%=user.state_name %>,
+      <br>
+      <%=user.district_name %>
+      <br>
+      Phone No:<%=  show_phone_no(user) %>
+    </div>
+  </div>
+  
+<% end  %>

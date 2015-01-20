@@ -1,0 +1,17 @@
+
+
+<div id="orga_list">
+  <h1> Organizations </h1>
+
+  <% @organizations.each do |organization|  %>
+    <div class="col-md-3 col-md-offset-1 ind-org" 
+      style="background-image: url('<%= organization.banner.url(:background)%>')">
+
+      <h4> <%= organization.name %>  </h4> 
+      <h5> <%= organization.address %>  </h5>
+        <%= hidden_field_tag :org_id, organization.id %> 
+    </div>
+  
+  <% end %>
+
+</div> 
