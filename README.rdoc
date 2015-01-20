@@ -17,4 +17,4 @@ bundle exec rake db:populate
 
 
 To contribute create a new branch and start
- work on.
+ Start contributing and Help A Life.
