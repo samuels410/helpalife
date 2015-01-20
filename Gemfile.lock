@@ -26,6 +26,9 @@ GEM
       thread_safe (~> 0.1)
       tzinfo (~> 0.3.37)
     addressable (2.3.6)
+    annotate (2.6.5)
+      activerecord (>= 2.3.0)
+      rake (>= 0.8.7)
     arel (4.0.2)
     bcrypt (3.1.7)
     better_errors (1.1.0)
@@ -38,6 +41,10 @@ GEM
     bootstrap-sass (3.2.0.1)
       sass (~> 3.2)
     builder (3.1.4)
+    byebug (3.5.1)
+      columnize (~> 0.8)
+      debugger-linecache (~> 1.2)
+      slop (~> 3.6)
     cancan (1.6.10)
     capybara (2.4.1)
       mime-types (>= 1.16)
@@ -59,8 +66,10 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.7.1)
+    columnize (0.9.0)
     database_cleaner (1.0.1)
     debug_inspector (0.0.2)
+    debugger-linecache (1.2.0)
     delayed_job (4.0.2)
       activesupport (>= 3.0, < 4.2)
     delayed_job_active_record (4.0.1)
@@ -177,6 +186,11 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
+    pry-byebug (2.0.0)
+      byebug (~> 3.4)
+      pry (~> 0.10)
+    pry-rails (0.3.2)
+      pry (>= 0.9.10)
     rack (1.5.2)
     rack-test (0.6.2)
       rack (>= 1.0)
@@ -279,10 +293,12 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  annotate
   better_errors
   binding_of_caller
   bootstrap-datepicker-rails
   bootstrap-sass
+  byebug
   cancan
   capybara
   coffee-rails (~> 4.0.0)
@@ -306,6 +322,9 @@ DEPENDENCIES
   omniauth-linkedin
   paperclip
   pg
+  pry
+  pry-byebug
+  pry-rails
   rails (= 4.0.0)
   rails_12factor
   rails_config
