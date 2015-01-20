@@ -1,0 +1,167 @@
+
+
+#organization_page {
+  font-weight: bold;
+  font-family: "Open Sans",sans-serif;
+  padding: 0px !important;
+  margin: 0px !important;
+}
+
+
+#organization_page h1 {
+  font-weight: bold;
+  text-align: center;
+}
+
+#orga_div{
+  background-color: #FFFFFF;
+  margin-bottom: 4%;
+  margin-top: 5%;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 1px 1px 2px 1px;
+}
+
+#new_organization div.form-actions {
+  text-align: center;
+  padding: 10px 2px; 
+}
+
+
+#new_organization div.form-actions input {
+  font-weight: bold;
+}
+
+#new_organization input[type='text'], textarea {
+  display: block;
+  width: 100%;
+}
+
+#new_organization div.form-inputs {
+  padding-top:  2%;
+  padding-bottom:  2%;
+}
+
+.v-error{
+  color: red;
+  font-weight: bold;
+}
+
+#orga_banner {
+  text-align: center;
+  height: 180px;
+}
+
+.orga-element {
+  color: #FFFFFF;
+  font-family: "Open Sans",sans-serif;
+  padding: 15px 5px;
+  font-size: 1.3em;
+}
+
+#orga_people{
+  min-height: 500px;
+  width: 76%;
+  border: 2px solid red;
+  display: inline-block;
+}
+
+#other_org {
+  width: 22%;
+  border: 2px solid green;
+  min-height: 500px;
+  display: inline-block;
+}
+
+.member-dash {
+  background-color: #3b494c;
+  color: white;
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-top: 10px;
+  padding: 20px 25px;
+  border-radius: 5px;
+}
+
+div.member-dash div.media-body {
+  padding-left: 10px !important;
+  font-weight: bold;
+  font-size: 1.0em;
+}
+
+#join_orga {
+//  border: 2px solid red;
+  min-height: 55px;
+}
+
+#join_orga a {
+  border-radius: 5px;
+  float: right;
+  font-size: 1.3em;
+  font-weight: bold;
+  margin-right: 10px;
+  margin-top: 5px;
+  padding: 10px;
+}
+
+#join_orga a:hover{
+  text-decoration: none;
+}
+
+
+#orga_list{
+  min-height: 400px;
+}
+
+#orga_list h1 {
+  text-align: center;
+  font-weight: bold;
+}
+
+.ind-org{
+  min-height: 120px;
+  border: 2px solid red;
+  margin-left: 6%;
+  border-radius: 6px;
+  font-weight: bold;
+  color: #FFFFFF;
+}
+
+.ind-org h4{
+  font-weight: bold;
+}
+
+.ind-org:hover{
+  cursor: pointer;
+}
+
+
+.org-tile {
+  border-radius: 6px;
+  color: #ffffff;
+  font-family: "Open Sans",sans-serif;
+  font-weight: bold;
+  margin: 15px 10px;
+  min-height: 120px;
+  width: 90%;
+}
+
+.org-tile:hover{
+  cursor: pointer;
+}
+
+#org_notice{
+  font-weight: bold;
+  color: red;
+  font-size: 1.2em;
+  padding-top: 5px;
+  padding-left: 10px;
+  float: left;
+}
+.blood-hide{
+  display: none;
+}
+
+.blood-show{
+  display: block;
+}

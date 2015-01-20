@@ -1,0 +1,35 @@
+<style type="text/css">
+  #orga_banner{
+    background-image: url('<%= @organization.banner.url(:background) %>');
+  }
+</style>
+
+
+<div id="orga_banner">
+ <div class='orga-element'>
+   <strong> <%= @organization.name %> </strong>
+ </div> 
+
+  <div class='orga-element'>
+    <strong> <%= @organization.address %> </strong> 
+  </div>
+  
+  <div class='orga-element'>
+    <strong> <%= @organization.description %> </strong>  
+  </div>
+  
+</div>
+
+<div id = "join_orga">
+ <%= render 'join_organization' %> 
+</div>
+
+<div id="orga_people">
+   <!-- <strong> Sorry, No members joined yet. </strong> -->
+   <%= render 'members' %>
+</div>
+
+
+<div id="other_org">
+  <%= render 'other_organizations' %> 
+</div>

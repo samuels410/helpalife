@@ -1,0 +1,10 @@
+<% if current_user.save! %>
+  $("#join_orga").html("<%= escape_javascript( render(:partial => "join_organization")) %>");
+  $('#org_notice').text("You have successfully joined the Organization.");
+  $('#org_notice').removeClass();
+  $('#org_notice').addClass('.blood-show');
+
+
+
+
+<% end %> 

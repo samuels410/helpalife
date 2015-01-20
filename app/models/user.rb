@@ -12,17 +12,22 @@ class User < ActiveRecord::Base
   has_many :authentication, :dependent => :delete_all
   has_many :needs, :dependent => :delete_all
   has_many :notifications, :dependent => :delete_all
+
+  has_and_belongs_to_many :organizations 
   scope :email_notification_enabled, where('can_send_email = ?', true)
   scope :sms_notification_enabled, where('can_send_sms = ?', true)
   scope :phone_not_empty, where.not('phone_no' => nil)
 
-  validates_attachment :avatar,
-                       :content_type => { :content_type => ["image/jpeg","image/jpg", "image/gif", "image/png"] },
-                       :size => { :in => 0..200.kilobytes }
+  #validates_attachment :avatar,
+  #                     :content_type => { :content_type => ["image/jpeg","image/jpg", "image/gif", "image/png"] },
+  #                     :size => { :in => 0..200.kilobytes }
 
   validates :name,:blood_group,:state_id,:district_id,:email,:phone_no, presence: true
   validates :terms_of_service, acceptance: { accept: '1' }
   validates :phone_no, length: { is: 10 }, numericality: true
+
+  delegate :name, to: :state, prefix: true, allow_nil: true
+  delegate :name, to: :district, prefix: true, allow_nil: true
 
   def apply_omniauth(auth)
     # In previous omniauth, 'user_info' was used in place of 'raw_info'
