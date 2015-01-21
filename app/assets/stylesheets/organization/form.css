@@ -62,15 +62,24 @@
 #orga_people{
   min-height: 500px;
   width: 76%;
-  border: 2px solid red;
+  /*border: 2px solid red;*/
   display: inline-block;
+  float: left;
 }
 
 #other_org {
   width: 22%;
-  border: 2px solid green;
+  /*border: 2px solid green;*/
   min-height: 500px;
   display: inline-block;
+}
+
+
+#other_org h4, #orga_people h4 {
+  font-weight: bold;
+  text-align: center;
+  text-transform: capitalize;
+  font-family: 'Monaco'
 }
 
 .member-dash {
@@ -120,11 +129,11 @@ div.member-dash div.media-body {
 
 .ind-org{
   min-height: 120px;
-  border: 2px solid red;
   margin-left: 6%;
   border-radius: 6px;
   font-weight: bold;
   color: #FFFFFF;
+  margin: 1% 4%;
 }
 
 .ind-org h4{

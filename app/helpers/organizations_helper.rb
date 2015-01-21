@@ -9,9 +9,23 @@ module OrganizationsHelper
   end
   
   def show_profile_pic(user)
-    return  image_tag(user.avatar.url(:thumb), class: "img img-circle  img-responsive media-object",
-      size: "60") if user.avatar_url.blank?
-    image_tag(user.avatar_url, class: "img img-circle  img-responsive media-object", size: "60")
+    avatar_url = user.avatar_url.present? ? user.avatar_url : user.avatar.url(:thumb)
+    return image_tag(avatar_url, size: '60',class: "img img-circle img-responsive media-object")
   end
+
+  # This helper method will prepare dynamic headlines(show/my_organization)
+  def organization_headline
+    show_headline = 'Organizations'
+    my_headline = "My Organizations"
+    is_index?  ? show_headline : my_headline
+  end
+
+  def is_index?
+    params[:action] == 'index'
+  end
+
+  def is_my_organizations?
+    params[:action] == 'my organizaiton'
+  end   
 
 end

@@ -6,9 +6,14 @@ class Organization < ActiveRecord::Base
   validates :name, 
     presence: { message: "Organization name is mandatory." }
 
-  validates :address, presence: {message: 'Address is mandatory.'}
+  validates :address, presence: { message: 'Address is mandatory.'}
 
   validates :description, presence: { message: 'Description is mandatory'}
+
+  validates :state_id, presence: { message: 'Select a state.' }
+
+  validates :district_id, presence: { message: 'Select a District.' }
+  
   validates_length_of :name, 
     maximum: 50, too_long: "Maximum 50 characters allowed."
 
@@ -22,8 +27,11 @@ class Organization < ActiveRecord::Base
     content_type:  { content_type: ["image/jpeg","image/jpg", "image/gif", "image/png"] }#,
     #size: { in: 0..200.kilobytes }
 
-  has_and_belongs_to_many :users 
+  has_and_belongs_to_many :users
+  belongs_to :state 
+  belongs_to :district
 
-    
-
+  def conected_users
+    users 
+  end
 end

@@ -13,6 +13,8 @@ class User < ActiveRecord::Base
   has_many :needs, :dependent => :delete_all
   has_many :notifications, :dependent => :delete_all
 
+  has_many :activities
+
   has_and_belongs_to_many :organizations 
   scope :email_notification_enabled, where('can_send_email = ?', true)
   scope :sms_notification_enabled, where('can_send_sms = ?', true)
@@ -43,6 +45,24 @@ class User < ActiveRecord::Base
     self.encrypted_password = encrypted_password
     # Again, saving token is optional. If you haven't created the column in authentications table, this will fail
     authentication.build(:provider => auth['provider'], :uid => auth['uid'], :token => auth['credentials']['token'])
+  end
+
+
+  # Description: Following method will return current users Organization list.
+  def get_my_organizations
+    @list ||= organizations
+  end
+
+  def get_activities
+    activities.order(created_at: :desc)
+  end
+
+  def created_organization(organization)
+    self.activities << Activity.build_activity(organization.name)
+  end
+
+  def updated_organization(organization)
+    self.activities << Activity.create_activity(organization.name)
   end
 
 end

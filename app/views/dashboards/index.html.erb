@@ -1,0 +1,4 @@
+<%#=  raise (Time.now -  @activities.first.created_at).hours.inspect %>  
+<% @activities.each do |act| %> 
+ <%= act.content %> 
+<% end %> 

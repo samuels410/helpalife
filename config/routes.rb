@@ -1,11 +1,21 @@
 Community::Application.routes.draw do
+  
   resources :organizations do
     collection do
+      get :my_organization, as: 'my'
       get :display 
       post :join
       post :remove
     end
   end
+
+  resources :states, only: [] do 
+    collection do 
+      get :get_districts
+    end
+  end
+
+  resources :dashboards, only: :index
 
   resources :notifications
 
