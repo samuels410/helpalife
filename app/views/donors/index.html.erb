@@ -18,18 +18,18 @@
     <a href="#">Notify donors via SMS and Email</a>
   </div>
   <%= render 'shared/search_donors_form' %>
-  <div >Found &nbsp;<%=pluralize(@users.count, 'Donor')%> </div>
+  <div >Found &nbsp;<%=pluralize(@donors.count, 'Donor')%> </div>
 </div>
 
 <br>
 
 <div class="container" >
   <div class="row" >
-  <% if @users.any? %>
+  <% if @donors %>
         <div class="row" style="text-align: center;">
-          <%=will_paginate @users%>
+          <%=will_paginate @donors%>
         </div>
-  <%= render ('home/recent_users') %>
+  <%= render 'home/recent_users', donors: @donors %>
   <% else  %>
          <div>Sorry, currently no donors for this selection criteria.</div>
       <br>
@@ -39,7 +39,7 @@
   <% end %>
  </div>
   <div class="row" style="text-align: center;">
-    <%=will_paginate @users%>
+    <%=will_paginate @donors%>
   </div>
 
 </div>

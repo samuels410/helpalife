@@ -30,7 +30,11 @@ class User < ActiveRecord::Base
   validates :phone_no, length: { is: 10 }, numericality: true
 
   # Constants
-  BLOOD_GROUP = %w(A1+ A1- A2+ A2- B+ B- A1B+ A1B- A2B+ A2B- AB+ AB- O+ O- A+ A-)
+  BLOOD_GROUPS = %w(A1+ A1- A2+ A2- B+ B- A1B+ A1B- A2B+ A2B- AB+ AB- O+ O- A+ A-)
+
+  def self.search(params)
+    where("blood_group = ?", params[:blood_group])
+  end
 
   def apply_omniauth(auth)
     # In previous omniauth, 'user_info' was used in place of 'raw_info'

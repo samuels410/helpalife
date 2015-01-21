@@ -1,18 +1,14 @@
-<%= simple_form_for(User.new, :as => :user, :url => donors_path(:user),:wrapper => :inline_form, :html => {class: 'form-inline',
+<%= simple_form_for(:users, :url => search_donors_path, :wrapper => :inline_form, :html => {class: 'form-inline',
                                                                                                            :method => :get} ) do |f| %>
 
-    <%= f.input :blood_group,collection:([["A1+", "A1+"],["A1-", "A1-"], ["A2+", "A2+"],["A2-", "A2-"],
-                                          ["B+", "B+"],["B-", "B-"],["A1B+", "A1B+"],["A1B-", "A1B-"],
-                                          ["A2B+", "A2B+"],["A2B-", "A2B-"],["AB+", "AB+"],
-                                          ["AB-", "AB-"],["O+", "O+"],["O-", "O-"],["A+", "A+"],
-                                          ["A-", "A-"]]),:selected => (params[:user][:blood_group] unless params[:user].nil?) , :prompt => "- Choose blood group -",
+    <%= f.input :blood_group,collection: User::BLOOD_GROUPS, selected: params[:users][:blood_group], :prompt => "- Choose blood group -",
                 :required => true, :label => false%>
 
 
     <%= f.input :state_id,collection: State.order(:name),:prompt => "- Select state -", :label => false,
-                :selected => (params[:user][:state_id] unless params[:user].nil?)%>
+                :selected => params[:users][:state_id]%>
     <%= f.input :district_id,collection: State.order(:name), as: :grouped_select, group_method: :districts ,
                 :prompt => "- Select district -", :label => false,
-                :selected => (params[:user][:district_id] unless params[:user].nil?)%>
+                :selected => params[:users][:district_id] %>
     <%= f.button :submit, "Search donors" ,class:'btn btn-primary' %>
 <% end %>
