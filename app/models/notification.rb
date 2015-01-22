@@ -1,3 +1,20 @@
+# == Schema Information
+#
+# Table name: notifications
+#
+#  id                :integer          not null, primary key
+#  notification_type :string(255)
+#  user_id           :integer
+#  notifier_id       :integer
+#  context_type      :string(255)
+#  context_id        :integer
+#  message           :text
+#  workflow_state    :string(255)
+#  created_at        :datetime
+#  updated_at        :datetime
+#  ref_id            :text
+#
+
 class Notification < ActiveRecord::Base
  include SmsGateway
   belongs_to :user

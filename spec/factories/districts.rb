@@ -2,5 +2,7 @@
 
 FactoryGirl.define do
   factory :district do
+    name      "Uttar Dinajpur"
+    state     {State.first || create(:state)}
   end
 end
