@@ -1,5 +1,16 @@
 Community::Application.routes.draw do
+  get "post/index"
+  get "post/new"
+  get "post/create"
+  get "post/edit"
+  get "post/update"
+  get "post/show"
+  get "post/destroy"
   resources :notifications
+
+  namespace :blog do
+    resources :posts
+  end
 
   resources :referrals
 
