@@ -10,13 +10,23 @@
     <%= display_meta_tags %>
   </head>
   <body>
-  <%= render 'layouts/new_header_blog' %>
-  <% flash.each do |key, value| %>
-    <div class="alert alert-<%= key %>" style="width: 695px;margin-left: 332px;margin-top: 10px;
+    <%= render 'layouts/new_header' %>
+    <% flash.each do |key, value| %>
+      <div class="alert alert-<%= key %>" style="width: 695px;margin-left: 332px;margin-top: 10px;
             text-align: center;">
-      <%= value %>
-    </div>
-  <% end %>
+        <%= value %>
+      </div>
+    <% end %>
+    <div id="fb-root"></div>
+    <script>
+      (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/es_ES/sdk.js#xfbml=1&appId=1423084774597336&version=v2.0";
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
+    </script>
 
     <%= yield %>
   <%= render 'layouts/new_footer' %>
