@@ -1,7 +1,18 @@
+<% provide(:title, 'Blood requirements and Donors info') %>
 <div class="container">
-  <div class="content">
+  <div class="post-content">
     <% @posts.each do |post|%>
-      <h1><%= post.title %></h1>
+      <div class="post-title">
+        <h1>
+          <%= link_to post.title, blog_post_path(post) %>
+          <small>
+            <%= post.created_at.strftime('%F') %>
+          </small>
+        </h1>
+      </div>
+      <div class="post-body">
+        <%= post.text.html_safe %>
+      </div>
     <% end %>
   </div>
 </div>

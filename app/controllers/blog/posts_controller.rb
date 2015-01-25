@@ -13,7 +13,8 @@ class Blog::PostsController < ApplicationController
     @post = Post.new(post_params)
     if @post.save
       flash[:notice] = "The post was created!"
-      redirect_to @post
+      redirect_to blog_post_path(@post)
+
     else
       render :new
     end
@@ -27,7 +28,7 @@ class Blog::PostsController < ApplicationController
     @post = Post.find params[:id]
     if @post.update_attributes(post_params)
       flash[:notice] = "The post was updated!"
-      redirect_to @post
+      redirect_to blog_post_path(@post)
     else
       render :edit
     end

@@ -16,6 +16,7 @@
 //= require bootstrap
 //= require bootstrap-datepicker
 //= require_directory ./new_design
+//= require tinymce
 
 $(document).ready(function() {
 $('[data_behaviour~=datepicker]').datepicker({

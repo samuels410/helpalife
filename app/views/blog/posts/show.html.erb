@@ -1,2 +1,22 @@
-<h1>Blog::Post#show</h1>
-<p>Find me in app/views/blog/post/show.html.erb</p>
+<div class="container">
+  <div class="content">
+    <div class="post-content">
+      <div class="post-title">
+        <h1>
+          <%= @post.title %>
+          <small>
+            <%= @post.created_at.strftime('%F') %>
+          </small>
+        </h1>
+      </div>
+      <div class="post-body-show">
+        <%= @post.text.html_safe %>
+      </div>
+    </div>
+    </br>
+    <h3>
+      <%= link_to "return to the Help a Life Blog", blog_posts_path %>
+    </h3>
+  </div>
+</div>
+
