@@ -2,4 +2,5 @@ menubar: flase
 toolbar:
   - styleselect | bold italic | undo redo | uploadimage | link | image
 plugins:
+  - image
   - link

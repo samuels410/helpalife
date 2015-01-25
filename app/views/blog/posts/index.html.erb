@@ -1,5 +1,6 @@
 <% provide(:title, 'Blood requirements and Donors info') %>
 <div class="container">
+  <%= link_to 'New Post', new_blog_post_path, class: 'btn btn-success' %>
   <div class="post-content">
     <% @posts.each do |post|%>
       <div class="post-title">

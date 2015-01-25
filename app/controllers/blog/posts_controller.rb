@@ -42,7 +42,7 @@ class Blog::PostsController < ApplicationController
     @post = Post.find params[:id]
     @post.destroy!
     flash[:notice] = "The post was destroyed"
-    redirect_to :back
+    redirect_to blog_post_path
   end
 
   private

@@ -12,10 +12,14 @@
       <div class="post-body-show">
         <%= @post.text.html_safe %>
       </div>
+      <div class="post-actions">
+        <%= link_to 'Edit', edit_blog_post_path(@post), class: 'btn btn-success' %>
+        <%= link_to 'Delete', blog_post_path(@post), class: 'btn btn-success', method: :delete, confirm: "Are You sure?" %>
+      </div>
     </div>
     </br>
     <h3>
-      <%= link_to "return to the Help a Life Blog", blog_posts_path %>
+      <%= link_to "Return to the Help a Life Blog", blog_posts_path %>
     </h3>
   </div>
 </div>
