@@ -1,0 +1,96 @@
+<!--<div id="sb-search" class="sb-search">-->
+  <!--<form>-->
+    <!--<input class="sb-search-input" placeholder="Enter blood group..." type="text" value="" name="search" id="search">-->
+    <!--<input class="sb-search-submit" type="submit" value="">-->
+    <!--<span class="sb-icon-search"></span>-->
+  <!--</form>-->
+<!--</div>-->
+<div class="header">
+  <div class="wrap">
+    <div class="logo">
+      <%= link_to image_tag('logo.png',:class =>"img img-circle",:style => "width: 75px;",:alt => "blood donors"),root_path %>
+      <h3>Help a Life Blog</h3>
+    </div>
+    <div class="h_right">
+      <h4> <span><small>Love All. Do Good. Live Well. Help A Life</small></span> - helpalife.in </h4>
+      <!-- start nav-->
+      <ul class="flexy-menu thick orange">
+        <li class="active">
+          <a  href="<%= root_path %>">
+            <span class="color">Home</span>
+            <i class="icon3"></i>
+          </a>
+        </li>
+        <li>
+          <a href="<%= needs_path %>">
+            <span>Requirements</span>
+          </a>
+        </li>
+        <li>
+          <a href="<%= donors_path %>">
+            <span>Find Donors</span>
+          </a>
+        </li>
+        <!--<li>-->
+          <!--<a href="#">-->
+            <!--<span>Blog</span>-->
+            <!--<i class="icon3"></i>-->
+          <!--</a>-->
+
+        <!--</li>-->
+        <li>
+          <a href="<%= about_path %>">
+            <span>About</span>
+            <i class="icon2"></i>
+          </a>
+          <ul style="width: 184%;">
+            <!--<li><a href="#">Testimonials</a></li>-->
+            <li><a href="<%= about_path %>">About Us</a></li>
+            <li><a href="<%= terms_path %>">Terms & conditions</a></li>
+            <li><a href="<%= vision_path %>">Vision & Mission</a></li>
+            <li><a href="<%= contacts_path %>">Contact Us</a></li>
+          </ul>
+        </li>
+       <% if signed_in?  %>
+            <li>
+              <a href="#">
+                <span>
+                  <% if current_user.avatar_url.nil? %>
+                  <%= image_tag(current_user.avatar.url(:thumb),:class =>"img img-round",:style => "width: 30px;")%>
+              <% else  %>
+                  <%= image_tag(current_user.avatar_url,:class =>"img img-round",:style => "width: 30px;")%>
+              <% end  %>
+                  <%= current_user.name %></span>
+                <i class="icon2"></i>
+              </a>
+              <ul>
+                <li><a href="<%= edit_user_registration_path %>">Profile</a></li>
+                <li><a href="<%= destroy_user_session_path %>"  rel="nofollow">Sign out</a></li>
+              </ul>
+            </li>
+        <% else  %>
+        <li class="last">
+          <a href="#" data-toggle="modal" data-target="#login">
+            <span>Register / Login</span>
+          </a>
+        </li>
+        <li class="last">
+          <a href="<%= blog_posts_path %>">
+            <span>Help a Life Blog</span>
+          </a>
+        </li>
+       <% end%>
+
+      </ul>
+    </div>
+    <div class="clear"></div>
+  </div>
+</div>
+<%= render 'layouts/login' %>
+
+<script type="text/javascript">
+//    new UISearch( document.getElementById( 'sb-search' ) );
+    //    Initialize Menu
+    $(".flexy-menu").flexymenu({speed: 400,type: "horizontal",align: "right"});
+
+</script>

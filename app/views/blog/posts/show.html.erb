@@ -1,3 +1,13 @@
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/es_ES/sdk.js#xfbml=1&appId=1423084774597336&version=v2.0";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+</script>
+
 <div class="container">
   <div class="content">
     <div class="post-content">
@@ -12,7 +22,8 @@
       <div class="post-body-show">
         <%= @post.text.html_safe %>
       </div>
-      <div class="post-actions">
+      <div class="fb-share-button" data-href="#{blog_post_path(@post)}" data-layout="box_count">
+      </div>
         <%= link_to 'Edit', edit_blog_post_path(@post), class: 'btn btn-success' %>
         <%= link_to 'Delete', blog_post_path(@post), class: 'btn btn-success', method: :delete, confirm: "Are You sure?" %>
       </div>
