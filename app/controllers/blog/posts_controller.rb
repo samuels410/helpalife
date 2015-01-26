@@ -1,4 +1,5 @@
 class Blog::PostsController < ApplicationController
+
   layout 'blog'
 
   def index
@@ -11,6 +12,7 @@ class Blog::PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
+    current_user.posts << @post
     if @post.save
       flash[:notice] = "The post was created!"
       redirect_to blog_post_path(@post)

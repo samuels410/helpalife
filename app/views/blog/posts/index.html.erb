@@ -1,11 +1,16 @@
 <% provide(:title, 'Blood requirements and Donors info') %>
 <div class="container">
-  <%= link_to 'New Post', new_blog_post_path, class: 'btn btn-success' %>
+  <% if current_user && current_user.has_role?(:journalist) %>
+    <%= link_to 'New Post', new_blog_post_path, class: 'btn btn-success' %>
+  <% end %>
   <div class="post-content">
     <% @posts.each do |post|%>
       <div class="post-title">
         <h1>
           <%= link_to post.title, blog_post_path(post) %>
+          <small>
+            <%= post.user.name %>
+          </small>
           <small>
             <%= post.created_at.strftime('%F') %>
           </small>

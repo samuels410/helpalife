@@ -12,6 +12,7 @@ class User < ActiveRecord::Base
   has_many :authentication, :dependent => :delete_all
   has_many :needs, :dependent => :delete_all
   has_many :notifications, :dependent => :delete_all
+  has_many :posts
   scope :email_notification_enabled, where('can_send_email = ?', true)
   scope :sms_notification_enabled, where('can_send_sms = ?', true)
   scope :phone_not_empty, where.not('phone_no' => nil)
