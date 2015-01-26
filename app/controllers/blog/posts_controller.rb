@@ -1,5 +1,5 @@
 class Blog::PostsController < ApplicationController
-
+  before_action :authenticate_user!, only: [:new, :update]
   layout 'blog'
 
   def index
