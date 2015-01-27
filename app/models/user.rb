@@ -58,11 +58,4 @@ class User < ActiveRecord::Base
     authentication.build(:provider => auth['provider'], :uid => auth['uid'], :token => auth['credentials']['token'])
   end
 
-  private
-
-  def self.condition_builder(params)
-
-  end
-
-
 end
