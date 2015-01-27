@@ -55,7 +55,7 @@ ActiveRecord::Schema.define(version: 20141119074225) do
   end
 
   create_table "friendly_id_slugs", force: true do |t|
-    t.string   "slug",                      null: false
+    t.text     "slug",                      null: false
     t.integer  "sluggable_id",              null: false
     t.string   "sluggable_type", limit: 50
     t.string   "scope"
@@ -82,7 +82,7 @@ ActiveRecord::Schema.define(version: 20141119074225) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "email_sent",     default: false
-    t.string   "slug"
+    t.text     "slug"
     t.text     "perma_link"
   end
 

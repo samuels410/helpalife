@@ -2,5 +2,6 @@
 
 FactoryGirl.define do
   factory :state do
+    name     "Andaman and Nicobar Islands"
   end
 end

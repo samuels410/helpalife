@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require bootstrap
+//= require donors
 //= require bootstrap-datepicker
 //= require_directory ./new_design
 

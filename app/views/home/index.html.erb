@@ -14,7 +14,7 @@
       <a href="#">Notify donors via SMS and Email</a>
     </div>
 
-    <%= render 'shared/search_donors_form'  %>
+    <%= render 'shared/search_donors_form', search_donor: @search_donor  %>
    </div>
   </div>
   <br>
@@ -36,11 +36,7 @@
                       <%= f.input :password_confirmation, :required => true ,:placeholder=> "Confirm Password" ,:label => "Confirm"%>
                       <%= f.input  :phone_no,:placeholder=> "Phone number", :required => true, :as => :string%>
 
-                      <%= f.input :blood_group,collection:([["A1+", "A1+"],["A1-", "A1-"], ["A2+", "A2+"],["A2-", "A2-"],
-                                                            ["B+", "B+"],["B-", "B-"],["A1B+", "A1B+"],["A1B-", "A1B-"],
-                                                            ["A2B+", "A2B+"],["A2B-", "A2B-"],["AB+", "AB+"],
-                                                            ["AB-", "AB-"],["O+", "O+"],["O-", "O-"],["A+", "A+"],
-                                                            ["A-", "A-"]]) , :prompt => "- Choose blood group -",
+                      <%= f.input :blood_group,collection: User::BLOOD_GROUPS , :prompt => "- Choose blood group -",
                                   :required => true%>
 
                       <%= f.input :state_id,collection: State.order(:name),:prompt => "- Select state -"%>
@@ -65,11 +61,7 @@
 
       <%@need ||= Need.new%>
       <%= simple_form_for @need ,:wrapper => :horizontal_form , html: { class: 'form-horizontal' } do |f| %>
-            <%= f.input :blood_group,collection: ([["A1+", "A1+"],["A1-", "A1-"], ["A2+", "A2+"],["A2-", "A2-"],
-                                                           ["B+", "B+"],["B-", "B-"],["A1B+", "A1B+"],["A1B-", "A1B-"],
-                                                           ["A2B+", "A2B+"],["A2B-", "A2B-"],["AB+", "AB+"],
-                                                           ["AB-", "AB-"],["O+", "O+"],["O-", "O-"],["A+", "A+"],
-                                                           ["A-", "A-"]]) , :prompt => "- Choose blood group -",
+            <%= f.input :blood_group,collection: User::BLOOD_GROUPS , :prompt => "- Choose blood group -",
                          :required => true  %>
 
             <%= f.input :required_date ,:data_behaviour => 'datepicker', :required => true ,
@@ -114,81 +106,7 @@
     <div class="row requirements_head">
       <h3 class='headings' style="text-align: center">Recent donors </h3>
   </a>
-<%= render 'home/recent_users' %>
+<%= render 'home/recent_users', users: @recent_donors %>
 
     </div>
 </div>
-<script type="text/javascript">
-//    for search doners
-    jQuery(function() {
-        var districts;
-        districts = $('#user_district_id').html();
-        return $('#user_state_id').change(function() {
-            var escaped_state, options, state;
-            state = $('#user_state_id :selected').text();
-            escaped_state = state.replace(/([ #;&,.+*~\':"!^$[\]()=>|\/@])/g, '\\$1');
-            options = $(districts).filter("optgroup[label='" + escaped_state + "']").html();
-            if (options) {
-                $('#user_district_id').html(options);
-                $('#user_district_id').show();
-                return $('#district_label').show();
-            } else {
-                $('#user_district_id').empty();
-                $('#user_district_id').hide();
-                return $('#district_label').hide();
-            }
-        });
-    });
-
-//for post need selection
-
-jQuery(function() {
-    var districts;
-    districts = $('#need_district_id').html();
-    return $('#need_state_id').change(function() {
-        var escaped_state, options, state;
-        state = $('#need_state_id :selected').text();
-        escaped_state = state.replace(/([ #;&,.+*~\':"!^$[\]()=>|\/@])/g, '\\$1');
-        options = $(districts).filter("optgroup[label='" + escaped_state + "']").html();
-        if (options) {
-            $('#need_district_id').html(options);
-            $('#need_district_id').show();
-            return $('#district_label').show();
-        } else {
-            $('#need_district_id').empty();
-            $('#need_district_id').hide();
-            return $('#district_label').hide();
-        }
-    });
-});
-
-
-//bread crumps
-
-$('.btn-group a').on('click', function(event){
-        event.preventDefault();
-        var input = $(this).siblings('.control-group').find('input[type=hidden]');
-        if(input.length>0){
-            if(input.val().toString() !== $(this).data('value').toString()){
-                input.val($(this).data('value')).trigger('change');
-            }
-        }
-    });
-
-//Need validation
-    $("#post_need").click(function() {
-        if ($("#need_blood_group").find("option:selected" ).text() == '- Choose blood group -') {
-            alert("Please select a blood group");}
-
-        if ($("#need_state_id").find("option:selected" ).text() == '- Select state -'){
-            alert("Please select state");}
-
-        if ($("#need_district_id").find("option:selected" ).text() == '- Select district -'){
-            alert("Please select district");}
-
-
-
-    });
-
-</script>
-
