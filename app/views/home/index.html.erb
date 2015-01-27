@@ -14,7 +14,7 @@
       <a href="#">Notify donors via SMS and Email</a>
     </div>
 
-    <%= render 'shared/search_donors_form'  %>
+    <%= render 'shared/search_donors_form', search_donor: @search_donor  %>
    </div>
   </div>
   <br>
@@ -114,7 +114,7 @@
     <div class="row requirements_head">
       <h3 class='headings' style="text-align: center">Recent donors </h3>
   </a>
-<%= render 'home/recent_users' %>
+<%= render 'home/recent_users', donors: @recent_donors %>
 
     </div>
 </div>

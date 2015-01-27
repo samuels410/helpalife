@@ -65,7 +65,7 @@ class User < ActiveRecord::Base
   # Constants
   BLOOD_GROUPS = %w(A1+ A1- A2+ A2- B+ B- A1B+ A1B- A2B+ A2B- AB+ AB- O+ O- A+ A-)
 
-  def self.filter(params)
+  def self.search(params)
     users = User.where nil
 
     params.each do |k, v|

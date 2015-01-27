@@ -17,7 +17,7 @@
     <a href="#" class="active">Get donor's details</a>
     <a href="#">Notify donors via SMS and Email</a>
   </div>
-  <%= render 'shared/search_donors_form', filter_donor: @filter_donor %>
+  <%= render 'shared/search_donors_form', search_donor: @search_donor %>
   <div >Found &nbsp;<%=pluralize(@donors.count, 'Donor')%> </div>
 </div>
 

@@ -1,4 +1,4 @@
-<%= simple_form_for(filter_donor, :url => search_donors_path, :wrapper => :inline_form, :html => {class: 'form-inline', :method => :get} ) do |f| %>
+<%= simple_form_for(search_donor, :url => search_donors_path, :wrapper => :inline_form, :html => {class: 'form-inline', :method => :get} ) do |f| %>
 
     <%= f.input :blood_group, collection: User::BLOOD_GROUPS, :prompt => "- Choose blood group -", :required => true, :label => false %>
 
