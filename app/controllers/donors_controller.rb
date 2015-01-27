@@ -6,7 +6,8 @@ class DonorsController < ApplicationController
 
   def search
     @filter_donor = User.new user_params
-    @donors = User.paginate page: params[:page], per_page: 50
+    # users = User.filter params[:user]
+    @donors = User.filter(params[:user]).paginate(page: params[:page], per_page: 50)
     render :index
   end
 

@@ -1,10 +1,11 @@
-<%= simple_form_for(filter_donor, :url => search_donors_path, :wrapper => :inline_form, :html => {class: 'form-inline',
-                                                                                                           :method => :get} ) do |f| %>
+<%= simple_form_for(filter_donor, :url => search_donors_path, :wrapper => :inline_form, :html => {class: 'form-inline', :method => :get} ) do |f| %>
 
     <%= f.input :blood_group, collection: User::BLOOD_GROUPS, :prompt => "- Choose blood group -", :required => true, :label => false %>
 
     <%= f.input :state_id, collection: State.order(:name),:prompt => "- Select state -", :label => false %>
-    <%= f.input :district_id,collection: State.order(:name), as: :grouped_select, group_method: :districts , :prompt => "- Select district -", :label => false %>
+
+    <%= f.input :district_id, collection: State.order(:name), as: :grouped_select, group_method: :districts , :prompt => "- Select district -", :label => false %>
+
     <%= f.button :submit, "Search donors" ,class:'btn btn-primary' %>
 
 <% end %>

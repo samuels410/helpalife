@@ -66,7 +66,13 @@ class User < ActiveRecord::Base
   BLOOD_GROUPS = %w(A1+ A1- A2+ A2- B+ B- A1B+ A1B- A2B+ A2B- AB+ AB- O+ O- A+ A-)
 
   def self.filter(params)
-    where("blood_group = ?", params[:blood_group])
+    users = User.where nil
+
+    params.each do |k, v|
+      users = users.where(k => v) if v.present?
+    end
+
+    users
   end
 
   def apply_omniauth(auth)
@@ -84,5 +90,12 @@ class User < ActiveRecord::Base
     # Again, saving token is optional. If you haven't created the column in authentications table, this will fail
     authentication.build(:provider => auth['provider'], :uid => auth['uid'], :token => auth['credentials']['token'])
   end
+
+  private
+
+  def self.condition_builder(params)
+
+  end
+
 
 end
