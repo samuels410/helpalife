@@ -47,6 +47,13 @@ class Blog::PostsController < ApplicationController
     redirect_to blog_post_path
   end
 
+  def post_notify
+    @post = Post.find(params[:id])
+    NotificationMailer.post_notify(@post).deliver
+    flash[:notice] = "The notifications are sent"
+    redirect_to blog_posts_path
+  end
+
   private
     def post_params
       params.require(:post).permit(:title, :text)

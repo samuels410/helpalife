@@ -1,28 +1,33 @@
 <% provide(:title, 'Blood requirements and Donors info') %>
-<div class="container" style="margin-top: 50px;">
-  <% if current_user && current_user.has_role?(:journalist) %>
-    <%= link_to 'Publish a new post', new_blog_post_path, class: 'btn btn-success' %>
-  <% end %>
-  <div class="post-content">
-    <% @posts.each do |post|%>
-      <div class="post-title">
-        <h1>
-          <%= link_to post.title, blog_post_path(post) %>
-          <p>
-            <small>
-              By <%= post.user.name %>
-            </small>
-            <small>
-              <%= post.created_at.strftime('%F') %>
-            </small>
-          </p>
-        </h1>
-      </div>
-      <div class="post-body">
-        <%= post.text.html_safe %>
-          <div class="fb-share-button" data-href="http://helpalife.in/" data-layout="box_count">
-          </div>
-        <% end %>
-      </div>
+<div>
+  <div class="container" style="margin-top: 50px;">
+    <% if current_user && current_user.has_role?(:journalist) %>
+      <%= link_to 'Publish a new post', new_blog_post_path, class: 'btn btn-primary' %>
+    <% end %>
+    <div class="post-content">
+      <% @posts.each do |post|%>
+        <div class="post-title">
+          <h1>
+            <%= link_to post.title, blog_post_path(post) %>
+            <% if current_user && current_user.has_role?(:journalist) %>
+              <%= link_to "Notify Post", blog_post_notify_path(post.id), class: "btn btn-primary" %>
+            <% end %>
+            <p>
+              <small>
+                By <%= post.user.name %>
+              </small>
+              <small>
+                <%= post.created_at.strftime('%F') %>
+              </small>
+            </p>
+          </h1>
+        </div>
+        <div class="post-body">
+          <%= post.text.html_safe %>
+            <div class="fb-share-button" data-href="http://helpalife.in/" data-layout="box_count">
+            </div>
+          <% end %>
+        </div>
+    </div>
   </div>
 </div>
