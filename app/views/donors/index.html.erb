@@ -29,7 +29,7 @@
         <div class="row" style="text-align: center;">
           <%=will_paginate @donors%>
         </div>
-  <%= render 'home/recent_users', donors: @donors %>
+  <%= render 'home/recent_users', users: @donors %>
   <% else  %>
          <div>Sorry, currently no donors for this selection criteria.</div>
       <br>
