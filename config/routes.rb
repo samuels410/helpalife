@@ -1,6 +1,12 @@
 Community::Application.routes.draw do
   resources :notifications
 
+  namespace :blog do
+    resources :posts
+    get "posts/post_notify/:id" => "posts#post_notify", as: :post_notify
+  end
+
+
   resources :referrals
 
   resources :needs ,:path =>  :requirements

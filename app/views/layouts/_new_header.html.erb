@@ -7,7 +7,7 @@
 <!--</div>-->
 <div class="header">
   <div class="wrap">
-    <div class="logo">
+    <div class="logo" style="text-align; center; margin-top: 2%;">
       <%= link_to image_tag('logo.png',:class =>"img img-circle",:style => "width: 75px;",:alt => "blood donors"),root_path %>
     </div>
     <div class="h_right">
@@ -49,6 +49,11 @@
             <li><a href="<%= vision_path %>">Vision & Mission</a></li>
             <li><a href="<%= contacts_path %>">Contact Us</a></li>
           </ul>
+        </li>
+        <li class="last">
+          <a href="<%= blog_posts_path %>">
+            <span>Help a Life Blog</span>
+          </a>
         </li>
        <% if signed_in?  %>
             <li>

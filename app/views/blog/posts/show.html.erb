@@ -1,0 +1,38 @@
+<div class="container blog-top">
+  <div class="content">
+    <div class="post-content">
+      <div class="post-title">
+        <h1>
+          <%= @post.title %>
+          <p>
+            <small>
+              By <%= @post.user.name %>
+            </small>
+            <small>
+              <%= @post.created_at.strftime('%F') %>
+            </small>
+          </p>
+        </h1>
+      </div>
+      <div class="post-body-show">
+        <%= @post.text.html_safe %>
+      </div>
+      </br>
+      <div class="fb-share-button" data-href="http://helpalife.in/" data-layout="box_count">
+      </div>
+      </br>
+      </br>
+      <% if current_user && current_user.has_role?(:journalist) %>
+        <div class="post-actions">
+          <%= link_to 'Edit', edit_blog_post_path(@post), class: 'btn btn-success' %>
+          <%= link_to 'Delete', blog_post_path(@post), class: 'btn btn-success', method: :delete, confirm: "Are You sure?" %>
+        </div>
+      <% end %>
+    </div>
+    </br>
+    <h3>
+      <%= link_to "Return to the Help a Life Blog", blog_posts_path %>
+    </h3>
+  </div>
+</div>
+

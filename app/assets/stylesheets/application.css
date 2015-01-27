@@ -15,4 +15,5 @@
  *= require ./new_design/tsc_accordion_toggle
  *= require_directory ./main
  *= require bootstrap-datepicker
+ *= require blog/posts
  */

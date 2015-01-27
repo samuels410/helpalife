@@ -48,6 +48,9 @@ gem 'devise_invitable'
 gem 'pg'
 gem 'simple_form'
 
+#WYSIWYG editor
+gem 'tinymce-rails'
+
 group :assets do
   gem 'therubyracer', :platform=>:ruby
 end
