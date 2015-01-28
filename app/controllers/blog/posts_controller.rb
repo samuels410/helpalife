@@ -1,5 +1,6 @@
 class Blog::PostsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :update]
+  before_action :validate_journalist, only: [:new, :update]
   layout 'blog'
 
   def index
@@ -57,6 +58,14 @@ class Blog::PostsController < ApplicationController
   private
     def post_params
       params.require(:post).permit(:title, :text)
+    end
+
+    def validate_journalist
+      if current_user && current_user.has_role?(:journalist)
+      else
+        redirect_to blog_posts_path
+        flash[:notice] = "You cannot do that. Please contact to the Admin"
+      end
     end
 
 end
