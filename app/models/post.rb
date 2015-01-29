@@ -3,5 +3,6 @@ class Post < ActiveRecord::Base
 
   validates :title, :text, presence: true
 
-  scope :newest, -> { order('created_at desc') }
+  scope :newest,    -> { order('created_at desc') }
+  scope :published, -> { where(is_published: :true) }
 end

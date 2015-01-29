@@ -4,6 +4,9 @@ Community::Application.routes.draw do
   namespace :blog do
     resources :posts
     get "posts/post_notify/:id" => "posts#post_notify", as: :post_notify
+    post "post/:id/publish" => "posts#publish", as: :publish
+    post "post/:id/undo_publish" => "posts#undo_publish", as: :undo_publish
+
   end
 
 

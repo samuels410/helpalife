@@ -1,10 +1,14 @@
 class Blog::PostsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :update]
-  before_action :validate_journalist, only: [:new, :update]
+  before_action :authenticate_user!, only: [:new, :update, :publish, :undo_publish]
+  before_action :validate_journalist, only: [:new, :update, :publish, :undo_publish]
   layout 'blog'
 
   def index
-    @posts = Post.all
+    if current_user && current_user.has_role?(:journalist)
+      @posts = Post.all
+    else
+      @posts = Post.published
+    end
   end
 
   def new
@@ -55,6 +59,22 @@ class Blog::PostsController < ApplicationController
     redirect_to blog_posts_path
   end
 
+  def publish
+    @post = Post.find(params[:id])
+    @post.is_published = true
+    @post.save
+    flash[:notice] = "The post has been published"
+    redirect_to blog_posts_path
+  end
+
+  def undo_publish
+    @post = Post.find(params[:id])
+    @post.is_published = false
+    @post.save
+    flash[:notice] = "Published as been removed"
+    redirect_to blog_posts_path
+  end
+
   private
     def post_params
       params.require(:post).permit(:title, :text)
@@ -67,5 +87,6 @@ class Blog::PostsController < ApplicationController
         flash[:notice] = "You cannot do that. Please contact to the Admin"
       end
     end
+
 
 end

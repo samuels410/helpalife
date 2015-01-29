@@ -11,7 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150126032455) do
+ActiveRecord::Schema.define(version: 20150128114739) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "authentications", force: true do |t|
     t.integer  "user_id"
@@ -101,32 +104,13 @@ ActiveRecord::Schema.define(version: 20150126032455) do
     t.text     "ref_id"
   end
 
-  create_table "organizations", force: true do |t|
-    t.string   "name"
-    t.text     "address"
-    t.text     "description"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "banner_file_name"
-    t.string   "banner_content_type"
-    t.integer  "banner_file_size"
-    t.datetime "banner_updated_at"
-  end
-
-  create_table "organizations_users", id: false, force: true do |t|
-    t.integer "organization_id"
-    t.integer "user_id"
-  end
-
-  add_index "organizations_users", ["organization_id"], name: "index_organizations_users_on_organization_id", using: :btree
-  add_index "organizations_users", ["user_id"], name: "index_organizations_users_on_user_id", using: :btree
-
   create_table "posts", force: true do |t|
     t.string   "title"
     t.text     "text"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
+    t.boolean  "is_published", default: false
   end
 
   create_table "referrals", force: true do |t|
