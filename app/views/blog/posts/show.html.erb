@@ -1,13 +1,6 @@
 <div class="container blog-top">
   <div class="content">
     <div class="post-content">
-    <% if logged? && is_journalist? %>
-      <% if @post.is_published == true %>
-        <%= button_to "Undo Publish", blog_undo_publish_path(@post.id), class: "btn btn-primary" %>
-      <% else %>
-        <%= button_to "Publish", blog_publish_path(@post.id), class: "btn btn-primary" %>
-      <% end %>
-    <% end %>
       <div class="post-title">
         <h1>
           <%= @post.title %>
@@ -19,12 +12,24 @@
               <%= @post.created_at.strftime('%F') %>
             </small>
           </p>
+          <% if logged? && is_journalist? %>
+            <% if @post.is_published == true %>
+              </br>
+              <%= button_to "Undo Publish", blog_undo_publish_path(@post.id), class: "btn btn-primary" %>
+            <% else %>
+              </br>
+              <%= button_to "Publish", blog_publish_path(@post.id), class: "btn btn-primary" %>
+            <% end %>
+          <% end %>
         </h1>
       </div>
       <div class="post-body-show">
         <%= @post.text.html_safe %>
       </div>
       </br>
+      <p class="view-count">
+        <%= @post.impressionist_count %> views.
+      </p>
       <div class="fb-share-button" data-href="http://helpalife.in/" data-layout="box_count">
       </div>
       </br>

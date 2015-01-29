@@ -51,6 +51,10 @@ gem 'simple_form'
 #WYSIWYG editor
 gem 'tinymce-rails'
 
+#Impressionist gem for impressions
+gem 'impressionist'
+
+
 group :assets do
   gem 'therubyracer', :platform=>:ruby
 end

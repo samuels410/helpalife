@@ -1,6 +1,7 @@
 <% provide(:title, 'Blood requirements and Donors info') %>
 <div>
   <div class="container blog-top">
+    </br>
     <% if logged? && is_journalist? %>
       <%= link_to 'Publish a new post', new_blog_post_path, class: 'btn btn-primary' %>
     <% end %>
@@ -9,16 +10,6 @@
         <div class="post-title">
           <h1>
             <%= link_to post.title, blog_post_path(post) %>
-            <% if logged? && is_journalist? %>
-              <%= link_to "Notify Post", blog_post_notify_path(post.id), class: "btn btn-primary" %>
-              <% if post.is_published == true %>
-                <%= button_to "Undo Publish", blog_undo_publish_path(post.id), class: "btn btn-primary" %>
-              <% else %>
-                <%= button_to "Publish", blog_publish_path(post.id), class: "btn btn-primary" %>
-              <% end %>
-            <% end %>
-
-
             <p>
               <small>
                 By <%= post.user.name %>
@@ -27,6 +18,17 @@
                 <%= post.created_at.strftime('%F') %>
               </small>
             </p>
+            <% if logged? && is_journalist? %>
+              <%= link_to "Notify Post", blog_post_notify_path(post.id), class: "btn btn-primary" %>
+              </br>
+              <% if post.is_published == true %>
+                </br>
+                <%= button_to "Undo Publish", blog_undo_publish_path(post.id), class: "btn btn-primary" %>
+              <% else %>
+                </br>
+                <%= button_to "Publish", blog_publish_path(post.id), class: "btn btn-primary" %>
+              <% end %>
+            <% end %>
           </h1>
         </div>
         <div class="post-body">

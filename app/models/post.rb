@@ -1,4 +1,6 @@
 class Post < ActiveRecord::Base
+  is_impressionable
+
   belongs_to :user
 
   validates :title, :text, presence: true

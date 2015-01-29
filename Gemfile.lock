@@ -117,7 +117,11 @@ GEM
       rspec (>= 2.14, < 4.0)
     hashie (3.2.0)
     hike (1.2.3)
+    httpclient (2.6.0.1)
     i18n (0.6.11)
+    impressionist (1.5.1)
+      httpclient (~> 2.2)
+      nokogiri (~> 1.5)
     jbuilder (1.5.3)
       activesupport (>= 3.0.0)
       multi_json (>= 1.2.0)
@@ -314,6 +318,7 @@ DEPENDENCIES
   guard-bundler
   guard-rails
   guard-rspec
+  impressionist
   jbuilder (~> 1.2)
   jquery-rails
   meta-tags

@@ -43,6 +43,7 @@ class Blog::PostsController < ApplicationController
 
   def show
     @post = Post.find params[:id]
+    impressionist(@post)
   end
 
   def destroy
