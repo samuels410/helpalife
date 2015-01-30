@@ -55,7 +55,7 @@ class Blog::PostsController < ApplicationController
 
   def post_notify
     @post = Post.find(params[:id])
-    NotificationMailer.post_notify(@post).deliver
+    NotificationMailer.delay.post_notify(@post)
     flash[:notice] = "The notifications are sent"
     redirect_to blog_posts_path
   end
