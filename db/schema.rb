@@ -171,6 +171,7 @@ ActiveRecord::Schema.define(version: 20150129113209) do
     t.text     "avatar_url"
     t.text     "phone_no"
     t.boolean  "phone_no_visibility",    default: true
+    t.boolean  "can_receive_newsletter", default: true
     t.text     "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
