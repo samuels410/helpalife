@@ -1,28 +1,55 @@
+<% provide(:title, @post.title)%>
+<% set_meta_tags :og => {
+        :title    => @post.title,
+        :type     => "website",
+        :url      => blog_post_path(@post),
+        :image    => image_url('logo.png'),
+        :description => @post.text
+}
+   set_meta_tags :title => @post.title
+   set_meta_tags :description => @post.text
+
+%>
+
+<div class="container" style="text-align: center;background-color: white">
+  <h1><%= @post.title %></h1>
+</div>
 <div class="container blog-top">
   <div class="content">
     <div class="post-content">
       <div class="post-title">
         <h1>
-          <%= @post.title %>
           <p>
             <small>
-              By <%= @post.user.name %>
+             Posted by <%= @post.user.name %>
             </small>
             <small>
               <%= @post.created_at.strftime('%F') %>
             </small>
           </p>
+
           <% if logged? && is_journalist? %>
+              <div class="row">
             <% if @post.is_published == true %>
-              </br>
-              <%= button_to "Notify Post", blog_post_notify_path(@post.id), class: "btn btn-primary", confirm: "You want send email notification to all users?" %>
-              </br>
-              <%= button_to "Unpublish", blog_undo_publish_path(@post.id), class: "btn btn-primary", confirm: "You want unpublish this Post?" %>
+              <div class="col-md-3">
+               <%= button_to "Notify Post", blog_post_notify_path(@post.id), class: "btn btn-primary", confirm: "You want send email notification to all users?" %>
+              </div>
+              <div class="col-md-3">
+              <%= button_to "Unpublish", blog_undo_publish_path(@post.id), class: "btn ", confirm: "You want unpublish this Post?" %>
+              </div>
             <% else %>
-              </br>
+             <div class="col-md-2">
               <%= button_to "Publish", blog_publish_path(@post.id), class: "btn btn-primary", confirm: "You want publish this Post?" %>
+             </div>
             <% end %>
+                <div class="col-md-2">
+                <%= link_to 'Edit', edit_blog_post_path(@post), class: 'btn btn-success' %>
+                </div>
+                  <div class="col-md-2">
+                <%= link_to 'Delete', blog_post_path(@post), class: 'btn btn-danger', method: :delete, confirm: "Are You sure?" %>
+              </div>
           <% end %>
+          </div>
         </h1>
       </div>
       <div class="post-body-show">
@@ -36,17 +63,11 @@
       </div>
       </br>
       </br>
-      <% if current_user && current_user.has_role?(:journalist) %>
-        <div class="post-actions">
-          <%= link_to 'Edit', edit_blog_post_path(@post), class: 'btn btn-success' %>
-          <%= link_to 'Delete', blog_post_path(@post), class: 'btn btn-success', method: :delete, confirm: "Are You sure?" %>
-        </div>
-      <% end %>
     </div>
     </br>
     <h3>
-      <%= link_to "Return to the Help a Life Blog", blog_posts_path %>
+      <%= link_to "Back to Blog", blog_posts_path %>
     </h3>
   </div>
 </div>
-
+<br/>

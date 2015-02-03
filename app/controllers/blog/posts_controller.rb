@@ -5,9 +5,9 @@ class Blog::PostsController < ApplicationController
 
   def index
     if current_user && current_user.has_role?(:journalist)
-      @posts = Post.all
+      @posts = Post.newest
     else
-      @posts = Post.published
+      @posts = Post.published.newest
     end
   end
 

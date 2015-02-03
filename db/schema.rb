@@ -13,9 +13,6 @@
 
 ActiveRecord::Schema.define(version: 20150129113209) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
   create_table "authentications", force: true do |t|
     t.integer  "user_id"
     t.text     "provider"
@@ -58,7 +55,7 @@ ActiveRecord::Schema.define(version: 20150129113209) do
   end
 
   create_table "friendly_id_slugs", force: true do |t|
-    t.text     "slug",                      null: false
+    t.string   "slug",                      null: false
     t.integer  "sluggable_id",              null: false
     t.string   "sluggable_type", limit: 50
     t.string   "scope"
@@ -110,7 +107,7 @@ ActiveRecord::Schema.define(version: 20150129113209) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "email_sent",     default: false
-    t.text     "slug"
+    t.string   "slug"
     t.text     "perma_link"
   end
 
@@ -128,6 +125,26 @@ ActiveRecord::Schema.define(version: 20150129113209) do
     t.datetime "updated_at"
     t.text     "ref_id"
   end
+
+  create_table "organizations", force: true do |t|
+    t.string   "name"
+    t.text     "address"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "banner_file_name"
+    t.string   "banner_content_type"
+    t.integer  "banner_file_size"
+    t.datetime "banner_updated_at"
+  end
+
+  create_table "organizations_users", id: false, force: true do |t|
+    t.integer "organization_id"
+    t.integer "user_id"
+  end
+
+  add_index "organizations_users", ["organization_id"], name: "index_organizations_users_on_organization_id", using: :btree
+  add_index "organizations_users", ["user_id"], name: "index_organizations_users_on_user_id", using: :btree
 
   create_table "posts", force: true do |t|
     t.string   "title"
@@ -171,7 +188,6 @@ ActiveRecord::Schema.define(version: 20150129113209) do
     t.text     "avatar_url"
     t.text     "phone_no"
     t.boolean  "phone_no_visibility",    default: true
-    t.boolean  "can_receive_newsletter", default: true
     t.text     "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
