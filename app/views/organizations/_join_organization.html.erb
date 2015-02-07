@@ -1,9 +1,8 @@
-<span id='org_notice' class='blood-hide' />
+<span id='org_notice' class='blood-hide'> </span>
  
 
-<% if @join_link %>
-  <%= link_to 'Join Organization', 
-    join_organizations_path(id: @organization), 
+<% if @join_link %> 
+  <%= link_to 'Join Organization', join_organizations_path(id: @organization), 
     method: :post, remote: true, class:'success btn-success' %>
 
 <% else %>

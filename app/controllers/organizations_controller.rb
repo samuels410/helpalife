@@ -13,7 +13,6 @@ class OrganizationsController < ApplicationController
         format.js
       end
     end
-
   end
 
   def remove
@@ -59,9 +58,11 @@ class OrganizationsController < ApplicationController
 
   def create
     @organization = Organization.new(organization_params)
+    @organization.assign_attributes(user_id: current_user.id)
+    current_user.organizations << @organization 
+    current_user.created_organization(@organization)
+  
     if @organization.valid?
-      current_user.organizations << @organization
-      current_user.created_organization(@organization)
       current_user.save!
       flash[:success] = "Congratulations! You just created a new Organization."
       redirect_to @organization
@@ -99,13 +100,14 @@ class OrganizationsController < ApplicationController
   end
 
   def set_organization
-    @organization = Organization.find(params[:id])
+    @organization = Organization.where(id: params[:id]).first 
+    redirect_to organizations_url if @organization.blank?
   end
 
   #Never trust parameters from the scary internet, only allow the white list through.
   def organization_params
     params.require(:organization).permit(:name, :address, :state_id, 
-      :district_id, :description, :banner)
+      :district_id, :description, :banner, :user_id)
   end
   
 end

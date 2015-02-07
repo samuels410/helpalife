@@ -54,7 +54,7 @@
           </ul>
         </li>
         
-        <li> <%= link_to 'Organizations', organizations_path %> </li>
+        <li> <%= link_to 'Organizations', organizations_path, :'data-no-turbolink' => true %> </li>
         
       <% if signed_in?  %>
         <li>
@@ -67,7 +67,7 @@
             <i class="icon2"></i>
           </a>
           <ul>
-            <li> <%= link_to 'My Organizations', my_organizations_path %> </li>
+            <li> <%= link_to 'My Organizations', my_organizations_path, :'data-no-turbolink' => true %> </li>
             <li> <%= link_to 'Profile', edit_user_registration_path %> </li>
             <li> <%= link_to 'Sign out', destroy_user_session_path, rel: 'nofollow' %> </li>
           </ul>

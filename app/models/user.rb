@@ -15,7 +15,12 @@ class User < ActiveRecord::Base
 
   has_many :activities
 
+  # holds the organizations to which i am connected + added by me. 
   has_and_belongs_to_many :organizations 
+  
+  # holds the organizations those are just created by the pearticular . 
+  has_many :my_organizations, class_name: 'Organization', foreign_key: 'user_id' 
+
   scope :email_notification_enabled, where('can_send_email = ?', true)
   scope :sms_notification_enabled, where('can_send_sms = ?', true)
   scope :phone_not_empty, where.not('phone_no' => nil)
@@ -63,6 +68,39 @@ class User < ActiveRecord::Base
 
   def updated_organization(organization)
     self.activities << Activity.create_activity(organization.name)
+  end
+
+  # Following method will dump dummy users to table.
+  #use it just for testing purpose in development environment. 
+  def self.load!(count = 1)
+    
+    count.times do 
+      User.create! user_params
+    end
+
+  end
+
+  # Following method will prepare dummy params for creating users.
+  def self.user_params 
+    phone_number = "9668" + (100000..999999).to_a.sample.to_s
+    common_password = 'blood_bank'
+    state = State.all.sample
+    district = state.districts.sample
+    district_id = state.districts.sample
+    blood_group = BLOOD_GROUPS.sample
+    name = Faker::Name.first_name
+    email = Faker::Internet.email 
+    
+    user_params = { 
+      name: name,
+      email: email,
+      password: common_password, 
+      password_confirmation: common_password,
+      state_id: state.id,
+      blood_group: blood_group, 
+      district_id: district.id,
+      phone_no: phone_number
+    }
   end
 
 end
