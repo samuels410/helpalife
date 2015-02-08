@@ -20,6 +20,7 @@ class User < ActiveRecord::Base
   scope :email_notification_enabled, where('can_send_email = ?', true)
   scope :sms_notification_enabled, where('can_send_sms = ?', true)
   scope :phone_not_empty, where.not('phone_no' => nil)
+  scope :receive_newsletter, where('can_receive_newsletter = ?', true)
 
   # Validations
   validates_attachment :avatar,

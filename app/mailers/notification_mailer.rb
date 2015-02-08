@@ -24,10 +24,10 @@ class NotificationMailer < ActionMailer::Base
   def post_notify(post)
     @post = post
     @url = blog_post_url(@post)
-    @recipients = User.where(can_receive_newsletter: true)
+    @recipients = User.receive_newsletter
     emails = @recipients.collect(&:email).join(",")
 
-    mail(to: emails, subject: "New post has Helpalife Blog: #{@post.title}")
+    mail(to: emails, subject: "Helpalife Blog: #{@post.title}")
   end
 
 

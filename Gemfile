@@ -76,8 +76,8 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'pry'
   gem 'pry-rails'
-  gem 'pry-byebug'
-  gem 'byebug'
+  # gem 'pry-byebug'
+  # gem 'byebug'
   gem 'annotate'
 end
 

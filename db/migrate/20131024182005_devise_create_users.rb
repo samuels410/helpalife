@@ -12,7 +12,6 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.text :avatar_url
       t.text :phone_no
       t.boolean :phone_no_visibility,    :default =>true
-      t.boolean :can_receive_newsletter, :default =>true
       ## Recoverable
       t.text   :reset_password_token
       t.datetime :reset_password_sent_at

@@ -15,7 +15,7 @@
   <h1><%= @post.title %></h1>
 </div>
 <div class="container blog-top">
-  <div class="content">
+  <div class="">
     <div class="post-content">
       <div class="post-title">
         <h1>
@@ -32,14 +32,14 @@
               <div class="row">
             <% if @post.is_published == true %>
               <div class="col-md-3">
-               <%= button_to "Notify Post", blog_post_notify_path(@post.id), class: "btn btn-primary", confirm: "You want send email notification to all users?" %>
+               <%= button_to "Notify Post", blog_post_notify_path(@post), class: "btn btn-primary", confirm: "You want send email notification to all users?" %>
               </div>
               <div class="col-md-3">
-              <%= button_to "Unpublish", blog_undo_publish_path(@post.id), class: "btn ", confirm: "You want unpublish this Post?" %>
+              <%= button_to "Unpublish", blog_undo_publish_path(@post), class: "btn ", confirm: "You want unpublish this Post?" %>
               </div>
             <% else %>
              <div class="col-md-2">
-              <%= button_to "Publish", blog_publish_path(@post.id), class: "btn btn-primary", confirm: "You want publish this Post?" %>
+              <%= button_to "Publish", blog_publish_path(@post), class: "btn btn-primary", confirm: "You want publish this Post?" %>
              </div>
             <% end %>
                 <div class="col-md-2">
@@ -59,8 +59,24 @@
       <p class="view-count">
         <%= @post.impressionist_count %> views.
       </p>
-      <div class="fb-share-button" data-href="http://helpalife.in/" data-layout="box_count">
-      </div>
+      <table >
+        <tr> <td colspan="4" >Share</td> </tr>
+        <tr><td>
+
+          <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fhelpalife.in%2Fblog%2Fposts%2F<%=blog_post_url @post %>" onclick="javascript:window.open(this.href,
+                  '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=550,width=500');return false;" style="margin-left: 5px;" >
+            <button class='zocial icon  facebook'></button></a>
+        </td><td>
+          <a href="http://www.linkedin.com/shareArticle?mini=true&url=<%= blog_post_url @post %> &title=<%= @post.title %>&summary=<%=  @post.title %>"onclick="javascript:window.open(this.href,
+                  '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=550,width=500');return false;"  style="margin-left: 5px;"><button class='zocial icon linkedin'></button></a>
+        </td>
+          <td>
+            <a href="http://plus.google.com/share?url=<%= blog_post_url @post %>" onclick="javascript:window.open(this.href,
+                    '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=550,width=500');return false;" style="margin-left: 5px;"><button class='zocial icon googleplus'></button></a>
+          </td><td>
+          <a href="http://twitter.com/intent/tweet?&url=<%= blog_post_url @post %> &text=<%= @post.title %> " onclick="javascript:window.open(this.href,
+                  '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=550,width=500');return false;"  style="margin-left: 5px;"><button class='zocial icon twitter'></button></a>
+        </td></tr></table>
       </br>
       </br>
     </div>

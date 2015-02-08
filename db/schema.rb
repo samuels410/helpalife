@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150129113209) do
+ActiveRecord::Schema.define(version: 20150207155107) do
 
   create_table "authentications", force: true do |t|
     t.integer  "user_id"
@@ -153,7 +153,10 @@ ActiveRecord::Schema.define(version: 20150129113209) do
     t.datetime "updated_at"
     t.integer  "user_id"
     t.boolean  "is_published", default: false
+    t.text     "slug"
   end
+
+  add_index "posts", ["slug"], name: "index_posts_on_slug", using: :btree
 
   create_table "referrals", force: true do |t|
     t.datetime "created_at"
@@ -204,6 +207,7 @@ ActiveRecord::Schema.define(version: 20150129113209) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
+    t.boolean  "can_receive_newsletter", default: true
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
