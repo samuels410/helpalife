@@ -7,11 +7,19 @@
 <!--</div>-->
 <div class="header">
   <div class="wrap">
+   
     <div class="logo">
-      <%= link_to image_tag('logo.png',:class =>"img img-circle",:style => "width: 75px;",:alt => "blood donors"),root_path %>
+      <%= link_to image_tag('logo.png',:class =>"img img-circle",
+        :style => "width: 75px;",:alt => "blood donors"),root_path %>
     </div>
+    
     <div class="h_right">
-      <h4> <span><small>Love All. Do Good. Live Well. Help A Life</small></span> - helpalife.in </h4>
+      <h4> 
+        <span>
+          <small>Love All. Do Good. Live Well. Help A Life</small>
+        </span> - helpalife.in 
+      </h4>
+      
       <!-- start nav-->
       <ul class="flexy-menu thick orange">
         <li class="active">
@@ -20,6 +28,7 @@
             <i class="icon3"></i>
           </a>
         </li>
+      
         <li>
           <a href="<%= needs_path %>">
             <span>Requirements</span>
@@ -30,13 +39,7 @@
             <span>Find Donors</span>
           </a>
         </li>
-        <!--<li>-->
-          <!--<a href="#">-->
-            <!--<span>Blog</span>-->
-            <!--<i class="icon3"></i>-->
-          <!--</a>-->
-
-        <!--</li>-->
+        
         <li>
           <a href="<%= about_path %>">
             <span>About</span>
@@ -50,34 +53,32 @@
             <li><a href="<%= contacts_path %>">Contact Us</a></li>
           </ul>
         </li>
-       <% if signed_in?  %>
-            <li>
-              <a href="#">
-                <span>
-                  <% if current_user.avatar_url.nil? %>
-                  <%= image_tag(current_user.avatar.url(:thumb),:class =>"img img-round",:style => "width: 30px;")%>
-              <% else  %>
-                  <%= image_tag(current_user.avatar_url,:class =>"img img-round",:style => "width: 30px;")%>
-              <% end  %>
-                  <%= current_user.name %></span>
-                <i class="icon2"></i>
-              </a>
-              <ul>
-                <li><a href="<%= edit_user_registration_path %>">Profile</a></li>
-                <li><a href="<%= destroy_user_session_path %>"  rel="nofollow">Sign out</a></li>
-              </ul>
-            </li>
-        <% else  %>
+        
+        <li> <%= link_to 'Organizations', organizations_path, :'data-no-turbolink' => true %> </li>
+        
+      <% if signed_in?  %>
+        <li>
+          <a href="#">
+            <span>
+              <%= camp_profile_url %> 
+              <%= current_user.name %>
+            </span>
+          
+            <i class="icon2"></i>
+          </a>
+          <ul>
+            <li> <%= link_to 'My Organizations', my_organizations_path, :'data-no-turbolink' => true %> </li>
+            <li> <%= link_to 'Profile', edit_user_registration_path %> </li>
+            <li> <%= link_to 'Sign out', destroy_user_session_path, rel: 'nofollow' %> </li>
+          </ul>
+        </li>
+      <% else  %>
         <li class="last">
           <a href="#" data-toggle="modal" data-target="#login">
             <span>Register / Login</span>
           </a>
         </li>
-
-        
-
-       <% end%>
-
+      <% end %>
       </ul>
     </div>
     <div class="clear"></div>

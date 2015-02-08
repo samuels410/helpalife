@@ -1,4 +1,6 @@
-  <%= simple_form_for(@organization, html: { multipart: true }) do |f| %>
+
+  <%= simple_form_for(@organization, 
+    html: { multipart: true, id: 'orga_form' } ) do |f| %>
      
     <div class="form-inputs">
       <%= f.label :name %>
@@ -16,6 +18,18 @@
         <%= f.label :description %>
         <%= f.text_area :description, placeholder: 'Provide a short description about your organization' %>
         <%= label_tag form_error(@organization, :description), nil,  class: 'v-error' %>
+    </div>
+
+    <div class="form-inputs">
+      <%= f.label :state_id %> 
+      <%= f.select :state_id, @state_names, { include_blank: 'Select a State' }, id: 'orga_state_list' %> 
+        <%= label_tag form_error(@organization, :state_id), nil,  class: 'v-error' %>
+    </div>
+
+    <div class="form-inputs">
+      <%= f.label :district_id %> 
+      <%= f.select :district_id, [], { include_blank: 'Select a District'}, id: 'orga_dist_list' %> 
+      <%= label_tag form_error(@organization, :district_id), nil,  class: 'v-error' %>
     </div>
 
     <div class="form-inputs">

@@ -1,4 +1,5 @@
 <style type="text/css">
+
   #orga_banner{
     background-image: url('<%= @organization.banner.url(:background) %>');
   }
@@ -6,6 +7,7 @@
 
 
 <div id="orga_banner">
+
  <div class='orga-element'>
    <strong> <%= @organization.name %> </strong>
  </div> 
@@ -16,7 +18,7 @@
   
   <div class='orga-element'>
     <strong> <%= @organization.description %> </strong>  
-  </div>
+  </div>  
   
 </div>
 
@@ -25,8 +27,11 @@
 </div>
 
 <div id="orga_people">
-   <!-- <strong> Sorry, No members joined yet. </strong> -->
-   <%= render 'members' %>
+  <%if @users.present? %> 
+    <%= render 'members' %> 
+  <% else %>
+   <h4> Sorry, No members joined yet. </h4>
+   <% end %> 
 </div>
 
 

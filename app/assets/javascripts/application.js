@@ -15,6 +15,7 @@
 //= require turbolinks
 //= require bootstrap
 //= require bootstrap-datepicker
+//= require bootstrap-filestyle
 //= require organization
 //= require_directory ./new_design
 
