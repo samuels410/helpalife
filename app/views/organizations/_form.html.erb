@@ -28,7 +28,7 @@
 
     <div class="form-inputs">
       <%= f.label :district_id %> 
-      <%= f.select :district_id, [], { include_blank: 'Select a District'}, id: 'orga_dist_list' %> 
+      <%= f.select :district_id, @district_names, { include_blank: 'Select a District'}, id: 'orga_dist_list' %>
       <%= label_tag form_error(@organization, :district_id), nil,  class: 'v-error' %>
     </div>
 

@@ -2,5 +2,5 @@
 if [ -e '.rvmrc_custom' ]; then
   source .rvmrc_custom;
 else
-  rvm --create use ruby-1.9.3@community;
+  rvm --create use ruby-2.1.2@community;
 fi
