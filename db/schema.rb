@@ -11,7 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150207155107) do
+ActiveRecord::Schema.define(version: 20150214131753) do
+
+  create_table "activities", force: true do |t|
+    t.text     "content"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "activities", ["user_id"], name: "index_activities_on_user_id", using: :btree
 
   create_table "authentications", force: true do |t|
     t.integer  "user_id"
@@ -136,7 +145,14 @@ ActiveRecord::Schema.define(version: 20150207155107) do
     t.string   "banner_content_type"
     t.integer  "banner_file_size"
     t.datetime "banner_updated_at"
+    t.integer  "state_id"
+    t.integer  "district_id"
+    t.integer  "user_id"
   end
+
+  add_index "organizations", ["district_id"], name: "index_organizations_on_district_id", using: :btree
+  add_index "organizations", ["state_id"], name: "index_organizations_on_state_id", using: :btree
+  add_index "organizations", ["user_id"], name: "index_organizations_on_user_id", using: :btree
 
   create_table "organizations_users", id: false, force: true do |t|
     t.integer "organization_id"
@@ -176,6 +192,14 @@ ActiveRecord::Schema.define(version: 20150207155107) do
 
   create_table "states", force: true do |t|
     t.text     "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "subscribers", force: true do |t|
+    t.string   "phone"
+    t.string   "workflow_state", default: "subscribed"
+    t.string   "subscribed_for"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

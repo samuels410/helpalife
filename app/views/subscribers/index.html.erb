@@ -1,0 +1,32 @@
+<% provide(:title, "Helalpife | ICC World Cup Free Live Update" ) %>
+<%set_meta_tags :og => {
+        :title    => "ICC 2015 India vs Pakistan Free Live Updates by Innings on mobile",
+        :type     => 'Non profit Blood donors organization',
+        :url      => live_update_url,
+        :image    => image_url('icc.jpg'),
+        :description => "ICC 2015 India vs Pakistan Get Free Live Updates by Innings on mobile by instant SMS"
+} %>
+
+<div class="container" style="margin-bottom: 20%;">
+  <h3 style="text-align: center;">ICC 2015 India vs Pakistan Free Live Innings by Innings Update on mobile</h3>
+  <br/>
+
+
+<%= form_for @subscriber ,html: {style: "padding: 3%;background: white;
+"} do |f| %>
+
+      <h4>Enter mobile number to get updates.</h4>
+
+      <%= render 'shared/error_messages', object: f.object %>
+      <%= display_base_errors @subscriber %>
+    <div class="form-group">
+      <%= f.phone_field :phone, class: 'form-control', required: true ,placeholder: "Eg: 9876543210"%>
+    </div>
+
+    <%= f.submit 'Subscribe', class: 'btn btn-success' %>
+      <br/>
+      <small>Unsubscribe any time.</small>
+
+<% end %>
+
+</div>

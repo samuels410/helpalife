@@ -1,4 +1,8 @@
 Community::Application.routes.draw do
+  resources :subscribers
+
+  match 'icc-world-cup-live-update' ,to:'subscribers#index', via: [:get] ,as: :live_update
+
   resources :notifications
 
   namespace :blog do
