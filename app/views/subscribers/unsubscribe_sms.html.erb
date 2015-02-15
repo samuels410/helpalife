@@ -8,22 +8,20 @@
 } %>
 
 <div class="container" style="margin-bottom: 20%;">
-  <h3 style="text-align: center;">ICC 2015 India vs Pakistan Free Live Innings by Innings Update on mobile</h3>
+  <h3 style="text-align: center;">ICC 2015 India vs Pakistan Free Live </h3>
   <br/>
 
 
-  <%= form_for url: subscription_message_subscribers_path ,html: {style: "padding: 3%;background: white;
-"} do |f| %>
+  <%= form_for @subscriber ,url: unsubscribe_subscribers_path ,html: {style: "padding: 3%;background: white;"} do |f| %>
 
-      <h4>Enter message to send to updates.</h4>
+      <h4>Enter mobile number to unsubscribe(Once unsubscribe cannot subscribe again.).</h4>
 
-      <%= render 'shared/error_messages', object: f.object %>
       <%= display_base_errors @subscriber %>
       <div class="form-group">
-        <%= f.text_area :subscription_message, class: 'form-control', required: true%>
+        <%= f.phone_field :phone, class: 'form-control', required: true ,placeholder: "Eg: 9876543210"%>
       </div>
 
-      <%= f.submit 'Send sms', class: 'btn btn-success' %>
+      <%= f.submit 'UnSubscribe', class: 'btn ' %>
       <br/>
 
   <% end %>

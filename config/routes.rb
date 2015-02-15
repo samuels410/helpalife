@@ -2,6 +2,8 @@ Community::Application.routes.draw do
   resources :subscribers do
     collection do
       post 'subscription_message'
+      post 'unsubscribe'
+      get 'unsubscribe_sms'
     end
   end
 

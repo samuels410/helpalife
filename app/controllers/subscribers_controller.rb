@@ -43,6 +43,22 @@ class SubscribersController < ApplicationController
     redirect_to new_subscriber_path
   end
 
+  def unsubscribe_sms
+    @subscriber = Subscriber.new
+  end
+
+  def unsubscribe
+    @subscriber = Subscriber.find_by_phone(params[:subscriber][:phone])
+    if @subscriber
+      @subscriber.workflow_state="unsubscribe"
+      @subscriber.save
+      flash[:info] = "You have successfully unsubscribed"
+    else
+      flash[:info] = "No subscriber found"
+    end
+    redirect_to root_url
+  end
+
   private
   # Never trust parameters from the scary internet, only allow the white list through.
   def permitted_params
