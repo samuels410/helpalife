@@ -1,5 +1,9 @@
 Community::Application.routes.draw do
-  resources :subscribers
+  resources :subscribers do
+    collection do
+      post 'subscription_message'
+    end
+  end
 
   match 'icc-world-cup-live-update' ,to:'subscribers#index', via: [:get] ,as: :live_update
 

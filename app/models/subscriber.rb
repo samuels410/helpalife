@@ -5,4 +5,8 @@ class Subscriber < ActiveRecord::Base
 
   validates :phone, uniqueness: {message: "Already subscribed"}
 
+  cattr_accessor :message
+
+  scope :subscribed, where('workflow_state = ?', 'subscribed')
+
 end

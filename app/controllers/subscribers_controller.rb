@@ -21,10 +21,32 @@ class SubscribersController < ApplicationController
     end
   end
 
+  def new
+   if signed_in? & current_user.has_role?(:admin)
+     @subscriber = Subscriber.new
+   else
+     flash[:error] = "Access denied"
+     redirect_to root_url
+   end
+  end
+
+  def subscription_message
+    @subscribers = Subscriber.subscribed
+    phone_nos = @subscribers.collect(&:phone)
+    msg = params[:subscriber][:message]
+    msg += "Sponsored by http://helpalife.in"
+    phone_nos.each_slice(100) do |hundred_user_phones|
+      Notifier.delay.send_sms_to_gateway(hundred_user_phones.join(","),msg)
+      logger.info("Assigning:#{hundred_user_phones.join(",")} sms")
+    end
+    flash[:info] ="SMS sent to #{@subscribers.size} subscribers"
+    redirect_to new_subscriber_path
+  end
+
   private
   # Never trust parameters from the scary internet, only allow the white list through.
   def permitted_params
-    params.require(:subscriber).permit(:phone)
+    params.require(:subscriber).permit(:phone,:message)
   end
 
 
