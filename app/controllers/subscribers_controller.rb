@@ -9,12 +9,12 @@ class SubscribersController < ApplicationController
     unless @subscriber.phone.is_a? Numeric
       @subscriber.errors.add(:base, "Only ten digit phone number only accepted")
     end
-    @subscriber.subscribed_for ="2015 ICC India Vs Pakistan"
+    @subscriber.subscribed_for ="2015 ICC World Cup"
     @subscriber.phone.to_s
     if @subscriber.save
       msg = "You have subscribed to receive #{@subscriber.subscribed_for} Live Free update. Visit http://helpalife.in for Post Blood Request and get donors details."
       Notifier.delay.send_sms_to_gateway(@subscriber.phone,msg)
-      flash[:info] = 'You have successfully subscribed to receive ICC 2015 India vs Pakistan Free Live Update.'
+      flash[:info] = 'You have successfully subscribed to receive 2015 ICC World Cup Free Live Update.'
       redirect_to root_url
     else
       render 'index'
