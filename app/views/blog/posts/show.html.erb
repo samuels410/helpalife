@@ -4,7 +4,7 @@
         :type     => "website",
         :url      => blog_post_path(@post),
         :image    => image_url('logo.png'),
-        :description => @post.text
+        :description => @post.text.html_safe
 }
    set_meta_tags :title => @post.title
    set_meta_tags :description => @post.text
