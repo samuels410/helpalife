@@ -92,7 +92,7 @@ class OrganizationsController < ApplicationController
   end
   
   def prepare_other_organization
-    @other_organizations = Organization.limit(3).order('created_at desc')
+    @other_organizations = Organization.limit(6).order('created_at desc')
   end
 
   def use_join_link?

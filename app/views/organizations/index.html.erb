@@ -1,17 +1,50 @@
-<%= link_to 'Add a new Organization', new_organization_path %> 
+<div style="height: 261px;
+        background-image: url('http://www.cjinstitute.com/sites/default/files/styles/slideshow/public/sites/default/files/slideshow/bigstock-Global-Network-Of-People-4119205_0.jpg?itok=J70Noh6z');
+        margin-bottom: 10px;">
+  <div class="imagery_overlay" style="height: 261px;color: #fff;">
+   <div style="padding-top: 150px;padding-left: 20px">
+     <div class="row">
+       <div class="col-xs-12 col-md-8">
+         <blockquote>
+           <h1 style="font-weight: bold">Organizations joined with us</h1>
+         </blockquote>
+       </div>
+       <div class="col-xs-6 col-md-4">
 
-<div id="orga_list">
-  <h1> <%= organization_headline %> </h1>
+           <h1 style="font-weight: bold">Share this,</h1>
+         <div class="col-xs-12" >
+           <a href="<%= "#{Settings.twitter_url}" %>"  target="_blank" title="Twitter">
+             <button class='zocial icon twitter'></button>
+           </a>
 
+           <a href="<%= "#{Settings.youtube_url}" %>"  target="_blank"  title="Youtube">
+             <button class='zocial icon youtube'></button>
+           </a>
+
+           <a href="<%= "#{Settings.facebook_url}" %>"  target="_blank"  title="Facebook">
+             <button class='zocial icon  facebook'></button>
+           </a>
+
+           <a href="<%= "#{Settings.google_plus_url}" %>"   target="_blank" title="Google Plus">
+             <button class='zocial icon googleplus'></button>
+           </a>
+
+           <a href="<%= "#{Settings.linked_in_url}" %>"  target="_blank" title="LinkedIn">
+             <button class='zocial icon linkedin'></button>
+           </a>
+         </div>
+       </div>
+     </div>
+
+   </div>
+  </div>
+
+</div>
+<clear></clear>
+<div class="container" id="orga_list">
+<div class="row">
   <% @organizations.each do |organization|  %>
-    <div class="col-md-3 col-md-offset-1 ind-org" 
-      style="background-image: url('<%= organization.banner.url(:background)%>')">
-
-      <h4> <%= organization.name %>  </h4> 
-      <h5> <%= organization.address %>  </h5>
-        <%= hidden_field_tag :org_id, organization.id %> 
-    </div>
-  
+      <%= render organization , is_for_index: true %>
   <% end %>
-
+</div>
 </div> 

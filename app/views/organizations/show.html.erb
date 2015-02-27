@@ -36,5 +36,8 @@
 
 
 <div id="other_org">
-  <%= render 'other_organizations' %> 
+  <h4> Other Organizations </h4>
+  <% @other_organizations.where.not(id: @organization.id).each do |organization| %>
+    <%= render organization,is_for_index: false %>
+  <% end  %>
 </div>

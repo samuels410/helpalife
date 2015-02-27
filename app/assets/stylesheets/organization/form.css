@@ -140,11 +140,8 @@ div.member-dash div.media-body {
 
 .ind-org{
   min-height: 120px;
-  margin-left: 6%;
-  border-radius: 6px;
   font-weight: bold;
   color: #FFFFFF;
-  margin: 1% 4%;
 }
 
 .ind-org h4{
@@ -184,4 +181,14 @@ div.member-dash div.media-body {
 
 .blood-show{
   display: block;
+}
+
+.org-box{
+    min-height: 224px;
+    background: #f4f4f4;
+    color: #9a9a9a;
+}
+
+.imagery_overlay {
+    background-color: rgba(0,0,0,.3);
 }
