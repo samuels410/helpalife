@@ -1,13 +1,12 @@
 class OrganizationsController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :show, :display]
+  before_action :authenticate_user!, except: [:index, :show, :display, :join]
   before_action :set_organization, only: [:show, :edit, :update, :destroy, :join, :remove]
   before_action :prepare_other_organization, only: [:show, :display, :join, :remove]
   before_action :prepare_state_district, only: [:new, :create, :edit, :update]
-  
+
   def join
-    org = Organization.where(id: params['id']).first 
-    if org.present? 
-      current_user.organizations << org
+    if join_organization?   #org.present?
+      current_user.organizations << @org
       @join_link = use_join_link?
       respond_to do |format|
         format.js
@@ -16,8 +15,8 @@ class OrganizationsController < ApplicationController
   end
 
   def remove
-    org = Organization.where(id: params['id']).first 
-    if org.present? 
+    org = Organization.where(id: params['id']).first
+    if org.present?
       current_user.organizations.delete(org)
       @join_link = use_join_link?
       respond_to do |format|
@@ -59,9 +58,9 @@ class OrganizationsController < ApplicationController
   def create
     @organization = Organization.new(organization_params)
     @organization.assign_attributes(user_id: current_user.id)
-    current_user.organizations << @organization 
+    current_user.organizations << @organization
     current_user.created_organization(@organization)
-  
+
     if @organization.valid?
       current_user.save!
       flash[:success] = "Congratulations! You just created a new Organization."
@@ -76,7 +75,7 @@ class OrganizationsController < ApplicationController
         current_user.updated_organization(@organization)
        redirect_to @organization
      else
-      render action: :edit 
+      render action: :edit
     end
   end
 
@@ -86,11 +85,16 @@ class OrganizationsController < ApplicationController
   end
 
   private
+  def join_organization?
+    @org = Organization.where(id: params['id']).first
+    current_user.present? && @org.present?
+  end
+
   def prepare_state_district
     @state_names ||= State.name_list
-    @district_names ||= District.name_list 
+    @district_names ||= District.name_list
   end
-  
+
   def prepare_other_organization
     @other_organizations = Organization.limit(6).order('created_at desc')
   end
@@ -100,14 +104,14 @@ class OrganizationsController < ApplicationController
   end
 
   def set_organization
-    @organization = Organization.where(id: params[:id]).first 
+    @organization = Organization.where(id: params[:id]).first
     redirect_to organizations_url if @organization.blank?
   end
 
   #Never trust parameters from the scary internet, only allow the white list through.
   def organization_params
-    params.require(:organization).permit(:name, :address, :state_id, 
+    params.require(:organization).permit(:name, :address, :state_id,
       :district_id, :description, :banner, :user_id)
   end
-  
+
 end

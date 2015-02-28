@@ -7,19 +7,19 @@
 <!--</div>-->
 <div class="header">
   <div class="wrap">
-   
+
     <div class="logo">
       <%= link_to image_tag('logo.png',:class =>"img img-circle",
         :style => "width: 75px;",:alt => "blood donors"),root_path %>
     </div>
-    
+
     <div class="h_right">
-      <h4> 
+      <h4>
         <span>
           <small>Love All. Do Good. Live Well. Help A Life</small>
-        </span> - helpalife.in 
+        </span> - helpalife.in
       </h4>
-      
+
       <!-- start nav-->
       <ul class="flexy-menu thick orange">
         <li class="active">
@@ -28,7 +28,7 @@
             <i class="icon3"></i>
           </a>
         </li>
-      
+
         <li>
           <a href="<%= needs_path %>">
             <span>Requirements</span>
@@ -39,7 +39,7 @@
             <span>Find Donors</span>
           </a>
         </li>
-        
+
         <li>
           <a href="<%= about_path %>">
             <span>About</span>
@@ -53,17 +53,17 @@
             <li><a href="<%= contacts_path %>">Contact Us</a></li>
           </ul>
         </li>
-        
+
         <li> <%= link_to 'Organizations', organizations_path, :'data-no-turbolink' => true %> </li>
-        
+
       <% if signed_in?  %>
         <li>
           <a href="#">
             <span>
-              <%= camp_profile_url %> 
+              <%= camp_profile_url %>
               <%= current_user.name %>
             </span>
-          
+
             <i class="icon2"></i>
           </a>
           <ul>
@@ -74,7 +74,7 @@
         </li>
       <% else  %>
         <li class="last">
-          <a href="#" data-toggle="modal" data-target="#login">
+          <a href="#" data-toggle="modal" data-target="#login" id='register_option'>
             <span>Register / Login</span>
           </a>
         </li>
