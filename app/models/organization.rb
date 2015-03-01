@@ -17,8 +17,11 @@ class Organization < ActiveRecord::Base
   validates_length_of :name, 
     maximum: 50, too_long: "Maximum 50 characters allowed."
 
-  validates_length_of :address, :description, 
+  validates_length_of  :description,
     maximum: 300, too_long: "Maximum 300 characters allowed."
+
+  validates_length_of :address,
+                      maximum: 100, too_long: "Maximum 100 characters allowed."
 
   has_attached_file :banner, styles: { background: '1500X800>',thumb: '338x120#'}
 

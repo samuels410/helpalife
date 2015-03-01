@@ -2,23 +2,43 @@
 
   #orga_banner{
     background-image: url('<%= @organization.banner.url(:background) %>');
+      background-size: 100% 100%;
   }
 </style>
 
 
 <div id="orga_banner">
+  <div class="imagery_overlay" style="height: 374px;color: #fff;">
+    <div>
+      <div class="row">
+        <div class="col-xs-12 col-md-8">
+            <h1 style="font-weight: bold;text-align: center;margin-left: 20px;"><%= @organization.name.titlecase %></h1>
+        </div>
+        <div class="col-xs-6 col-md-4">
 
- <div class='orga-element'>
-   <strong> <%= @organization.name %> </strong>
- </div> 
+          <h1 style="font-weight: bold">Share this,</h1>
+          <div class="col-xs-12" >
+            <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fhelpalife.in%2Forganizations" onclick="javascript:window.open(this.href,
+                    '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=550,width=500');return false;" style="margin-left: 5px;" >
+              <button class='zocial icon  facebook'></button></a>
+            <a href="http://www.linkedin.com/shareArticle?mini=true&url=<%= organization_path(@organization) %> &title=Helpalife Organizations  &summary=Organizations joined to help a life by donate blood"onclick="javascript:window.open(this.href,
+                    '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=550,width=500');return false;"  style="margin-left: 5px;"><button class='zocial icon linkedin'></button></a>
+            <a href="http://plus.google.com/share?url=<%= organization_path(@organization) %>" onclick="javascript:window.open(this.href,
+                    '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=550,width=500');return false;" style="margin-left: 5px;"><button class='zocial icon googleplus'></button></a>
+            <a href="http://twitter.com/intent/tweet?&url=<%= organization_path(@organization) %> &text=Checkout the organizations joined to help a life by donate blood " onclick="javascript:window.open(this.href,
+                    '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=550,width=500');return false;"  style="margin-left: 5px;"><button class='zocial icon twitter'></button></a>
+          </div>
+        </div>
+          <div class="col-xs-12 col-md-6" style="text-align: left;margin-left: 20px;">
+            <h3 style="opacity: .9;">About:</h3>
+            <h4 style="float: left;margin-left: 20px"><%= @organization.description %></h4>
+            <h3 style="opacity: .9;">Address:</h3>
+            <h4 style="float: left;margin-left: 20px"><%= @organization.address %></h4>
+          </div>
+        </div>
 
-  <div class='orga-element'>
-    <strong> <%= @organization.address %> </strong> 
+    </div>
   </div>
-  
-  <div class='orga-element'>
-    <strong> <%= @organization.description %> </strong>  
-  </div>  
   
 </div>
 
