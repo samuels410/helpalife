@@ -27,7 +27,7 @@
 }
 
 #orga_form div.form-actions input{
-  font-weight: bold; 
+  font-weight: bold;
 }
 
 #orga_form div {
@@ -35,7 +35,7 @@
 }
 #new_organization div.form-actions {
   text-align: center;
-  padding: 10px 2px; 
+  padding: 10px 2px;
 }
 
 
@@ -184,11 +184,23 @@ div.member-dash div.media-body {
 }
 
 .org-box{
-    min-height: 224px;
-    background: #f4f4f4;
-    color: #9a9a9a;
+  min-height: 224px;
+  background: #f4f4f4;
+  color: #9a9a9a;
 }
 
 .imagery_overlay {
-    background-color: rgba(0,0,0,.3);
+  background-color: rgba(0,0,0,.3);
+}
+
+
+#blood_group {
+  padding: 0% 1%;
+}
+
+#blood_group a {
+  background-color: #494949;
+  color: #FFFFFF;
+  padding: 5px 10px;
+  border-radius: 5px;
 }

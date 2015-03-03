@@ -22,7 +22,10 @@
 </div>
 
 <div id="blood_group">
-  <%= render partial: 'b_groups', locals: { b_groups: @b_groups } %>
+  <%#= render 'organizations/blood_group' %>
+  <% @groups.each do |blood| %>
+   <%= link_to blood, 'javascript:void(0)' %>
+   <% end %>
 </div>
 
 <div id = "join_orga">
@@ -33,7 +36,7 @@
   <%if @users.present? %>
     <%= render 'members' %>
   <% else %>
-   <h4> Sorry, No members here. </h4>
+   <h4> Sorry, No members joined yet. </h4>
    <% end %>
 </div>
 

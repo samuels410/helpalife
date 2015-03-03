@@ -1,5 +1,5 @@
 class OrganizationsController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :show, :display, :join]
+  before_action :authenticate_user!, except: [:index, :show, :display, :join, :filter]
   before_action :set_organization, only: [:show, :edit, :update, :destroy, :join, :remove]
   before_action :prepare_other_organization, only: [:show, :display, :join, :remove]
   before_action :prepare_state_district, only: [:new, :create, :edit, :update]
@@ -35,8 +35,19 @@ class OrganizationsController < ApplicationController
   end
 
   def show
-    @users = @organization.conected_users
+    @users = @organization.users.order(:name)
     @join_link = use_join_link?
+    @b_groups = @users.map(&:blood_group).uniq.unshift 'All'
+  end
+
+  # filters the organizations users based on selected blood type.
+  def filter
+    organization = Organization.where(id: params['organization_id']).first
+    @users = organization.filtered_by_blood_group(blood_type)
+
+    respond_to do |format|
+      format.js
+     end
   end
 
   def display
@@ -85,6 +96,10 @@ class OrganizationsController < ApplicationController
   end
 
   private
+  def blood_type
+    params['type'].strip
+  end
+
   def join_organization?
     @org = Organization.where(id: params['id']).first
     current_user.present? && @org.present?
