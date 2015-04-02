@@ -19,11 +19,11 @@ class User < ActiveRecord::Base
   has_and_belongs_to_many :organizations 
   
   # holds the organizations those are just created by the pearticular . 
-  has_many :my_organizations, class_name: 'Organization', foreign_key: 'user_id' 
+  has_many :my_organizations, class_name: 'Organization', foreign_key: 'user_id'
+  scope :email_notification_enabled, -> { where(can_send_email: true) }
+  scope :sms_notification_enabled, -> { where(can_send_sms: true) }
+  scope :phone_not_empty, -> { where.not(phone_no: nil) }
 
-  scope :email_notification_enabled, where('can_send_email = ?', true)
-  scope :sms_notification_enabled, where('can_send_sms = ?', true)
-  scope :phone_not_empty, where.not('phone_no' => nil)
 
   #validates_attachment :avatar,
   #                     :content_type => { :content_type => ["image/jpeg","image/jpg", "image/gif", "image/png"] },
