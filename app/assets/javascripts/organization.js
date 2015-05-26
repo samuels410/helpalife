@@ -16,7 +16,10 @@ $(document).on('ready', function(){
     if(selected_state != '') {
       populateDistrictList(selected_state);
     }
+  });
 
+  $('#blood_group').on('click', 'a', function(){
+    App.blockUI($('#orga_people'));
   });
 
 });
@@ -28,7 +31,7 @@ $(document).on('ready', function(){
       data: { id: state_id },
       type: 'get',
       success: function(result){
-        
+
         if(result['key'] == 'success'){
           console.log(result);
           insertDistrictList(result['data']);

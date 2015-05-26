@@ -1,16 +1,17 @@
 Community::Application.routes.draw do
-  
+
   resources :organizations do
     collection do
       get :my_organization, as: 'my'
-      get :display 
+      get :display
       post :join
       post :remove
+      get :filter
     end
   end
 
-  resources :states, only: [] do 
-    collection do 
+  resources :states, only: [] do
+    collection do
       get :get_districts
     end
   end
@@ -40,9 +41,9 @@ end
 
 
 
-=begin 
+=begin
 Unique organization name,
 organizations profile picture,
 complete address,
 a 255 char description.
-=end  
+=end

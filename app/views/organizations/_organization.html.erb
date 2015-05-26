@@ -1,7 +1,7 @@
 <a href="<%= organization_path(organization) %>">
-<div class="<%= is_for_index ? 'col-md-3 ' : 'col-md-12 '%> col-md-offset-1 thumbnail org-box">
+<div class="<%= is_for_index ? 'col-md-3  col-md-offset-1' : ''%>  thumbnail org-box">
   <div class="ind-org"
-       style="background-image: url('<%= organization.banner.url(:thumb)%>')">
+       style="background-image: url('<%= organization.banner.url(:thumb)%>');background-repeat: no-repeat">
     <%= hidden_field_tag :org_id, organization.id %>
   </div>
   <div class="org-details">

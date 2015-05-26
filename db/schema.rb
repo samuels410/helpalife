@@ -11,7 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150207122244) do
+ActiveRecord::Schema.define(version: 20150526110809) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "activities", force: true do |t|
     t.text     "content"
@@ -123,6 +126,8 @@ ActiveRecord::Schema.define(version: 20150207122244) do
     t.integer  "state_id"
     t.integer  "district_id"
     t.integer  "user_id"
+    t.text     "perma_link"
+    t.text     "slug"
   end
 
   add_index "organizations", ["district_id"], name: "index_organizations_on_district_id", using: :btree

@@ -1,3 +1,11 @@
+<% provide(:title, "#{@organization.name}" ) %>
+<%set_meta_tags :og => {
+                        :title    => "Join #{@organization.name} ,to become a blood donor!",
+                        :type     => 'Non profit Blood donors organization',
+                        :url      => organization_path(@organization),
+                        :image    => @organization.banner.url(:background),
+                        :description => @organization.description
+                } %>
 <style type="text/css">
 
   #orga_banner{
@@ -39,25 +47,48 @@
 
     </div>
   </div>
-  
 </div>
 
-<div id = "join_orga">
- <%= render 'join_organization' %> 
+<div class="row">
+  <div class="col-xs-8">
+    <div id="blood_group">
+     Filter Donors :
+      <%= render partial: 'b_groups', locals: { b_groups: @b_groups } %>
+    </div>
+  </div>
+
+  <span id='org_notice' class='blood-hide'> </span>
+
+  <div class="col-xs-4">
+    <div id = "join_orga">
+      <%= render 'join_organization' %>
+    </div>
+  </div>
 </div>
 
-<div id="orga_people">
-  <%if @users.present? %> 
-    <%= render 'members' %> 
-  <% else %>
-   <h4> Sorry, No members joined yet. </h4>
-   <% end %> 
+
+<div class="row">
+  <div class="col-xs-9">
+    <div id="orga_people">
+      <%if @users.present? %>
+        <h4> Organization members </h4>
+        <%= render ('home/recent_users') %>
+      <% else %>
+        <h4> Sorry, No members here. </h4>
+      <% end %>
+    </div>
+  </div>
+  <div class="col-xs-3">
+    <div id="other_org">
+      <h4> Similar Organizations </h4>
+      <% @other_organizations.where.not(id: @organization.id).each do |organization| %>
+        <%= render organization,is_for_index: false %>
+      <% end  %>
+    </div>
+  </div>
 </div>
 
 
-<div id="other_org">
-  <h4> Other Organizations </h4>
-  <% @other_organizations.where.not(id: @organization.id).each do |organization| %>
-    <%= render organization,is_for_index: false %>
-  <% end  %>
-</div>
+
+
+

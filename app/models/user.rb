@@ -23,6 +23,7 @@ class User < ActiveRecord::Base
   scope :email_notification_enabled, -> { where(can_send_email: true) }
   scope :sms_notification_enabled, -> { where(can_send_sms: true) }
   scope :phone_not_empty, -> { where.not(phone_no: nil) }
+  scope :with_blood, ->(type) { where(users: {blood_group: type}) }
 
 
   #validates_attachment :avatar,
@@ -71,17 +72,17 @@ class User < ActiveRecord::Base
   end
 
   # Following method will dump dummy users to table.
-  #use it just for testing purpose in development environment. 
+  #use it just for testing purpose in development environment.
   def self.load!(count = 1)
-    
-    count.times do 
+
+    count.times do
       User.create! user_params
     end
 
   end
 
   # Following method will prepare dummy params for creating users.
-  def self.user_params 
+  def self.user_params
     phone_number = "9668" + (100000..999999).to_a.sample.to_s
     common_password = 'blood_bank'
     state = State.all.sample
@@ -89,15 +90,15 @@ class User < ActiveRecord::Base
     district_id = state.districts.sample
     blood_group = BLOOD_GROUPS.sample
     name = Faker::Name.first_name
-    email = Faker::Internet.email 
-    
-    user_params = { 
+    email = Faker::Internet.email
+
+    user_params = {
       name: name,
       email: email,
-      password: common_password, 
+      password: common_password,
       password_confirmation: common_password,
       state_id: state.id,
-      blood_group: blood_group, 
+      blood_group: blood_group,
       district_id: district.id,
       phone_no: phone_number
     }

@@ -15,7 +15,6 @@ class Notifier < ActiveRecord::Base
       resp, data = http.post(path, data, headers)
     rescue => e
       logger.error "error while sending sms"
-      ignored
     end
   end
 

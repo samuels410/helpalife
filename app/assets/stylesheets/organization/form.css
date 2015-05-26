@@ -27,7 +27,7 @@
 }
 
 #orga_form div.form-actions input{
-  font-weight: bold; 
+  font-weight: bold;
 }
 
 #orga_form div {
@@ -35,7 +35,7 @@
 }
 #new_organization div.form-actions {
   text-align: center;
-  padding: 10px 2px; 
+  padding: 10px 2px;
 }
 
 
@@ -71,15 +71,12 @@
 }
 
 #orga_people{
-  min-height: 500px;
-  width: 76%;
-  /*border: 2px solid red;*/
+
   display: inline-block;
   float: left;
 }
 
 #other_org {
-  width: 22%;
   /*border: 2px solid green;*/
   min-height: 500px;
   display: inline-block;
@@ -90,7 +87,6 @@
   font-weight: bold;
   text-align: center;
   text-transform: capitalize;
-  font-family: 'Monaco'
 }
 
 .member-dash {
@@ -119,7 +115,7 @@ div.member-dash div.media-body {
   float: right;
   font-size: 1.3em;
   font-weight: bold;
-  margin-right: 10px;
+  margin-right: 11%;
   margin-top: 5px;
   padding: 10px;
 }
@@ -184,11 +180,23 @@ div.member-dash div.media-body {
 }
 
 .org-box{
-    min-height: 224px;
-    background: #f4f4f4;
-    color: #9a9a9a;
+  min-height: 224px;
+  background: #f4f4f4;
+  color: #9a9a9a;
 }
 
 .imagery_overlay {
-    background-color: rgba(0,0,0,.3);
+  background-color: rgba(0,0,0,.3);
+}
+
+
+#blood_group {
+  padding: 1% 1%;
+}
+
+#blood_group a {
+  background-color: darkred;
+  color: #FFFFFF;
+  padding: 5px 10px;
+  border-radius: 5px;
 }
