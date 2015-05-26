@@ -42,7 +42,7 @@ class OrganizationsController < ApplicationController
 
   # filters the organizations users based on selected blood type.
   def filter
-    organization = Organization.where(id: params['organization_id']).first
+    organization = Organization.find(params['organization_id'])
     @users = organization.filtered_by_blood_group(blood_type)
 
     respond_to do |format|
@@ -51,7 +51,7 @@ class OrganizationsController < ApplicationController
   end
 
   def display
-    @organization = Organization.where(id: params["id"]).first
+    @organization = Organization.find(params["id"])
     @join_link = use_join_link?
 
     respond_to do |format|
