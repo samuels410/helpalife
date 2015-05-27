@@ -1,0 +1,12 @@
+// if the user is not logged in then show the register modal form.
+<% if current_user.blank? %>
+  $('#register_option').click();
+<% end %>
+
+// if user is logged in & going to join the organization.
+<% if(current_user.present? && current_user.save!) %>
+  $("#join_orga").html("<%= escape_javascript( render(:partial => "join_organization")) %>");
+  $('#org_notice').text("You have successfully joined the Organization.");
+  $('#org_notice').removeClass();
+  $('#org_notice').addClass('.blood-show');
+<% end %>

@@ -4,7 +4,7 @@ FactoryGirl.define do
   factory :user do |u|
     name                      "test"
     blood_group               "A1"
-    phone_no                  "0404040404"
+    phone_no                  "9876543210"
     u.sequence(:email)        { |n| "test#{n}@email.com" }
     password                  "**********"
     state

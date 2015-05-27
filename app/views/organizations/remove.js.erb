@@ -1,0 +1,7 @@
+<% if current_user.save! %>
+  $("#join_orga").html("<%= escape_javascript( render(partial:  'join_organization')) %>");
+  $('#org_notice').text("You have been successfully  removed from the Organization.");
+  $('#org_notice').removeClass();
+  $('#org_notice').addClass('blood-show');
+  $('#org_notice').addClass('success');
+<% end %> 

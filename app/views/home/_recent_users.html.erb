@@ -1,7 +1,8 @@
 <% users.each_with_index do |user, idx|  %>
     <% unless user.nil? %>
         <div class="col-md-4"  >
-          <div class="media" style= "background-color: #3b494c;color: white;margin-bottom: 5px;padding: 11px;">
+          <div class="media" style= "background-color: #3b494c;color: white;margin-bottom: 5px;padding: 11px;
+                  min-height: 125px;">
             <a class="pull-left" href="#">
               <% if user.avatar_url.nil? %>
                   <%= image_tag(user.avatar.url(:thumb),:class =>"img img-circle  img-responsive media-object",:size => "60")%>

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Blog::PostController, :type => :controller do
+RSpec.describe Blog::PostsController, :type => :controller do
 
   describe "GET index" do
     it "returns http success" do

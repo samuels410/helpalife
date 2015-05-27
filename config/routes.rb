@@ -1,4 +1,5 @@
 Community::Application.routes.draw do
+
   resources :subscribers do
     collection do
       post 'subscription_message'
@@ -8,6 +9,24 @@ Community::Application.routes.draw do
   end
 
   match 'icc-world-cup-live-update' ,to:'subscribers#index', via: [:get] ,as: :live_update
+
+  resources :organizations do
+    collection do
+      get :my_organization, as: 'my'
+      get :display
+      post :join
+      post :remove
+      get :filter
+    end
+  end
+
+  resources :states, only: [] do
+    collection do
+      get :get_districts
+    end
+  end
+
+  resources :dashboards, only: :index
 
   resources :notifications
 
@@ -40,3 +59,13 @@ Community::Application.routes.draw do
   match 'vision' ,to:'home#vision', via: [:get]
   resources :contacts
 end
+
+
+
+
+=begin
+Unique organization name,
+organizations profile picture,
+complete address,
+a 255 char description.
+=end

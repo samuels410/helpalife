@@ -42,7 +42,7 @@ class Blog::PostsController < ApplicationController
   end
 
   def show
-    @post = Post.published.find params[:id]
+    @post = Post.find(params[:id])
     impressionist(@post)
   end
 

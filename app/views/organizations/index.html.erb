@@ -1,0 +1,48 @@
+<% provide(:title, "Helplife Organizations" ) %>
+<%set_meta_tags :og => {
+        :title    => "Organizations joined to help a life by donate blood",
+        :type     => 'Non profit Blood donors organization',
+        :url      => organizations_path,
+        :image    => 'http://www.cjinstitute.com/sites/default/files/styles/slideshow/public/sites/default/files/slideshow/bigstock-Global-Network-Of-People-4119205_0.jpg?itok=J70Noh6z',
+        :description => "Organizations joined to help a life by donate blood"
+} %>
+<div style="height: 261px;
+        background-image: url('http://www.cjinstitute.com/sites/default/files/styles/slideshow/public/sites/default/files/slideshow/bigstock-Global-Network-Of-People-4119205_0.jpg?itok=J70Noh6z');
+        margin-bottom: 10px;">
+  <div class="imagery_overlay" style="height: 261px;color: #fff;">
+   <div style="padding-top: 150px;padding-left: 20px">
+     <div class="row">
+       <div class="col-xs-12 col-md-8">
+         <blockquote>
+           <h1 style="font-weight: bold">Organizations joined with us</h1>
+         </blockquote>
+       </div>
+       <div class="col-xs-6 col-md-4">
+
+           <h1 style="font-weight: bold">Share this,</h1>
+         <div class="col-xs-12" >
+           <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fhelpalife.in%2Forganizations" onclick="javascript:window.open(this.href,
+                   '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=550,width=500');return false;" style="margin-left: 5px;" >
+             <button class='zocial icon  facebook'></button></a>
+           <a href="http://www.linkedin.com/shareArticle?mini=true&url=<%= organizations_path %> &title=Helpalife Organizations  &summary=Organizations joined to help a life by donate blood"onclick="javascript:window.open(this.href,
+                   '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=550,width=500');return false;"  style="margin-left: 5px;"><button class='zocial icon linkedin'></button></a>
+           <a href="http://plus.google.com/share?url=<%= organizations_path %>" onclick="javascript:window.open(this.href,
+                   '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=550,width=500');return false;" style="margin-left: 5px;"><button class='zocial icon googleplus'></button></a>
+           <a href="http://twitter.com/intent/tweet?&url=<%= organizations_path %> &text=Checkout the organizations joined to help a life by donate blood " onclick="javascript:window.open(this.href,
+                   '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=550,width=500');return false;"  style="margin-left: 5px;"><button class='zocial icon twitter'></button></a>
+         </div>
+       </div>
+     </div>
+
+   </div>
+  </div>
+
+</div>
+<clear></clear>
+<div class="container" id="orga_list">
+<div class="row">
+  <% @organizations.each do |organization|  %>
+      <%= render organization , is_for_index: true %>
+  <% end %>
+</div>
+</div> 

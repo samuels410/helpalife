@@ -1,0 +1,13 @@
+
+<% if @users.present? %>
+
+  $("#orga_people").html("<%= escape_javascript(render(partial: 'home/recent_users',
+    locals: { users: @users })) %>");
+
+  <% else %>
+
+  $("#orga_people").html("<h4> Sorry, No members here. </h4>");
+
+<% end %>
+
+App.unBlockUI($('#orga_people'));

@@ -1,0 +1,49 @@
+<style type="text/css">
+
+  #orga_banner{
+    background-image: url('<%= @organization.banner.url(:background) %>');
+  }
+</style>
+
+
+<div id="orga_banner">
+
+ <div class='orga-element'>
+   <strong> <%= @organization.name %> </strong>
+ </div>
+
+  <div class='orga-element'>
+    <strong> <%= @organization.address %> </strong>
+  </div>
+
+  <div class='orga-element'>
+    <strong> <%= @organization.description %> </strong>
+  </div>
+</div>
+
+<div id="blood_group">
+  <%#= render 'organizations/blood_group' %>
+  <% @groups.each do |blood| %>
+   <%= link_to blood, 'javascript:void(0)' %>
+   <% end %>
+</div>
+
+<div id = "join_orga">
+ <%= render 'join_organization' %>
+</div>
+
+<div id="orga_people">
+  <%if @users.present? %>
+    <%= render 'members' %>
+  <% else %>
+   <h4> Sorry, No members joined yet. </h4>
+   <% end %>
+</div>
+
+
+<div id="other_org">
+  <h4> Other Organizations </h4>
+  <% @other_organizations.where.not(id: @organization.id).each do |organization| %>
+    <%= render organization,is_for_index: false %>
+  <% end  %>
+</div>

@@ -20,6 +20,10 @@ db/*.sqlite3
 /log/*
 /tmp/*
 
+#ignoring public folders assets contents.
+/public/assets/*
+
+
 # various artifacts
 **.war
 *.rbc
@@ -39,6 +43,7 @@ db/*.sqlite3
 /doc/specs.html
 /public/cache
 /public/stylesheets/compiled
+/public/assets
 /public/system/*
 /spec/tmp/*
 /cache

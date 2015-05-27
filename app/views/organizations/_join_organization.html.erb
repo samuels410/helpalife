@@ -1,0 +1,12 @@
+
+<span id='org_notice' class='blood-hide'> </span>
+
+<% if @join_link %> 
+  <%= link_to 'Join Organization', join_organizations_path(id: @organization), 
+    method: :post, remote: true, class:'btn btn-success' %>
+
+<% else %>
+  <%= link_to 'Leave Organization', 
+    remove_organizations_path(id: @organization), 
+    method: :post,remote: true, class: 'btn btn-danger' %>
+<% end %> 
