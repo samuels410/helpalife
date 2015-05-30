@@ -1,0 +1,49 @@
+<% provide(:title, "Helalpife | ICC World Cup Free Live Update" ) %>
+<%set_meta_tags :og => {
+        :title    => "2015 ICC World Cup Free Live Update on mobile by instant SMS",
+        :type     => 'Non profit Blood donors organization',
+        :url      => live_update_url,
+        :image    => "http://andhrastudents.in/wp-content/uploads/2015/01/NEW_INDIA_NATIONAL_TEAM_KIT_23411.jpg",
+        :description => "To get 2015 ICC World Cup Free Live Update on mobile by instant SMS subscribe here"
+} %>
+
+<style>
+  body{
+      margin-bottom: 20%;
+      background: url("http://www.cricketworld.com/images/f-037667/mcg.jpg");
+      background-size-left: 100%;
+      background-size: 100% 100%;
+  }
+
+  #subscriber_phone{
+      width: 40%;
+  }
+</style>
+
+<div class="container" style="margin-bottom: 20%;">
+  <h3 style="text-align: center;text-align: center;
+          background: white;
+          padding: 10px;
+          margin-top: -2px;
+          border-radius: 3px;">2015 ICC World Cup Free Live Update on mobile by instant SMS</h3>
+  <br/>
+
+
+<%= form_for @subscriber ,html: {style: "padding: 3%;background: white;
+"} do |f| %>
+
+      <h4>Enter mobile number to get updates.</h4>
+
+      <%= render 'shared/error_messages', object: f.object %>
+      <%= display_base_errors @subscriber %>
+    <div class="form-group">
+      <%= f.phone_field :phone, class: 'form-control', required: true ,placeholder: "Eg: 9876543210"%>
+    </div>
+
+    <%= f.submit 'Subscribe', class: 'btn btn-success' %>
+      <br/>
+      <small><a href="<%= unsubscribe_sms_subscribers_path %>">Unsubscribe any time.</a> </small>
+
+<% end %>
+
+</div>

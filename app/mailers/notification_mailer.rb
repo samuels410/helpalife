@@ -21,5 +21,14 @@ class NotificationMailer < ActionMailer::Base
     mail(to: "samuels410@gmail.com", from: from_email, subject: subject)
   end
 
+  def post_notify(post)
+    @post = post
+    @url = blog_post_url(@post)
+    @recipients = User.receive_newsletter
+    emails = @recipients.collect(&:email).join(",")
+
+    mail(to: emails, subject: "Helpalife Blog: #{@post.title}")
+  end
+
 
 end

@@ -1,0 +1,94 @@
+<% provide(:title, "#{@organization.name}" ) %>
+<%set_meta_tags :og => {
+                        :title    => "Join #{@organization.name} ,to become a blood donor!",
+                        :type     => 'Non profit Blood donors organization',
+                        :url      => organization_path(@organization),
+                        :image    => @organization.banner.url(:background),
+                        :description => @organization.description
+                } %>
+<style type="text/css">
+
+  #orga_banner{
+    background-image: url('<%= @organization.banner.url(:background) %>');
+      background-size: 100% 100%;
+  }
+</style>
+
+
+<div id="orga_banner">
+  <div class="imagery_overlay" style="height: 374px;color: #fff;">
+    <div>
+      <div class="row">
+        <div class="col-xs-12 col-md-8">
+            <h1 style="font-weight: bold;text-align: left;margin-left: 20px;"><%= @organization.name.titlecase %></h1>
+        </div>
+        <div class="col-xs-6 col-md-4">
+
+          <h1 style="font-weight: bold">Share this,</h1>
+          <div class="col-xs-12" >
+            <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fhelpalife.in%2Forganizations" onclick="javascript:window.open(this.href,
+                    '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=550,width=500');return false;" style="margin-left: 5px;" >
+              <button class='zocial icon  facebook'></button></a>
+            <a href="http://www.linkedin.com/shareArticle?mini=true&url=<%= organization_path(@organization) %> &title=Helpalife Organizations  &summary=Organizations joined to help a life by donate blood"onclick="javascript:window.open(this.href,
+                    '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=550,width=500');return false;"  style="margin-left: 5px;"><button class='zocial icon linkedin'></button></a>
+            <a href="http://plus.google.com/share?url=<%= organization_path(@organization) %>" onclick="javascript:window.open(this.href,
+                    '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=550,width=500');return false;" style="margin-left: 5px;"><button class='zocial icon googleplus'></button></a>
+            <a href="http://twitter.com/intent/tweet?&url=<%= organization_path(@organization) %> &text=Checkout the organizations joined to help a life by donate blood " onclick="javascript:window.open(this.href,
+                    '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=550,width=500');return false;"  style="margin-left: 5px;"><button class='zocial icon twitter'></button></a>
+          </div>
+        </div>
+          <div class="col-xs-12 col-md-6" style="text-align: left;margin-left: 20px;background: rgba(0,0,0,0.2);">
+            <h3 style="opacity: .9;">About:</h3>
+            <h4 style="float: left;margin-left: 20px"><%= @organization.description %></h4>
+            <h3 style="opacity: .9;">Address:</h3>
+            <h4 style="float: left;margin-left: 20px"><%= @organization.address %></h4>
+          </div>
+        </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-8">
+    <div id="blood_group">
+     Filter Donors :
+      <%= render partial: 'b_groups', locals: { b_groups: @b_groups } %>
+    </div>
+  </div>
+
+  <span id='org_notice' class='blood-hide'> </span>
+
+  <div class="col-xs-4">
+    <div id = "join_orga">
+      <%= render 'join_organization' %>
+    </div>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-xs-9">
+    <div id="orga_people">
+      <%if @users.present? %>
+        <h4> Organization members </h4>
+        <%= render 'home/recent_users' , users: @users %>
+      <% else %>
+        <h4> Sorry, No members here. </h4>
+      <% end %>
+    </div>
+  </div>
+  <div class="col-xs-3">
+    <div id="other_org">
+      <h4> Similar Organizations </h4>
+      <% @other_organizations.where.not(id: @organization.id).each do |organization| %>
+        <%= render organization,is_for_index: false %>
+      <% end  %>
+    </div>
+  </div>
+</div>
+
+
+
+
+

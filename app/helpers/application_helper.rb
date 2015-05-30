@@ -1,7 +1,7 @@
 module ApplicationHelper
 
   def full_title(page_title)
-    base_title = "Voluntary blood donors community"
+    base_title = "blood donors"
     @page_title = page_title
     if page_title.empty?
       base_title
@@ -24,6 +24,23 @@ module ApplicationHelper
 			</div>
     HTML
     html.html_safe
+  end
+
+  
+=begin
+  Description: Method will return the error messages on the key fields.
+  Argument: error_object, key
+  Return: message on error object.
+=end
+  def form_error(object, key)
+    messages = object.errors.messages
+    messages[key.to_sym][0] if messages[key.to_sym].present?
+  end
+
+  def camp_profile_url
+    image_url = current_user.avatar_url
+    avatar = image_url.present? ? image_url : current_user.avatar.url(:thumb)
+    image_tag( avatar, class: 'img img-round', style: 'width: 30px;')
   end
 
 end

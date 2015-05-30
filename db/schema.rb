@@ -11,7 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141119074225) do
+ActiveRecord::Schema.define(version: 20150526110809) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "activities", force: true do |t|
+    t.text     "content"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "activities", ["user_id"], name: "index_activities_on_user_id", using: :btree
 
   create_table "authentications", force: true do |t|
     t.integer  "user_id"
@@ -55,7 +67,7 @@ ActiveRecord::Schema.define(version: 20141119074225) do
   end
 
   create_table "friendly_id_slugs", force: true do |t|
-    t.string   "slug",                      null: false
+    t.text     "slug",                      null: false
     t.integer  "sluggable_id",              null: false
     t.string   "sluggable_type", limit: 50
     t.string   "scope"
@@ -66,6 +78,31 @@ ActiveRecord::Schema.define(version: 20141119074225) do
   add_index "friendly_id_slugs", ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type", using: :btree
   add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id", using: :btree
   add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
+
+  create_table "impressions", force: true do |t|
+    t.string   "impressionable_type"
+    t.integer  "impressionable_id"
+    t.integer  "user_id"
+    t.string   "controller_name"
+    t.string   "action_name"
+    t.string   "view_name"
+    t.string   "request_hash"
+    t.string   "ip_address"
+    t.string   "session_hash"
+    t.text     "message"
+    t.text     "referrer"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "impressions", ["controller_name", "action_name", "ip_address"], name: "controlleraction_ip_index", using: :btree
+  add_index "impressions", ["controller_name", "action_name", "request_hash"], name: "controlleraction_request_index", using: :btree
+  add_index "impressions", ["controller_name", "action_name", "session_hash"], name: "controlleraction_session_index", using: :btree
+  add_index "impressions", ["impressionable_type", "impressionable_id", "ip_address"], name: "poly_ip_index", using: :btree
+  add_index "impressions", ["impressionable_type", "impressionable_id", "request_hash"], name: "poly_request_index", using: :btree
+  add_index "impressions", ["impressionable_type", "impressionable_id", "session_hash"], name: "poly_session_index", using: :btree
+  add_index "impressions", ["impressionable_type", "message", "impressionable_id"], name: "impressionable_type_message_index", using: :btree
+  add_index "impressions", ["user_id"], name: "index_impressions_on_user_id", using: :btree
 
   create_table "needs", force: true do |t|
     t.integer  "user_id"
@@ -82,7 +119,7 @@ ActiveRecord::Schema.define(version: 20141119074225) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "email_sent",     default: false
-    t.string   "slug"
+    t.text     "slug"
     t.text     "perma_link"
   end
 
@@ -100,6 +137,47 @@ ActiveRecord::Schema.define(version: 20141119074225) do
     t.datetime "updated_at"
     t.text     "ref_id"
   end
+
+  create_table "organizations", force: true do |t|
+    t.string   "name"
+    t.text     "address"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "banner_file_name"
+    t.string   "banner_content_type"
+    t.integer  "banner_file_size"
+    t.datetime "banner_updated_at"
+    t.integer  "state_id"
+    t.integer  "district_id"
+    t.integer  "user_id"
+    t.text     "perma_link"
+    t.text     "slug"
+  end
+
+  add_index "organizations", ["district_id"], name: "index_organizations_on_district_id", using: :btree
+  add_index "organizations", ["state_id"], name: "index_organizations_on_state_id", using: :btree
+  add_index "organizations", ["user_id"], name: "index_organizations_on_user_id", using: :btree
+
+  create_table "organizations_users", id: false, force: true do |t|
+    t.integer "organization_id"
+    t.integer "user_id"
+  end
+
+  add_index "organizations_users", ["organization_id"], name: "index_organizations_users_on_organization_id", using: :btree
+  add_index "organizations_users", ["user_id"], name: "index_organizations_users_on_user_id", using: :btree
+
+  create_table "posts", force: true do |t|
+    t.string   "title"
+    t.text     "text"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
+    t.boolean  "is_published", default: false
+    t.text     "slug"
+  end
+
+  add_index "posts", ["slug"], name: "index_posts_on_slug", using: :btree
 
   create_table "referrals", force: true do |t|
     t.datetime "created_at"
@@ -119,6 +197,14 @@ ActiveRecord::Schema.define(version: 20141119074225) do
 
   create_table "states", force: true do |t|
     t.text     "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "subscribers", force: true do |t|
+    t.string   "phone"
+    t.string   "workflow_state", default: "subscribed"
+    t.string   "subscribed_for"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -150,6 +236,7 @@ ActiveRecord::Schema.define(version: 20141119074225) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
+    t.boolean  "can_receive_newsletter", default: true
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

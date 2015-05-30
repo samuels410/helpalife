@@ -61,11 +61,7 @@
   <% if user_signed_in? and current_user.needs.include?(@need)  %>
       <%= simple_form_for @need, :url => {:action=>"update"} ,:wrapper => :horizontal_form , html: { class: 'form-vertical',
                                                                                 style: "width: 50%;margin-left: 30%;display:none"} do |f| %>
-          <%= f.input :blood_group,collection: ([["A1+", "A1+"],["A1-", "A1-"], ["A2+", "A2+"],["A2-", "A2-"],
-                                                 ["B+", "B+"],["B-", "B-"],["A1B+", "A1B+"],["A1B-", "A1B-"],
-                                                 ["A2B+", "A2B+"],["A2B-", "A2B-"],["AB+", "AB+"],
-                                                 ["AB-", "AB-"],["O+", "O+"],["O-", "O-"],["A+", "A+"],
-                                                 ["A-", "A-"]]) , :prompt => "- Choose blood group -",
+          <%= f.input :blood_group,collection: User::BLOOD_GROUPS , :prompt => "- Choose blood group -",
                       :required => true  %>
 
           <%= f.input :required_date ,:data_behaviour => 'datepicker', :required => true ,
@@ -112,7 +108,7 @@
 
 <div class="container" >
   <% if @users.any? %>
-  <%= render 'home/recent_users' %>
+  <%= render 'home/recent_users' ,users: @users%>
   <% else  %>
       <!--<div>Sorry, currently no donors for this selection criteria. </div>-->
       <!--<br>-->

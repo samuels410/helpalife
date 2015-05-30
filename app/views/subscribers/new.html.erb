@@ -1,0 +1,10 @@
+<br/>
+<div class="container" style="margin-bottom: 20%;">
+<%= simple_form_for @subscriber, :url => {:action=>"subscription_message"} ,:wrapper => :horizontal_form , html: { class: 'form-vertical',
+                                                                                               style: "width: 50%;margin-left: 30%;"} do |f| %>
+    <%= f.input :message , :required => true ,:placeholder=> "Message" , as: :text%>
+    <br>
+    <%= f.button :submit, "Send sms" ,id: "notify_need",class:'btn  btn-primary' %>
+<% end %>
+
+</div>

@@ -1,20 +1,25 @@
-== README
+== Installation instructions
 
-ruby 1.9.3
+ruby 2.0.0
 
 postgres db
 
-git clone  https://bitbucket.org/ssanthosh/helpalife.in.git
+git clone  https://github.com/samuels410/helpalife.git
 
 rename the following files,
 
  database.yml.example to database.yml,
  development.yml.example to development.yml
 
-bundle exec rake db:migrate
-bundle exec rake db:seed
-bundle exec rake db:populate
+Migrate database: 
+ bundle exec rake db:migrate
+ 
+To seed the initails data: 
+ bundle exec rake db:seed
+
+Load some dummy users in the system:
+ bundle exec rake db:populate
 
 
 To contribute create a new branch and start
- work on.
+ Start contributing and Help A Life.

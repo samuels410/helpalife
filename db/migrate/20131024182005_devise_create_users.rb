@@ -11,7 +11,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.text :encrypted_password, :null => false, :default => ""
       t.text :avatar_url
       t.text :phone_no
-      t.boolean :phone_no_visibility ,:default =>true
+      t.boolean :phone_no_visibility,    :default =>true
       ## Recoverable
       t.text   :reset_password_token
       t.datetime :reset_password_sent_at

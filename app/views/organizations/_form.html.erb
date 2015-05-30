@@ -1,0 +1,51 @@
+
+  <%= simple_form_for(@organization, 
+    html: { multipart: true, id: 'orga_form' } ) do |f| %>
+     
+    <div class="form-inputs">
+      <%= f.label :name %>
+      <%= f.text_field :name, placeholder: 'Organization Name' %>
+      <%= label_tag form_error(@organization, :name), nil,  class: 'v-error' %>
+    </div>
+
+    <div class="form-inputs">
+      <%= f.label :address %>
+        <%= f.text_area :address, placeholder: 'Provide address' %>
+        <%= label_tag form_error(@organization, :address), nil,  class: 'v-error' %>
+    </div>
+
+    <div class="form-inputs">
+        <%= f.label :description %>
+        <%= f.text_area :description, placeholder: 'Provide a short description about your organization' %>
+        <%= label_tag form_error(@organization, :description), nil,  class: 'v-error' %>
+    </div>
+
+    <div class="form-inputs">
+      <%= f.label :state_id %> 
+      <%= f.select :state_id, @state_names, { include_blank: 'Select a State' }, id: 'orga_state_list' %> 
+        <%= label_tag form_error(@organization, :state_id), nil,  class: 'v-error' %>
+    </div>
+
+    <div class="form-inputs">
+      <%= f.label :district_id %> 
+      <%= f.select :district_id, @district_names, { include_blank: 'Select a District'}, id: 'orga_dist_list' %>
+      <%= label_tag form_error(@organization, :district_id), nil,  class: 'v-error' %>
+    </div>
+
+    <div class="form-inputs">
+      <%= f.label :banner, 'Upload a background image: ' %> 
+      <%= f.file_field :banner %> 
+      <%= label_tag form_error(@organization, :banner), nil,  class: 'v-error' %>
+    </div>
+
+    <div class="form-actions">
+      <%= f.button :submit , class: 'btn btn-success' %>
+    </div>
+
+  <% end %>
+
+<!-- </div> -->
+
+ <%#= form_for @user, :url => users_path, :html => { :multipart => true } do |form| %>
+   <%#= form.file_field :avatar %>
+ <%# end %>

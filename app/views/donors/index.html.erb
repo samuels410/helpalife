@@ -1,0 +1,46 @@
+<% provide(:title, "Voluntary Blood Donors ,Helping Many life" ) %>
+<%set_meta_tags :og => {
+        :title    => "Blood donors | social integrated",
+        :type     => 'Non profit Blood donors organization',
+        :url      => donors_url,
+        :image    => image_url('logo.png'),
+        :description => "Post your blood requirements or register and become a donor here, we will provide ways to contact people
+        and social sharing ,email notifications and instant SMS Notifications"
+} %>
+<br>
+<script src="http://thecodeplayer.com/uploads/js/prefixfree-1.0.7.js" type="text/javascript" type="text/javascript"></script>
+<div class="doner-search container"  style="height: 150px; text-align: center">
+  <div class="breadcrumb">
+    <a href="#" >Select blood group,state,district</a>
+    <a href="#" >Click search donors</a>
+    <a href="#" class="active">Find donors</a>
+    <a href="#" class="active">Get donor's details</a>
+    <a href="#">Notify donors via SMS and Email</a>
+  </div>
+  <%= render 'shared/search_donors_form', search_donor: @search_donor %>
+  <div >Found &nbsp;<%=pluralize(@donors.count, 'Donor')%> </div>
+</div>
+
+<br>
+
+<div class="container" >
+  <div class="row" >
+  <% if @donors %>
+        <div class="row" style="text-align: center;">
+          <%=will_paginate @donors%>
+        </div>
+  <%= render 'home/recent_users', users: @donors %>
+  <% else  %>
+         <div>Sorry, currently no donors for this selection criteria.</div>
+      <br>
+      <b>But you can post your requirement in the home page and you can share that in social medias.</b>
+      <%= render 'referrals/site_referrals' %>
+
+  <% end %>
+ </div>
+  <div class="row" style="text-align: center;">
+    <%=will_paginate @donors%>
+  </div>
+
+</div>
+

@@ -1,0 +1,7 @@
+
+<% b_groups.each do |blood| %>
+
+  <%= link_to blood, filter_organizations_path(type: blood, organization_id: @organization),
+    method: :get, remote: true  %>
+
+<% end %>

@@ -4,8 +4,11 @@
  <div class="row">
    <div class="col-md-6 col-md-offset-3">
 
-     <%= simple_form_for resource,:url => registration_path(resource_name), :as => resource_name ,:wrapper => :horizontal_form , html: {:method => :put ,
-                                                                                   class: 'form-horizontal' } do |f| %>
+     <%= simple_form_for resource,
+        url:  registration_path(resource_name),  as: resource_name,
+        wrapper: :horizontal_form , 
+        html: { method: :put, class: 'form-horizontal', multipart: true } do |f| %>
+
          <%= render 'shared/error_messages', object: f.object %>
          <%= f.input :name, :required => true, :value => current_user.name  , :as => :string%>
          <%= f.input :email, :required => true , :as => :string%>
@@ -15,17 +18,17 @@
          <%= f.input :phone_no, :required => true,
                      :value => current_user.phone_no || (params[:user][:phone_no] unless params[:user].nil?),
                      :autofocus => true , :as => :string%>
-         <%= f.input :blood_group,collection: ([["A1+", "A1+"],["A1-", "A1-"], ["A2+", "A2+"],["A2-", "A2-"],
-                                                        ["B+", "B+"],["B-", "B-"],["A1B+", "A1B+"],["A1B-", "A1B-"],
-                                                        ["A2B+", "A2B+"],["A2B-", "A2B-"],["AB+", "AB+"],
-                                                        ["AB-", "AB-"],["O+", "O+"],["O-", "O-"],["A+", "A+"],
-                                                        ["A-", "A-"]]), :selected => current_user.blood_group ,
+         <%= f.input :blood_group,collection: User::BLOOD_GROUPS, :selected => current_user.blood_group ,
                       :prompt => "- Choose blood group -",
                       :required => true%>
          <%= f.input :state_id,collection: State.order(:name),:prompt => "- Select state -"%>
          <%= f.input :district_id,collection: State.order(:name), as: :grouped_select, group_method: :districts ,:prompt => "- Select district -"%>
-         <%= f.input  :can_send_email %>
+         <%= f.input :can_send_email %>
          <%= f.input :can_send_sms %>
+         <%= f.check_box :can_receive_newsletter %>
+
+         <%#= f.label :avatar, 'Upload your profile pic' %> 
+         <%#= f.file_field :avatar %>
          <%= f.input :phone_no_visibility ,label: "Phone no public" %>
          <%= f.check_box :terms_of_service %> <%= link_to "I accept terms and service","/terms",:target=>"_blank" %>
          <%= f.button :submit, "Update" ,class:'btn btn-primary'%>
@@ -36,26 +39,3 @@
 </div>
  <br>
  <br>
-<script type="text/javascript">
-    jQuery(function() {
-        var districts;
-        districts = $('#user_district_id').html();
-        return $('#user_state_id').change(function() {
-            var escaped_state, options, state;
-            state = $('#user_state_id :selected').text();
-            escaped_state = state.replace(/([ #;&,.+*~\':"!^$[\]()=>|\/@])/g, '\\$1');
-            options = $(districts).filter("optgroup[label='" + escaped_state + "']").html();
-            if (options) {
-                $('#user_district_id').html(options);
-                $('#user_district_id').show();
-                return $('#district_label').show();
-            } else {
-                $('#user_district_id').empty();
-                $('#user_district_id').hide();
-                return $('#district_label').hide();
-            }
-        });
-    });
-
-
-</script>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+    <%= display_meta_tags %>
+  </head>
+  <body>
+    <%= render 'layouts/new_header' %>
+    <% flash.each do |key, value| %>
+      <div class="alert alert-<%= key %>" style="width: 695px;margin-left: 332px;margin-top: 10px;
+            text-align: center;">
+        <%= value %>
+      </div>
+    <% end %>
+
+    <%= yield %>
+    <%= render 'layouts/new_footer' %>
+  </body>
+</html>

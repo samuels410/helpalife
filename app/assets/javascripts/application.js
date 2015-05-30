@@ -14,8 +14,14 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require bootstrap
+//= require donors
 //= require bootstrap-datepicker
+//= require bootstrap-filestyle
+//= require organization
+//= require jquery.blockUI
 //= require_directory ./new_design
+//= require tinymce
+
 
 $(document).ready(function() {
 $('[data_behaviour~=datepicker]').datepicker({
@@ -27,3 +33,28 @@ $("#need_required_date").datepicker({
 });
 
 });
+
+
+
+// For block/unblock UI Functionality.
+var App = function(){
+  return {
+    blockUI: function(el){
+      el.block({
+        message: '',
+        css: {backgroundColor: 'none'},
+        overlayCSS: {
+          backgroundColor:'#FFFFFF',
+          backgroundImage: "url('/assets/loader.gif')",
+          backgroundRepeat: 'no-repeat',
+          backgroundPosition: 'center',
+          opacity: 0.67
+        }
+      });
+    },
+    unBlockUI: function(el){
+      el.unblock();
+    }
+  }
+}();
+

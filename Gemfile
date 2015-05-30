@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-ruby '1.9.3'
+ruby '2.1.2'
 gem 'rails', '4.0.0'
 
 # Use sqlite3 as the database for Active Record
@@ -47,15 +47,23 @@ gem 'cancan'
 gem 'devise'
 gem 'devise_invitable'
 gem 'pg'
+#gem 'mysql2'
 gem 'simple_form'
+
+#WYSIWYG editor
+gem 'tinymce-rails'
+
+#Impressionist gem for impressions
+gem 'impressionist'
+
 
 group :assets do
   gem 'therubyracer', :platform=>:ruby
 end
 
 group :development do
-  gem 'better_errors'
-  gem 'binding_of_caller', :platforms=>[:mri_19, :mri_20, :rbx]
+  #gem 'better_errors'
+  #gem 'binding_of_caller', :platforms=>[:mri_19, :mri_20, :rbx]
   gem 'guard-bundler'
   gem 'guard-rails'
   gem 'guard-rspec'
@@ -68,6 +76,13 @@ end
 group :development, :test do
   gem 'factory_girl_rails'
   gem 'rspec-rails'
+  gem 'pry'
+  gem 'pry-rails'
+  # gem 'pry-byebug'
+  # gem 'byebug'
+  gem 'annotate'
+  gem 'quiet_assets'
+  gem 'faker'
 end
 
 group :production do
