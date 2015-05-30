@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-ruby '2.1.2'
+ruby '1.9.3'
 gem 'rails', '4.0.0'
 
 # Use sqlite3 as the database for Active Record
@@ -95,6 +95,14 @@ group :test do
   gem 'database_cleaner', '1.0.1'
   gem 'email_spec'
 end
+
+group :deploy do
+  gem 'capistrano', '~> 3.1'
+  gem 'capistrano-bundler', '~> 1.1.2'
+  gem 'capistrano-passenger'
+  gem 'capistrano-rails', '~> 1.1'
+end
+
 
 gem "paperclip"
 gem 'rolify'
