@@ -110,3 +110,4 @@ gem 'will_paginate'
 gem 'meta-tags', :require => 'meta_tags'
 gem 'delayed_job_active_record'
 gem 'friendly_id'
+gem "daemons"
