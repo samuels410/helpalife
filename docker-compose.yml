@@ -1,0 +1,27 @@
+web:
+  build: .
+  command: bundle exec foreman start
+  volumes:
+    - ./:/web
+  environment:
+    - GEM_HOME=/bundle/gems
+  ports:
+    - "8080:3000"
+  dns:
+    - 8.8.8.8
+  links:
+    - db
+  volumes_from:
+    - bundle
+bundle:
+  # 'image' will vary depending on your docker-compose
+  # project name. You may need to run `docker-compose build web`
+  # before this works.
+  image: bloom_web
+  command: echo "bundle container has started"
+  volumes:
+    - /bundle
+db:
+  image: postgres
+  ports:
+    - "5432"
