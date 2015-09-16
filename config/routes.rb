@@ -4,7 +4,7 @@ Community::Application.routes.draw do
     scope '/v1' do
       scope '/donors' do
         get '/' => 'api/donors#index'
-        post '/search' => 'api/donors#search'
+        post '/' => 'api/donors#index'
       end
     end
   end
