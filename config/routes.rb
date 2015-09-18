@@ -1,5 +1,14 @@
 Community::Application.routes.draw do
 
+  scope '/api' do
+    scope '/v1' do
+      scope '/donors' do
+        get '/' => 'api/donors#index'
+        post '/' => 'api/donors#index'
+      end
+    end
+  end
+
   resources :subscribers do
     collection do
       post 'subscription_message'
@@ -35,9 +44,7 @@ Community::Application.routes.draw do
     post "posts/post_notify/:id" => "posts#post_notify", as: :post_notify
     post "post/:id/publish" => "posts#publish", as: :publish
     post "post/:id/undo_publish" => "posts#undo_publish", as: :undo_publish
-
   end
-
 
   resources :referrals
 
