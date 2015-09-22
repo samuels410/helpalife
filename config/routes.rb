@@ -39,13 +39,6 @@ Community::Application.routes.draw do
 
   resources :notifications
 
-  namespace :blog do
-    resources :posts
-    post "posts/post_notify/:id" => "posts#post_notify", as: :post_notify
-    post "post/:id/publish" => "posts#publish", as: :publish
-    post "post/:id/undo_publish" => "posts#undo_publish", as: :undo_publish
-  end
-
   resources :referrals
 
   resources :needs ,:path =>  :requirements
