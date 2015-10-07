@@ -53,9 +53,9 @@
           </ul>
         </li>
         <li class="last">
-          <a href="<%= blog_posts_path %>">
+          <%= link_to "http://blog.helpalife.in" do %>
             <span>Help a Life Blog</span>
-          </a>
+          <% end %>
         </li>
         <li> <%= link_to 'Organizations', organizations_path, :'data-no-turbolink' => true %> </li>
       <% if signed_in?  %>
