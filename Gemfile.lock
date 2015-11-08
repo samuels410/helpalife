@@ -194,6 +194,7 @@ GEM
       mime-types
     pg (0.18.1)
     polyglot (0.3.5)
+    power_assert (0.2.5)
     pry (0.10.1)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
@@ -277,6 +278,8 @@ GEM
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       sprockets (~> 2.8)
+    test-unit (3.1.5)
+      power_assert
     therubyracer (0.12.1)
       libv8 (~> 3.16.14.0)
       ref
@@ -354,6 +357,7 @@ DEPENDENCIES
   rspec-rails
   sass-rails (~> 4.0.0)
   simple_form
+  test-unit
   therubyracer
   tinymce-rails
   turbolinks

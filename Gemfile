@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-ruby '2.0.0'
+ruby '2.2.3'
 gem 'rails', '4.0.0'
 
 # Use sqlite3 as the database for Active Record
@@ -95,6 +95,7 @@ group :test do
   gem 'capybara'
   gem 'database_cleaner', '1.0.1'
   gem 'email_spec'
+  gem 'test-unit'
 end
 
 gem "paperclip"
