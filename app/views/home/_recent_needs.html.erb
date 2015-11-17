@@ -3,20 +3,19 @@
         <a href="<%= need_path(need) %>">
           <div class='row media need_box'>
               <div class="col-md-10 ">
-                <h4 class="media-heading">
-                  <%= need.patient_name  %> needs,</h4>
-                <b><%= need.blood_group  %> </b>&nbsp;&nbsp; blood on &nbsp;&nbsp; <b> <%= need.required_date   %>
-                </b> &nbsp; for &nbsp;<%= need.reason %>
-                <br>
-                Hospital:&nbsp;<%= need.hospital_name %> <br>
+                <div class="media-heading">
+                  <%= need.patient_name  %> needs,
+                <b class="badge alert-danger"><%= need.blood_group  %> </b> blood on  <b class="badge alert-danger"> <%= need.required_date   %>
+                </b>  for <%= need.reason %> reason</div>
+                Hospital :&nbsp;<%= need.hospital_name %> <br>
+                Contact :&nbsp;<%= need.contact_number %>  <br>
+                State :&nbsp; <%= need.state.name %> <br>
+                District :&nbsp;<%= need.district.name %> <br>
                 <small><em>Posted by,<%= need.user.name %></em> ,about
                   <%=  distance_of_time_in_words(need.created_at,Time.now)%>&nbsp;ago
                 </small>
               </div>
               <div class="col-md-2" >
-                State:&nbsp; <%= need.state.name %> <br>
-                District:&nbsp;<%= need.district.name %> <br>
-                Contact:&nbsp;<%= need.contact_number %>  <br>
                 <%= render 'home/share_need',:need => need %>
               </div>
           </div>

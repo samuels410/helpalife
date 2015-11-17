@@ -1,8 +1,7 @@
 <% users.each_with_index do |user, idx|  %>
     <% unless user.nil? %>
         <div class="col-md-4"  >
-          <div class="media" style= "background-color: #3b494c;color: white;margin-bottom: 5px;padding: 11px;
-                  min-height: 125px;">
+          <div class="media donor-box">
             <a class="pull-left" href="#">
               <% if user.avatar_url.nil? %>
                   <%= image_tag(user.avatar.url(:thumb),:class =>"img img-circle  img-responsive media-object",:size => "60")%>
@@ -11,7 +10,11 @@
               <% end  %>
             </a>
             <div class="media-body">
-              <h4 class="media-heading"><%=truncate(user.name,length: 25, omission: '..') %> &nbsp;&nbsp; <%=user.blood_group %></h4>
+              <h4 class="media-heading"><%=truncate(user.name,length: 25, omission: '..') %> &nbsp;&nbsp;
+                <b class="badge alert-danger">
+                <%=user.blood_group %>
+                </b>
+              </h4>
               <%=user.state.name  if user.state %>,
               <br>
               <%=user.district.name  if user.district%>

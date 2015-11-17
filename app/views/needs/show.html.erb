@@ -17,80 +17,34 @@
 
 %>
 
-<% "Contact Number: #{@need.contact_number}" %>
 <br>
 <script src="http://thecodeplayer.com/uploads/js/prefixfree-1.0.7.js" type="text/javascript" type="text/javascript"></script>
-<div class="doner-search container"  style=" text-align: center; height: auto;">
-  <div class="breadcrumb">
-    <a href="#" >Select blood group,state,district</a>
-    <a href="#" >Click search donors</a>
-    <a href="#" >Find donors</a>
-    <a href="#" class="active">Get donor's details</a>
-    <a href="#" class="active">Notify donors via SMS and Email</a>
-  </div>
+<div class="doner-search container"  style=" text-align: left; height: auto;padding-top: 10px;box-shadow: 0 2px 2px #cbcbcb;">
+    <div class="row">
+      <div class="col-md-3">
+        Blood group : <b class="badge alert-danger"> <%= @need.blood_group %> </b><br/>
+        Date : <b class="badge alert-danger">  <%= @need.required_date%></b> <br/>
+        No of units :  <%= @need.required_units%> <br/>
+        Contact number :  <%= @need.contact_number%> <br/>
+        State :  <%= @need.state.name%> <br/>
+      </div>
+      <div class="col-md-4">
 
-    <br>
-  <div class="row show_need">
-    <div class="col-md-7 col-md-offset-3">
-      <table style="width: 112%%;text-align: left;font-size:18px;">
-        <tr>
-          <td>Blood group:  <%= @need.blood_group %></td>
-          <td>Date:  <%= @need.required_date%></td>
-        </tr>
-        <tr>
-          <td>No of units:  <%= @need.required_units%></td>
-          <td>Contact number:  <%= @need.contact_number%></td>
-        </tr>
-        <tr>
-          <td>State:  <%= @need.state.name%></td>
-          <td>District:  <%= @need.district.name%></td>
-        </tr>
-        <tr>
-          <td>Hospital name:  <%= @need.hospital_name%></td>
-          <td>Patient name:  <%= @need.patient_name%></td>
-        </tr>
-        <tr>
-          <td>Reason:  <%= @need.reason%></td>
+        District :  <%= @need.district.name%> <br/>
+        Hospital name :  <%= @need.hospital_name%> <br/>
+        Patient name :  <%= @need.patient_name%> <br/>
+        Reason :  <%= @need.reason%>
 
-        </tr>
-      </table>
-
+      </div>
+      <% if user_signed_in? and current_user.needs.include?(@need)  %>
+      <div class="col-md-4 pull-right" style="text-align: right">
+        Manage this requirement <br/>
+        <a  href="<%= edit_need_path(@need) %>" style="color: white;"> Edit </a> <br/>
+        <%= link_to "Delete" ,need_path(@need) ,method: :delete , :data => {:confirm => 'Are you sure?'} ,style: "color: white;"%>
+      </div>
+      <% end %>
     </div>
-  </div>
-
-  <% if user_signed_in? and current_user.needs.include?(@need)  %>
-      <%= simple_form_for @need, :url => {:action=>"update"} ,:wrapper => :horizontal_form , html: { class: 'form-vertical',
-                                                                                style: "width: 50%;margin-left: 30%;display:none"} do |f| %>
-          <%= f.input :blood_group,collection: User::BLOOD_GROUPS , :prompt => "- Choose blood group -",
-                      :required => true  %>
-
-          <%= f.input :required_date ,:data_behaviour => 'datepicker', :required => true ,
-                      :placeholder=> "Required Date" , :as => :string%>
-          <%= f.input :required_units, :required => true ,:placeholder=> "Require Units"%>
-
-          <%= f.input :contact_number, :required => true ,:phone_field => true,:placeholder=> "Mobile Number" , :as => :string%>
-
-          <%= f.input :state_id,collection: State.order(:name),:prompt => "- Select state -"%>
-          <%= f.input :district_id,collection: State.order(:name), as: :grouped_select, group_method: :districts ,:prompt => "- Select district -"%>
-          <%= f.input :hospital_name , :required => true ,:placeholder=> "Hospital Name", :as => :string%>
-          <%= f.input :patient_name,:placeholder=> "Patient Name", :required => true , :as => :string%>
-          <%= f.input :reason,:placeholder=> "Reason", :required => true , :as => :string%>
-          <br>
-          <%= f.button :submit, "Update requirement" ,id: "notify_need",class:'btn  btn-primary' %>
-          <a id="cancel_need_edit" class="btn  btn-default" href="#" style="margin-right: 25%;">Cancel</a>
-      <% end %>
-
-      <% end %>
-
-  <% if user_signed_in? and current_user.needs.include?(@need)  %>
-  <div>
-    <a id="edit_requirement" class="btn  btn-primary" href="#">Edit requirement</a>
-  </div>
-  <% end %>
   <br>
-  <% if @users.size > 0  %>
-    <div>Found &nbsp;<%=pluralize(@users.size, 'Donor')%>  </div>
-  <% end  %>
   <div class="row">
     <div class="col-md-4" style="text-align: left">
      Posted by,
@@ -98,7 +52,12 @@
       <%= @need.user.name %> ,about
         <%=  distance_of_time_in_words(@need.created_at,Time.now)%>&nbsp;ago
     </div>
-    <div class="col-md-4 col-md-offset-4" style="text-align: right">
+    <div class="col-md-4" style="text-align: center">
+      <% if @users.size > 0  %>
+        <div>Found &nbsp;<%=pluralize(@users.size, 'Donor')%>  </div>
+      <% end  %>
+    </div>
+    <div class="col-md-4" style="text-align: right">
       <%= render 'home/share_need',:need => @need %>
     </div>
   </div>
@@ -151,19 +110,5 @@
         }
     });
 
-    $("#edit_requirement").on('click', function(event){
-       $(".simple_form").show();
-       $(".show_need").hide();
-        $("#edit_requirement").hide();
-        $("#cancel_need_edit").show();
-    });
-
-    $("#cancel_need_edit").on('click', function(event){
-        $("#edit_requirement").show();
-        $("#cancel_need_edit").show();
-        $(".simple_form").hide();
-        $(".show_need").show();
-
-    });
 
 </script>

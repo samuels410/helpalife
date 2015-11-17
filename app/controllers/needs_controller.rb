@@ -53,8 +53,21 @@ class NeedsController < ApplicationController
     @need.perma_link = "#{@need.patient_name}-from-state-#{@need.state.name}-district-#{@need.district.name}-needs-#{@need.blood_group.gsub(/[+-]/, "+" => "-positive", "-" => "-negative")}-blood-on-#{@need.required_date}-for-#{@need.reason}"
     @need.save!
     get_users
-    redirect_to need_path(@need)
+    flash[:success] = "The requirement updated"
+    redirect_to edit_need_path(@need)
   end
+
+  def edit
+    @need = Need.find(params[:id])
+  end
+
+  def destroy
+    @need = Need.find(params[:id])
+    @need.destroy
+    flash[:success] = "The requirement removed"
+    redirect_to root_path
+  end
+
 
   def get_users
     @users = User.where(blood_group: @need.blood_group,

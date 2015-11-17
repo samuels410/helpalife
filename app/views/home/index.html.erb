@@ -92,14 +92,16 @@
 
 
  <% if @needs.any? %>
-      <a style="margin-bottom: 10px"  href="<%= needs_path %>">
-      <div class="row requirements_head" style="text-align: center">
-          <h3 class='headings'>Recent blood requirements</h3>
-      </div>
-      </a>
+
+      <div class="row requirements_head" >
+        <div class="container">
+        <a style="margin-bottom: 10px;text-align: center"  href="<%= needs_path %>">
+          <h3 class='headings'>Recent blood requirements posted by users</h3>
+       </a>
 
       <%= render 'home/recent_needs' %>
-
+        </div>
+    </div>
  <% end  %>
   <br>
   <a style="margin-bottom: 10px"  href="<%= donors_path %>">

@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 ruby '2.2.3'
-gem 'rails', '4.0.0'
+gem 'rails', '4.1.2'
 
 # Use sqlite3 as the database for Active Record
 
@@ -106,7 +106,7 @@ gem 'omniauth-facebook'
 gem 'omniauth-linkedin'
 gem 'omniauth-google-oauth2'
 gem 'oauth2'
-gem 'rails_config'
+gem 'rails_config',"0.4.2"
 gem 'bootstrap-datepicker-rails'
 gem 'will_paginate'
 gem 'meta-tags', :require => 'meta_tags'

@@ -1,0 +1,28 @@
+<div id="need_edit_form">
+<% if user_signed_in? and current_user.needs.include?(@need)  %>
+<%= simple_form_for @need, :url => {:action=>"update"} ,:wrapper => :horizontal_form , html: { class: 'form-vertical profile-box',
+                                                                                               style: "width: 50%;margin-left: 30%;"} do |f| %>
+      <h4 class="center"> Modify requirement </h4>
+      <%= f.input :blood_group,collection: User::BLOOD_GROUPS , :prompt => "- Choose blood group -",
+              :required => true  %>
+
+  <%= f.input :required_date ,:data_behaviour => 'datepicker', :required => true ,
+              :placeholder=> "Required Date" , :as => :string%>
+  <%= f.input :required_units, :required => true ,:placeholder=> "Require Units"%>
+
+  <%= f.input :contact_number, :required => true ,:phone_field => true,:placeholder=> "Mobile Number" , :as => :string%>
+
+  <%= f.input :state_id,collection: State.order(:name),:prompt => "- Select state -"%>
+  <%= f.input :district_id,collection: State.order(:name), as: :grouped_select, group_method: :districts ,:prompt => "- Select district -"%>
+  <%= f.input :hospital_name , :required => true ,:placeholder=> "Hospital Name", :as => :string%>
+  <%= f.input :patient_name,:placeholder=> "Patient Name", :required => true , :as => :string%>
+  <%= f.input :reason,:placeholder=> "Reason", :required => true , :as => :string%>
+  <br>
+  <br>
+      <div class="center">
+        <%= f.button :submit, "Update requirement" ,id: "notify_need",class:'btn  btn-primary' %>
+        <%= link_to "Cancel", :back  ,id: "cancel_need_edit",class:'btn' %>
+      </div>
+<% end %>
+<% end %>
+</div>
