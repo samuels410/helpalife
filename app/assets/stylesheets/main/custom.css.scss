@@ -1,6 +1,49 @@
 @import "bootstrap";
 //@import "bootstrap-responsive";
 
+#need_edit_form{
+  margin-top: 3%;
+}
+
+.center{
+  text-align: center;
+}
+
+#edit_need_2{
+margin-top: 3%;
+}
+
+#need_edit_form .col-sm-9 {
+  margin-bottom: 10px;
+}
+
+.donor-box{
+  background-color: #F1F3F6;
+  margin-bottom: 5px;
+  padding: 11px;
+  font-family: 'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-size: 15px;
+  line-height: 1.43;
+  color: #333;
+  box-shadow: 0 2px 2px #cbcbcb;
+}
+
+body{
+  background-color: #f4f4f4;
+}
+
+.profile-box{
+  border: 1px solid lightgray;
+  border-radius: 3px;
+  padding: 10px;
+  margin-bottom: 3%;
+  background: #F1F3F6;
+}
+
+.form-horizontal .control-label {
+  text-align: left;
+}
+
 #footer {
 //position: absolute;
   bottom:0;
@@ -136,10 +179,13 @@
 }
 
 .need_box{
-  color: white;
+  color: black;
   padding: 8px;
-  background-color: #3b494c;
-  margin-bottom: 5px;
+  background-color: #F1F3F6;
+  font-family: 'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif;
+  box-shadow: 0 2px 2px #cbcbcb;
+  margin: 0;
+  margin-bottom: 15px;
 }
 
 .headings{

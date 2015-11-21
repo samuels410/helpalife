@@ -10,6 +10,8 @@
         html: { method: :put, class: 'form-horizontal', multipart: true } do |f| %>
 
          <%= render 'shared/error_messages', object: f.object %>
+       <div class="profile-box">
+         <h4>Profile</h4>
          <%= f.input :name, :required => true, :value => current_user.name  , :as => :string%>
          <%= f.input :email, :required => true , :as => :string%>
          <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
@@ -23,13 +25,17 @@
                       :required => true%>
          <%= f.input :state_id,collection: State.order(:name),:prompt => "- Select state -"%>
          <%= f.input :district_id,collection: State.order(:name), as: :grouped_select, group_method: :districts ,:prompt => "- Select district -"%>
+       </div>
+<div class="profile-box">
+  <h4>Notification preferences</h4>
          <%= f.input :can_send_email %>
          <%= f.input :can_send_sms %>
-         <%= f.check_box :can_receive_newsletter %>
-
+         <%= f.input :can_receive_newsletter %>
          <%#= f.label :avatar, 'Upload your profile pic' %> 
          <%#= f.file_field :avatar %>
          <%= f.input :phone_no_visibility ,label: "Phone no public" %>
+</div>
+
          <%= f.check_box :terms_of_service %> <%= link_to "I accept terms and service","/terms",:target=>"_blank" %>
          <%= f.button :submit, "Update" ,class:'btn btn-primary'%>
          <%= link_to "Cancel",:back ,class:'btn'%>

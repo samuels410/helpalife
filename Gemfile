@@ -1,8 +1,8 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-ruby '1.9.3'
-gem 'rails', '4.0.0'
+ruby '2.2.3'
+gem 'rails', '4.1.2'
 
 # Use sqlite3 as the database for Active Record
 
@@ -83,6 +83,7 @@ group :development, :test do
   gem 'annotate'
   gem 'quiet_assets'
   gem 'faker'
+  gem 'foreman'
 end
 
 group :production do
@@ -94,6 +95,7 @@ group :test do
   gem 'capybara'
   gem 'database_cleaner', '1.0.1'
   gem 'email_spec'
+  gem 'test-unit'
 end
 
 group :deploy do
@@ -112,9 +114,10 @@ gem 'omniauth-facebook'
 gem 'omniauth-linkedin'
 gem 'omniauth-google-oauth2'
 gem 'oauth2'
-gem 'rails_config'
+gem 'rails_config',"0.4.2"
 gem 'bootstrap-datepicker-rails'
 gem 'will_paginate'
 gem 'meta-tags', :require => 'meta_tags'
 gem 'delayed_job_active_record'
 gem 'friendly_id'
+gem "daemons"

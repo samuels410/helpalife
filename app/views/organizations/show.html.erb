@@ -1,9 +1,9 @@
 <% provide(:title, "#{@organization.name}" ) %>
 <%set_meta_tags :og => {
                         :title    => "Join #{@organization.name} ,to become a blood donor!",
-                        :type     => 'Non profit Blood donors organization',
-                        :url      => organization_path(@organization),
-                        :image    => @organization.banner.url(:background),
+                        :type     => 'website',
+                        :url      => organization_url(@organization),
+                        :image    => "#{root_url}/#{@organization.banner.url(:background)}",
                         :description => @organization.description
                 } %>
 <style type="text/css">
