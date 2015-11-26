@@ -18,6 +18,7 @@ set :deploy_via, :copy
 set :deploy_to, "/var/deploy/capistrano/helpalife/"
 
 set :linked_files, %w{config/database.yml}
+set :linked_files, %w{config/settings/production.yml}
 set :linked_dirs, %w{public/system}
 
 
