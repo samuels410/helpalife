@@ -14,7 +14,7 @@ height: 158px;" ,alt: "contact us"%>
     <div class="col-md-6 col-md-offset-3">
       <h4>Send your feed back,suggestion or feature request etc..</h4>
       <br>
-      <%= simple_form_for @contact, url: contact_path(@contact), html: { class: 'form-horizontal' },
+      <%= simple_form_for @contact, html: { class: 'form-horizontal' },
                           wrapper: :horizontal_form do |f| %>
           <%= f.error_notification %>
 

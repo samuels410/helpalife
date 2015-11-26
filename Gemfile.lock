@@ -61,8 +61,12 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.10.0)
+    config (1.0.0)
+      activesupport (>= 3.0)
+      deep_merge (~> 1.0.0)
     daemons (1.2.3)
     database_cleaner (1.0.1)
+    deep_merge (1.0.1)
     delayed_job (4.1.1)
       activesupport (>= 3.0, < 5.0)
     delayed_job_active_record (4.1.0)
@@ -222,8 +226,6 @@ GEM
     rails_12factor (0.0.3)
       rails_serve_static_assets
       rails_stdout_logging
-    rails_config (0.4.2)
-      activesupport (>= 3.0)
     rails_layout (1.0.28)
     rails_serve_static_assets (0.0.4)
     rails_stdout_logging (0.0.4)
@@ -324,6 +326,7 @@ DEPENDENCIES
   cancan
   capybara
   coffee-rails (~> 4.0.0)
+  config
   daemons
   database_cleaner (= 1.0.1)
   delayed_job_active_record
@@ -353,7 +356,6 @@ DEPENDENCIES
   quiet_assets
   rails (= 4.1.2)
   rails_12factor
-  rails_config (= 0.4.2)
   rails_layout
   rb-fchange
   rb-fsevent
@@ -369,3 +371,6 @@ DEPENDENCIES
   uglifier (>= 1.3.0)
   unicorn
   will_paginate
+
+BUNDLED WITH
+   1.10.6

@@ -106,7 +106,7 @@ gem 'omniauth-facebook'
 gem 'omniauth-linkedin'
 gem 'omniauth-google-oauth2'
 gem 'oauth2'
-gem 'rails_config',"0.4.2"
+gem "config"
 gem 'bootstrap-datepicker-rails'
 gem 'will_paginate'
 gem 'meta-tags', :require => 'meta_tags'
