@@ -17,8 +17,7 @@ set :deploy_via, :copy
 # Define where to put your application code
 set :deploy_to, "/var/deploy/capistrano/helpalife/"
 
-set :linked_files, %w{config/database.yml}
-set :linked_files, %w{config/settings/production.yml}
+set :linked_files, %w{config/database.yml config/settings/production.yml}
 set :linked_dirs, %w{public/system}
 
 
