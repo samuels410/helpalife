@@ -69,3 +69,16 @@ $("#post_need").click(function() {
 
 
 });
+
+$(window).ready(function() {
+    $('[data_behaviour~=datepicker]').datepicker({
+        format: "yyyy-mm-dd"
+    });
+    var date_element = $("#need_required_date");
+    date_element.datepicker({
+        format: "yyyy-mm-dd",
+        todayHighlight: true,
+        autoclose: true
+    });
+
+});

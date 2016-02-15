@@ -23,16 +23,6 @@
 //= require tinymce
 
 
-$(document).ready(function() {
-$('[data_behaviour~=datepicker]').datepicker({
-    format: "yyyy-mm-dd"
-});
-
-$("#need_required_date").datepicker({
-    format: "yyyy-mm-dd"
-});
-
-});
 
 
 

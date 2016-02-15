@@ -2,7 +2,12 @@
 <div class="container">
   <div class="row">
     <div class="col-md-6 col-md-offset-3">
-      <%= simple_form_for(User.new, :as => :user, :url => session_path(:user), :html => {:class => 'form-vertical custom_login' }) do |f| %>
+      <% if session[:need].present?  %>
+        <div class="alert alert-warning">
+          You need to login or register before post a blood requirement
+        </div>
+      <% end  %>
+      <%= simple_form_for(User.new, :as => :user, :url => session_path(:user), :html => {:class => 'form-vertical custom_login',:style => "margin-left: 0px;" }) do |f| %>
           <table>
             <tr>
               <td>
