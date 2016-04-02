@@ -21,6 +21,8 @@
 //= require jquery.blockUI
 //= require_directory ./new_design
 //= require tinymce
+//= require profile
+
 
 
 

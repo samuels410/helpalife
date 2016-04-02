@@ -1,12 +1,33 @@
  <br>
  <br>
+
+<input type="hidden" id="target_url">
+<div class="modal" id="login1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="myModalLabel">Leave Page? </h4>
+      </div>
+
+      <div class="modal-body" id="myid">
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btnnew btn-primary btn-xs" data-dismiss="modal">Stay on This Page</button>
+        <button type="button" class="btn btnnew btn-danger btn-xs leave" data-dismiss="modal">Leave This Page</button>
+    </div>
+    </div>
+  </div>
+</div>
+
 <div class="container">
  <div class="row">
    <div class="col-md-6 col-md-offset-3">
 
      <%= simple_form_for resource,
         url:  registration_path(resource_name),  as: resource_name,
-        wrapper: :horizontal_form , 
+        wrapper: :horizontal_form ,
         html: { method: :put, class: 'form-horizontal', multipart: true } do |f| %>
 
          <%= render 'shared/error_messages', object: f.object %>
@@ -31,7 +52,7 @@
          <%= f.input :can_send_email %>
          <%= f.input :can_send_sms %>
          <%= f.input :can_receive_newsletter %>
-         <%#= f.label :avatar, 'Upload your profile pic' %> 
+         <%#= f.label :avatar, 'Upload your profile pic' %>
          <%#= f.file_field :avatar %>
          <%= f.input :phone_no_visibility ,label: "Phone no public" %>
 </div>
