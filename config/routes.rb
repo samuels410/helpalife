@@ -1,5 +1,7 @@
 Community::Application.routes.draw do
 
+  use_doorkeeper
+
   scope '/api' do
     scope '/v1' do
       scope '/donors' do

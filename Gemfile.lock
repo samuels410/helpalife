@@ -83,6 +83,8 @@ GEM
       actionmailer (>= 3.2.6, < 5)
       devise (>= 3.2.0)
     diff-lcs (1.2.5)
+    doorkeeper (3.1.0)
+      railties (>= 3.2)
     email_spec (1.6.0)
       launchy (~> 2.1)
       mail (~> 2.2)
@@ -332,6 +334,7 @@ DEPENDENCIES
   delayed_job_active_record
   devise
   devise_invitable
+  doorkeeper
   email_spec
   factory_girl_rails
   faker
@@ -372,5 +375,8 @@ DEPENDENCIES
   unicorn
   will_paginate
 
+RUBY VERSION
+   ruby 2.2.3p173
+
 BUNDLED WITH
-   1.10.6
+   1.12.4
