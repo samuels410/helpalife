@@ -1,0 +1,23 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: help_a_life_development
+  pool: 5
+  username: helpalife
+  password: helpalife
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: help_a_life_test
+  pool: 5
+  username: helpalife
+  password: helpalife
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: help_a_life_production
+  pool: 5
+  username: helpalife
+  password: helpalife

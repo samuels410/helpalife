@@ -1,0 +1,126 @@
+                          Prefix Verb     URI Pattern                                  Controller#Action
+                                 GET      /oauth/authorize/:code(.:format)             doorkeeper/authorizations#show
+             oauth_authorization GET      /oauth/authorize(.:format)                   doorkeeper/authorizations#new
+                                 POST     /oauth/authorize(.:format)                   doorkeeper/authorizations#create
+                                 DELETE   /oauth/authorize(.:format)                   doorkeeper/authorizations#destroy
+                     oauth_token POST     /oauth/token(.:format)                       doorkeeper/tokens#create
+                    oauth_revoke POST     /oauth/revoke(.:format)                      doorkeeper/tokens#revoke
+              oauth_applications GET      /oauth/applications(.:format)                doorkeeper/applications#index
+                                 POST     /oauth/applications(.:format)                doorkeeper/applications#create
+           new_oauth_application GET      /oauth/applications/new(.:format)            doorkeeper/applications#new
+          edit_oauth_application GET      /oauth/applications/:id/edit(.:format)       doorkeeper/applications#edit
+               oauth_application GET      /oauth/applications/:id(.:format)            doorkeeper/applications#show
+                                 PATCH    /oauth/applications/:id(.:format)            doorkeeper/applications#update
+                                 PUT      /oauth/applications/:id(.:format)            doorkeeper/applications#update
+                                 DELETE   /oauth/applications/:id(.:format)            doorkeeper/applications#destroy
+   oauth_authorized_applications GET      /oauth/authorized_applications(.:format)     doorkeeper/authorized_applications#index
+    oauth_authorized_application DELETE   /oauth/authorized_applications/:id(.:format) doorkeeper/authorized_applications#destroy
+                oauth_token_info GET      /oauth/token/info(.:format)                  doorkeeper/token_info#show
+                                 GET      /api/v1/donors(.:format)                     api/donors#index
+                                 POST     /api/v1/donors(.:format)                     api/donors#index
+subscription_message_subscribers POST     /subscribers/subscription_message(.:format)  subscribers#subscription_message
+         unsubscribe_subscribers POST     /subscribers/unsubscribe(.:format)           subscribers#unsubscribe
+     unsubscribe_sms_subscribers GET      /subscribers/unsubscribe_sms(.:format)       subscribers#unsubscribe_sms
+                     subscribers GET      /subscribers(.:format)                       subscribers#index
+                                 POST     /subscribers(.:format)                       subscribers#create
+                  new_subscriber GET      /subscribers/new(.:format)                   subscribers#new
+                 edit_subscriber GET      /subscribers/:id/edit(.:format)              subscribers#edit
+                      subscriber GET      /subscribers/:id(.:format)                   subscribers#show
+                                 PATCH    /subscribers/:id(.:format)                   subscribers#update
+                                 PUT      /subscribers/:id(.:format)                   subscribers#update
+                                 DELETE   /subscribers/:id(.:format)                   subscribers#destroy
+                     live_update GET      /icc-world-cup-live-update(.:format)         subscribers#index
+                my_organizations GET      /organizations/my_organization(.:format)     organizations#my_organization
+           display_organizations GET      /organizations/display(.:format)             organizations#display
+              join_organizations POST     /organizations/join(.:format)                organizations#join
+            remove_organizations POST     /organizations/remove(.:format)              organizations#remove
+            filter_organizations GET      /organizations/filter(.:format)              organizations#filter
+                   organizations GET      /organizations(.:format)                     organizations#index
+                                 POST     /organizations(.:format)                     organizations#create
+                new_organization GET      /organizations/new(.:format)                 organizations#new
+               edit_organization GET      /organizations/:id/edit(.:format)            organizations#edit
+                    organization GET      /organizations/:id(.:format)                 organizations#show
+                                 PATCH    /organizations/:id(.:format)                 organizations#update
+                                 PUT      /organizations/:id(.:format)                 organizations#update
+                                 DELETE   /organizations/:id(.:format)                 organizations#destroy
+            get_districts_states GET      /states/get_districts(.:format)              states#get_districts
+                      dashboards GET      /dashboards(.:format)                        dashboards#index
+                   notifications GET      /notifications(.:format)                     notifications#index
+                                 POST     /notifications(.:format)                     notifications#create
+                new_notification GET      /notifications/new(.:format)                 notifications#new
+               edit_notification GET      /notifications/:id/edit(.:format)            notifications#edit
+                    notification GET      /notifications/:id(.:format)                 notifications#show
+                                 PATCH    /notifications/:id(.:format)                 notifications#update
+                                 PUT      /notifications/:id(.:format)                 notifications#update
+                                 DELETE   /notifications/:id(.:format)                 notifications#destroy
+                       referrals GET      /referrals(.:format)                         referrals#index
+                                 POST     /referrals(.:format)                         referrals#create
+                    new_referral GET      /referrals/new(.:format)                     referrals#new
+                   edit_referral GET      /referrals/:id/edit(.:format)                referrals#edit
+                        referral GET      /referrals/:id(.:format)                     referrals#show
+                                 PATCH    /referrals/:id(.:format)                     referrals#update
+                                 PUT      /referrals/:id(.:format)                     referrals#update
+                                 DELETE   /referrals/:id(.:format)                     referrals#destroy
+                           needs GET      /requirements(.:format)                      needs#index
+                                 POST     /requirements(.:format)                      needs#create
+                        new_need GET      /requirements/new(.:format)                  needs#new
+                       edit_need GET      /requirements/:id/edit(.:format)             needs#edit
+                            need GET      /requirements/:id(.:format)                  needs#show
+                                 PATCH    /requirements/:id(.:format)                  needs#update
+                                 PUT      /requirements/:id(.:format)                  needs#update
+                                 DELETE   /requirements/:id(.:format)                  needs#destroy
+                   search_donors GET      /donors/search(.:format)                     donors#search
+                          donors GET      /donors(.:format)                            donors#index
+                                 POST     /donors(.:format)                            donors#create
+                       new_donor GET      /donors/new(.:format)                        donors#new
+                      edit_donor GET      /donors/:id/edit(.:format)                   donors#edit
+                           donor GET      /donors/:id(.:format)                        donors#show
+                                 PATCH    /donors/:id(.:format)                        donors#update
+                                 PUT      /donors/:id(.:format)                        donors#update
+                                 DELETE   /donors/:id(.:format)                        donors#destroy
+                            root GET      /                                            home#index
+                new_user_session GET      /users/sign_in(.:format)                     devise/sessions#new
+                    user_session POST     /users/sign_in(.:format)                     devise/sessions#create
+            destroy_user_session GET      /users/sign_out(.:format)                    devise/sessions#destroy
+                   user_password POST     /users/password(.:format)                    devise/passwords#create
+               new_user_password GET      /users/password/new(.:format)                devise/passwords#new
+              edit_user_password GET      /users/password/edit(.:format)               devise/passwords#edit
+                                 PATCH    /users/password(.:format)                    devise/passwords#update
+                                 PUT      /users/password(.:format)                    devise/passwords#update
+        cancel_user_registration GET      /users/cancel(.:format)                      registrations#cancel
+               user_registration POST     /users(.:format)                             registrations#create
+           new_user_registration GET      /users/sign_up(.:format)                     registrations#new
+          edit_user_registration GET      /users/edit(.:format)                        registrations#edit
+                                 PATCH    /users(.:format)                             registrations#update
+                                 PUT      /users(.:format)                             registrations#update
+                                 DELETE   /users(.:format)                             registrations#destroy
+                      home_index GET      /home(.:format)                              home#index
+                                 POST     /home(.:format)                              home#create
+                        new_home GET      /home/new(.:format)                          home#new
+                       edit_home GET      /home/:id/edit(.:format)                     home#edit
+                            home GET      /home/:id(.:format)                          home#show
+                                 PATCH    /home/:id(.:format)                          home#update
+                                 PUT      /home/:id(.:format)                          home#update
+                                 DELETE   /home/:id(.:format)                          home#destroy
+                  omniauth_links GET      /omniauth_links(.:format)                    omniauth_links#index
+                                 POST     /omniauth_links(.:format)                    omniauth_links#create
+               new_omniauth_link GET      /omniauth_links/new(.:format)                omniauth_links#new
+              edit_omniauth_link GET      /omniauth_links/:id/edit(.:format)           omniauth_links#edit
+                   omniauth_link GET      /omniauth_links/:id(.:format)                omniauth_links#show
+                                 PATCH    /omniauth_links/:id(.:format)                omniauth_links#update
+                                 PUT      /omniauth_links/:id(.:format)                omniauth_links#update
+                                 DELETE   /omniauth_links/:id(.:format)                omniauth_links#destroy
+                                 GET|POST /auth/:provider/callback(.:format)           authentication#create
+                    auth_failure GET|POST /auth/failure(.:format)                      authentication#auth_failure
+                           about GET      /about(.:format)                             home#about
+                           terms GET      /terms(.:format)                             home#terms
+                                 GET      /terms(.:format)                             home#terms
+                          vision GET      /vision(.:format)                            home#vision
+                        contacts GET      /contacts(.:format)                          contacts#index
+                                 POST     /contacts(.:format)                          contacts#create
+                     new_contact GET      /contacts/new(.:format)                      contacts#new
+                    edit_contact GET      /contacts/:id/edit(.:format)                 contacts#edit
+                         contact GET      /contacts/:id(.:format)                      contacts#show
+                                 PATCH    /contacts/:id(.:format)                      contacts#update
+                                 PUT      /contacts/:id(.:format)                      contacts#update
+                                 DELETE   /contacts/:id(.:format)                      contacts#destroy
