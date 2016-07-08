@@ -1,5 +1,7 @@
 Community::Application.routes.draw do
 
+  get 'event_registration' => 'event_registration#index'
+
   use_doorkeeper
 
   scope '/api' do
@@ -49,7 +51,7 @@ Community::Application.routes.draw do
   end
 
   root to: 'home#index'
-  devise_for :users, :controllers => { :registrations => "registrations" }
+  devise_for :users, :controllers => { :registrations => "registrations"}
   resources :home
   resources :omniauth_links
   match '/auth/:provider/callback' ,to: 'authentication#create', via: [:get, :post]
