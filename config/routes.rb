@@ -1,5 +1,9 @@
 Community::Application.routes.draw do
 
+  resources :colleges do
+    collection { post :import }
+  end
+
   use_doorkeeper
 
   scope '/api' do
