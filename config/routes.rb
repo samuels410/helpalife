@@ -1,6 +1,10 @@
 Community::Application.routes.draw do
-
+  
   get 'event_registration' => 'event_registration#index'
+
+  resources :colleges do
+    collection { post :import }
+  end
 
   use_doorkeeper
 
