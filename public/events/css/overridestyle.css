@@ -21,3 +21,7 @@ header {
 .tz-headerHome {
     border-bottom: 1px solid rgba(0, 0, 0, .8) !important;
 }
+
+.tz_meetup_countdown {
+    margin-top: -9px;
+}
