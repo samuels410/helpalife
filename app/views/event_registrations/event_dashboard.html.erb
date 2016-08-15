@@ -1,0 +1,83 @@
+<% provide(:title, "Dashboard" ) %>
+
+<%set_meta_tags :og => {
+    :title    => "Organizations joined to help a life by donate blood",
+    :type     => 'website',
+    :url      => organizations_url,
+    :image    => 'http://www.cjinstitute.com/sites/default/files/styles/slideshow/public/sites/default/files/slideshow/bigstock-Global-Network-Of-People-4119205_0.jpg?itok=J70Noh6z',
+    :description => "Organizations joined to help a life by donate blood"
+} %>
+<div style="height: 261px;
+    background-image: url('http://www.cjinstitute.com/sites/default/files/styles/slideshow/public/sites/default/files/slideshow/bigstock-Global-Network-Of-People-4119205_0.jpg?itok=J70Noh6z');
+    margin-bottom: 10px;">
+  <div class="imagery_overlay" style="height: 261px;color: #fff;">
+    <div style="padding-top: 150px;padding-left: 20px">
+      <div class="row">
+        <div class="col-xs-12 col-md-8">
+          <blockquote>
+            <h1 style="font-weight: bold">Upload your material</h1>
+          </blockquote>
+        </div>
+        <div class="col-xs-6 col-md-4">
+      <div >
+        <h4>
+        Hello, <%= current_user.name %> you have registered for the event <b> <%= current_user.participant.event_name %>
+        </b>
+        you can upload your material below.
+        </h4>
+      </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+<div class="container">
+
+  <div class="panel panel-default">
+    <!-- Default panel contents -->
+    <div class="panel-heading">Upload content</div>
+    <div class="panel-body">
+      <p>Submission (till the end date you can re-upload your content anytime)</p>
+      <p>
+      <% if ["image/jpeg","image/jpg", "image/gif", "image/png" ].include? current_user.participant.attachment_content_type  %>
+        <ul class="list-group">
+          <li class="list-group-item">
+            <%= image_tag current_user.participant.attachment %>
+          </li>
+        </ul>
+      <% elsif current_user.participant.attachment_content_type ==  "application/pdf"%>
+          <a target="_blank" href="https://docs.google.com/gview?url=<%= "#{request.protocol}#{request.host}:#{request.port}#{current_user.participant.attachment.url} "%>&embedded=true">Your Pdf Viewer</a>
+      <% end %>
+        <% if current_user.participant.event_name == "Article writing" %>
+        <p>Upload your article in PDF format</p>
+        <% elsif current_user.participant.event_name == "Poster Design" %>
+          <p>Upload your posters in PDF / Image (jpeg,jpg,gif,png) format </p>
+        <% elsif current_user.participant.event_name == "Photography" %>
+          <p>Upload your photo in Image (jpeg,jpg,gif,png) format </p>
+        <% elsif current_user.participant.event_name == "Short Film" %>
+          <p>You have to upload your short films in www.youtube.com or other video hosting platform and provide the link
+            of your video here </p>
+        <% end  %>
+      <% if current_user.participant.event_name == "Short Film" %>
+          <%= simple_form_for current_user.participant, url: save_video_link_path ,method: :post do |form| %>
+              <%= form.input :video_link, as: :string %>
+              <%= form.submit "submit" ,class: "btn btn-primary" %>
+          <% end %>
+      <% else  %>
+        <%= simple_form_for current_user.participant, url: save_attachment_path ,method: :post do |form| %>
+            <%= form.input :attachment, as: :file %>
+            <%= form.submit "submit material" ,class: "btn btn-primary" %>
+        <% end %>
+      <% end %>
+      </p>
+    </div>
+
+  </div>
+
+
+</div>
+<clear></clear>
+
+</div>

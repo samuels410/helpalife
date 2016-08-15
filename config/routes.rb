@@ -1,6 +1,10 @@
 Community::Application.routes.draw do
   
-  get 'event_registration' => 'event_registration#index'
+  get 'register' => 'event_registrations#index'
+  get 'event_dashboard' => 'event_registrations#event_dashboard'
+  post 'save_attachment' => 'event_registrations#save_attachment'
+  post 'save_video_link' => 'event_registrations#save_video_link'
+  resources :event_registrations
 
   resources :colleges do
     collection { post :import }

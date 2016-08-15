@@ -69,10 +69,17 @@
         }
         return f
     }, handleClick: function (j) {
-        console.log("afsdddddddd");
         var g = this;
         var f = d(j.currentTarget);
         var i = f.parent();
+        if (f.attr("class") == 'link'){
+            console.log("afsdddddddd");
+        }else{
+            console.log("Not menu link");
+            return;
+        }
+
+
         var h = "#" + g.getHash(f);
         if (!i.hasClass(g.config.currentClass)) {
             if (g.config.begin) {

@@ -55,7 +55,7 @@ include NeedsHelper
 
 
   def get_users
-    @users = User.where(blood_group: @need.blood_group,
+    @users = User.donors.where(blood_group: @need.blood_group,
                         district_id: @need.district.id,
                         state_id: @need.state.id).paginate(page: params[:page], :per_page => 50)
 

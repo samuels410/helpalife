@@ -30,5 +30,12 @@ class NotificationMailer < ActionMailer::Base
     mail(to: emails, subject: "Helpalife Blog: #{@post.title}")
   end
 
+  def event_registration_confirmation(user,host_protocol,host_with_port)
+    @user = user
+    @host_with_port = host_with_port
+    @host_protocol = host_protocol
+      mail(to: @user.email, subject: "Helpalife.in | DEFINE YOUNG INDIA contest registration confirmation")
+  end
+
 
 end

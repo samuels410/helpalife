@@ -57,7 +57,7 @@ jQuery(document).ready(function(){
         var $tz_meetup_countdown = jQuery('.tz_meetup_countdown');
         if ( $tz_meetup_countdown.length > 0 ) {
 
-            var $data_countdown     =   '2016/09/15 23:59:59';
+            var $data_countdown     =   '2016/09/30 23:59:59';
             var $data_text_ended    =   'The event is ended';
 
             var $data_text_day      =   'days';
@@ -131,7 +131,7 @@ jQuery(document).ready(function(){
     /* Counter */
     function count($this){
         var current = parseInt($this.html(), 10);
-        current = current + 1; /* Where 50 is increment */
+        current = current + 1000; /* Where 50 is increment */
 
         $this.html(++current);
         if(current > $this.data('count')){

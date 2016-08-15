@@ -21,6 +21,7 @@ class User < ActiveRecord::Base
   scope :sms_notification_enabled, where('can_send_sms = ?', true)
   scope :phone_not_empty, where.not('phone_no' => nil)
   scope :receive_newsletter, where('can_receive_newsletter = ?', true)
+  has_one :participant
 
   # Validations
   validates_attachment :avatar,
@@ -38,15 +39,21 @@ class User < ActiveRecord::Base
   scope :sms_notification_enabled, -> { where(can_send_sms: true) }
   scope :phone_not_empty, -> { where.not(phone_no: nil) }
   scope :with_blood, ->(type) { where(users: {blood_group: type}) }
+  scope :donors, -> { where(is_donor: true) }
 
 
   #validates_attachment :avatar,
   #                     :content_type => { :content_type => ["image/jpeg","image/jpg", "image/gif", "image/png"] },
   #                     :size => { :in => 0..200.kilobytes }
 
-  validates :name,:blood_group,:state_id,:district_id,:email,:phone_no, presence: true
+  validates :name,:email,:phone_no, presence: true
   validates :terms_of_service, acceptance: { accept: '1' }
   validates :phone_no, length: { is: 10 }, numericality: true
+  validates :blood_group , presence: true, unless: :skip_blood_group_validation
+  validates :state_id , presence: true, unless: :skip_state_id_validation
+  validates :district_id , presence: true, unless: :skip_district_id_validation
+
+  attr_accessor :skip_blood_group_validation, :skip_state_id_validation, :skip_district_id_validation
 
   # Constants
   BLOOD_GROUPS = %w(A1+ A1- A2+ A2- B+ B- A1B+ A1B- A2B+ A2B- AB+ AB- O+ O- A+ A-)

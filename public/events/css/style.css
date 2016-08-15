@@ -57,6 +57,12 @@ body {
     overflow-x: hidden;
     position: relative;
 }
+
+.form-horizontal .control-label {
+     text-align: left;
+     color: wheat;
+}
+
 .tz_bd_overflow {
     overflow: hidden;
     -webkit-transition: all 0.3s;

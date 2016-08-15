@@ -25,36 +25,18 @@
                     <span class="il">Welcome</span> to Voluntary Blood Donors online Community <a
                   href=" http://helpalife.in">HelpALife.in</a>, <br>
                     <br>
-                    You have successfully joined as a blood donor,
+                    Your Registration for DEFINE YOUNG INDIA INSPIRE THE NATION context is completed!
 
                     <br>
-                    Your public profile shown below.
+                    Your are participating event in the below category.
                     <br/>
                   <div class="media" style="border-radius: 3px;background-color: #3b494c;color: white;margin-bottom: 5px;padding: 11px;">
-                    <a style="margin-rightfloat: left !important;: 10px;" href="#">
-                      <% if @user.avatar_url.nil? %>
-                          <img alt="User missing" class="img img-circle  img-responsive media-object" height="60" src="http://helpalife.in/assets/user_missing.png" width="60">
-                      <% else  %>
-                          <%= image_tag(@user.avatar_url,:class =>"img img-circle  img-responsive media-object",:size => "60")%>
-                      <% end  %>
-                    </a>
-                    <div style="overflow: hidden;zoom:1; ">
-                      <h4 style="margin: 0 0 5px;"><%= @user.name %> &nbsp;&nbsp; <%=@user.blood_group%></h4>
-                      <%=@user.state.name  if @user.state %>,
-                      <%=@user.district.name  if @user.district%>
-                      <br>
-                      Phone No:<% if @user.phone_no_visibility %>
-                          <%= @user.phone_no  %>
-                      <% else  %>
-                          private
-                          <!--say thanks...-->
-                      <% end %>
-
-                    </div>
+                    <%= @user.participant.event_name %>
                   </div>
                   <br>
                   <br>
-                  Thank you for your participation in the Helpalife.in Voluntary Blood Donors online Community.<br>
+                  Thank you for your participation for the event, all the best.<br>
+                  To submit your <%= @user.participant.event_name %>, <a href="http://helpalife.in/event_dashboard">Click here</a>
                   <br>
                   Sincerely,</p>
                   <p>The Helpalife.in Team<br>
@@ -74,7 +56,7 @@
                 <td width="30">
                 <td align="left">
                   <p style="font-size:9px;color:#999;line-height:12px;margin-top:0px;text-align:center;
-                          font-family:Arial,Helvetica,sans-serif" align="center">Helpalife.in is a non profit
+                      font-family:Arial,Helvetica,sans-serif" align="center">Helpalife.in is a non profit
                     organization founded to avoid the difficulties to find donors.  <br></p>
                   <br>
                 </td>

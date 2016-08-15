@@ -4,10 +4,10 @@ module Api
     before_action :doorkeeper_authorize!
     def index
       if params[:user].present?
-        @donors = User.search(params[:user]).paginate(page: params[:page], per_page: 50)
+        @donors = User.donors.search(params[:user]).paginate(page: params[:page], per_page: 50)
         respond_with @donors
       else
-        @donors = User.paginate page: params[:page], per_page: 50
+        @donors = User.donors.paginate page: params[:page], per_page: 50
         respond_with @donors
       end
     end
