@@ -1,0 +1,27 @@
+/*custom css*/
+
+.tz_logo {
+    padding-top:5px !important;
+    padding-bottom:5px !important;
+}
+
+.tz_logo img {
+    width:75px !important;
+    border-radius: 50% !important;;
+}
+
+header {
+    border-top: 2px solid #EC3000 !important;
+    background: white !important;
+}
+
+.tz-headerHome ul li a {
+    color: #252525 !important;
+}
+.tz-headerHome {
+    border-bottom: 1px solid rgba(0, 0, 0, .8) !important;
+}
+
+.tz_meetup_countdown {
+    margin-top: -9px;
+}

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+  <title><%= full_title(yield(:title)) %></title>
+  <%= javascript_include_tag  "event"%>
+  <!-- Bootstrap -->
+  <link href="/events/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/events/css/font-awesome.min.css" rel="stylesheet">
+  <link href='https://fonts.googleapis.com/css?family=Raleway:300,400,500,600,700,800' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700' rel='stylesheet' type='text/css'>
+  <link href="/events/css/jquery.bxslider.css" rel="stylesheet">
+  <link href="/events/css/owl.theme.default.min.css" rel="stylesheet">
+  <link href="/events/css/owl.carousel.min.css" rel="stylesheet">
+  <link href="/events/css/component.min.css" rel="stylesheet">
+  <link href="/events/css/plusgallery.css" rel="stylesheet">
+  <link href="/events/css/simple.css" rel="stylesheet">
+  <link href="/events/css/prettyPhoto.min.css" rel="stylesheet">
+
+  <!-- Style css -->
+  <link href="/events/css/style.css" rel="stylesheet" />
+  <link href="/events/css/overridestyle.css" rel="stylesheet" />
+
+
+  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+  <script src="/events/js/library/html5shiv.min.js"></script>
+  <script src="/events/js/library/respond.min.js"></script>
+  <![endif]-->
+</head>
+<body id="bd">
+<%#= render 'layouts/new_header' %>
+<% flash.each do |key, value| %>
+    <div class="alert alert-<%= key %>" style="width: 695px;margin-left: 332px;margin-top: 10px;
+        text-align: center;">
+      <%= value %>
+    </div>
+<% end %>
+<%= yield %>
+
+<%#= render 'layouts/new_footer' %>
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="/events/js/library/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="/events/js/library/bootstrap.min.js"></script>
+<script>
+  jQuery.noConflict();
+</script>
+<!-- Include bxslider -->
+<script src="/events/js/library/nav.js"></script>
+<script src="/events/js/one_page.js"></script>
+<script src="/events/js/library/jquery.bxslider.min.js"></script>
+<script src="/events/js/library/resize.js"></script>
+<script src="/events/js/library/jquery.countdown.min.js"></script>
+<script src="/events/js/library/jquery.fitvids.min.js"></script>
+<script src="/events/js/library/jquery.easy-opener.min.js"></script>
+<script src="/events/js/library/owl.carousel.min.js"></script>
+<script src="/events/js/library/classie.js"></script>
+<script src="/events/js/library/modalEffects.js"></script>
+<script src="/events/js/library/parallax.min.js"></script>
+<script src="/events/js/library/masonry.min.js"></script>
+<script src="/events/js/library/imagesloaded.pkgd.js"></script>
+<script src="/events/js/library/plusgallery_simple.js"></script>
+<script src="/events/js/library/jquery.prettyPhoto.js"></script>
+<script src="/events/js/gallery.js"></script>
+
+<!-- Include custom js -->
+<script src="/events/js/custom.js"></script>
+</body>
+</html>

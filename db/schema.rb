@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160519194650) do
+ActiveRecord::Schema.define(version: 20160814170229) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,6 +30,29 @@ ActiveRecord::Schema.define(version: 20160519194650) do
     t.text     "provider"
     t.text     "uid"
     t.text     "token"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "college_contact_details", force: true do |t|
+    t.string   "phone"
+    t.integer  "college_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "college_emails", force: true do |t|
+    t.string   "emails"
+    t.integer  "college_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "colleges", force: true do |t|
+    t.text     "name"
+    t.text     "address"
+    t.string   "coordinator"
+    t.integer  "district_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -207,6 +230,19 @@ ActiveRecord::Schema.define(version: 20160519194650) do
   add_index "organizations_users", ["organization_id"], name: "index_organizations_users_on_organization_id", using: :btree
   add_index "organizations_users", ["user_id"], name: "index_organizations_users_on_user_id", using: :btree
 
+  create_table "participants", force: true do |t|
+    t.integer  "user_id"
+    t.text     "college_name"
+    t.string   "event_name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "attachment_file_name"
+    t.string   "attachment_content_type"
+    t.integer  "attachment_file_size"
+    t.datetime "attachment_updated_at"
+    t.text     "video_link"
+  end
+
   create_table "posts", force: true do |t|
     t.string   "title"
     t.text     "text"
@@ -277,6 +313,7 @@ ActiveRecord::Schema.define(version: 20160519194650) do
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
     t.boolean  "can_receive_newsletter", default: true
+    t.boolean  "is_donor"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

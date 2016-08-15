@@ -39,7 +39,7 @@
                       <% end  %>
                     </a>
                     <div style="overflow: hidden;zoom:1; ">
-                      <h4 style="margin: 0 0 5px;">tester &nbsp;&nbsp; A1+</h4>
+                      <h4 style="margin: 0 0 5px;"><%= @user.name %> &nbsp;&nbsp; <%=@user.blood_group%></h4>
                       <%=@user.state.name  if @user.state %>,
                       <%=@user.district.name  if @user.district%>
                       <br>

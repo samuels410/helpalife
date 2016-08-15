@@ -69,7 +69,13 @@
             <i class="icon2"></i>
           </a>
           <ul>
-            <li> <%= link_to 'My Organizations', my_organizations_path, :'data-no-turbolink' => true %> </li>
+            <li>
+            <% if current_user.participant.present? %>
+              <%= link_to 'My event submission', event_dashboard_path, :'data-no-turbolink' => true %>
+            <% else  %>
+                  <%= link_to 'My Organizations', my_organizations_path, :'data-no-turbolink' => true %>
+              <% end  %>
+            </li>
             <li> <%= link_to 'Profile', edit_user_registration_path %> </li>
             <li> <%= link_to 'Sign out', destroy_user_session_path, rel: 'nofollow' %> </li>
           </ul>

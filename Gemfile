@@ -122,3 +122,5 @@ gem 'delayed_job_active_record'
 gem 'friendly_id'
 gem "daemons"
 gem 'doorkeeper'
+
+gem 'roo'

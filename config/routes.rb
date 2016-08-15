@@ -1,4 +1,14 @@
 Community::Application.routes.draw do
+  
+  get 'register' => 'event_registrations#index'
+  get 'event_dashboard' => 'event_registrations#event_dashboard'
+  post 'save_attachment' => 'event_registrations#save_attachment'
+  post 'save_video_link' => 'event_registrations#save_video_link'
+  resources :event_registrations
+
+  resources :colleges do
+    collection { post :import }
+  end
 
   use_doorkeeper
 
@@ -49,7 +59,7 @@ Community::Application.routes.draw do
   end
 
   root to: 'home#index'
-  devise_for :users, :controllers => { :registrations => "registrations" }
+  devise_for :users, :controllers => { :registrations => "registrations"}
   resources :home
   resources :omniauth_links
   match '/auth/:provider/callback' ,to: 'authentication#create', via: [:get, :post]

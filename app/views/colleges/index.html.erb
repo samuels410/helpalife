@@ -1,0 +1,31 @@
+
+<div class="blackbg container" style="overflow: auto;">
+  <h2>Import colleges List</h2>
+
+  <%= form_tag import_colleges_path, multipart: true do %>
+      <%= file_field_tag :file %>
+      <%= submit_tag "Import", class:'btn' %>
+  <% end %>
+
+  <div>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>address</th>
+          <th>coordinator</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @colleges.each do |college| %>
+            <tr>
+              <td><%= college.name %></td>
+              <td><%= college.address %></td>
+              <td><%= college.coordinator %></td>
+            </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
