@@ -136,7 +136,8 @@ class User < ActiveRecord::Base
       state_id: state.id,
       blood_group: blood_group,
       district_id: district.id,
-      phone_no: phone_number
+      phone_no: phone_number,
+      is_donor: true
     }
   end
 

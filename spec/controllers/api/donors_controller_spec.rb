@@ -4,8 +4,11 @@ RSpec.describe Api::DonorsController, :type => :controller do
   render_views
   let(:json) { JSON.parse(response.body) }
   let(:users_count) { 3 }
+  let(:token) { double :acceptable? => true }
 
   before do
+    allow(controller).to receive(:doorkeeper_token) { token }
+
     users_count.times { create(:user) }
     get :index, format: :json
   end
@@ -19,7 +22,7 @@ RSpec.describe Api::DonorsController, :type => :controller do
     end
   end
 
-  describe "Search by donots through POST /donors" do
+  describe "Search by donors through POST /donors" do
     context 'answer with some donors' do
       let(:name) {'test5'}
       let(:attrs) {{name: name}}
