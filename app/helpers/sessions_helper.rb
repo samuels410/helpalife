@@ -7,7 +7,7 @@ module SessionsHelper
 	end
 
 	def store_location
-		session[:return_to] = request.url
+		session[:return_to] = request.url unless request.path == "/users"
 	end
 
   def redirect_back_req?
