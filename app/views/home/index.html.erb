@@ -16,26 +16,6 @@
   </div>
   <br>
   <div class='row'>
-    <div class="col-md-12">
-    <a href="/register">
-      <div style="background-image: url( <%= asset_path('Banner-image.png') %> );height: 447px;width: 100%;
-                  background-repeat: no-repeat;background-size: cover;">
-
-        <div style="font-weight: bold;
-            color: white;
-            font-size: 32px;
-            text-align: right;
-            margin-right: 44px;">
-          Click to view more details!
-        </div>
-
-
-      </div>
-    </a>
-    </div>
-  </div>
-  <br>
-  <div class='row'>
     <div class="col-md-6">
       <div class="panel panel-danger">
         <div class="panel-heading"><b> Join with us </b></div>
@@ -54,6 +34,7 @@
                 <%= f.input :state_id,collection: State.order(:name),:prompt => "- Select state -"%>
                 <%= f.input :district_id,collection: State.order(:name), as: :grouped_select, group_method: :districts ,:prompt => "- Select district -"%>
                 <%= f.check_box :terms_of_service %> <%= link_to "I accept terms and service",terms_path ,target: "_blank" %> &nbsp;&nbsp;
+                <%= f.hidden_field :is_donor, :value => true%>
                 <%= f.button :submit, "Become a donor" , :class => 'btn btn-primary'%>
                 <br>Register using social networks<br>
                 <a href="/auth/facebook/"> <button class='zocial icon facebook'>with Facebook</button></a>

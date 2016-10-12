@@ -79,6 +79,7 @@ class User < ActiveRecord::Base
     self.avatar_url= auth['info']['image']
     self.phone_no    = auth['info']['phone']
     self.phone_no_visibility = true
+    self.is_donor = true
     require 'bcrypt'
     pepper = nil
     cost = 10
@@ -135,7 +136,8 @@ class User < ActiveRecord::Base
       state_id: state.id,
       blood_group: blood_group,
       district_id: district.id,
-      phone_no: phone_number
+      phone_no: phone_number,
+      is_donor: true
     }
   end
 

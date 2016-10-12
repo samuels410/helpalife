@@ -22,11 +22,13 @@ class ApplicationController < ActionController::Base
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_up) do |u|
       u.permit(:name, :email, :password, :password_confirmation,:phone_no,:blood_group,
-          :country_id,:state_id,:district_id,:terms_of_service,:phone_no_visibility,:can_send_email,:can_send_sms,:avatar)
+               :country_id,:state_id,:district_id,:terms_of_service,:phone_no_visibility,:can_send_email,:can_send_sms,
+               :avatar,:is_donor)
     end
     devise_parameter_sanitizer.for(:account_update) do |u|
       u.permit(:name, :email, :password, :password_confirmation,:phone_no,:blood_group,
-               :country_id,:state_id,:district_id,:terms_of_service,:phone_no_visibility,:can_send_email,:can_send_sms,:avatar)
+               :country_id,:state_id,:district_id,:terms_of_service,:phone_no_visibility,:can_send_email,:can_send_sms,
+               :avatar,:is_donor)
     end
   end
 

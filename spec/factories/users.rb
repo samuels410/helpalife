@@ -9,5 +9,6 @@ FactoryGirl.define do
     password                  "**********"
     state
     district
+    is_donor                  true
   end
 end

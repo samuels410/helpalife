@@ -35,6 +35,7 @@
 </div>
 <div class="container">
 
+ <% @participants.each do |participant| %>
   <div class="panel panel-default">
     <!-- Default panel contents -->
     <div class="panel-heading">Upload content</div>
@@ -44,29 +45,29 @@
       <% if ["image/jpeg","image/jpg", "image/gif", "image/png" ].include? current_user.participant.attachment_content_type  %>
         <ul class="list-group">
           <li class="list-group-item">
-            <%= image_tag current_user.participant.attachment %>
+            <%= image_tag participant.attachment %>
           </li>
         </ul>
-      <% elsif current_user.participant.attachment_content_type ==  "application/pdf"%>
-          <a target="_blank" href="https://docs.google.com/gview?url=<%= "#{request.protocol}#{request.host}:#{request.port}#{current_user.participant.attachment.url} "%>&embedded=true">Your Pdf Viewer</a>
+      <% elsif participant.attachment_content_type ==  "application/pdf"%>
+          <a target="_blank" href="https://docs.google.com/gview?url=<%= "#{request.protocol}#{request.host}:#{request.port}#{participant.attachment.url} "%>&embedded=true">Your Pdf Viewer</a>
       <% end %>
-        <% if current_user.participant.event_name == "Article writing" %>
+        <% if participant.event_name == "Article writing" %>
         <p>Upload your article in PDF format</p>
-        <% elsif current_user.participant.event_name == "Poster Design" %>
+        <% elsif participant.event_name == "Poster Design" %>
           <p>Upload your posters in PDF / Image (jpeg,jpg,gif,png) format </p>
-        <% elsif current_user.participant.event_name == "Photography" %>
+        <% elsif participant.event_name == "Photography" %>
           <p>Upload your photo in Image (jpeg,jpg,gif,png) format </p>
-        <% elsif current_user.participant.event_name == "Short Film" %>
+        <% elsif participant.event_name == "Short Film" %>
           <p>You have to upload your short films in www.youtube.com or other video hosting platform and provide the link
             of your video here </p>
         <% end  %>
-      <% if current_user.participant.event_name == "Short Film" %>
-          <%= simple_form_for current_user.participant, url: save_video_link_path ,method: :post do |form| %>
+      <% if participant.event_name == "Short Film" %>
+          <%= simple_form_for participant, url: save_video_link_path ,method: :post do |form| %>
               <%= form.input :video_link, as: :string %>
               <%= form.submit "submit" ,class: "btn btn-primary" %>
           <% end %>
       <% else  %>
-        <%= simple_form_for current_user.participant, url: save_attachment_path ,method: :post do |form| %>
+        <%= simple_form_for participant, url: save_attachment_path ,method: :post do |form| %>
             <%= form.input :attachment, as: :file %>
             <%= form.submit "submit material" ,class: "btn btn-primary" %>
         <% end %>
@@ -75,6 +76,7 @@
     </div>
 
   </div>
+  <% end  %>
 
 
 </div>
