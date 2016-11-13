@@ -9,7 +9,7 @@ set :application, 'helpalife'
 set :scm, :git
 set :repo_url, 'https://github.com/samuels410/helpalife.git'
 set :branch, "deploy"
-set :user, "magicbar"
+set :user, "sysadmin"
 set :use_sudo, true
 set :keep_releases, 5
 set :rails_env, "production"
