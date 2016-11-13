@@ -10,7 +10,10 @@ class AuthenticationController < ApplicationController
     else
       email=auth['info']['email']
       check_user = User.find_by_email(email)
-      if check_user
+      if check_user && !check_user.authentication.present?
+        flash[:error] = "Email id #{email} Already Registered,Please sign in using your email id and password"
+        redirect_to root_url
+      elsif check_user && check_user.authentication.present?
         flash[:error] = "Email id #{email} Already Registered using #{check_user.authentication[0].provider},Please use same provider"
         redirect_to root_url
       else
