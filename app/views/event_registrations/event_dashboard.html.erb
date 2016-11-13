@@ -21,9 +21,7 @@
         <div class="col-xs-6 col-md-4">
       <div >
         <h4>
-        Hello, <%= current_user.name %> you have registered for the event <b> <%= current_user.participant.event_name %>
-        </b>
-        you can upload your material below.
+        Event submissions
         </h4>
       </div>
         </div>
@@ -42,7 +40,7 @@
     <div class="panel-body">
       <p>Submission (till the end date you can re-upload your content anytime)</p>
       <p>
-      <% if ["image/jpeg","image/jpg", "image/gif", "image/png" ].include? current_user.participant.attachment_content_type  %>
+      <% if ["image/jpeg","image/jpg", "image/gif", "image/png" ].include? participant.attachment_content_type  %>
         <ul class="list-group">
           <li class="list-group-item">
             <%= image_tag participant.attachment %>

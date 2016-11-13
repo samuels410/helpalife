@@ -37,8 +37,8 @@ class EventRegistrationsController < ApplicationController
   end
 
   def event_dashboard
+    @participants = Participant.all
     unless current_user
-      @participants = Participant.all
       redirect_to new_user_session_path and return
     end
 
