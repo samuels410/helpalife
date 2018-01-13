@@ -1,6 +1,19 @@
 class User < ActiveRecord::Base
   rolify
 
+  reverse_geocoded_by :latitude, :longitude do |obj,results|
+    if geo = results.first
+      obj.address = geo.address
+      obj.city    = geo.city
+      obj.geo_state   = geo.state
+      obj.state_code   = geo.state_code
+      obj.postal_code = geo.postal_code
+      obj.country = geo.country
+      obj.country_code = geo.country_code
+    end
+  end
+  before_save :reverse_geocode  #, if: ->(obj){ obj.address.present? and obj.address_changed? }
+
   # Associations
   belongs_to :state
   belongs_to :district
@@ -68,7 +81,7 @@ class User < ActiveRecord::Base
     users
   end
 
-  delegate :name, to: :state, prefix: true, allow_nil: true
+  delegate :name, to: :geo_state, prefix: true, allow_nil: true
   delegate :name, to: :district, prefix: true, allow_nil: true
 
 

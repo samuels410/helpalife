@@ -116,3 +116,5 @@ gem "daemons"
 gem 'doorkeeper'
 
 gem 'roo'
+
+gem 'geocoder'

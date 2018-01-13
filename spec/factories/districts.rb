@@ -3,6 +3,6 @@
 FactoryGirl.define do
   factory :district do
     name      "Uttar Dinajpur"
-    state     {State.first || create(:state)}
+    state     {State.first || create(:geo_state)}
   end
 end
