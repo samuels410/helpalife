@@ -8,25 +8,17 @@ class AuthenticationController < ApplicationController
       flash[:info] = "Welcome. #{authentication.user.try(:name)}"
       sign_in_and_redirect(:user, authentication.user)
     else
-      email=auth['info']['email']
-      check_user = User.find_by_email(email)
-      if check_user && !check_user.authentication.present?
-        flash[:error] = "Email id #{email} Already Registered,Please sign in using your email id and password"
-        redirect_to root_url
-      elsif check_user && check_user.authentication.present?
-        flash[:error] = "Email id #{email} Already Registered using #{check_user.authentication[0].provider},Please use same provider"
-        redirect_to root_url
+      email = auth['info']['email']
+      user = User.find_by_email(email)
+      user ||= User.new
+      user.apply_omniauth(auth)
+      if user.save(:validate => false)
+        flash.now[:notice] = "Account created and signed in successfully."
+        sign_in(:user, user)
+        redirect_to edit_user_registration_path
       else
-        user = User.new
-        user.apply_omniauth(auth)
-        if user.save(:validate => false)
-          flash.now[:notice] = "Account created and signed in successfully."
-          sign_in(:user, user)
-          redirect_to edit_user_registration_path
-        else
-          flash.now[:error] = "Error while creating a user account. Please try again."
-          redirect_to root_url
-        end
+        flash.now[:error] = "Error while creating a user account. Please try again."
+        redirect_to root_url
       end
     end
   end
