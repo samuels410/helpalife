@@ -330,10 +330,6 @@ DEPENDENCIES
   bootstrap-datepicker-rails
   bootstrap-sass
   cancan
-  capistrano (~> 3.1)
-  capistrano-bundler (~> 1.1.2)
-  capistrano-passenger
-  capistrano-rails (~> 1.1)
   capybara
   coffee-rails (~> 4.0.0)
   config
