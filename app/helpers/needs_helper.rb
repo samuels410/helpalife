@@ -20,7 +20,7 @@ module NeedsHelper
         logger.info("Assigning:#{hundred_user_phones.join(",")} sms")
       end
 
-      flash[:success] = "Your need is posted and email notifications sent to the below donors!"
+      flash[:success] = "Your requirement is posted and email notifications sent to the below donors!"
       if redirect
         redirect_to need_path(need)
       else

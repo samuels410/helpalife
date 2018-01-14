@@ -77,7 +77,7 @@ class User < ActiveRecord::Base
     self.email    = auth['info']['email']
     self.name     = auth['info']['name']
     self.avatar_url= auth['info']['image']
-    self.phone_no    = auth['info']['phone']
+    self.phone_no    ||= auth['info']['phone']
     self.phone_no_visibility = true
     self.is_donor = true
     require 'bcrypt'

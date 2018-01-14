@@ -19,12 +19,12 @@
 
 .doner-search{
   background-image: asset-data-url("center-bg-hieght.gif");
-  height: auto;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 3px;
   text-align: center;
   color: #ffffff;
+  min-height: 150px;
 }
 
 

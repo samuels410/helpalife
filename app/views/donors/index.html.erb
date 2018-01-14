@@ -9,7 +9,7 @@
 } %>
 <br>
 <script src="http://thecodeplayer.com/uploads/js/prefixfree-1.0.7.js" type="text/javascript" type="text/javascript"></script>
-<div class="doner-search container"  style="height: 150px; text-align: center">
+<div class="doner-search container">
   <div class="breadcrumb">
     <a href="#" >Select blood group,state,district</a>
     <a href="#" >Click search donors</a>
@@ -18,8 +18,9 @@
     <a href="#">Notify donors via SMS and Email</a>
   </div>
   <%= render 'shared/search_donors_form', search_donor: @search_donor %>
-  <div >Found &nbsp;<%=pluralize(@donors.count, 'Donor')%> </div>
 </div>
+
+<div class="foundDonorsNo">Found <span class="badge "><%=pluralize(@donors.count, 'Donor')%></span> </div>
 
 <br>
 
@@ -32,10 +33,6 @@
   <%= render 'home/recent_users', users: @donors %>
   <% else  %>
          <div>Sorry, currently no donors for this selection criteria.</div>
-      <br>
-      <b>But you can post your requirement in the home page and you can share that in social medias.</b>
-      <%= render 'referrals/site_referrals' %>
-
   <% end %>
  </div>
   <div class="row" style="text-align: center;">
