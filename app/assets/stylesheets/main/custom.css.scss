@@ -197,9 +197,6 @@ body{
   margin-bottom: 10px;
 }
 
-#new_user{
-  margin-left: 4%;
-}
 
 .custom_login{
   background: white;
@@ -229,4 +226,34 @@ body{
   width: 90%;
   background: white;
   border-radius: 3px;
+}
+
+.foundDonorsNo{
+  margin:10px;
+  text-align: center;
+  font-weight: bold;
+}
+
+
+//Mobile responsive
+@media (max-width: 800px) {
+
+  .breadcrumb{
+    display: none;
+  }
+
+  app{
+    height: 221px !important;
+  }
+
+  #new_user{
+    margin-top: 6%;
+  }
+
+  .doner-search{
+    min-height: 218px !important;
+    margin-left: 3.5%;
+    margin-right: 3.5%;
+    width: auto !important;
+  }
 }
