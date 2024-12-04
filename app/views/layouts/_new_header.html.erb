@@ -33,6 +33,7 @@
             <span>Requirements</span>
           </a>
         </li>
+
         <li>
           <a href="<%= donors_path %>">
             <span>Find Donors</span>
@@ -51,11 +52,6 @@
             <li><a href="<%= vision_path %>">Vision & Mission</a></li>
             <li><a href="<%= contacts_path %>">Contact Us</a></li>
           </ul>
-        </li>
-        <li class="last">
-          <%= link_to "http://blog.helpalife.in" do %>
-            <span>Help a Life Blog</span>
-          <% end %>
         </li>
         <li> <%= link_to 'Organizations', organizations_path, :'data-no-turbolink' => true %> </li>
       <% if signed_in?  %>
