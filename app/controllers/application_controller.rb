@@ -20,17 +20,19 @@ class ApplicationController < ActionController::Base
       'mobile|zune'
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.for(:sign_up) do |u|
-      u.permit(:name, :email, :password, :password_confirmation,:phone_no,:blood_group,
-               :country_id,:state_id,:district_id,:terms_of_service,:phone_no_visibility,:can_send_email,:can_send_sms,
-               :avatar,:is_donor)
-    end
-    devise_parameter_sanitizer.for(:account_update) do |u|
-      u.permit(:name, :email, :password, :password_confirmation,:phone_no,:blood_group,
-               :country_id,:state_id,:district_id,:terms_of_service,:phone_no_visibility,:can_send_email,:can_send_sms,
-               :avatar,:is_donor)
-    end
+    devise_parameter_sanitizer.permit(:sign_up, keys: [
+      :name, :email, :password, :password_confirmation, :phone_no, :blood_group,
+      :country_id, :state_id, :district_id, :terms_of_service, :phone_no_visibility,
+      :can_send_email, :can_send_sms, :avatar, :is_donor
+    ])
+
+    devise_parameter_sanitizer.permit(:account_update, keys: [
+      :name, :email, :password, :password_confirmation, :phone_no, :blood_group,
+      :country_id, :state_id, :district_id, :terms_of_service, :phone_no_visibility,
+      :can_send_email, :can_send_sms, :avatar, :is_donor
+    ])
   end
+
 
   private
 
