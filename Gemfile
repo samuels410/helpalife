@@ -46,7 +46,7 @@ gem 'bootstrap-sass'
 gem 'cancan'
 gem 'devise'
 gem 'devise_invitable'
-gem 'pg'
+gem 'pg', '~> 0.11'
 #gem 'mysql2'
 gem 'simple_form'
 
@@ -116,3 +116,11 @@ gem "daemons"
 gem 'doorkeeper'
 
 gem 'roo'
+
+group :deploy do
+  gem 'capistrano'
+  gem 'capistrano-rails'
+  gem 'capistrano-bundler'
+  gem 'capistrano-passenger', '~> 0.2.1'
+  gem 'capistrano3-delayed-job', '~> 1.0'
+end
