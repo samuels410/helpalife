@@ -1,7 +1,7 @@
 # config valid for current version and patch releases of Capistrano
 lock "~> 3.19.2"
 
-set :repo_url, 'git@github.com:samuels410/helpalife.git'
+set :repo_url, 'https://github.com/samuels410/helpalife.git'
 set :pty, true
 set :linked_files, %w{config/database.yml config/settings/production.yml}
 set :linked_dirs, %w{log tmp/pids tmp/cache vendor/bundle public/system public/assets}
