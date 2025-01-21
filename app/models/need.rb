@@ -1,5 +1,5 @@
 class Need < ActiveRecord::Base
-  extend FriendlyId
+  include FriendlyId
   friendly_id :perma_link,use: [:slugged, :history, :finders]
   belongs_to :user
   belongs_to  :district

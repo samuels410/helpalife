@@ -85,3 +85,4 @@ config/settings.local.yml
 config/settings/*.local.yml
 config/environments/*.local.yml
 /.rvmrc
+/config/initializers/postgresql_adapter_pg12.rb
