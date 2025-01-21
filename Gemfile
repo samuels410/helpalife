@@ -111,7 +111,7 @@ gem 'bootstrap-datepicker-rails'
 gem 'will_paginate'
 gem 'meta-tags', :require => 'meta_tags'
 gem 'delayed_job_active_record'
-gem 'friendly_id'
+gem 'friendly_id', '5.2'
 gem "daemons"
 gem 'doorkeeper'
 

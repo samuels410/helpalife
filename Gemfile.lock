@@ -150,7 +150,7 @@ GEM
     ffi (1.15.5)
     foreman (0.88.1)
     formatador (1.1.0)
-    friendly_id (5.5.1)
+    friendly_id (5.2.0)
       activerecord (>= 4.0.0)
     guard (2.19.0)
       formatador (>= 0.2.4)
@@ -404,7 +404,7 @@ DEPENDENCIES
   factory_girl_rails
   faker
   foreman
-  friendly_id
+  friendly_id (= 5.2)
   guard-bundler
   guard-rails
   guard-rspec
