@@ -52,6 +52,7 @@ class User < ActiveRecord::Base
   validates :blood_group , presence: true, unless: :skip_blood_group_validation
   validates :state_id , presence: true, unless: :skip_state_id_validation
   validates :district_id , presence: true, unless: :skip_district_id_validation
+  validate :list_verify_email
 
   attr_accessor :skip_blood_group_validation, :skip_state_id_validation, :skip_district_id_validation
 
@@ -140,5 +141,33 @@ class User < ActiveRecord::Base
       is_donor: true
     }
   end
+
+
+  private
+
+  def list_verify_email
+    email = self.email
+    begin
+      url = URI("#{Settings.get_prospect_url}""?email=#{email}")
+      http = Net::HTTP.new(url.host, url.port)
+      http.use_ssl = true
+      http.open_timeout = 600
+      request = Net::HTTP::Get.new(url)
+      request["accept"] = 'application/json'
+      request["apiKey"] = Settings.get_prospect_api_key
+      response = http.request(request)
+      if response.code == "200"
+        resp = JSON.parse(response.body)
+        if resp["status"] == "invalid"
+          errors.add(:email, "is invalid")
+        end
+      else
+        raise StandardError
+      end
+    rescue StandardError => ex
+      puts "verify_email::API error (#{email}): #{ex}"
+    end
+  end
+
 
 end
