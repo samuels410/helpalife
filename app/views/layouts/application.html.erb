@@ -13,7 +13,6 @@ xmlns:fb="http://www.facebook.com/2008/fbml">
   <%= csrf_meta_tags %>
   <meta content="blood donors,blood donor,help a life,blood bank,Voluntary Blood Donors,donors community,donors list, donate blood online" name="keywords" />
   <meta content="Blood donors online community. Post requirements and get donors info. Notify donors via instant SMS and EMAIL for your blood requirement." name="description" />
-  <% if Rails.env.production? %>
     <%= display_meta_tags %>
     <script>
         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -24,7 +23,6 @@ xmlns:fb="http://www.facebook.com/2008/fbml">
         ga('create', 'UA-48535318-1', 'helpalife.in');
         ga('send', 'pageview');
     </script>
-  <% end %>
 </head>
 <body>
 
