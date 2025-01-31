@@ -109,7 +109,7 @@ gem 'oauth2'
 gem "config"
 gem 'bootstrap-datepicker-rails'
 gem 'will_paginate'
-gem 'meta-tags', :require => 'meta_tags'
+gem 'meta-tags', '~> 1.6.0'
 gem 'delayed_job_active_record'
 gem 'friendly_id', '5.2'
 gem "daemons"
