@@ -22,11 +22,11 @@
           </div>
         <% end %>
         <br/>
-        <div>
+        <div style="margin-left:27px;">
           <u><%= link_to "Forgot Password?", new_password_path(:user) %></u>
+          <br> <br>
+          <u><%= link_to "Sign up and become a donor!", new_user_registration_path %></u>
         </div>
-        <br/>
-        <u><%= link_to "Sign up and become a donor!", new_user_registration_path %></u>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
