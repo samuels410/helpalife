@@ -3,54 +3,30 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-        <h4 class="modal-title" id="myModalLabel">Register / Login </h4>
+
+        <button type="button" class="close" data-dismiss="modal">
+          <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+        </button>
+        <h4 class="modal-title" id="myModalLabel">Register / Login</h4>
       </div>
       <div class="modal-body">
-        <%= simple_form_for(User.new, :as => :user, :url => session_path(:user), :html => {:class => 'form-vertical' }) do |f| %>
-            <table>
-              <tr>
-                <td>
-                  <div style="text-align: left;">
-                    <%= f.input :email, :autofocus => true , :as => :string %>
-                    <%= f.input :password ,:required => true%>
-                    <%= f.button :submit, "Sign in", :class => 'btn btn-primary' %>
+        <%= simple_form_for(User.new, as: :user, url: session_path(:user), html: { class: 'form-vertical' }) do |f| %>
+          <div style="text-align: left;">
+            <div style="margin-right:27px;">
+            <div style="margin-left:27px;">
+            <%= f.input :email, autofocus: true, as: :string %>
+            <%= f.input :password, required: true %>
+            <%= f.button :submit, "Sign in", class: 'btn btn-primary' %>
+          </div>
+            </div>
+          </div>
         <% end %>
         <br/>
         <div>
-          <u> <%= link_to "Forgot Password?", new_password_path(:user) %></u>
+          <u><%= link_to "Forgot Password?", new_password_path(:user) %></u>
         </div>
         <br/>
-        <u> <%= link_to "Sign up and become a donor!", new_user_registration_path %></u>
-        </div>
-
-
-
-        <td class="login_separator">
-          <div style="margin: 111px 35px;"> <%= image_tag("or.png", :size => "50x50", :alt => "OR",:style =>  "width: 50px;") %> </div>
-        </td>
-
-
-        <td>
-
-          <div style="margin-left:10px;margin-top:5px;">
-            <a href="/auth/facebook/"> <button class='zocial facebook' style="width: 190px;height: 48px;">with Facebook</button></a>
-            <br>
-
-            <br><br>
-            <a href="/auth/google_oauth2/"> <button class='zocial google' style="width: 190px;height: 48px;">with Google</button></a>
-            <br>
-
-            <br><br>
-            <a href="/auth/linkedin/"> <button class='zocial linkedin' style="width: 190px;height: 48px;">with LinkedIn</button></a>
-            <br>
-
-          </div>
-        </td>
-        </tr>
-
-        </table>
-        <div ><small>While social login, We dont share personal information no where,we will access public information only.</small> </div>
+        <u><%= link_to "Sign up and become a donor!", new_user_registration_path %></u>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -58,6 +34,5 @@
     </div>
   </div>
 </div>
-
 
 
