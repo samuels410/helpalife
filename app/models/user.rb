@@ -56,6 +56,8 @@ class User < ActiveRecord::Base
 
   attr_accessor :skip_blood_group_validation, :skip_state_id_validation, :skip_district_id_validation
 
+  require 'net/http'
+  
   # Constants
   BLOOD_GROUPS = %w(A1+ A1- A2+ A2- B+ B- A1B+ A1B- A2B+ A2B- AB+ AB- O+ O- A+ A-)
 
