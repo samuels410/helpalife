@@ -142,11 +142,7 @@ class User < ActiveRecord::Base
     }
   end
 
-
-  private
-
-  def list_verify_email
-    email = self.email
+  def self.verify_email(email)
     begin
       url = URI("#{Settings.get_prospect_url}""?email=#{email}")
       http = Net::HTTP.new(url.host, url.port)
@@ -157,15 +153,23 @@ class User < ActiveRecord::Base
       request["apiKey"] = Settings.get_prospect_api_key
       response = http.request(request)
       if response.code == "200"
-        resp = JSON.parse(response.body)
-        if resp["status"] == "invalid"
-          errors.add(:email, "is invalid")
-        end
+        JSON.parse(response.body)
       else
         raise StandardError
       end
     rescue StandardError => ex
       puts "verify_email::API error (#{email}): #{ex}"
+    end
+  end
+
+
+  private
+
+  def list_verify_email
+    email = self.email
+    resp = User.verify_email(email)
+    if resp["status"] == "invalid"
+      errors.add(:email, "is invalid")
     end
   end
 
