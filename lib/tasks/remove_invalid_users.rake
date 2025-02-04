@@ -5,7 +5,7 @@ namespace :db do
     User.where.not(email: nil).each do |user|
       puts "#{user.email} is running"
       response = User.verify_email(user.email)
-      if response["status"] == "invalid"
+      if response.present? && (response["status"] == "invalid") || (response["status"] == "accept_all")
         user.destroy
         puts "#{user.email} is deleted"
         invalid_user_ids << user.id

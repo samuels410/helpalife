@@ -146,7 +146,7 @@ class User < ActiveRecord::Base
 
   def self.verify_email(email)
     begin
-      url = URI("#{Settings.get_prospect_url}""?email=#{email}")
+      url = URI("#{Settings.get_prospect_url}?email=#{email}")
       http = Net::HTTP.new(url.host, url.port)
       http.use_ssl = true
       http.open_timeout = 600
@@ -157,10 +157,10 @@ class User < ActiveRecord::Base
       if response.code == "200"
         JSON.parse(response.body)
       else
-        raise StandardError
+        false
       end
-    rescue StandardError => ex
-      puts "verify_email::API error (#{email}): #{ex}"
+    rescue
+       false
     end
   end
 
@@ -170,7 +170,7 @@ class User < ActiveRecord::Base
   def list_verify_email
     email = self.email
     resp = User.verify_email(email)
-    if resp["status"] == "invalid"
+    if resp.present? && (resp["status"] == "invalid") || (resp["status"] == "accept_all")
       errors.add(:email, "is invalid")
     end
   end
