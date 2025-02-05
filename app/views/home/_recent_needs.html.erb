@@ -8,7 +8,9 @@
                 <b class="badge alert-danger"><%= need.blood_group  %> </b> blood on  <b class="badge alert-danger"> <%= need.required_date   %>
                 </b>  for <%= need.reason %> reason</div>
                 Hospital :&nbsp;<%= need.hospital_name %> <br>
+                <% if user_signed_in?  %>
                 Contact :&nbsp;<%= need.contact_number %>  <br>
+                  <% end %>
                 State :&nbsp; <%= need.state.name %> <br>
                 District :&nbsp;<%= need.district.name %> <br>
                 <small><em>Posted by,<%= need.user.name %></em> ,about
@@ -21,7 +23,5 @@
           </div>
         </a>
     <% end  %>
-
-
 
 

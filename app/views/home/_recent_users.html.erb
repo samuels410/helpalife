@@ -20,17 +20,19 @@
               <%=user.district.name  if user.district%>
 
                 <br>
+              <% if user_signed_in? %>
               Phone No:<% if user.phone_no_visibility %>
                   <%= user.phone_no  %>
               <% else  %>
                   private
                   <!--say thanks...-->
               <% end %>
-
+              <%end %>
             </div>
           </div>
         </div>
 
     <% end  %>
 <% end  %>
+
 
