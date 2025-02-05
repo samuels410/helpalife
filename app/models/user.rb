@@ -170,7 +170,7 @@ class User < ActiveRecord::Base
   def list_verify_email
     email = self.email
     resp = User.verify_email(email)
-    if resp.present? && (resp["status"] == "invalid") || (resp["status"] == "accept_all")
+    if resp.present? && ((resp["status"] == "invalid") || (resp["status"] == "accept_all"))
       errors.add(:email, "is invalid")
     end
   end
