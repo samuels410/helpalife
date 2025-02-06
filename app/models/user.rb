@@ -48,7 +48,9 @@ class User < ActiveRecord::Base
 
   validates :name,:email,:phone_no, presence: true
   validates :terms_of_service, acceptance: { accept: '1' }
-  validates :phone_no, length: { is: 10 }, numericality: true
+  VALID_PHONE_REGEX =/\A(?:(?:\+|0{0,2})91(\s*[\-]\s*)?|[0]?)?[6789]\d{9}\Z/
+  validates :phone_no, length: { is: 10 }, numericality: true,
+  format: { with: VALID_PHONE_REGEX }
   validates :blood_group , presence: true, unless: :skip_blood_group_validation
   validates :state_id , presence: true, unless: :skip_state_id_validation
   validates :district_id , presence: true, unless: :skip_district_id_validation
