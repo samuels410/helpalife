@@ -601,7 +601,7 @@
                   <%= f.input :name, :required => true ,:placeholder=> "Full name", :as => :string%>
                   <%= f.input :email, :required => true ,:placeholder=> "Email address",:type=> 'email', :as => :string%>
                   <%= f.input :password, :required => true ,:placeholder=> "Password"%>
-                  <%= f.input  :phone_no,:placeholder=> "Phone number", :required => true, :as => :string%>
+                  <%= f.input  :phone_no,:placeholder=> "Enter Phone number without +91", :required => true, :as => :string%>
                   <%= f.simple_fields_for :participants do |participant| %>
                       <%= participant.input :college_name, :as => :string ,:placeholder=> "College name",:label => "College"%>
                       <%= participant.input :event_name ,collection: Participant::EVENTS, :prompt => "- Please select an event -", :required => true%>

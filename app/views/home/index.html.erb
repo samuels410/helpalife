@@ -29,7 +29,7 @@
                 <%= f.input :email, :required => true ,:placeholder=> "Email address",:type=> 'email', :as => :string%>
                 <%= f.input :password, :required => true ,:placeholder=> "Password"%>
                 <%= f.input :password_confirmation, :required => true ,:placeholder=> "Confirm Password" ,:label => "Confirm"%>
-                <%= f.input  :phone_no,:placeholder=> "Phone number", :required => true, :as => :string%>
+                <%= f.input  :phone_no,:placeholder=> "Enter Phone number without +91", :required => true, :as => :string%>
                 <%= f.input :blood_group,collection: User::BLOOD_GROUPS , :prompt => "- Choose blood group -", :required => true%>
                 <%= f.input :state_id,collection: State.order(:name),:prompt => "- Select state -"%>
                 <%= f.input :district_id,collection: State.order(:name), as: :grouped_select, group_method: :districts ,:prompt => "- Select district -"%>
