@@ -16,4 +16,17 @@ namespace :db do
       puts "No invalid user signups found"
     end
   end
+
+  task remove_invalid_phones: :environment do
+    desc "check and remove users with invalid phone number"
+    User.where.not(phone_no: nil).each do |user|
+      puts "#{user.phone_no} is running"
+      if user.phone_no.length != 10 || user.phone_no !~ User::VALID_PHONE_REGEX
+        user.destroy
+        puts "#{user.phone_no} is deleted"
+      end
+    end
+  end
 end
+
+
