@@ -1,89 +1,124 @@
 <style type="text/css">
-.row-fluid{
-    float: right;
-}
+    .row-fluid {
+        float: right;
+    }
 </style>
-<% provide(:title, "#{@need.patient_name}, Needs #{@need.blood_group} blood,Contact Number: #{@need.contact_number}" ) %>
+<% provide(:title, "#{@need.patient_name}, Needs #{@need.blood_group} blood,Contact Number: #{@need.contact_number}") %>
 <% set_meta_tags :og => {
-:title    => "#{@need.patient_name}, Needs #{@need.blood_group} blood.",
-:type     => "website",
-:url      => need_url(@need),
-:image    => image_url('logo.png'),
-:description => "#{@need.patient_name.capitalize} needs, #{pluralize(@need.required_units ,'unit') }  of #{@need.blood_group} blood ,Contact Number:
+  :title => "#{@need.patient_name}, Needs #{@need.blood_group} blood.",
+  :type => "website",
+  :url => need_url(@need),
+  :image => image_url('logo.png'),
+  :description => "#{@need.patient_name.capitalize} needs, #{pluralize(@need.required_units, 'unit') }  of #{@need.blood_group} blood ,Contact Number:
                 #{@need.contact_number}, Hospital : #{@need.hospital_name} ,State : #{@need.state.name},District : #{@need.district.name}"
 }
- set_meta_tags :title => "#{@need.patient_name}, Needs #{@need.blood_group} blood."
- set_meta_tags :description => "#{@need.patient_name}, Needs #{@need.blood_group} blood,Contact Number: #{@need.contact_number}"
+   set_meta_tags :title => "#{@need.patient_name}, Needs #{@need.blood_group} blood."
+   set_meta_tags :description => "#{@need.patient_name}, Needs #{@need.blood_group} blood,Contact Number: #{@need.contact_number}"
 
 %>
-
+<br>
 <br>
 <script src="http://thecodeplayer.com/uploads/js/prefixfree-1.0.7.js" type="text/javascript" type="text/javascript"></script>
-<div class="doner-search container"  style=" text-align: left; height: auto;padding-top: 10px;box-shadow: 0 2px 2px #cbcbcb;">
-    <div class="row">
-      <div class="col-md-3">
-        Blood group : <b class="badge alert-danger"> <%= @need.blood_group %> </b><br/>
-        Date : <b class="badge alert-danger">  <%= @need.required_date%></b> <br/>
-        No of units :  <%= @need.required_units%> <br/>
-        Contact number :  <%= @need.contact_number%> <br/>
-        State :  <%= @need.state.name%> <br/>
-      </div>
-      <div class="col-md-4">
+<div class="doner-search container" style=" text-align: left; height: auto;padding-top: 10px;box-shadow: 0 2px 2px #cbcbcb;">
+  <div class="row">
+    <div class="col-md-3">
+      Blood group : <b class="badge alert-danger"> <%= @need.blood_group %> </b><br/>
+      Date : <b class="badge alert-danger">  <%= @need.required_date %></b> <br/>
+      No of units :  <%= @need.required_units %> <br/>
+      <% if user_signed_in? %>
+        Contact :&nbsp;<%= @need.contact_number %>  <br>
+      <% end %>
+      State :  <%= @need.state.name %> <br/>
+    </div>
+    <div class="col-md-4">
 
-        District :  <%= @need.district.name%> <br/>
-        Hospital name :  <%= @need.hospital_name%> <br/>
-        Patient name :  <%= @need.patient_name%> <br/>
-        Reason :  <%= @need.reason%>
+      District :  <%= @need.district.name %> <br/>
+      Hospital name :  <%= @need.hospital_name %> <br/>
+      Patient name :  <%= @need.patient_name %> <br/>
+      Reason :  <%= @need.reason %>
 
-      </div>
-      <% if user_signed_in? and current_user.needs.include?(@need)  %>
+    </div>
+    <% if user_signed_in? and current_user.needs.include?(@need) %>
       <div class="col-md-4 pull-right" style="text-align: right">
         Manage this requirement <br/>
-        <a  href="<%= edit_need_path(@need) %>" style="color: white;"> Edit </a> <br/>
-        <%= link_to "Delete" ,need_path(@need) ,method: :delete , :data => {:confirm => 'Are you sure?'} ,style: "color: white;"%>
+        <a href="<%= edit_need_path(@need) %>" style="color: white;"> Edit </a> <br/>
+        <%= link_to "Delete", need_path(@need), method: :delete, :data => { :confirm => 'Are you sure?' }, style: "color: white;" %>
       </div>
-      <% end %>
-    </div>
+    <% end %>
+  </div>
   <br>
   <div class="row">
     <div class="col-md-4" style="text-align: left">
-     Posted by,
+      Posted by,
       <br>
       <%= @need.user.name %> ,about
-        <%=  distance_of_time_in_words(@need.created_at,Time.now)%>&nbsp;ago
+      <%= distance_of_time_in_words(@need.created_at, Time.now) %>&nbsp;ago
     </div>
     <div class="col-md-4" style="text-align: center">
-      <% if @users.size > 0  %>
-        <div>Found &nbsp;<%=pluralize(@users.size, 'Donor')%>  </div>
-      <% end  %>
+      <% if @users.size > 0 %>
+        <div>Found &nbsp;<%= pluralize(@users.size, 'Donor') %>  </div>
+      <% end %>
     </div>
     <div class="col-md-4" style="text-align: right">
-      <%= render 'home/share_need',:need => @need %>
+      <%= render 'home/share_need', :need => @need %>
+    </div>
+  </div>
+</div>
+<br>
+<div class="alert alert-warning text-center" role="alert" style="margin-left: 335px; margin-right: 335px">
+  You have to Login to view phone numbers
+</div>
+
+<div class="container text-center">
+  <div class="col-md-2 mx-auto">
+    <div class="media donor-box" style="padding: 5px;">
+      <a class="pull-left" href="#">
+        <img alt="User missing" class="img img-circle img-responsive media-object"
+             height="40" width="40" src="/assets/user_missing.png">
+      </a>
+      <div class="media-body">
+        <h4 class="media-heading">
+          <%= @need.patient_name %>
+          <b class="badge alert-danger">
+            <%= @need.user.blood_group %>
+          </b>
+        </h4>
+        <%= @need.state.name if @need.user.state %>,
+        <br>
+        <%= @need.district.name if @need.user.district %>
+        <br>
+        <% if user_signed_in? %>
+          Phone No:
+          <% if @need.user.phone_no_visibility %>
+            <%= @need.user.phone_no %>
+          <% else %>
+            private
+          <% end %>
+        <% end %>
+        <br>
+      </div>
     </div>
   </div>
 </div>
 
-<br>
 
-<div class="container" >
+<div class="container">
   <% if @users.any? %>
-  <%= render 'home/recent_users' ,users: @users%>
-  <% else  %>
-      <!--<div>Sorry, currently no donors for this selection criteria. </div>-->
-      <!--<br>-->
-      <!--<b>But you can post your requirement in the home page and you can share that in social medias.</b>-->
-      <!--<%#= render 'referrals/site_referrals' %>-->
-
+  <% else %>
+    <!--<div>Sorry, currently no donors for this selection criteria. </div>-->
+    <!--<br>-->
+    <!--<b>But you can post your requirement in the home page and you can share that in social medias.</b>-->
+    <!--<%#= render 'referrals/site_referrals' %>-->
   <% end %>
 
 </div>
-<%=will_paginate @users%>
+<%= will_paginate @users %>
 
 <script type="text/javascript">
-    jQuery(function() {
+    jQuery(function () {
         var districts;
         districts = $('#user_district_id').html();
-        return $('#user_state_id').change(function() {
+        return $('#user_state_id').change(function () {
             var escaped_state, options, state;
             state = $('#user_state_id :selected').text();
             escaped_state = state.replace(/([ #;&,.+*~\':"!^$[\]()=>|\/@])/g, '\\$1');
@@ -100,11 +135,11 @@
         });
     });
 
-    $('.btn-group a').on('click', function(event){
+    $('.btn-group a').on('click', function (event) {
         event.preventDefault();
         var input = $(this).siblings('.control-group').find('input[type=hidden]');
-        if(input.length>0){
-            if(input.val().toString() !== $(this).data('value').toString()){
+        if (input.length > 0) {
+            if (input.val().toString() !== $(this).data('value').toString()) {
                 input.val($(this).data('value')).trigger('change');
             }
         }
