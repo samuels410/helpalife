@@ -1,39 +1,38 @@
-<% users.each_with_index do |user, idx| %>
+
+<% users.each_with_index do |user, idx|  %>
   <% unless user.nil? %>
-    <div class="col-md-4">
+    <div class="col-md-4"  >
       <div class="media donor-box">
         <a class="pull-left" href="#">
           <% if user.avatar_url.nil? %>
-            <%= image_tag(user.avatar.url(:thumb), :class => "img img-circle  img-responsive media-object", :size => "60") %>
-          <% else %>
-            <%= image_tag(user.avatar_url, :class => "img img-circle  img-responsive media-object", :size => "60") %>
-          <% end %>
+            <%= image_tag(user.avatar.url(:thumb),:class =>"img img-circle  img-responsive media-object",:size => "60")%>
+          <% else  %>
+            <%= image_tag(user.avatar_url,:class =>"img img-circle  img-responsive media-object",:size => "60")%>
+          <% end  %>
         </a>
         <div class="media-body">
-          <h4 class="media-heading"><%= truncate(user.name, length: 25, omission: '..') %> &nbsp;&nbsp;
+          <h4 class="media-heading"><%=truncate(user.name,length: 25, omission: '..') %> &nbsp;&nbsp;
             <b class="badge alert-danger">
-              <%= user.blood_group %>
+              <%=user.blood_group %>
             </b>
           </h4>
-          <%= user.state.name if user.state %>,
+          <%=user.state.name  if user.state %>,
           <br>
-          <%= user.district.name if user.district %>
+          <%=user.district.name  if user.district%>
 
           <br>
           <% if user_signed_in? %>
-            Phone No:
-            <% if user.phone_no_visibility %>
-              <%= user.phone_no %>
-            <% else %>
-              private
-              <!--say thanks...-->
-            <% end %>
+          Phone No:<% if user.phone_no_visibility %>
+            <%= user.phone_no  %>
+          <% else  %>
+            private
+            <!--say thanks...-->
           <% end %>
+          <% end %>
+
         </div>
       </div>
     </div>
 
-  <% end %>
-<% end %>
-
-
+  <% end  %>
+<% end  %>

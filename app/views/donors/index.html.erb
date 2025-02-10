@@ -1,12 +1,12 @@
+
 <% provide(:title, "Voluntary Blood Donors ,Helping Many life" ) %>
 <%set_meta_tags :og => {
-        :title    => "Blood donors | social integrated",
-        :type     => 'Non profit Blood donors organization',
-        :url      => donors_url,
-        :image    => image_url('logo.png'),
-        :description => "Post your blood requirements or register and become a donor here, we will provide ways to contact people
-        and social sharing ,email notifications and instant SMS Notifications"
-} %>
+  :title    => "Blood donors | social integrated",
+  :type     => 'Non profit Blood donors organization',
+  :url      => donors_url,
+  :image    => image_url('logo.png'),
+  :description => "Post your blood requirements or register and become a donor here, we will provide ways to contact people
+        and social sharing ,email notifications and instant SMS Notifications" } %>
 <br>
 <script src="http://thecodeplayer.com/uploads/js/prefixfree-1.0.7.js" type="text/javascript" type="text/javascript"></script>
 <div class="doner-search container">
@@ -29,21 +29,20 @@
 </div>
 <br>
 
+
 <div class="container" >
   <div class="row" >
-  <% if @donors %>
-        <div class="row" style="text-align: center;">
-          <%=will_paginate @donors%>
-        </div>
-  <%= render 'home/recent_users', users: @donors %>
-  <% else  %>
-         <div>Sorry, currently no donors for this selection criteria.</div>
-  <% end %>
- </div>
+    <% if @donors %>
+      <div class="row" style="text-align: center;">
+        <%=will_paginate @donors%>
+      </div>
+      <%= render 'home/recent_users', users: @donors %>
+    <% else  %>
+      <div>Sorry, currently no donors for this selection criteria.</div>
+    <% end %>
+  </div>
   <div class="row" style="text-align: center;">
     <%=will_paginate @donors%>
   </div>
 
 </div>
-
-
