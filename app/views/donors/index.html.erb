@@ -24,16 +24,13 @@
 
 <br>
 
-<div class="alert alert-warning text-center" role="alert" style="margin-left: 335px; margin-right: 335px">
-  You have to Login to view phone numbers
-</div>
-<br>
-
-
 <div class="container" >
   <div class="row" >
     <% if @donors %>
       <div class="row" style="text-align: center;">
+        <div class="alert alert-warning text-center" role="alert">
+          You have to Login to view phone numbers
+        </div>
         <%=will_paginate @donors%>
       </div>
       <%= render 'home/recent_users', users: @donors %>
