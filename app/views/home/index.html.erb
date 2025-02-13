@@ -2,85 +2,104 @@
 <div class="container">
   <br>
   <div class='row'>
-  <script src="http://thecodeplayer.com/uploads/js/prefixfree-1.0.7.js" type="text/javascript" type="text/javascript"></script>
-  <div class="doner-search container"  style="height: 150px; text-align: center;width: 97.3%;">
-    <div class="breadcrumb">
-      <a href="#" class="active">Select blood group,state,district</a>
-      <a href="#">Click search donors</a>
-      <a href="#">Find donors</a>
-      <a href="#">Get donor's details</a>
-      <a href="#">Notify donors via SMS and Email</a>
+    <script src="http://thecodeplayer.com/uploads/js/prefixfree-1.0.7.js"></script>
+    <div class="doner-search container" style="height: 150px; text-align: center; width: 97.3%;">
+      <div class="breadcrumb">
+        <a href="#" class="active">Select blood group, state, district</a>
+        <a href="#">Click search donors</a>
+        <a href="#">Find donors</a>
+        <a href="#">Get donor's details</a>
+        <a href="#">Notify donors via SMS and Email</a>
+      </div>
+      <%= render 'shared/search_donors_form', search_donor: @search_donor %>
     </div>
-    <%= render 'shared/search_donors_form', search_donor: @search_donor  %>
-   </div>
   </div>
   <br>
   <div class='row'>
     <div class="col-md-6">
       <div class="panel panel-danger">
-        <div class="panel-heading"><b> Join with us </b></div>
-        <div class="panel-body">
-          <%= simple_form_for(@t_user ||= User.new, :as => :user, :url => registration_path(@t_user),
-                              :html => {:class => 'form-horizontal' },:validate=>true,:wrapper => :horizontal_form) do |f| %>
+        <div class="panel-heading">
+          <b>
+            <a href="#joinForm" data-toggle="collapse" style="text-decoration: none;">Join with us</a>
+          </b>
+        </div>
+        <div id="joinForm" class="panel-collapse collapse">
+          <div class="panel-body">
+            <%= simple_form_for(@t_user ||= User.new, as: :user, url: registration_path(@t_user),
+                                html: { class: 'form-horizontal' }, validate: true, wrapper: :horizontal_form) do |f| %>
               <%= render 'shared/error_messages', object: f.object %>
-                <%= f.error_notification %>
-                <%= display_base_errors @t_user%>
-                <%= f.input :name, :required => true ,:placeholder=> "Full name", :as => :string%>
-                <%= f.input :email, :required => true ,:placeholder=> "Email address",:type=> 'email', :as => :string%>
-                <%= f.input :password, :required => true ,:placeholder=> "Password"%>
-                <%= f.input :password_confirmation, :required => true ,:placeholder=> "Confirm Password" ,:label => "Confirm"%>
-                <%= f.input  :phone_no,:placeholder=> "Enter Phone number without +91", :required => true, :as => :string%>
-                <%= f.input :blood_group,collection: User::BLOOD_GROUPS , :prompt => "- Choose blood group -", :required => true%>
-                <%= f.input :state_id,collection: State.order(:name),:prompt => "- Select state -"%>
-                <%= f.input :district_id,collection: State.order(:name), as: :grouped_select, group_method: :districts ,:prompt => "- Select district -"%>
-                <%= f.check_box :terms_of_service %> <%= link_to "I accept terms and service",terms_path ,target: "_blank" %> &nbsp;&nbsp;
-                <%= f.hidden_field :is_donor, :value => true%>
-                <%= f.button :submit, "Become a donor" , :class => 'btn btn-primary'%>
-                <br>Register using social networks<br>
-                <a href="/auth/facebook/"> <button class='zocial icon facebook'>with Facebook</button></a>
-                <a href="/auth/google_oauth2/"> <button class='zocial icon google' >with Google</button></a>
-                <a href="/auth/linkedin/"> <button class='zocial icon linkedin' >with LinkedIn</button></a>
-          <% end %>
+              <%= f.error_notification %>
+              <%= display_base_errors @t_user %>
+              <%= f.input :name, required: true, placeholder: "Full name", as: :string %>
+              <%= f.input :email, required: true, placeholder: "Email address", type: 'email', as: :string %>
+              <%= f.input :password, required: true, placeholder: "Password" %>
+              <%= f.input :password_confirmation, required: true, placeholder: "Confirm Password", label: "Confirm" %>
+              <%= f.input :phone_no, placeholder: "Enter Phone number without +91", required: true, as: :string %>
+              <%= f.input :blood_group, collection: User::BLOOD_GROUPS, prompt: "- Choose blood group -", required: true %>
+              <%= f.input :state_id, collection: State.order(:name), prompt: "- Select state -" %>
+              <%= f.input :district_id, collection: State.order(:name), as: :grouped_select, group_method: :districts, prompt: "- Select district -" %>
+              <%= f.check_box :terms_of_service %> <%= link_to "I accept terms and service", terms_path, target: "_blank" %>
+              <%= f.hidden_field :is_donor, value: true %>
+              <%= f.button :submit, "Become a donor", class: 'btn btn-primary' %>
+            <% end %>
+          </div>
         </div>
       </div>
     </div>
     <div class="col-md-6">
       <div class="panel panel-danger">
-        <div class="panel-heading"><b>Post requirement</b></div>
-        <div class="panel-body">
-      <%@need ||= Need.new%>
-      <%= simple_form_for @need ,:wrapper => :horizontal_form , html: { class: 'form-horizontal' } do |f| %>
-        <%= f.input :blood_group,collection: User::BLOOD_GROUPS , :prompt => "- Choose blood group -", :required => true  %>
-        <%= f.input :required_date ,:data_behaviour => 'datepicker', :required => true , :placeholder=> "Required Date" , :as => :string%>
-        <%= f.input :required_units, :required => true ,:placeholder=> "Require Units"%>
-        <%= f.input :contact_number, :required => true ,:phone_field => true,:placeholder=> "Mobile Number" , :as => :string%>
-        <%= f.input :state_id,collection: State.order(:name),:prompt => "- Select state -"%>
-        <%= f.input :district_id,collection: State.order(:name), as: :grouped_select, group_method: :districts , :prompt => "- Select district -"%>
-        <%= f.input :hospital_name , :required => true ,:placeholder=> "Hospital Name", :as => :string%>
-        <%= f.input :patient_name,:placeholder=> "Patient Name", :required => true , :as => :string%>
-        <%= f.input :reason,:placeholder=> "Reason", :required => true , :as => :string%>
-            <%= f.button :submit, "Post Requirement" ,id: "post_need",class:'btn  btn-primary' %>
-      <% end %>
+        <div class="panel-heading">
+          <b>
+            <a href="#postRequirement" data-toggle="collapse" style="text-decoration: none;">Post Requirement</a>
+          </b>
+        </div>
+        <div id="postRequirement" class="panel-collapse collapse">
+          <div class="panel-body">
+            <% @need ||= Need.new %>
+            <%= simple_form_for @need, wrapper: :horizontal_form, html: { class: 'form-horizontal' } do |f| %>
+              <%= f.input :blood_group, collection: User::BLOOD_GROUPS, prompt: "- Choose blood group -", required: true %>
+              <%= f.input :required_date, data_behaviour: 'datepicker', required: true, placeholder: "Required Date", as: :string %>
+              <%= f.input :required_units, required: true, placeholder: "Require Units" %>
+              <%= f.input :contact_number, required: true, phone_field: true, placeholder: "Mobile Number", as: :string %>
+              <%= f.input :state_id, collection: State.order(:name), prompt: "- Select state -" %>
+              <%= f.input :district_id, collection: State.order(:name), as: :grouped_select, group_method: :districts, prompt: "- Select district -" %>
+              <%= f.input :hospital_name, required: true, placeholder: "Hospital Name", as: :string %>
+              <%= f.input :patient_name, placeholder: "Patient Name", required: true, as: :string %>
+              <%= f.input :reason, placeholder: "Reason", required: true, as: :string %>
+              <%= f.button :submit, "Post Requirement", id: "post_need", class: 'btn btn-primary' %>
+            <% end %>
+          </div>
+        </div>
       </div>
-     </div>
     </div>
   </div>
-  <br>
- <% if @needs.any? %>
-      <div class="row requirements_head" >
-        <div class="container">
-        <a style="margin-bottom: 10px;text-align: center"  href="<%= needs_path %>">
-          <h3 class='headings'>Recent blood requirements posted by users</h3>
-       </a>
+</div>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var hash = window.location.hash;
+        if (hash === "#joinForm") {
+            document.getElementById("joinForm").classList.add("in");
+        } else if (hash === "#postRequirement") {
+            document.getElementById("postRequirement").classList.add("in");
+        }
+    });
+</script>
+
+<% if @needs.any? %>
+  <div class="row requirements_head" >
+    <div class="container">
+      <a style="margin-bottom: 10px;text-align: center"  href="<%= needs_path %>">
+        <h3 class='headings'>Recent blood requirements posted by users</h3>
+      </a>
       <%= render 'home/recent_needs' %>
-        </div>
     </div>
- <% end  %>
-  <br>
-  <a style="margin-bottom: 10px"  href="<%= donors_path %>">
-    <div class="row requirements_head">
-      <h3 class='headings' style="text-align: center">Recent donors </h3>
-  </a>
+  </div>
+<% end  %>
+<br>
+<a style="margin-bottom: 10px"  href="<%= donors_path %>">
+  <div class="row requirements_head">
+    <h3 class='headings' style="text-align: center">Recent donors </h3>
+</a>
 <%= render 'home/recent_users', users: @recent_donors %>
-    </div>
+</div>
 </div>
