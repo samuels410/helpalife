@@ -27,6 +27,19 @@ namespace :db do
       end
     end
   end
+
+  task remove_user_names: :environment do
+    file_path = (Rails.root.join("public", "cleanup_invalid_member_names.csv"))
+    CSV.foreach(file_path, headers: true) do |row|
+      user_id = row['id'].to_i
+      valid_user = row['validation']
+      user = User.find_by(id: user_id)
+      if valid_user == "invalid"
+        user.destroy
+        puts "#{user.id} - #{user.name} is deleted"
+      end
+    end
+  end
 end
 
 
