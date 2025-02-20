@@ -33,9 +33,11 @@ namespace :db do
     CSV.foreach(file_path, headers: true) do |row|
       user_id = row['id'].to_i
       valid_user = row['validation']
-      user = User.find_by(id: user_id)
       if valid_user == "invalid"
-        user.destroy
+        user = User.find_by(id: user_id)
+        if user.present?
+          user.destroy
+        end
         puts "#{user.id} - #{user.name} is deleted"
       end
     end
