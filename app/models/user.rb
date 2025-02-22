@@ -61,7 +61,7 @@ class User < ActiveRecord::Base
   require 'net/http'
   
   # Constants
-  BLOOD_GROUPS = %w(A1+ A1- A2+ A2- B+ B- A1B+ A1B- A2B+ A2B- AB+ AB- O+ O- A+ A-)
+  BLOOD_GROUPS = %w(A1+ A1- A2+ A2- B+ B- A1B+ A1B- A2B+ A2B- AB+ AB- O+ O- A+ A- hh)
 
   def self.search(params)
     users = User.where nil
