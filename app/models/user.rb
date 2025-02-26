@@ -30,10 +30,10 @@ class User < ActiveRecord::Base
 
   has_many :activities
 
-  # holds the organizations to which i am connected + added by me. 
-  has_and_belongs_to_many :organizations 
-  
-  # holds the organizations those are just created by the pearticular . 
+  # holds the organizations to which i am connected + added by me.
+  has_and_belongs_to_many :organizations
+
+  # holds the organizations those are just created by the pearticular .
   has_many :my_organizations, class_name: 'Organization', foreign_key: 'user_id'
   scope :email_notification_enabled, -> { where(can_send_email: true) }
   scope :sms_notification_enabled, -> { where(can_send_sms: true) }
@@ -55,6 +55,8 @@ class User < ActiveRecord::Base
   validates :state_id , presence: true, unless: :skip_state_id_validation
   validates :district_id , presence: true, unless: :skip_district_id_validation
   validate :list_verify_email
+  validate :validate_name
+
 
   attr_accessor :skip_blood_group_validation, :skip_state_id_validation, :skip_district_id_validation
 
@@ -166,6 +168,37 @@ class User < ActiveRecord::Base
     end
   end
 
+  def self.verify_name(name)
+    begin
+      url = URI("https://api.openai.com/v1/chat/completions")
+      http = Net::HTTP.new(url.host, url.port)
+      http.use_ssl = true
+      request = Net::HTTP::Post.new(url)
+      request["Content-Type"] = "application/json"
+      request["Authorization"] = "Bearer #{Settings.api_openai_api_key}"
+      request.body = {
+        "model": "gpt-4o-mini",
+        "messages": [
+          {
+            "role": "system",
+            "content": "You are an AI that determines whether a given name is valid or invalid. Respond with only 'valid' or 'invalid', nothing else."
+          },
+          {
+            "role": "user",
+            "content":"Is '#{name}' is valid or invalid person name?"
+          }
+        ]
+      }.to_json
+      response = http.request(request)
+      if response.code == "200"
+        JSON.parse(response.body)
+      else
+        raise StandardError
+      end
+    rescue StandardError => ex
+      puts "validate_name::API error (#{name}): #{ex}"
+    end
+  end
 
   private
 
@@ -177,5 +210,15 @@ class User < ActiveRecord::Base
     end
   end
 
+  def validate_name
+    name = self.name
+    resp = User.verify_name(name)
+    return unless resp.present?
+    parsed_response = resp.is_a?(String) ? JSON.parse(resp) : resp
+    content = parsed_response.dig("choices", 0, "message", "content")
+    if content == "invalid"
+      errors.add(:name, "is invalid")
+    end
+  end
 
 end
