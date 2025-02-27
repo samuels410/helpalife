@@ -33,7 +33,7 @@ class User < ActiveRecord::Base
   # holds the organizations to which i am connected + added by me.
   has_and_belongs_to_many :organizations
 
-  # holds the organizations those are just created by the pearticular .
+  # holds the organizations those are just created by the pearticular . 
   has_many :my_organizations, class_name: 'Organization', foreign_key: 'user_id'
   scope :email_notification_enabled, -> { where(can_send_email: true) }
   scope :sms_notification_enabled, -> { where(can_send_sms: true) }
