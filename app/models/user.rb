@@ -32,6 +32,7 @@ class User < ActiveRecord::Base
 
   # holds the organizations to which i am connected + added by me.
   has_and_belongs_to_many :organizations
+
   # holds the organizations those are just created by the pearticular .
   has_many :my_organizations, class_name: 'Organization', foreign_key: 'user_id'
   scope :email_notification_enabled, -> { where(can_send_email: true) }
@@ -180,13 +181,15 @@ class User < ActiveRecord::Base
         "messages": [
           {
             "role": "system",
-            "content": "You are an AI that determines whether a given name is valid or invalid. Respond with only 'valid' or 'invalid', nothing else."
+            "content": "You are a strict but fair name validation assistant. A valid person's name can include alphabets, spaces. Ignore minor formatting issues like misplaced periods (.) or capitalization. If the name looks like a real person's name even with small formatting mistakes, classify it as 'valid'. Respond only with 'valid' or 'invalid'."
           },
           {
             "role": "user",
-            "content":"Is '#{name}' is valid or invalid person name?"
+            "content": "Is '#{name}' a valid person name?"
           }
-        ]
+        ],
+        "temperature": 0.0,
+        "max_tokens": 5
       }.to_json
       response = http.request(request)
       if response.code == "200"
