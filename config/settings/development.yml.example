@@ -1,23 +1,35 @@
 omniauth:
-  facebook_key: "718010624878712"
-  facebook_secret: "9e4d73100337be29a836d0b44c446c0b"
-  linkedin_key: "31azcdigi8tt"
-  linkedin_secret: "OKd1hmuJoNOg9J2g"
-  google_oauth2_key: "481665924549-kt4r8jrf2ckvbg8rpc4johcq0dc99o0n.apps.googleusercontent.com"
-  google_oauth2_secret: "pBlO5yxprHjkxO0vMs7YBohx"
+  facebook_key: ""
+  facebook_secret: ""
+  linkedin_key: ""
+  linkedin_secret: ""
+  google_oauth2_key: ""
+  google_oauth2_secret: ""
 
 email:
-  user_name: "helpalife.in"
-  password: "xxxxxxxxxxxx"
-  domain: "helpalife.in"
-  address: "smtp.gmail.com"
-  port: 587
+  user_name: ""
+  password: ""
+  domain: ""
+  address: ""
+  port:
 
 domain_name: "helpalife.in"
 twitter_url: ""
 youtube_url: ""
-facebook_url: "https://www.facebook.com/helpalife.in"
-google_plus_url: https://plus.google.com/+HelpalifeIn-blood-donors
+facebook_url: ""
+google_plus_url:
 linked_in_url: ""
-sms_gateway: "https://notifysimply.herokuapp.com/api/notifications"
-sms_gateway_api: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+sms_gateway: ""
+#sms_gateway_api: ""
+get_prospect_api_key: ""
+get_prospect_url: ""
+
+sms_gateway_url: ""
+sms_gateway_api: ""
+senderid: ""
+channel: 2
+dcs: 0
+flashsms: 0
+api_openai_api_key:
+sign_up_template_id :
+specific_bloodgroup_donor: 
