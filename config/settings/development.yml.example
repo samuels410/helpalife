@@ -1,3 +1,4 @@
+
 omniauth:
   facebook_key: "718010624878712"
   facebook_secret: "9e4d73100337be29a836d0b44c446c0b"
@@ -19,5 +20,11 @@ youtube_url: ""
 facebook_url: "https://www.facebook.com/helpalife.in"
 google_plus_url: https://plus.google.com/+HelpalifeIn-blood-donors
 linked_in_url: ""
-sms_gateway: "https://notifysimply.herokuapp.com/api/notifications"
-sms_gateway_api: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+sms_gateway_url: "https://www.smsgatewayhub.com/api/mt/SendSMS"
+sms_gateway_api: "5ccad4c5-5964-4647-9768-9898699719d1"
+senderid: "HLPLYF"
+channel: 2
+dcs: 0
+flashsms: 0
+sign_up_template_id : 1707173900765148480
+specific_bloodgroup_donor: 1707173926768908677
