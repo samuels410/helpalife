@@ -1,12 +1,12 @@
 <% if object.errors.any? %>
 <div id="error_explanation">
 <div class="alert alert-error">
-The form contains <%= pluralize(object.errors.count, "error") %>.
+The form contains <%= pluralize(object.errors.full_messages.uniq.count, "error") %>.
 <ul>
 	<% if object.errors.full_messages == "Sequence can't be blank" %>
 	<%= "Display order cannot be blank" %>
 	<% else %>
-<% object.errors.full_messages.each do |msg| %>
+<% object.errors.full_messages.uniq.each do |msg| %>
 <li><%= msg %></li>
 <% end %>
 <% end %>
