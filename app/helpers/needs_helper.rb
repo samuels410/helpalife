@@ -14,13 +14,13 @@ module NeedsHelper
                                                                        state_id: need.state.id)
 
       phone_nos = @sms_users.collect(&:phone_no)
-      msg = "#{need.patient_name.capitalize} needs, #{need.required_units} units of #{need.blood_group} blood ,on #{need.required_date}. Phone no: #{need.contact_number}, Hospital: #{need.hospital_name} ,From #{need.state.name},#{need.district.name}. Visit, http://helpalife.in"
+      msg = "Dear donor, #{need.patient_name} needs #{need.blood_group} type blood on #{need.required_date} for #{need.reason} reason at #{need.hospital_name}. Please respond if you are available for donation. Contact number: #{need.contact_number}.\n For more details visit www.helpalife.in"
       phone_nos.each_slice(100) do |hundred_user_phones|
         Notification.send_sms(hundred_user_phones.join(","),msg)
         logger.info("Assigning:#{hundred_user_phones.join(",")} sms")
       end
 
-      flash[:success] = "Your requirement is posted and email notifications sent to the below donors!"
+      flash[:success] = "Your requirement is posted and notifications sent to the below donors!"
       if redirect
         redirect_to need_path(need)
       else

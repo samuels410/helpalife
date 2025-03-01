@@ -10,7 +10,7 @@ class Notification < ActiveRecord::Base
       msg = "Thank you for registering www.helpalife.in. You have successfully joined as a blood donor and your blood group is #{user.blood_group.gsub('+', ' positive').gsub('-', ' negative')}."
       notification = user.notifications.create(notifier_id: 1 ,notification_type: SMSTYPE,context_type: user.class.name,
                                                context_id: user.id,message: msg ,workflow_state: "created")
-      Notifier.send_sms_to_gateway(user.phone_no,msg)
+      Notifier.send_sms_to_gateway(user.phone_no,msg,1707173900765148480)
       notification.update_attributes(workflow_state: "sent")
     else
       logger.info "sms already sent"
@@ -19,8 +19,7 @@ class Notification < ActiveRecord::Base
   end
 
   def self.send_sms(phone_nos,msg)
-    Notifier.send_sms_to_gateway(phone_nos,msg)
+    SmsGateway::Notifier.send_sms_to_gateway(phone_nos,msg,1707173926768908677)
   end
 
-  end
-
+end
