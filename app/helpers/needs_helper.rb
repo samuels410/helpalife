@@ -14,7 +14,7 @@ module NeedsHelper
                                                                        state_id: need.state.id)
 
       phone_nos = @sms_users.collect(&:phone_no)
-      msg = "Dear donor, #{need.patient_name.capitalize} needs #{need.blood_group} type blood on #{need.required_date} for #{need.reason} reason at #{need.hospital_name}. Please respond if you are available for donation. Contact number: #{need.contact_number}.\n For more details visit www.helpalife.in"
+      msg = "Dear donor, #{need.patient_name.capitalize} needs #{need.blood_group.gsub('+', ' positive').gsub('-', ' negative')} type blood on #{need.required_date} for #{need.reason} reason at #{need.hospital_name}. Please respond if you are available for donation. Contact number: #{need.contact_number}.\n For more details visit www.helpalife.in"
       phone_nos.each_slice(100) do |hundred_user_phones|
         Notification.send_sms(hundred_user_phones.join(","),msg)
         logger.info("Assigning:#{hundred_user_phones.join(",")} sms")
