@@ -357,7 +357,7 @@ GEM
     thor (1.2.2)
     thread_safe (0.3.6)
     tilt (1.4.1)
-    tinymce-rails (7.5.1)
+    tinymce-rails (5.6.2.1)
       railties (>= 3.1.1)
     treetop (1.4.15)
       polyglot
@@ -401,6 +401,7 @@ DEPENDENCIES
   devise_invitable
   doorkeeper
   email_spec
+  execjs (~> 2.8, >= 2.8.1)
   factory_girl_rails
   faker
   foreman
@@ -435,7 +436,7 @@ DEPENDENCIES
   simple_form
   test-unit
   therubyracer
-  tinymce-rails
+  tinymce-rails (= 5.6.2.1)
   turbolinks
   uglifier (>= 1.3.0)
   unicorn

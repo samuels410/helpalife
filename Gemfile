@@ -51,7 +51,7 @@ gem 'pg', '~> 0.11'
 gem 'simple_form'
 
 #WYSIWYG editor
-gem 'tinymce-rails'
+gem 'tinymce-rails', '5.6.2.1'
 
 #Impressionist gem for impressions
 gem 'impressionist'
@@ -124,3 +124,4 @@ group :deploy do
   gem 'capistrano-passenger', '~> 0.2.1'
   gem 'capistrano3-delayed-job', '~> 1.0'
 end
+gem 'execjs', '~> 2.8', '>= 2.8.1'
