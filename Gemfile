@@ -84,6 +84,8 @@ group :development, :test do
   gem 'quiet_assets'
   gem 'faker'
   gem 'foreman'
+  gem 'dotenv-rails', '~> 2.1'
+
 end
 
 group :production do
@@ -125,3 +127,4 @@ group :deploy do
   gem 'capistrano3-delayed-job', '~> 1.0'
 end
 gem 'execjs', '~> 2.8', '>= 2.8.1'
+gem "dotenv", "~> 2.8"

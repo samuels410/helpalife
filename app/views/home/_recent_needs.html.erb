@@ -4,7 +4,7 @@
     <div class='row media need_box'>
       <div class="col-md-10 ">
         <div class="media-heading">
-          <%= need.patient_name  %> 
+          <%= need.patient_name  %>
           <b class="badge alert-danger"><%= need.blood_group  %> </b> blood on  <b class="badge alert-danger"> <%= need.required_date   %>
         </b>  for <%= need.reason %> reason</div>
         Hospital :&nbsp;<%= need.hospital_name %> <br>
@@ -13,7 +13,7 @@
         <% end %>
         State :&nbsp; <%= need.state.name %> <br>
         District :&nbsp;<%= need.district.name %> <br>
-        <small><em>Posted by,<%= need.user.name %></em> ,about
+        <small><em>Posted by,<%= need.user %></em> ,about
           <%=  distance_of_time_in_words(need.created_at,Time.now)%>&nbsp;ago
         </small>
       </div>

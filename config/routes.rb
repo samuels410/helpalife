@@ -1,5 +1,12 @@
 Community::Application.routes.draw do
-  
+  get 'users/index'
+
+  get 'otp/new', to: 'otp#new', as: :otp_new
+  post 'otp/send_otp', to: 'otp#send_otp'  # Sends OTP to the user
+  post '/verify_otp', to: 'otp#verify', as: 'verify_otp' # Verifies the OTP
+
+
+
   get 'register' => 'event_registrations#index'
   get 'event_dashboard' => 'event_registrations#event_dashboard'
   post 'save_attachment' => 'event_registrations#save_attachment'
@@ -59,7 +66,14 @@ Community::Application.routes.draw do
   end
 
   root to: 'home#index'
-  devise_for :users, :controllers => { :registrations => "registrations"}
+  # devise_for :users, controllers: { sessions: 'users/sessions'}
+  #
+  devise_for :users, controllers: {
+    registrations: 'registrations',
+    sessions: 'users/sessions'
+  }
+  resources :users, only: [:index, :show, :edit, :update, :destroy, :create]
+
   resources :home
   resources :omniauth_links
   match '/auth/:provider/callback' ,to: 'authentication#create', via: [:get, :post]
@@ -71,8 +85,6 @@ Community::Application.routes.draw do
   match 'vision' ,to:'home#vision', via: [:get]
   resources :contacts
 end
-
-
 
 
 =begin
