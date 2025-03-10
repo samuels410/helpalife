@@ -1,15 +1,15 @@
 <!--<div id="sb-search" class="sb-search">-->
-  <!--<form>-->
-    <!--<input class="sb-search-input" placeholder="Enter blood group..." type="text" value="" name="search" id="search">-->
-    <!--<input class="sb-search-submit" type="submit" value="">-->
-    <!--<span class="sb-icon-search"></span>-->
-  <!--</form>-->
+<!--<form>-->
+<!--<input class="sb-search-input" placeholder="Enter blood group..." type="text" value="" name="search" id="search">-->
+<!--<input class="sb-search-submit" type="submit" value="">-->
+<!--<span class="sb-icon-search"></span>-->
+<!--</form>-->
 <!--</div>-->
 <div class="header">
   <div class="wrap">
     <div class="logo">
       <%= link_to image_tag('logo.png',:class =>"img img-circle",
-        :style => "width: 75px;",:alt => "blood donors"),root_path %>
+                            :style => "width: 75px;",:alt => "blood donors"),root_path %>
     </div>
 
     <div class="h_right">
@@ -54,9 +54,9 @@
           </ul>
         </li>
         <li> <%= link_to 'Organizations', organizations_path, :'data-no-turbolink' => true %> </li>
-      <% if signed_in?  %>
-        <li>
-          <a href="#">
+        <% if signed_in?  %>
+          <li>
+            <a href="#">
             <span>
               <%= camp_profile_url %>
               <%= current_user.name %>
@@ -74,7 +74,7 @@
               <%= link_to 'My Organizations', my_organizations_path, :'data-no-turbolink' => true %>
             </li>
             <li> <%= link_to 'Profile', edit_user_registration_path %> </li>
-            <li> <%= link_to 'Sign out', destroy_user_session_path, rel: 'nofollow' %> </li>
+            <li> <%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>
           </ul>
         </li>
       <% else  %>

@@ -25,7 +25,11 @@
         <div style="margin-left:27px;">
           <u><%= link_to "Forgot Password?", new_password_path(:user) %></u>
           <br> <br>
-          <u><%= link_to "Sign up and become a donor!", new_user_registration_path %></u>
+          <u>
+            <%= link_to "Sign up and become a donor!", new_user_registration_path,
+                        onclick: "event.preventDefault(); $('#login').modal('hide'); setTimeout(() => { window.location.href = '#{new_user_registration_path}' }, 500);" %>
+          </u>
+
         </div>
       </div>
       <div class="modal-footer">

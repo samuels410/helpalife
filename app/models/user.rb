@@ -1,5 +1,36 @@
 class User < ActiveRecord::Base
+  attr_accessor :terms_of_service
   rolify
+  before_create :generate_otp
+  after_commit :send_otp, on: :create  # Send OTP after user is created
+
+  def generate_otp
+    self.otp = rand(100000..999999).to_s # Generate a 6-digit OTP
+    self.otp_expires_at = Time.current + 5.minutes
+
+  end
+
+
+  def verify_otp(entered_otp)
+    if otp == entered_otp && otp_expires_at > Time.current
+      update(
+        otp: nil,            # Clear the OTP after successful verification
+        otp_expires_at: nil,  # Clear expiration time
+        otp_verified: true    # Set verification flag
+      )
+      true
+    else
+      false
+    end
+  end
+
+  def send_otp
+    return unless phone_no.present?
+
+    otp_message = "Dear donor, #{otp} is the OTP for your phone number verification at www.helpalife.in. In case you have not requested this, please ignore."
+    SmsService.send_sms(phone_no, otp_message)  # Implement SMS sending
+  end
+
 
   # Associations
   belongs_to :state
@@ -8,6 +39,9 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+
+  # Validations
+  validates :terms_of_service, acceptance: true
 
   has_attached_file :avatar, :styles => {:thumb => "75x75#" },
                     :default_url => "user_missing.png"
@@ -33,7 +67,7 @@ class User < ActiveRecord::Base
   # holds the organizations to which i am connected + added by me.
   has_and_belongs_to_many :organizations
 
-  # holds the organizations those are just created by the pearticular . 
+  # holds the organizations those are just created by the pearticular .
   has_many :my_organizations, class_name: 'Organization', foreign_key: 'user_id'
   scope :email_notification_enabled, -> { where(can_send_email: true) }
   scope :sms_notification_enabled, -> { where(can_send_sms: true) }
@@ -61,7 +95,7 @@ class User < ActiveRecord::Base
   attr_accessor :skip_blood_group_validation, :skip_state_id_validation, :skip_district_id_validation
 
   require 'net/http'
-  
+
   # Constants
   BLOOD_GROUPS = %w(A1+ A1- A2+ A2- B+ B- A1B+ A1B- A2B+ A2B- AB+ AB- O+ O- A+ A- hh)
 

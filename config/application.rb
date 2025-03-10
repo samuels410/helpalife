@@ -10,6 +10,16 @@ module Community
   class Application < Rails::Application
 
     config.autoload_paths += %W(#{config.root}/lib)
+
+    config.before_configuration do
+      config_file = Rails.root.join('config', 'development.yml')
+      if File.exist?(config_file)
+        yaml_data = YAML.load_file(config_file)
+        ENV['OPENAI_API_KEY'] ||= yaml_data.dig('openai', 'api_key')
+      end
+    end
+
+
     # don't generate RSpec tests for views and helpers
     config.generators do |g|
       
