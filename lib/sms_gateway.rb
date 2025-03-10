@@ -1,4 +1,5 @@
 module SmsGateway
+
   class Notifier < ActiveRecord::Base
     API_URL = "https://www.smsgatewayhub.com/api/mt/SendSMS"
     API_KEY = "5ccad4c5-5964-4647-9768-9898699719d1"
