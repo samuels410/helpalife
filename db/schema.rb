@@ -321,6 +321,7 @@ ActiveRecord::Schema.define(version: 20250411102032) do
     t.integer  "otp_attempts"
     t.boolean  "terms_of_service"
     t.string   "otp"
+    t.datetime "otp_expires_at"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
