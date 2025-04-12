@@ -3,7 +3,7 @@ require 'uri'
 require 'json'
 
 class SmsService
-  API_URL = "https://www.smsgatewayhub.com/api/mt/SendSMS"
+  API_URL = "#{Settings.sms_gateway_url}"
   API_KEY = ENV.fetch('SMS_API_KEY', 'your_default_api_key')
   SENDER_ID = ENV.fetch('SMS_SENDER_ID', 'HLPLYF')
   CHANNEL = 2
