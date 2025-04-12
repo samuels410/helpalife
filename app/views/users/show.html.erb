@@ -1,0 +1,8 @@
+<h1>User Details</h1>
+
+<% if @user.present? %>
+  <p>ID: <%= @user.id %></p>
+  <p>Email: <%= @user.email %></p>
+<% else %>
+  <p>User not found.</p>
+<% end %>

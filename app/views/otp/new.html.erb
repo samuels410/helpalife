@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<body>
+<div class="otp-container" style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 50vh; background-color: #f0f8ff;">
+  <div style="background: #fff; padding: 30px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); width: 500px; text-align: center;">
+    <h1>OTP Verification</h1>
+    <%= form_tag verify_otp_path, method: :post do %>
+      <%= hidden_field_tag :phone_no, params[:phone_no] %>
+      <input type="text" name="otp" placeholder="Enter OTP" required
+             style="padding: 12px; font-size: 16px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 6px; width: 240px;">
+      <br>
+      <%= submit_tag "Verify", style: "padding: 12px 24px; font-size: 16px; background-color: #4CAF50; color: white; border: none; border-radius: 6px; cursor: pointer; transition: 0.3s;" %>
+    <% end %>
+  </div>
+</div>
+</body>
+</html>
