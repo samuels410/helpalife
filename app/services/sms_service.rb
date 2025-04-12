@@ -3,9 +3,9 @@ require 'uri'
 require 'json'
 
 class SmsService
-  API_URL = "#{Settings.sms_gateway_url}"
-  API_KEY = ENV.fetch('SMS_API_KEY', 'your_default_api_key')
-  SENDER_ID = ENV.fetch('SMS_SENDER_ID', 'HLPLYF')
+  API_URL = Settings.sms_gateway_url
+  API_KEY = Settings.sms_api_key
+  SENDER_ID = Settings.sms_sender_id
   CHANNEL = 2
   DCS = 0
   FLASH_SMS = 0
@@ -14,10 +14,10 @@ class SmsService
     uri = URI(API_URL)
 
     params = {
-      apikey: API_KEY,  # Ensure lowercase
+      apikey: API_KEY,
       senderid: SENDER_ID,
       channel: CHANNEL,
-      dcs: DCS,          # Change to lowercase
+      DCS: DCS,
       flashsms: FLASH_SMS,
       number: phone_number,
       text: message,
