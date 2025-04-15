@@ -9,7 +9,9 @@ class RegistrationsController < Devise::RegistrationsController
     if @user
       @user.generate_otp!
       SmsService.send_otp(@user.phone_no, @user.otp_code)
-      redirect_to otp_new_path(phone_no: @user.phone_no), notice: "OTP sent successfully."
+      session[:phone_no] = @user.phone_no
+      redirect_to otp_new_path, notice: "OTP sent successfully."
+
     else
       redirect_to new_user_registration_path, alert: "User not found."
     end
@@ -20,7 +22,8 @@ class RegistrationsController < Devise::RegistrationsController
       sign_in(@user)
       redirect_to root_path, notice: "OTP verified successfully!"
     else
-      redirect_to otp_new_path(phone_no: @user.phone_no), alert: "Invalid OTP. Please try again."
+      # Remove phone_no from redirect parameters
+      redirect_to otp_new_path, alert: "Invalid OTP. Please try again."
     end
   end
 
@@ -44,8 +47,8 @@ class RegistrationsController < Devise::RegistrationsController
   end
 
   def after_sign_up_path_for(resource)
-    Rails.logger.debug "Redirecting to OTP: #{otp_new_path(phone_no: resource.phone_no)}"
-    otp_new_path(phone_no: resource.phone_no)
+    session[:phone_no] = resource.phone_no
+    otp_verify_path  # Changed from otp_new_path to otp_verify_path
   end
 
   def update

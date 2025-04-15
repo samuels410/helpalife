@@ -1,12 +1,13 @@
 class OtpController < ApplicationController
-  skip_before_action :verify_authenticity_token, only: [:send_otp, :verify_otp]
-  before_action :set_user, only: [:send_otp, :verify_otp]
+  before_action :set_user, only: [:send_otp, :verify]  # Changed to :verify
 
+  # GET /otp/verify - Show OTP entry form
   def new
-    @phone_no = params[:phone_no]
+    @phone_no = session[:phone_no]
+    redirect_to new_user_registration_path unless @phone_no.present?
   end
 
-  # Send OTP to User's Phone
+  # POST /otp/send_otp - Send OTP
   def send_otp
     if @user
       @user.generate_otp
@@ -24,26 +25,23 @@ class OtpController < ApplicationController
     end
   end
 
+  # POST /otp/verify - Verify OTP
   def verify
-    @user = User.find_by(phone_no: params[:phone_no])
-
     if @user&.verify_otp(params[:otp])
       sign_in(@user)
-      # Clear any existing OTP-related session data here if needed
+      session.delete(:phone_no)
       redirect_to root_path, notice: "Successfully logged in!"
     else
-      redirect_to otp_new_path(phone_no: params[:phone_no]),
-                  alert: "Invalid or expired OTP"
+      # Changed from otp_new_path to otp_verify_path
+      redirect_to otp_verify_path, alert: "Invalid or expired OTP"
     end
   end
-
 
   private
 
   def set_user
-    Rails.logger.debug "Finding user with phone_no: #{params[:phone_no]}"
-    @user = User.find_by(phone_no: params[:phone_no])
+    # Changed from params[:phone_no] to session[:phone_no]
+    @user = User.find_by(phone_no: session[:phone_no])
     Rails.logger.debug "User found: #{@user.inspect}"
   end
-
 end
