@@ -3,6 +3,7 @@ class Users::SessionsController < Devise::SessionsController
     user = User.find_by(email: params[:user][:email])
 
     if user && !user.otp_verified?
+      session[:phone_no] = user.phone_no # Set session here
       redirect_to otp_new_path, alert: "Please verify your OTP before logging in."
     else
       super

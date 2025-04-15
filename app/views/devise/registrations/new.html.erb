@@ -1,9 +1,12 @@
-<br>
+<!-- app/views/devise/registrations/new.html.erb -->
 <div class="row">
   <div class="col-md-3 col-md-offset-4">
 
     <div class="sign_up_top">
       <div class="above_from_for">
+
+        <%= csrf_meta_tags %> <!-- Add this if the CSRF token is missing -->
+
         <%= simple_form_for(@user, url: users_path, html: { class: 'form-vertical' }, validate: true) do |f| %>
 
       <table style="margin-left:27px;">
@@ -28,20 +31,18 @@
                   <%= f.check_box :terms_of_service, { checked: true }, "1", "0" %>
                   <%= f.label :terms_of_service, "I accept the terms of service" %>
 
-                  <%= f.hidden_field :is_donor, :value => true%>
+                  <%= f.hidden_field :is_donor, value: true %>
 
-                  <%= f.button :submit, "Sign up & Become a donor" , :class => 'btn btn-success' %>
-
+                  <%= f.button :submit, "Sign up & Become a donor", class: 'btn btn-success' %>
                 </div>
               </td>
+            </tr>
+          </table>
         <% end %>
-        </tr>
-        </table>
+
         <br>
         <div ><small>While social login, We dont share personal information no where,we will access public information only.</small> </div>
       </div>
     </div>
   </div>
 </div>
-
-
