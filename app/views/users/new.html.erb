@@ -4,8 +4,7 @@
 
     <div class="sign_up_top">
       <div class="above_from_for">
-        <%= simple_form_for @user, url: otp_new_path(:user),
-                            html: { class: 'form-vertical' }, validate: true do |f| %>
+        <%= simple_form_for @user, url: otp_verify_path(:user), html: { class: 'form-vertical' }, validate: true do |f| %>
 
       <table style="margin-left:27px;">
             <tr><td colspan="3"><%= render 'shared/error_messages', object: f.object %></td></tr>

@@ -7,12 +7,13 @@
 
     <!-- Message showing the phone number -->
     <p style="font-size: 16px; color: #333; margin-bottom: 20px;">
-      Please verify your phone number: <strong><%= session[:phone_no] %></strong>
+      (Please verify your phone number: <strong><%= session[:phone_no] %>)</strong>
     </p>
 
     <%= form_tag verify_otp_path, method: :post do %>
       <%= csrf_meta_tags %>
       <%= hidden_field_tag :phone_no, session[:phone_no] %>
+
       <input type="text" name="otp" placeholder="Enter OTP" required
              style="padding: 12px; font-size: 16px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 6px; width: 240px;">
       <br>

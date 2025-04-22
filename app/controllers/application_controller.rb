@@ -77,7 +77,7 @@ class ApplicationController < ActionController::Base
 
   def after_sign_in_path_for(resource)
     session[:phone_no] = resource.phone_no
-    return otp_new_path unless resource.otp_verified?
+    return otp_verify_path unless resource.otp_verified?
 
     if session[:need].present?
       @need = Need.create(session[:need])

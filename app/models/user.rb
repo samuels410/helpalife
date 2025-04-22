@@ -1,25 +1,26 @@
 class User < ActiveRecord::Base
-  attr_accessor :terms_of_service
+
+
   rolify
   before_create :generate_otp
   after_commit :send_otp, on: :create  # Send OTP after user is created
 
   def generate_otp
-    self.otp = rand(100000..999999).to_s # Generate a 6-digit OTP
-    self.otp_expires_at = Time.current + 5.minutes
-
+    self.otp_code = rand(100000..999999).to_s # Generate a 6-digit OTP
+    self.otp_expires_at = Time.current + 1.minutes
+    self.otp_sent_at = Time.current
   end
 
-
   def verify_otp(entered_otp)
-    if otp == entered_otp && otp_expires_at > Time.current
+    if otp_code == entered_otp && otp_expires_at > Time.current
       update(
-        otp: nil,            # Clear the OTP after successful verification
-        otp_expires_at: nil,  # Clear expiration time
-        otp_verified: true    # Set verification flag
+        otp_code: nil,
+        otp_expires_at: nil,
+        otp_verified: true
       )
       true
     else
+      update(otp_verified: false) unless otp_verified
       false
     end
   end
@@ -27,7 +28,7 @@ class User < ActiveRecord::Base
   def send_otp
     return unless phone_no.present?
 
-    otp_message = "Dear donor, #{otp} is the OTP for your phone number verification at www.helpalife.in. In case you have not requested this, please ignore."
+    otp_message = "Dear donor, #{otp_code} is the OTP for your phone number verification at www.helpalife.in. In case you have not requested this, please ignore."
     SmsService.send_sms(phone_no, otp_message)  # Implement SMS sending
   end
 
@@ -40,8 +41,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  # Validations
-  validates :terms_of_service, acceptance: true
+  # # Validations
+  # validates :terms_of_service, acceptance: true
 
   has_attached_file :avatar, :styles => {:thumb => "75x75#" },
                     :default_url => "user_missing.png"
@@ -80,8 +81,9 @@ class User < ActiveRecord::Base
   #                     :content_type => { :content_type => ["image/jpeg","image/jpg", "image/gif", "image/png"] },
   #                     :size => { :in => 0..200.kilobytes }
 
-  validates :name,:email,:phone_no, presence: true
-  validates :terms_of_service, acceptance: { accept: '1' }
+  validates :name, :email, :phone_no, presence: true
+  validates :phone_no, uniqueness: { message: "has already been taken" }
+  validates :terms_of_service, inclusion: { in: [true], message: "must be accepted" }    # inclusion is a validator
   VALID_PHONE_REGEX =/\A(?:(?:\+|0{0,2})91(\s*[\-]\s*)?|[0]?)?[6789]\d{9}\Z/
   validates :phone_no, length: { is: 10 }, numericality: true,
   format: { with: VALID_PHONE_REGEX }

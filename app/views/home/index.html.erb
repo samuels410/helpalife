@@ -38,7 +38,8 @@
             <%= f.input :blood_group,collection: User::BLOOD_GROUPS , :prompt => "- Choose blood group -", :required => true%>
             <%= f.input :state_id,collection: State.order(:name),:prompt => "- Select state -"%>
             <%= f.input :district_id,collection: State.order(:name), as: :grouped_select, group_method: :districts ,:prompt => "- Select district -"%>
-            <%= f.check_box :terms_of_service %> <%= link_to "I accept terms and service",terms_path ,target: "_blank" %> &nbsp;&nbsp;
+            <%= f.check_box :terms_of_service, { required: true }, '1', '0' %>
+            <%= f.label :terms_of_service, "I accept the Terms of Service" %>
             <%= f.hidden_field :is_donor, :value => true%>
             <%= f.button :submit, "Become a donor" , :class => 'btn btn-primary'%>
             <br>Register using social networks<br>

@@ -291,15 +291,15 @@ ActiveRecord::Schema.define(version: 20250304040756) do
     t.integer  "country_id"
     t.integer  "state_id"
     t.integer  "district_id"
-    t.text     "email",                  default: "",   null: false
-    t.text     "encrypted_password",     default: "",   null: false
+    t.text     "email",                  default: "",    null: false
+    t.text     "encrypted_password",     default: "",    null: false
     t.text     "avatar_url"
     t.text     "phone_no"
     t.boolean  "phone_no_visibility",    default: true
     t.text     "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,    null: false
+    t.integer  "sign_in_count",          default: 0,     null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.text     "current_sign_in_ip"
@@ -319,13 +319,13 @@ ActiveRecord::Schema.define(version: 20250304040756) do
     t.string   "otp_code"
     t.datetime "otp_sent_at"
     t.boolean  "active"
-    t.boolean  "otp_verified"
     t.datetime "confirmed_at"
     t.string   "confirmation_token"
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email"
     t.integer  "otp_attempts"
     t.boolean  "terms_of_service"
+    t.boolean  "otp_verified",           default: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
