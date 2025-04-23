@@ -314,18 +314,15 @@ ActiveRecord::Schema.define(version: 20250304040756) do
     t.datetime "avatar_updated_at"
     t.boolean  "can_receive_newsletter", default: true
     t.boolean  "is_donor"
-    t.string   "otp"
-    t.datetime "otp_expires_at"
     t.string   "otp_code"
     t.datetime "otp_sent_at"
     t.boolean  "active"
-    t.datetime "confirmed_at"
-    t.string   "confirmation_token"
-    t.datetime "confirmation_sent_at"
-    t.string   "unconfirmed_email"
+    t.boolean  "otp_verified",  default: false
     t.integer  "otp_attempts"
     t.boolean  "terms_of_service"
-    t.boolean  "otp_verified",           default: false
+    t.string   "otp"
+    t.datetime "otp_expires_at"
+
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
