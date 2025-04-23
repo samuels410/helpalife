@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20250304040756) do
+ActiveRecord::Schema.define(version: 20250411102032) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -314,15 +314,18 @@ ActiveRecord::Schema.define(version: 20250304040756) do
     t.datetime "avatar_updated_at"
     t.boolean  "can_receive_newsletter", default: true
     t.boolean  "is_donor"
+    t.string   "otp"
+    t.datetime "otp_expires_at"
     t.string   "otp_code"
     t.datetime "otp_sent_at"
     t.boolean  "active"
-    t.boolean  "otp_verified",  default: false
+    t.datetime "confirmed_at"
+    t.string   "confirmation_token"
+    t.datetime "confirmation_sent_at"
+    t.string   "unconfirmed_email"
     t.integer  "otp_attempts"
     t.boolean  "terms_of_service"
-    t.string   "otp"
-    t.datetime "otp_expires_at"
-
+    t.boolean  "otp_verified",           default: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
