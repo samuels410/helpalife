@@ -1,27 +1,30 @@
 class RegistrationsController < Devise::RegistrationsController
   before_action :find_user, only: [:send_otp, :verify_otp]
 
-  def new
-    build_resource # Devise method to initialize a new user
-    @user = resource # Makes @user available in the view
-  end
-  def send_otp
-    if @user
-      @user.generate_otp!
-      SmsService.send_otp(@user.phone_no, @user.otp_code)
-      redirect_to otp_new_path(phone_no: @user.phone_no), notice: "OTP sent successfully."
+  def create
+    build_resource(account_update_params)
+
+    if resource.save
+      yield resource if block_given?
+      if resource.active_for_authentication?
+        sign_up(resource_name, resource)
+        respond_with resource, location: after_sign_up_path_for(resource)
+      else
+        expire_data_after_sign_in!
+        respond_with resource, location: after_inactive_sign_up_path_for(resource)
+      end
     else
-      redirect_to new_user_registration_path, alert: "User not found."
+      Rails.logger.error "USER REGISTRATION ERRORS: #{resource.errors.full_messages.join(", ")}"
+      clean_up_passwords resource
+      set_minimum_password_length
+      respond_with resource
     end
   end
 
-  def verify_otp
-    if @user&.verify_otp(params[:otp])
-      sign_in(@user)
-      redirect_to root_path, notice: "OTP verified successfully!"
-    else
-      redirect_to otp_new_path(phone_no: @user.phone_no), alert: "Invalid OTP. Please try again."
-    end
+
+  def new
+    build_resource # Devise method to initialize a new user
+    @user = resource # Makes @user available in the view
   end
 
   private
@@ -34,18 +37,17 @@ class RegistrationsController < Devise::RegistrationsController
   end
 
   def find_user
-    @user = User.find_by(phone_no: params[:phone_no])
+    @user = User.find_by(phone_no: session[:phone_no])
   end
 
-  def generate_otp!
-    self.otp_code = rand(100000..999999) # Generate 6-digit OTP
-    self.otp_sent_at = Time.current
-    save!
+  def otp_form
+    @phone_no = session[:phone_no]
+    @user = User.find_by(phone_no: @phone_no)
   end
 
   def after_sign_up_path_for(resource)
-    Rails.logger.debug "Redirecting to OTP: #{otp_new_path(phone_no: resource.phone_no)}"
-    otp_new_path(phone_no: resource.phone_no)
+    session[:phone_no] = resource.phone_no
+    otp_verify_path  # Changed from otp_new_path to otp_verify_path
   end
 
   def update

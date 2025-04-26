@@ -1,13 +1,10 @@
-<!-- app/views/devise/registrations/new.html.erb -->
+<br>
 <div class="row">
   <div class="col-md-3 col-md-offset-4">
 
     <div class="sign_up_top">
       <div class="above_from_for">
-
-        <%= csrf_meta_tags %>
-
-        <%= simple_form_for(@user, url: users_path, html: { class: 'form-vertical' }, validate: true) do |f| %>
+        <%= simple_form_for @user, url: otp_verify_path(:user), html: { class: 'form-vertical' }, validate: true do |f| %>
 
       <table style="margin-left:27px;">
             <tr><td colspan="3"><%= render 'shared/error_messages', object: f.object %></td></tr>
@@ -16,7 +13,6 @@
                 <div style="margin-top:20px;">
                   <%= f.error_notification %>
                   <%= display_base_errors @user %>
-
                   <%= f.input :name, :required => true ,:placeholder=> "Full name", :as => :string%>
                   <%= f.input :email, :required => true ,:placeholder=> "Email address",:type=> 'email', :as => :string%>
                   <%= f.input :password, :required => true ,:placeholder=> "Password"%>
@@ -28,18 +24,19 @@
 
                   <%= f.input :state_id,collection: State.order(:name),:prompt => "- Select state -"%>
                   <%= f.input :district_id,collection: State.order(:name), as: :grouped_select, group_method: :districts ,:prompt => "- Select district -"%>
-                  <%= f.check_box :terms_of_service, { required: true, class: "form-check-input", id: "terms_checkbox" }, '1', '0' %>
-                  <%= f.label :terms_of_service, "I accept the Terms of Service", class: "form-check-label", for: "terms_checkbox" %>
+                  <%= f.check_box :terms_of_service, { checked: true }, "1", "0" %>
+                  <%= f.label :terms_of_service, "I accept the terms of service" %>
 
-                  <%= f.hidden_field :is_donor, value: true %>
 
-                  <%= f.button :submit, "Sign up & Become a donor", class: 'btn btn-success' %>
+                  <%= f.hidden_field :is_donor, :value => true%>
+
+                  <%= f.button :submit, "Sign up & Become a donor" , :class => 'btn btn-success' %>
+
                 </div>
               </td>
-            </tr>
-          </table>
         <% end %>
-
+        </tr>
+        </table>
         <br>
         <div ><small>While social login, We dont share personal information no where,we will access public information only.</small> </div>
       </div>

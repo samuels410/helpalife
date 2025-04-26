@@ -1,10 +1,9 @@
 Community::Application.routes.draw do
   get 'users/index'
 
-  get 'otp/new', to: 'otp#new', as: :otp_new
-  post 'otp/send_otp', to: 'otp#send_otp'  # Sends OTP to the user
-  post '/verify_otp', to: 'otp#verify', as: 'verify_otp' # Verifies the OTP
-
+  get 'otp/verify', to: 'otp#new', as: :otp_verify      # Show OTP entry form (GET)
+  post 'otp/verify', to: 'otp#verify', as: :verify_otp  # Process verification (POST)
+  post 'otp/send_otp', to: 'otp#send_otp'
 
 
   get 'register' => 'event_registrations#index'

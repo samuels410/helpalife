@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   include NeedsHelper
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
-  protect_from_forgery with: :exception
+  protect_from_forgery with: :exception, unless: -> { Rails.env.development? }  # protect from csrf attack
 
   before_action :configure_permitted_parameters, if: :devise_controller?
   after_action :store_location
@@ -20,10 +20,10 @@ class ApplicationController < ActionController::Base
     return if devise_controller?
 
     unless current_user.otp_verified?
-      phone_no = current_user.phone_no
+      session[:phone_no] = current_user.phone_no # Store in session
       sign_out(current_user)
-      redirect_to otp_new_path(phone_no: phone_no),
-                  alert: "Please verify your OTP before accessing this page."
+      redirect_to otp_verify_path,
+       alert: "Please verify your OTP before accessing this page."
     end
   end
 
@@ -76,7 +76,8 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource)
-    return otp_new_path(phone_no: resource.phone_no) unless resource.otp_verified?
+    session[:phone_no] = resource.phone_no
+    return otp_verify_path unless resource.otp_verified?
 
     if session[:need].present?
       @need = Need.create(session[:need])
